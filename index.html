@@ -12,15 +12,12 @@
       padding: 0;
     }
     header {
-      background-color: #333;
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-    }
-    main {
       background: url("images/background_image.jpeg") no-repeat center center fixed;
       background-size: cover;
-      padding: 20px;
+      color: #fff;
+      padding: 1rem;
+      text-align: left;
+      position: relative;
     }
     img {
       width: 150px;
@@ -28,15 +25,24 @@
       border-radius: 50%;
       margin-right: 20px;
     }
+    header h1, header p {
+      margin: 0;
+    }
+    main {
+      padding: 20px;
+      background-color: #fff; /* Add a background color for main content */
+    }
   </style>
 </head>
 <body>
 
   <header>
     <img src="images/profile-picture.jpeg" alt="Profile Picture">
-    <h1>Hariprashad Ravikumar</h1>
-    <p>PhD Candidate (Theoretical Particle Physics)</p>
-    <p>New Mexico State University, USA</p>
+    <div>
+      <h1>Hariprashad Ravikumar</h1>
+      <p>PhD Candidate (Theoretical Particle Physics)</p>
+      <p>New Mexico State University, USA</p>
+    </div>
   </header>
 
   <nav>
