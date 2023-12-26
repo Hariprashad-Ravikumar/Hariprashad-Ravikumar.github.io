@@ -12,9 +12,9 @@
       padding: 0;
     }
     header {
-      background: url("images/background_image_old.jpeg") no-repeat center center fixed;
+      background: url("images/background_image.jpeg") no-repeat center center fixed;
       background-size: cover;
-      background-attachment: fixed;
+      background-attachment: fixed; /* Fix the background image */
       color: #fff;
       padding: 1rem;
       text-align: left;
@@ -22,9 +22,8 @@
       overflow: hidden;
     }
     img {
-      width: 100%; /* Adjust this to 100% to cover the entire header width */
-      height: auto; /* Maintain aspect ratio */
-      max-width: 100%; /* Ensure the image doesn't exceed its original size */
+      width: 180px;
+      height: 150px;
       border-radius: 50%;
       margin-right: 20px;
     }
@@ -40,6 +39,7 @@
 <body>
 
   <header>
+    <img src="images/profile-picture.jpeg" alt="Profile Picture">
     <div>
       <h1>Hariprashad Ravikumar</h1>
       <p>PhD Candidate (Theoretical Particle Physics)</p>
@@ -58,7 +58,6 @@
   </nav>
 
   <main>
-    <img src="images/profile-picture.jpeg" alt="Profile Picture">
     <p>My PhD research focuses on extracting and analyzing the x (momentum fraction)-dependent Transverse Momentum Dependent Parton Distribution Functions (TMDs), such as Sivers observables, from lattice quantum chromodynamics (QCD) simulations using high-performance supercomputers. These TMD observables reveal the intrinsic motion of quarks and gluons inside the proton or neutron, specifically with respect to transverse momentum.</p>
 
     <p>My other research involves interpolating the manifestly covariant conformal group SO(4,2) between the instant form and the light-front form of relativistic dynamics. One of the main goals of this work is to explore the advantages of using the light-front formulation over the instant form.</p>
