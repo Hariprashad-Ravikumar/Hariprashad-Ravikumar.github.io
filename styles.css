@@ -12,6 +12,28 @@ header {
   text-align: center;
 }
 
-section {
+nav {
+  background-color: #eee;
+  padding: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+}
+
+main {
   margin: 20px;
 }
