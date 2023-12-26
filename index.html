@@ -10,15 +10,16 @@
       font-family: 'Times New Roman', Times, serif;
       margin: 0;
       padding: 0;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     header {
-      background: url("images/background_image_old.jpeg") no-repeat center center fixed;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-attachment: fixed; /* Fix the background image */
+      background: url("images/background_image.jpeg") no-repeat center center fixed;
+      background-size: contain; /* Change to contain */
+      background-repeat: no-repeat; /* Change to no-repeat */
       color: #fff;
       padding: 1rem;
-      text-align: left;
+      text-align: center; /* Center-align text */
       position: relative;
       overflow: hidden;
     }
@@ -26,14 +27,19 @@
       width: 150px;
       height: 150px;
       border-radius: 50%;
-      margin-right: 20px;
+      margin-top: 20px; /* Adjust margin for spacing */
     }
     header h1, header p {
       margin: 0;
     }
+    nav {
+      max-width: 100%;
+    }
     main {
       padding: 20px;
       background-color: #fff;
+      max-width: 100%;
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -41,11 +47,9 @@
 
   <header>
     <img src="images/profile-picture.jpeg" alt="Profile Picture">
-    <div>
-      <h1>Hariprashad Ravikumar</h1>
-      <p>PhD Candidate (Theoretical Particle Physics)</p>
-      <p>New Mexico State University, USA</p>
-    </div>
+    <h1>Hariprashad Ravikumar</h1>
+    <p>PhD Candidate (Theoretical Particle Physics)</p>
+    <p>New Mexico State University, USA</p>
   </header>
 
   <nav>
