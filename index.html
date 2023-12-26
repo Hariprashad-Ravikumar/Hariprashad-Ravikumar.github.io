@@ -14,7 +14,7 @@
     header {
       background: url("images/background_image.jpeg") no-repeat center center fixed;
       background-size: cover;
-      background-attachment: fixed; /* Fix the background image */
+      background-attachment: fixed;
       color: #fff;
       padding: 1rem;
       text-align: left;
@@ -22,8 +22,9 @@
       overflow: hidden;
     }
     img {
-      width: 150px;
-      height: 150px;
+      width: 100%; /* Adjust this to 100% to cover the entire header width */
+      height: auto; /* Maintain aspect ratio */
+      max-width: 100%; /* Ensure the image doesn't exceed its original size */
       border-radius: 50%;
       margin-right: 20px;
     }
