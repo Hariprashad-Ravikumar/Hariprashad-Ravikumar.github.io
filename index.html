@@ -23,11 +23,15 @@
       position: relative;
       overflow: hidden;
     }
-    img {
+    .cover-image {
+      width: auto;
+      height: auto;
+    }
+    img.profile-picture {
       width: 150px;
       height: 150px;
       border-radius: 50%;
-      margin-top: 20px; /* Adjust margin for spacing */
+      margin-top: 20px;
     }
     header h1, header p {
       margin: 0;
@@ -46,7 +50,7 @@
 <body>
 
   <header>
-    <img src="images/profile-picture.jpeg" alt="Profile Picture">
+    <img class="cover-image" src="images/background_image.jpeg" alt="Cover Picture">
     <h1>Hariprashad Ravikumar</h1>
     <p>PhD Candidate (Theoretical Particle Physics)</p>
     <p>New Mexico State University, USA</p>
@@ -63,6 +67,7 @@
   </nav>
 
   <main>
+    <img class="profile-picture" src="images/profile-picture.jpeg" alt="Profile Picture">
     <p>My PhD research focuses on extracting and analyzing the x (momentum fraction)-dependent Transverse Momentum Dependent Parton Distribution Functions (TMDs), such as Sivers observables, from lattice quantum chromodynamics (QCD) simulations using high-performance supercomputers. These TMD observables reveal the intrinsic motion of quarks and gluons inside the proton or neutron, specifically with respect to transverse momentum.</p>
 
     <p>My other research involves interpolating the manifestly covariant conformal group SO(4,2) between the instant form and the light-front form of relativistic dynamics. One of the main goals of this work is to explore the advantages of using the light-front formulation over the instant form.</p>
