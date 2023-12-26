@@ -15,7 +15,7 @@
     }
     header {
       background: url("images/background_image.jpeg") no-repeat center center fixed;
-      background-size: cover;
+      background-size: 100% auto; /* Make the cover picture responsive */
       background-attachment: fixed;
       color: #fff;
       padding: 1rem;
@@ -23,9 +23,9 @@
       position: relative;
       overflow: hidden;
     }
-    img {
-      width: auto;
-      height: auto;
+    img.profile-picture {
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       margin-top: 20px; /* Adjust margin for spacing */
     }
@@ -46,7 +46,7 @@
 <body>
 
   <header>
-    <img src="images/profile-picture.jpeg" alt="Profile Picture">
+    <img src="images/profile-picture.jpeg" alt="Profile Picture" class="profile-picture">
     <h1>Hariprashad Ravikumar</h1>
     <p>PhD Candidate (Theoretical Particle Physics)</p>
     <p>New Mexico State University, USA</p>
