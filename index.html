@@ -12,6 +12,7 @@
       padding: 0;
       max-width: 1200px;
       margin: 0 auto;
+      display: flex; /* Use flexbox to align items */
     }
     header {
       background: #000 no-repeat center url("images/IMG20231226140926-01-03.jpeg");
@@ -41,6 +42,23 @@
       background-color: #fff;
       max-width: 100%;
       margin: 0 auto;
+      flex: 1; /* Use flex: 1 to take up remaining space */
+    }
+    .profile-section {
+      padding: 20px;
+      background-color: #f2f2f2; /* Light gray background for the profile section */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center items horizontally */
+    }
+    .social-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .social-button img {
+      width: 30px;
+      height: 30px;
     }
   </style>
 </head>
@@ -62,6 +80,28 @@
   </nav>
 
   <main>
+    <div class="profile-section">
+      <!-- Profile Picture and Social Buttons -->
+      <img src="images/profile-picture.jpeg" alt="Profile Picture">
+      <div class="social-buttons">
+        <div class="social-button">
+          <a href="https://twitter.com/Hariprashad_8" target="_blank">
+            <img src="images/twitter-logo.png" alt="Twitter">
+          </a>
+        </div>
+        <div class="social-button">
+          <a href="https://www.linkedin.com/in/hariprashad-ravikumar/" target="_blank">
+            <img src="images/linkedin-logo.png" alt="LinkedIn">
+          </a>
+        </div>
+        <div class="social-button">
+          <a href="https://github.com/Hariprashad-Ravikumar" target="_blank">
+            <img src="images/github-logo.png" alt="GitHub">
+          </a>
+        </div>
+      </div>
+    </div>
+
     <p>My PhD research focuses on extracting and analyzing the x (momentum fraction)-dependent Transverse Momentum Dependent Parton Distribution Functions (TMDs), such as Sivers observables, from lattice quantum chromodynamics (QCD) simulations using high-performance supercomputers. These TMD observables reveal the intrinsic motion of quarks and gluons inside the proton or neutron, specifically with respect to transverse momentum.</p>
 
     <p>My other research involves interpolating the manifestly covariant conformal group SO(4,2) between the instant form and the light-front form of relativistic dynamics. One of the main goals of this work is to explore the advantages of using the light-front formulation over the instant form.</p>
