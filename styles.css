@@ -41,14 +41,14 @@ nav a {
 
 nav a:hover {
   color: #ffffff;
-  background-color: #6666ff;
+  background-color: #00004c;
 }
 
 
 /* Style for the current page link */
 nav li.current a {
   color: #ffffff;
-  background-color: #6666ff;
+  background-color: #00004c;
 }
 
 main {
