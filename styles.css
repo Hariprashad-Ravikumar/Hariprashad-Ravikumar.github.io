@@ -51,6 +51,14 @@ nav li.current a {
   background-color: #00004c;
 }
 
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+}
+
+
 main {
   margin: 20px;
 }
