@@ -23,10 +23,10 @@
       position: relative;
       overflow: hidden;
     }
-    img {
+    img.profile-picture {
       width: 150px;
       height: 150px;
-      border-radius: 50%;
+      border-radius: 50%; /* Keep this for circular appearance */
       margin-top: 20px;
     }
     header h1, header p {
@@ -42,12 +42,15 @@
       max-width: 100%;
       margin: 0 auto;
     }
+    .research-figure img {
+      border-radius: 0; /* Set border-radius to 0 or remove it to prevent circular appearance */
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="images/profile-picture.jpeg" alt="Profile Picture">
+    <img src="images/profile-picture.jpeg" alt="Profile Picture" class="profile-picture">
     <h1>Hariprashad Ravikumar</h1>
     <p>PhD Candidate (Theoretical Particle Physics)</p>
   </header>
@@ -61,18 +64,18 @@
      </ul>
   </nav>
 
- <main>
-  <figure class="research-figure">
-    <img src="images/profile-picture.jpeg" alt="profile Photo left side">
-  </figure>
+  <main>
+    <figure class="research-figure">
+      <img src="images/phd-research-photo.jpg" alt="PhD Research Photo">
+      <figcaption>
+        My PhD research focuses on extracting and analyzing the x (momentum fraction)-dependent Transverse Momentum Dependent Parton Distribution Functions (TMDs), such as Sivers observables, from lattice quantum chromodynamics (QCD) simulations using high-performance supercomputers. These TMD observables reveal the intrinsic motion of quarks and gluons inside the proton or neutron, specifically with respect to transverse momentum.
+      </figcaption>
+    </figure>
 
-  <p>My PhD research focuses on extracting and analyzing the x (momentum fraction)-dependent Transverse Momentum Dependent Parton Distribution Functions (TMDs), such as Sivers observables, from lattice quantum chromodynamics (QCD) simulations using high-performance supercomputers. These TMD observables reveal the intrinsic motion of quarks and gluons inside the proton or neutron, specifically with respect to transverse momentum.</p>
+    <p>My PhD research focuses on extracting and analyzing the x (momentum fraction)-dependent Transverse Momentum Dependent Parton Distribution Functions (TMDs), such as Sivers observables, from lattice quantum chromodynamics (QCD) simulations using high-performance supercomputers. These TMD observables reveal the intrinsic motion of quarks and gluons inside the proton or neutron, specifically with respect to transverse momentum.</p>
 
-  <p>My other research involves interpolating the manifestly covariant conformal group SO(4,2) between the instant form and the light-front form of relativistic dynamics. One of the main goals of this work is to explore the advantages of using the light-front formulation over the instant form.</p>
-</main>
-
-
-
+    <p>My other research involves interpolating the manifestly covariant conformal group SO(4,2) between the instant form and the light-front form of relativistic dynamics. One of the main goals of this work is to explore the advantages of using the light-front formulation over the instant form.</p>
+  </main>
 
 </body>
 </html>
