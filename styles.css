@@ -16,8 +16,7 @@ nav {
   background-color: #eee;
   padding: 0.5rem;
 }
-s
-Copy code
+
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -35,6 +34,11 @@ nav a {
   color: #000;
   font-weight: bold;
   font-size: 18px;
+  transition: color 0.3s; /* Add a smooth transition effect */
+}
+
+nav a:hover {
+  color: #ff0000; /* Change to the desired hover color */
 }
 
 /* Style for the current page link */
@@ -43,9 +47,6 @@ nav li.current a {
   background-color: #000; /* Change the background color to match your design */
   padding: 5px 10px; /* Adjust the padding as needed */
   border-radius: 5px;
-}
-main {
-  margin: 20px;
 }
 
 main {
