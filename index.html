@@ -10,30 +10,35 @@
       font-family: 'Times New Roman', Times, serif;
       margin: 0;
       padding: 0;
-      max-width: 1200px;
-      margin: 0 auto;
+      max-width: 1200px; /* Set a maximum width for the body */
+      margin: 0 auto; /* Center the content */
     }
     header {
-      background: rgba(0, 0, 0, 0.5) no-repeat center url("images/IMG20231226140926-01-03.jpeg");
-      background-size: cover;
-      background-repeat: no-repeat;
+      position: relative;
+      overflow: hidden;
       color: #fff;
       padding: 2rem;
       text-align: center;
-      position: relative;
-      overflow: hidden;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for the desired level of dimness */
+      z-index: -1;
     }
     img {
       width: 150px;
       height: 150px;
       border-radius: 50%;
       margin-top: 20px;
-      border: 2px solid #000; /* Black border */
     }
     header h1, header p {
       margin: 0;
-      border: 2px solid #000; /* Black border */
-      padding: 10px; /* Add some padding for better visibility */
+      z-index: 1;
     }
     nav {
       max-width: 100%;
