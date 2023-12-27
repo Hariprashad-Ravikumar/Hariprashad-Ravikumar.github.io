@@ -15,7 +15,8 @@
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      flex-direction: column;
+      flex-direction: row; /* Change flex-direction to row */
+      justify-content: space-between; /* Add space between header and main */
     }
     header {
       background: #000 no-repeat center url("images/IMG20231226140926-01-03.jpeg");
@@ -27,10 +28,10 @@
       position: relative;
       overflow: hidden;
     }
-    img {
+    img.profile-picture {
       width: 150px;
       height: 150px;
-      border-radius: 50%;
+      border-radius: 10px; /* Square border-radius */
       margin-top: 20px;
     }
     header h1, header p {
@@ -45,23 +46,30 @@
       background-color: #fff;
       max-width: 100%;
       margin: 0 auto;
-      flex: 1; /* Use flex: 1 to take up remaining space */
+      flex: 1;
     }
     .profile-section {
       padding: 20px;
-      background-color: #f2f2f2; /* Light gray background for the profile section */
+      background-color: #f2f2f2;
       display: flex;
       flex-direction: column;
-      align-items: center; /* Center items horizontally */
+      align-items: center;
+      width: 200px; /* Set a fixed width for the profile section */
     }
     .social-buttons {
       display: flex;
-      gap: 10px;
+      flex-direction: column; /* Align buttons vertically */
       margin-top: 20px;
+    }
+    .social-button a {
+      margin-bottom: 10px; /* Add margin between buttons */
     }
     .social-button img {
       width: 30px;
       height: 30px;
+    }
+    .research-content {
+      flex: 1; /* Take up remaining space in the main */
     }
   </style>
 </head>
@@ -69,9 +77,11 @@
 
   <div class="container">
     <header>
-      <img src="images/profile-picture.jpeg" alt="Profile Picture">
-      <h1>Hariprashad Ravikumar</h1>
-      <p>PhD Candidate (Theoretical Particle Physics)</p>
+      <img src="images/profile-picture.jpeg" alt="Profile Picture" class="profile-picture">
+      <div>
+        <h1>Hariprashad Ravikumar</h1>
+        <p>PhD Candidate (Theoretical Particle Physics)</p>
+      </div>
     </header>
 
     <nav>
@@ -86,7 +96,7 @@
     <main>
       <div class="profile-section">
         <!-- Profile Picture and Social Buttons -->
-        <img src="images/profile-picture.jpeg" alt="Profile Picture">
+        <img src="images/profile-picture.jpeg" alt="Profile Picture" class="profile-picture">
         <div class="social-buttons">
           <div class="social-button">
             <a href="https://twitter.com/Hariprashad_8" target="_blank">
@@ -106,11 +116,13 @@
         </div>
       </div>
 
-      <p>My PhD research focuses on extracting and analyzing the x (momentum fraction)-dependent Transverse Momentum Dependent Parton Distribution Functions (TMDs), such as Sivers observables, from lattice quantum chromodynamics (QCD) simulations using high-performance supercomputers. These TMD observables reveal the intrinsic motion of quarks and gluons inside the proton or neutron, specifically with respect to transverse momentum.</p>
+      <div class="research-content">
+        <p>My PhD research focuses on extracting and analyzing the x (momentum fraction)-dependent Transverse Momentum Dependent Parton Distribution Functions (TMDs), such as Sivers observables, from lattice quantum chromodynamics (QCD) simulations using high-performance supercomputers. These TMD observables reveal the intrinsic motion of quarks and gluons inside the proton or neutron, specifically with respect to transverse momentum.</p>
 
-      <p>My other research involves interpolating the manifestly covariant conformal group SO(4,2) between the instant form and the light-front form of relativistic dynamics. One of the main goals of this work is to explore the advantages of using the light-front formulation over the instant form.</p>
+        <p>My other research involves interpolating the manifestly covariant conformal group SO(4,2) between the instant form and the light-front form of relativistic dynamics. One of the main goals of this work is to explore the advantages of using the light-front formulation over the instant form.</p>
+      </div>
     </main>
-  </div>
 
+  </div>
 </body>
 </html>
