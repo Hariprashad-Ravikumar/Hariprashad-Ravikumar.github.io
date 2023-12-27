@@ -10,9 +10,12 @@
       font-family: 'Times New Roman', Times, serif;
       margin: 0;
       padding: 0;
+    }
+    .container {
       max-width: 1200px;
       margin: 0 auto;
-      display: flex; /* Use flexbox to align items */
+      display: flex;
+      flex-direction: column;
     }
     header {
       background: #000 no-repeat center url("images/IMG20231226140926-01-03.jpeg");
@@ -64,48 +67,50 @@
 </head>
 <body>
 
-  <header>
-    <img src="images/profile-picture.jpeg" alt="Profile Picture">
-    <h1>Hariprashad Ravikumar</h1>
-    <p>PhD Candidate (Theoretical Particle Physics)</p>
-  </header>
-
-  <nav>
-    <ul>
-      <li><a href="/cv.html">CV</a></li>
-      <li><a href="/presentations.html">Talks/Presentations</a></li>
-      <li><a href="/publications.html">Publications</a></li>
-      <li><a href="/lecture-notes.html">Lecture Notes</a></li>
-    </ul>
-  </nav>
-
-  <main>
-    <div class="profile-section">
-      <!-- Profile Picture and Social Buttons -->
+  <div class="container">
+    <header>
       <img src="images/profile-picture.jpeg" alt="Profile Picture">
-      <div class="social-buttons">
-        <div class="social-button">
-          <a href="https://twitter.com/Hariprashad_8" target="_blank">
-            <img src="images/twitter-logo.png" alt="Twitter">
-          </a>
-        </div>
-        <div class="social-button">
-          <a href="https://www.linkedin.com/in/hariprashad-ravikumar/" target="_blank">
-            <img src="images/linkedin-logo.png" alt="LinkedIn">
-          </a>
-        </div>
-        <div class="social-button">
-          <a href="https://github.com/Hariprashad-Ravikumar" target="_blank">
-            <img src="images/github-logo.png" alt="GitHub">
-          </a>
+      <h1>Hariprashad Ravikumar</h1>
+      <p>PhD Candidate (Theoretical Particle Physics)</p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="/cv.html">CV</a></li>
+        <li><a href="/presentations.html">Talks/Presentations</a></li>
+        <li><a href="/publications.html">Publications</a></li>
+        <li><a href="/lecture-notes.html">Lecture Notes</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="profile-section">
+        <!-- Profile Picture and Social Buttons -->
+        <img src="images/profile-picture.jpeg" alt="Profile Picture">
+        <div class="social-buttons">
+          <div class="social-button">
+            <a href="https://twitter.com/Hariprashad_8" target="_blank">
+              <img src="images/twitter-logo.png" alt="Twitter">
+            </a>
+          </div>
+          <div class="social-button">
+            <a href="https://www.linkedin.com/in/hariprashad-ravikumar/" target="_blank">
+              <img src="images/linkedin-logo.png" alt="LinkedIn">
+            </a>
+          </div>
+          <div class="social-button">
+            <a href="https://github.com/Hariprashad-Ravikumar" target="_blank">
+              <img src="images/github-logo.png" alt="GitHub">
+            </a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <p>My PhD research focuses on extracting and analyzing the x (momentum fraction)-dependent Transverse Momentum Dependent Parton Distribution Functions (TMDs), such as Sivers observables, from lattice quantum chromodynamics (QCD) simulations using high-performance supercomputers. These TMD observables reveal the intrinsic motion of quarks and gluons inside the proton or neutron, specifically with respect to transverse momentum.</p>
+      <p>My PhD research focuses on extracting and analyzing the x (momentum fraction)-dependent Transverse Momentum Dependent Parton Distribution Functions (TMDs), such as Sivers observables, from lattice quantum chromodynamics (QCD) simulations using high-performance supercomputers. These TMD observables reveal the intrinsic motion of quarks and gluons inside the proton or neutron, specifically with respect to transverse momentum.</p>
 
-    <p>My other research involves interpolating the manifestly covariant conformal group SO(4,2) between the instant form and the light-front form of relativistic dynamics. One of the main goals of this work is to explore the advantages of using the light-front formulation over the instant form.</p>
-  </main>
+      <p>My other research involves interpolating the manifestly covariant conformal group SO(4,2) between the instant form and the light-front form of relativistic dynamics. One of the main goals of this work is to explore the advantages of using the light-front formulation over the instant form.</p>
+    </main>
+  </div>
 
 </body>
 </html>
