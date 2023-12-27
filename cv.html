@@ -45,6 +45,20 @@
     .research-figure img {
       border-radius: 0; /* Set border-radius to 0 or remove it to prevent circular appearance */
     }
+    #education {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .cv-section {
+      width: calc(33.33% - 20px); /* Adjust width as needed, considering margins */
+      margin-right: 20px; /* Adjust margin as needed */
+      margin-bottom: 20px;
+    }
+
+    .cv-section p {
+      margin: 0;
+    }
   </style>
 </head>
 <body>
@@ -78,28 +92,30 @@
       </P>1255 N. Horseshoe, Las Cruces, NM 88003, USA</P>
     </section>
 
-    <section id="education">
-  <h2>Education</h2>
+      <section id="education">
+    <h2>Education</h2>
 
-  <article class="cv-section">
-    <p><strong>2020 - Present</strong></p>
-    <p>New Mexico State University, USA</p>
-    <p>PhD in Physics</p>
-  </article>
+    <article class="cv-section">
+      <p><strong>2020 - Present</strong></p>
+      <p>New Mexico State University, USA</p>
+      <p>PhD in Physics</p>
+    </article>
 
-  <article class="cv-section">
-    <p><strong>2019 - 2021</strong></p>
-    <p>National Institute of Technology Jalandhar, Punjab, India</p>
-    <p>M.Sc. Physics</p>
-  </article>
+    <article class="cv-section">
+      <p><strong>2019 - 2021</strong></p>
+      <p>National Institute of Technology Jalandhar, Punjab, India</p>
+      <p>M.Sc. Physics</p>
+    </article>
 
-  <article class="cv-section">
-    <p><strong>2015 - 2018</strong></p>
-    <p>Dr.N.G.P. Arts and Science College, Coimbatore, India</p>
-    <p>B.Sc. Physics</p>
-  </article>
+    <article class="cv-section">
+      <p><strong>2015 - 2018</strong></p>
+      <p>Dr.N.G.P. Arts and Science College, Coimbatore, India</p>
+      <p>B.Sc. Physics</p>
+    </article>
 
-  <!-- Add more education entries if applicable -->
+    <!-- Add more education entries if applicable -->
+  </section>
+    
 </section>
 
     <section id="conference-presentations">
