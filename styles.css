@@ -15,18 +15,18 @@ header {
 nav {
   background-color: #eee;
   padding: 0.5rem;
+  text-align: center; /* Center the content inside the navigation */
 }
 
 nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  text-align: center;
 }
 
 nav li {
   display: inline-block;
-  margin-right: 20px;
+  margin: 0 10px; /* Adjust the margin as needed */
 }
 
 nav a {
@@ -43,13 +43,12 @@ nav a:hover {
 
 /* Style for the current page link */
 nav li.current a {
-  color: #fff; /* Change the color to match your design */
-  background-color: #000; /* Change the background color to match your design */
-  padding: 5px 10px; /* Adjust the padding as needed */
+  color: #fff;
+  background-color: #000;
+  padding: 5px 10px;
   border-radius: 5px;
 }
 
 main {
   margin: 20px;
 }
-
