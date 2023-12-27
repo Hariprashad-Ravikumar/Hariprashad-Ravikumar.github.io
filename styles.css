@@ -53,9 +53,11 @@ ul {
     color: black; /* Set the default color */
   }
 
-  li:hover {
+  
+  li:hover a {
     color: blue; /* Set the color on hover */
   }
+
 
 main {
   margin: 20px;
