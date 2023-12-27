@@ -16,19 +16,33 @@ nav {
   background-color: #eee;
   padding: 0.5rem;
 }
+s
+Copy code
 nav ul {
-  list-style: none;
+  list-style-type: none;
   margin: 0;
   padding: 0;
   text-align: center;
 }
+
 nav li {
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 20px;
 }
+
 nav a {
   text-decoration: none;
-  color: #333;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Style for the current page link */
+nav li.current a {
+  color: #fff; /* Change the color to match your design */
+  background-color: #000; /* Change the background color to match your design */
+  padding: 5px 10px; /* Adjust the padding as needed */
+  border-radius: 5px;
 }
 main {
   margin: 20px;
