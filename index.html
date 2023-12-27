@@ -12,8 +12,6 @@
       padding: 0;
       max-width: 1200px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
     }
     header {
       background: #000 no-repeat center url("images/IMG20231226140926-01-03.jpeg");
@@ -24,9 +22,6 @@
       text-align: center;
       position: relative;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
     img {
       width: 150px;
@@ -46,7 +41,6 @@
       background-color: #fff;
       max-width: 100%;
       margin: 0 auto;
-      flex: 1; /* Take remaining vertical space */
     }
   </style>
 </head>
@@ -67,11 +61,28 @@
      </ul>
   </nav>
 
-  <main>
-    <p>My PhD research focuses on extracting and analyzing the x (momentum fraction)-dependent Transverse Momentum Dependent Parton Distribution Functions (TMDs), such as Sivers observables, from lattice quantum chromodynamics (QCD) simulations using high-performance supercomputers. These TMD observables reveal the intrinsic motion of quarks and gluons inside the proton or neutron, specifically with respect to transverse momentum.</p>
+ <main>
+  <figure class="research-figure">
+    <img src="images/profile-picture.jpeg" alt="profile Photo left side">
+  </figure>
 
-    <p>My other research involves interpolating the manifestly covariant conformal group SO(4,2) between the instant form and the light-front form of relativistic dynamics. One of the main goals of this work is to explore the advantages of using the light-front formulation over the instant form.</p>
-  </main>
+  <p>My PhD research focuses on extracting and analyzing the x (momentum fraction)-dependent Transverse Momentum Dependent Parton Distribution Functions (TMDs), such as Sivers observables, from lattice quantum chromodynamics (QCD) simulations using high-performance supercomputers. These TMD observables reveal the intrinsic motion of quarks and gluons inside the proton or neutron, specifically with respect to transverse momentum.</p>
+
+  <p>My other research involves interpolating the manifestly covariant conformal group SO(4,2) between the instant form and the light-front form of relativistic dynamics. One of the main goals of this work is to explore the advantages of using the light-front formulation over the instant form.</p>
+</main>
+
+<style>
+  .research-figure {
+    float: left;
+    margin-right: 20px; /* Adjust the margin as needed */
+  }
+
+  .research-figure img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
 
 </body>
 </html>
