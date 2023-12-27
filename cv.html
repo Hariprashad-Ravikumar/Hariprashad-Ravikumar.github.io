@@ -45,20 +45,27 @@
     .research-figure img {
       border-radius: 0; /* Set border-radius to 0 or remove it to prevent circular appearance */
     }
-    #education {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
     .cv-section {
-      width: calc(33.33% - 20px); /* Adjust width as needed, considering margins */
-      margin-right: 20px; /* Adjust margin as needed */
-      margin-bottom: 20px;
-    }
+    display: flex;
+    justify-content: space-between;
+  }
 
-    .cv-section p {
-      margin: 0;
-    }
+  .cv-section p {
+    margin: 0;
+  }
+
+  .year {
+    width: 80px; /* Adjust the width as needed */
+    text-align: right;
+  }
+
+  .details {
+    flex-grow: 1;
+    margin-left: 20px; /* Adjust the margin as needed */
+  }
+    #contact p {
+    margin: 0;
+  }
   </style>
 </head>
 <body>
@@ -83,40 +90,33 @@
 
 
   <main>
-    <section id="contact">
-      <h2>Contact</h2>
-      <p><a href="mailto:hari1729@nmsu.edu">hari1729@nmsu.edu</a></p>
-      <p>Office 363, Gardiner Hall<p>
-      <P>Department of Physics</P>
-      </P>New Mexico State University</P>
-      </P>1255 N. Horseshoe, Las Cruces, NM 88003, USA</P>
-    </section>
-
-      <section id="education">
-    <h2>Education</h2>
-
-    <article class="cv-section">
-      <p><strong>2020 - Present</strong></p>
-      <p>New Mexico State University, USA</p>
-      <p>PhD in Physics</p>
-    </article>
-
-    <article class="cv-section">
-      <p><strong>2019 - 2021</strong></p>
-      <p>National Institute of Technology Jalandhar, Punjab, India</p>
-      <p>M.Sc. Physics</p>
-    </article>
-
-    <article class="cv-section">
-      <p><strong>2015 - 2018</strong></p>
-      <p>Dr.N.G.P. Arts and Science College, Coimbatore, India</p>
-      <p>B.Sc. Physics</p>
-    </article>
-
-    <!-- Add more education entries if applicable -->
-  </section>
-    
+   <section id="contact">
+  <h2>Contact</h2>
+  <p><a href="mailto:hari1729@nmsu.edu">hari1729@nmsu.edu</a></p>
+  <p>Office 363, Gardiner Hall, Department of Physics, New Mexico State University</p>
+  <p>1255 N. Horseshoe, Las Cruces, NM 88003, USA</p>
 </section>
+
+    
+<section id="education">
+  <h2>Education</h2>
+
+  <article class="cv-section">
+    <span class="year"><strong>2020 - Present</strong></span>
+    <span class="details">New Mexico State University, USA | PhD in Physics</span>
+  </article>
+
+  <article class="cv-section">
+    <span class="year"><strong>2019 - 2021</strong></span>
+    <span class="details">National Institute of Technology Jalandhar, Punjab, India | M.Sc. Physics</span>
+  </article>
+
+  <article class="cv-section">
+    <span class="year"><strong>2015 - 2018</strong></span>
+    <span class="details">Dr.N.G.P. Arts and Science College, Coimbatore, India | B.Sc. Physics</span>
+  </article>
+</section>
+  
 
     <section id="conference-presentations">
       <h2>Conference Presentations</h2>
