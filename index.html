@@ -15,7 +15,7 @@
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap; /* Allow items to wrap to the next line */
     }
     header {
       background: #000 no-repeat center url("images/IMG20231226140926-01-03.jpeg");
@@ -26,6 +26,7 @@
       text-align: center;
       position: relative;
       overflow: hidden;
+      flex: 1 100%; /* Full width on smaller screens */
     }
     img {
       width: 150px;
@@ -39,29 +40,30 @@
     }
     nav {
       max-width: 100%;
+      flex: 1 100%; /* Full width on smaller screens */
     }
     main {
       padding: 20px;
       background-color: #fff;
-      max-width: 100%;
-      margin: 0 auto;
-      flex: 1; /* Use flex: 1 to take up remaining space */
+      flex: 2 70%; /* Take 70% of the container width */
     }
     .profile-section {
       padding: 20px;
       background-color: #f2f2f2; /* Light gray background for the profile section */
+      flex: 1 30%; /* Take 30% of the container width */
       display: flex;
       flex-direction: column;
       align-items: center; /* Center items horizontally */
     }
     .social-buttons {
       display: flex;
-      gap: 10px;
+      flex-direction: column; /* Align buttons vertically */
       margin-top: 20px;
     }
     .social-button img {
       width: 30px;
       height: 30px;
+      margin-bottom: 10px; /* Add some spacing between buttons */
     }
   </style>
 </head>
@@ -84,32 +86,32 @@
     </nav>
 
     <main>
-      <div class="profile-section">
-        <!-- Profile Picture and Social Buttons -->
-        <img src="images/profile-picture.jpeg" alt="Profile Picture">
-        <div class="social-buttons">
-          <div class="social-button">
-            <a href="https://twitter.com/Hariprashad_8" target="_blank">
-              <img src="images/twitter-logo.png" alt="Twitter">
-            </a>
-          </div>
-          <div class="social-button">
-            <a href="https://www.linkedin.com/in/hariprashad-ravikumar/" target="_blank">
-              <img src="images/linkedin-logo.png" alt="LinkedIn">
-            </a>
-          </div>
-          <div class="social-button">
-            <a href="https://github.com/Hariprashad-Ravikumar" target="_blank">
-              <img src="images/github-logo.png" alt="GitHub">
-            </a>
-          </div>
-        </div>
-      </div>
-
       <p>My PhD research focuses on extracting and analyzing the x (momentum fraction)-dependent Transverse Momentum Dependent Parton Distribution Functions (TMDs), such as Sivers observables, from lattice quantum chromodynamics (QCD) simulations using high-performance supercomputers. These TMD observables reveal the intrinsic motion of quarks and gluons inside the proton or neutron, specifically with respect to transverse momentum.</p>
 
       <p>My other research involves interpolating the manifestly covariant conformal group SO(4,2) between the instant form and the light-front form of relativistic dynamics. One of the main goals of this work is to explore the advantages of using the light-front formulation over the instant form.</p>
     </main>
+
+    <div class="profile-section">
+      <!-- Profile Picture and Social Buttons -->
+      <img src="images/profile-picture.jpeg" alt="Profile Picture">
+      <div class="social-buttons">
+        <div class="social-button">
+          <a href="https://twitter.com/Hariprashad_8" target="_blank">
+            <img src="images/twitter-logo.png" alt="Twitter">
+          </a>
+        </div>
+        <div class="social-button">
+          <a href="https://www.linkedin.com/in/hariprashad-ravikumar/" target="_blank">
+            <img src="images/linkedin-logo.png" alt="LinkedIn">
+          </a>
+        </div>
+        <div class="social-button">
+          <a href="https://github.com/Hariprashad-Ravikumar" target="_blank">
+            <img src="images/github-logo.png" alt="GitHub">
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
 </body>
