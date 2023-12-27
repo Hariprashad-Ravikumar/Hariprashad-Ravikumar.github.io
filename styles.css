@@ -13,7 +13,7 @@ header {
 }
 
 nav {
-  background-color: #eee;
+  background-color: #e5e5ff;
   padding: 0.5rem;
   text-align: center; /* Center the content inside the navigation */
 }
@@ -40,15 +40,15 @@ nav a {
 }
 
 nav a:hover {
-  color: #ff0000;
-  background-color: #000;
+  color: #ffffff;
+  background-color: #7f7fff;
 }
 
 
 /* Style for the current page link */
 nav li.current a {
-  color: #fff;
-  background-color: #000;
+  color: #ffffff;
+  background-color: #7f7fff;
 }
 
 main {
