@@ -34,22 +34,21 @@ nav a {
   color: #000;
   font-weight: bold;
   font-size: 18px;
-  transition: color 0.3s; /* Add a smooth transition effect */
+  padding: 5px 10px; /* Set padding for both normal and hover state */
+  border-radius: 5px; /* Set border-radius for both normal and hover state */
+  transition: color 0.3s, background-color 0.3s; /* Add a smooth transition effect for color and background-color */
 }
 
 nav a:hover {
-  color: #ff0000; /* Change to the desired hover color */
+  color: #ff0000;
   background-color: #000;
-  padding: 5px 10px;
-  border-radius: 1px;
 }
+
 
 /* Style for the current page link */
 nav li.current a {
   color: #fff;
   background-color: #000;
-  padding: 5px 10px;
-  border-radius: 1px;
 }
 
 main {
