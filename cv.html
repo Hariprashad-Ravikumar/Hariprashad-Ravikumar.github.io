@@ -57,32 +57,15 @@
   margin-bottom: 10px; /* Adjust the margin as needed */
   align-items: left; /* Align items vertically in the flex container */
 }
+table {
+  border-collapse: collapse;
+} 
 
-.tabular-container {
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  gap: 3px; /* Adjust the gap between items as needed */
-  max-width: 700px; /* Set a maximum width for the table */
+
+table.edu {
+  table-layout: auto;
+  width: 700px;  
 }
-
-.tabular-row {
-      display: flex;
-    }
-
-.tabular-cell {
-  flex: 1;
-  word-wrap: break-word;
-  text-align: left;
-}
-
-/* Set a fixed width for the university column */
-.tabular-cell.university {
-  flex: 1;
-  max-width: 200px; /* Adjust the max-width as needed */
-  text-align: left;
-}
-
-
 
   </style>
 </head>
@@ -120,25 +103,23 @@
     
 <section>
     <h2>Education</h2>
-    <div class="tabular-container">
-      <div class="tabular-row">
-        <div class="tabular-cell"><strong>2021 - Present</strong></div>
-        <div class="tabular-cell">PhD Physics</div>
-        <div class="tabular-cell.university">New Mexico State University, USA</div>
-      </div>
-
-      <div class="tabular-row">
-        <div class="tabular-cell"><strong>2019 - 2021</strong></div>
-        <div class="tabular-cell">MSc Physics</div>
-        <div class="tabular-cell.university">National Institute of Technology Jalandhar, Punjab, India</div>
-      </div>
-
-      <div class="tabular-row">
-        <div class="tabular-cell"><strong>2015 - 2018</strong></div>
-        <div class="tabular-cell">BSc Physics</div>
-        <div class="tabular-cell.university">Dr.N.G.P. Arts and Science College, Coimbatore, India</div>
-      </div>
-    </div>
+    <table class="edu">
+  <tr>
+    <td><strong>2021 - Present</strong></td>
+    <td>PhD Physics</td>
+    <td>New Mexico State University, USA</td>
+  </tr>
+  <tr>
+    <td><strong>2019 - 2021</strong</td>
+    <td>MSc Physics</td>
+    <td>National Institute of Technology Jalandhar, Punjab, India</td>
+  </tr>
+  <tr>
+    <td><strong>2015 - 2018</strong></td>
+    <td>BSc Physics</td>
+    <td>Dr.N.G.P. Arts and Science College, Coimbatore, India</td>
+  </tr>
+  </table>
   </section>
   
 
