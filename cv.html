@@ -71,7 +71,15 @@
 
 .tabular-cell {
   flex: 1;
+  word-wrap: break-word;
 }
+
+/* Set a fixed width for the university column */
+.tabular-cell.university {
+  flex: 2;
+  max-width: 200px; /* Adjust the max-width as needed */
+}
+
 
 
   </style>
@@ -114,19 +122,19 @@
       <div class="tabular-row">
         <div class="tabular-cell"><strong>2021 - Present</strong></div>
         <div class="tabular-cell">PhD Physics</div>
-        <div class="tabular-cell">New Mexico State University, USA</div>
+        <div class="tabular-cell.university">New Mexico State University, USA</div>
       </div>
 
       <div class="tabular-row">
         <div class="tabular-cell"><strong>2019 - 2021</strong></div>
         <div class="tabular-cell">MSc Physics</div>
-        <div class="tabular-cell">National Institute of Technology Jalandhar, Punjab, India</div>
+        <div class="tabular-cell.university">National Institute of Technology Jalandhar, Punjab, India</div>
       </div>
 
       <div class="tabular-row">
         <div class="tabular-cell"><strong>2015 - 2018</strong></div>
         <div class="tabular-cell">BSc Physics</div>
-        <div class="tabular-cell">Dr.N.G.P. Arts and Science College, Coimbatore, India</div>
+        <div class="tabular-cell.university">Dr.N.G.P. Arts and Science College, Coimbatore, India</div>
       </div>
     </div>
   </section>
