@@ -85,16 +85,23 @@
     .download-button {
       display: inline-block;
       margin-left: 20px; /* Adjust as needed for spacing */
-      padding: 10px 15px;
       background-color: #3498db; /* Change to your preferred color */
-      color: #ffffff;
       text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s;
+      color: #000;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 5px 10px; /* Set padding for both normal and hover state */
+      border-radius: 5px; /* Set border-radius for both normal and hover state */
+      transition: color 0.3s, background-color 0.3s; /* Add a smooth transition effect for color and background-color */
     }
 
     .download-button:hover {
-      background-color: #2980b9; /* Change to your preferred hover color */
+        color: #ffffff;
+        background-color: #00004c;
+
+       .download-container {
+      margin-top: 20px; /* Adjust as needed for spacing */
+    }
     }
   </style>
 </head>
@@ -119,8 +126,10 @@
   </nav>
 
   <main>
-    <p>[Current as of Dec. 28, 2023]</p>
-    <a href="CV/CV_HARI.pdf" class="download-button" target="_blank" download>Download Full CV</a>
+     <div class="download-container">
+      <p>(Current as of Dec. 28, 2023)</p>
+      <a href="CV/CV_HARI.pdf" class="download-button" download>Download CV</a>
+    </div>
 
     <section id="contact">
       <h2>Contact</h2>
