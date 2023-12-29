@@ -4,7 +4,10 @@ body {
   margin: 0;
   padding: 0;
 }
-
+.math {
+  display: inline-block;
+  font-family: 'Times New Roman', Times, serif; /* Specify a font for math content */
+}
 
 
   link[rel="icon"] {
