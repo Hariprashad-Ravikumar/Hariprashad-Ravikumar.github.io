@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +30,7 @@
     img.profile-picture {
       width: 150px;
       height: 150px;
-      border-radius: 50%; /* Keep this for circular appearance */
+      border-radius: 50%;
       margin-top: 20px;
     }
     header h1, header p {
@@ -48,41 +47,44 @@
       margin: 0 auto;
     }
     .research-figure img {
-      border-radius: 0; /* Set border-radius to 0 or remove it to prevent circular appearance */
+      border-radius: 0;
     }
-    
 
-  #contact p {
-    margin: 0;
-  }
+    #contact p {
+      margin: 0;
+    }
 
+    .cv-section {
+      display: flex;
+      margin-bottom: 10px;
+      align-items: left;
+    }
 
-.cv-section {
-  display: flex;
-  margin-bottom: 10px; /* Adjust the margin as needed */
-  align-items: left; /* Align items vertically in the flex container */
-}
-table {
-  border-collapse: collapse;
-} 
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
 
+    table.edu {
+      table-layout: auto;
+    }
 
-table.edu {
-  table-layout: auto;
-}
+    table.edu td {
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
 
-  table.edu td {
-  padding-right: 8px;
-}
-    table.internships td {
-  padding-right: 8px;
-  vertical-align: top;
-}
+    table.edu th {
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+      background-color: #f2f2f2;
+    }
 
-    
     section h2 {
-  margin-bottom: 3px; /* Adjust the margin as needed */
-}
+      margin-bottom: 3px;
+    }
   </style>
 </head>
 <body>
@@ -95,119 +97,166 @@ table.edu {
     <div class="blank-space" style="width: 100px; height: 110px;"></div>
   </header>
 
-  
-<nav>
-  <ul>
-    <li><a href="./">About Me</a></li>
-    <li class="current"><a href="/">CV</a></li>
-    <li><a href="/talks">Talks</a></li>
-    <li><a href="/publications">Publications</a></li>
-    <li><a href="/lecture-notes">Lecture Notes</a></li>
-  </ul>
-</nav>
-
-
+  <nav>
+    <ul>
+      <li><a href="./">About Me</a></li>
+      <li class="current"><a href="/">CV</a></li>
+      <li><a href="/talks">Talks</a></li>
+      <li><a href="/publications">Publications</a></li>
+      <li><a href="/lecture-notes">Lecture Notes</a></li>
+    </ul>
+  </nav>
 
   <main>
-   <section id="contact">
-  <h2>Contact</h2>
-  <p><a href="mailto:hari1729@nmsu.edu">hari1729@nmsu.edu</a></p>
-  <p>Office 363, Gardiner Hall</p>
-  <p>Department of Physics</p> 
-  <p>New Mexico State University</p>
-  <p>1255 N. Horseshoe, Las Cruces, NM 88003, USA</p>
-</section>
 
-    
-<section>
-    <h2>Education</h2>
-    <table class="edu">
-  <tr>
-    <td><strong>2021 - Present</strong></td>
-    <td>PhD Physics</td>
-    <td>New Mexico State University, USA</td>
-  </tr>
-  <tr>
-    <td><strong>2019 - 2021</strong></td>
-    <td>MSc Physics</td>
-    <td>National Institute of Technology Jalandhar, Punjab, India</td>
-  </tr>
-  <tr>
-    <td><strong>2015 - 2018</strong></td>
-    <td>BSc Physics</td>
-    <td>Dr.N.G.P. Arts and Science College, Coimbatore, India</td>
-  </tr>
-  </table>
-  </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p><a href="mailto:hari1729@nmsu.edu">hari1729@nmsu.edu</a></p>
+      <p>Office 363, Gardiner Hall</p>
+      <p>Department of Physics</p> 
+      <p>New Mexico State University</p>
+      <p>1255 N. Horseshoe, Las Cruces, NM 88003, USA</p>
+    </section>
 
+    <section>
+      <h2>Education</h2>
+      <table class="edu">
+        <tr>
+          <th>Year</th>
+          <th>Degree</th>
+          <th>Institution</th>
+        </tr>
+        <tr>
+          <td>2021 - Present</td>
+          <td>PhD Physics</td>
+          <td>New Mexico State University, USA</td>
+        </tr>
+        <tr>
+          <td>2019 - 2021</td>
+          <td>MSc Physics</td>
+          <td>National Institute of Technology Jalandhar, Punjab, India</td>
+        </tr>
+        <tr>
+          <td>2015 - 2018</td>
+          <td>BSc Physics</td>
+          <td>Dr.N.G.P. Arts and Science College, Coimbatore, India</td>
+        </tr>
+      </table>
+    </section>
 
-  <section>
-    <h2>Internships &amp Schools</h2>
-    <table class="internships">
-  <tr>
-    <td><strong>May 30 - June 16, 2023</strong></td>
-    <td>Attended the <strong>Hampton University Graduate Studies (HUGS) Summer Program</strong> at <strong>Thomas Jefferson National Accelerator Facility</strong>, Newport News, USA, with the HUGS scholarship.</td>
-  </tr>
-  
-      <tr> 
-      <td><strong>Jan. 20 - 26, 2022</strong></td>
-      <td>Attended the 2022 <strong>TMD Winter School</strong>, Santa Fe, USA.</td>
-      </tr>
-  
-      <tr> 
-      <td><strong>June 21 - 25, 2021</strong></td>
-      <td>Attended the 2021 <strong>National Nuclear Physics Summer School (NNPSS)</strong>, online.</td>
-      </tr>
-  
-      <tr> 
-      <td><strong>June 04 - Aug. 03, 2018</strong></td>
-      <td>Attended the 2018 <strong>Astrophysics Summer School</strong> on "An Observational View of the Universe" at the <strong>Indian Institute of Astrophysics</strong>, Bengaluru, India with the <strong>Indian Academy of Sciences IASC-INSA-NASI Summer Research Fellowship</strong>.</td>
-      </tr>
-  
-      <tr> 
-      <td><strong>July 02 - 06, 2018</strong></td>
-      <td>Attended the 2018 <strong>Radio Astronomy Summer School</strong> at the <strong>National Centre for Radio Astrophysics - Tata Institute of Fundamental Research</strong>, Pune, India.</td>
-      </tr>
-  </table>
-  </section>
+    <section>
+      <h2>Internships & Schools</h2>
+      <ul>
+        <li>
+          <strong>Hampton University Graduate Studies (HUGS) Summer Program</strong>
+          <br>
+          Thomas Jefferson National Accelerator Facility, Newport News, USA
+          <br>
+          May 30 - June 16, 2023
+          <br>
+          HUGS Scholarship recipient
+        </li>
+        <li>
+          <strong>2022 TMD Winter School</strong>
+          <br>
+          Santa Fe, USA
+          <br>
+          January 20 - 26, 2022
+        </li>
+        <li>
+          <strong>2021 National Nuclear Physics Summer School (NNPSS)</strong>
+          <br>
+          Online
+          <br>
+          June 21 - 25, 2021
+        </li>
+        <li>
+          <strong>2018 Astrophysics Summer School</strong>
+          <br>
+          Indian Institute of Astrophysics, Bengaluru, India
+          <br>
+          June 04 - August 03, 2018
+          <br>
+          Topic: "An Observational View of the Universe"
+          <br>
+          IASC-INSA-NASI Summer Research Fellowship
+          <br>
+          Research under the guidance of Dr. B. Ravindra (Professor at Indian Institute Of Astrophysics, Bengaluru)
+        </li>
+        <li>
+          <strong>2018 Radio Astronomy Summer School</strong>
+          <br>
+          National Centre for Radio Astrophysics - Tata Institute of Fundamental Research, Pune, India
+          <br>
+          July 02 - 06, 2018
+        </li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>Workshops &amp Courses</h2>
-    <table class="internships">
-  <tr>
-    <td><strong>Dec. 14 - 18, 2020</strong></td>
-    <td>Attended the <strong>XXIV The Department of Atomic Energy (DAE) - Board of Research in Nuclear Sciences (BRNS) Symposium in High Energy Physics</strong> at the <strong>National Institute of Science Education and Research</strong>, India.</td>
-  </tr>
-  <tr>
-    <td><strong>Nov. 02 - 11, 2020</strong></td>
-    <td>Attended the <strong>International Workshop on Applications of Group Theory in Physics</strong> at the Department of Physics, <strong>Assam University</strong>, Silchar, India.</td>
-  </tr>
-    <tr>
-    <td><strong>Sep. 18 - 22, 2020</strong></td>
-    <td>Attended the <strong>Short-Term Course on Advances in High Energy Physics</strong> at the <strong>National Institute of Technology Jalandhar</strong>, India.</td>
-  </tr>
-    <tr>
-    <td><strong>Dec. 18 - 21, 2017</strong></td>
-    <td>Attended the <strong>National Workshop on Theoretical Physics</strong> at <strong>Ramakrishna Mission Vivekananda Educational and Research Institute</strong>, Kolkata, India.</td>
-  </tr>
-    <tr>
-    <td><strong>Sep. 11 - 16, 2017</strong></td>
-    <td>Attended the Global Initiative of Academic Network’s course on <strong>Introduction To Light Front Hadron Physics</strong> by <strong>Prof.Stanley J Brodsky</strong> (Stanford University / SLAC) and <strong>Prof.Chueng-Ryong Ji</strong> (North Carolina State University) at <strong>Mumbai University</strong>, India.
-</td>
-  </tr>
-    <tr>
-    <td><strong>July 03 - 13, 2017</strong></td>
-    <td>Attended the Global Initiative of Academic Network’s course on <strong>The Field Theory Of Classical And Quantum Phase Transition</strong> by <strong>Prof.Flávio S Nogueira</strong> (Institute for Theoretical Solid State Physics, Germany) at the <strong>National Institute of Technology Goa</strong>, India.
-</td>
-  </tr>
-  </table>
-  </section>
-  
+    <section>
+      <h2>Workshops & Courses</h2>
+      <ul>
+        <li>
+          <strong>XXIV DAE-BRNS Symposium in High Energy Physics</strong>
+          <br>
+          National Institute of Science Education and Research, India
+          <br>
+          December 14 - 18, 2020
+          <br>
+          Online
+        </li>
+        <li>
+          <strong>International Workshop on Applications of Group Theory in Physics</strong>
+          <br>
+          Department of Physics, Assam University, Silchar, India
+          <br>
+          November 02 - 11, 2020
+          <br>
+          Online
+        </li>
+        <li>
+          <strong>Short-Term Course on Advances in High Energy Physics</strong>
+          <br>
+          National Institute of Technology Jalandhar, India
+          <br>
+          September 18 - 22, 2020
+          <br>
+          Online
+        </li>
+        <li>
+          <strong>National Workshop on Theoretical Physics</strong>
+          <br>
+          Ramakrishna Mission Vivekananda Educational and Research Institute, Kolkata, India
+          <br>
+          December 18 - 21, 2017
+        </li>
+        <li>
+          <strong>Global Initiative of Academic Network’s Course on Introduction To Light Front Hadron Physics</strong>
+          <br>
+          Mumbai University, India
+          <br>
+          September 11 - 16, 2017
+          <br>
+          Instructors: Prof. Stanley J Brodsky (Stanford University / SLAC), Prof. Chueng-Ryong Ji (North Carolina State University)
+        </li>
+        <li>
+          <strong>Global Initiative of Academic Network’s Course on The Field Theory Of Classical And Quantum Phase Transition</strong>
+          <br>
+          National Institute of Technology Goa, India
+          <br>
+          July 03 - July 13, 2017
+          <br>
+          Instructor: Prof. Flávio S Nogueira (Institute for Theoretical Solid State Physics, Germany)
+        </li>
+      </ul>
+    </section>
+
+  </main>
 
   <footer>
     <p>&copy; 2023 Hariprashad Ravikumar. All rights reserved.</p>
   </footer>
- 
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
