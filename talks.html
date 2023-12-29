@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="images/profile-picture.jpeg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hariprashad Ravikumar</title>
   <link rel="stylesheet" href="styles.css">
+   <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
   <style>
     body {
       font-family: 'Times New Roman', Times, serif;
@@ -45,6 +54,20 @@
     .research-figure img {
       border-radius: 0; /* Set border-radius to 0 or remove it to prevent circular appearance */
     }
+    .talk-list {
+  list-style: none;
+  padding: 0;
+}
+
+.talk-list li {
+  margin-bottom: 20px; /* Adjust as needed for spacing between talks */
+}
+
+.talk-list strong {
+  display: inline-block;
+  width: 120px; /* Adjust this width to your preference for alignment */
+  font-weight: bold;
+}
   </style>
 </head>
 <body>
@@ -69,6 +92,15 @@
 
 
   <main>
+      <h2>Talks</h2>
+
+  <ul class="talk-list">
+    <li>
+      <p><strong>Dec. 18, 2020</strong> “Interpolating sine-Gordon Model in \(d=1+1\)”, Dr. Chueng-Ryong Ji's research group meeting, North Carolina State University, USA (Online)</p>
+    </li>
+
+    <!-- Add more talks as needed -->
+  </ul>
     
   </main>
      
