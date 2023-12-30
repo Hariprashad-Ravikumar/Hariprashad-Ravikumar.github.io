@@ -65,8 +65,8 @@
   line-height: 1.5; /* Adjust line height for better spacing */
 }
 
-.talk-list li .talk-number::before {
-  content: counter(talk-counter, decimal-leading-zero)". "; /* Add a leading zero for single-digit numbers and a period after the counter value */
+.talk-list li::before {
+  content: counter(talk-counter)". "; /* Add a period after the counter value */
   font-weight: bold;
   margin-right: 8px;
   counter-increment: talk-counter -1; /* Decrement the counter after each item */
