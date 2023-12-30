@@ -54,19 +54,18 @@
     .research-figure img {
       border-radius: 0; /* Set border-radius to 0 or remove it to prevent circular appearance */
     }
- .talk-list {
+.talk-list {
   list-style: none;
   padding: 0;
-  counter-reset: talk-counter;
 }
 
 .talk-list li {
   margin-bottom: 20px; /* Adjust as needed for spacing between talks */
-  counter-increment: talk-counter;
+  line-height: 1.5; /* Adjust line height for better spacing */
 }
 
 .talk-list li::before {
-  content: "(" counter(talk-counter)")"; /* Add parentheses around the counter value */
+  content: counter(talk-counter)". "; /* Add a period after the counter value */
   font-weight: bold;
   margin-right: 8px;
 }
