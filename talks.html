@@ -49,7 +49,6 @@
       padding: 20px;
       background-color: #fff;
       max-width: 100%;
-      text-align: right;
       margin: 0 auto;
     }
     .research-figure img {
@@ -69,6 +68,7 @@
 .talk-list li .talk-number::before {
   content: counter(talk-counter, decimal)". "; /* Add a period after the counter value */
   margin-right: 8px;
+  text-align: right;
   counter-increment: talk-counter -1; /* Decrement the counter after each item */
 }
 
