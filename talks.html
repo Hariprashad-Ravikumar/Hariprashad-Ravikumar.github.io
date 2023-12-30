@@ -57,7 +57,7 @@
 .talk-list {
   list-style: none;
   padding: 0;
-  counter-reset: talk-counter 20; /* Reset the counter for each list and set it to the total number of talks - 1 */
+  counter-reset: talk-counter 21; /* Reset the counter for each list and set it to the total number of talks */
 }
 
 .talk-list li {
@@ -65,8 +65,8 @@
   line-height: 1.5; /* Adjust line height for better spacing */
 }
 
-.talk-list li::before {
-  content: counter(talk-counter)". "; /* Add a period after the counter value */
+.talk-list li .talk-number::before {
+  content: counter(talk-counter, decimal-leading-zero)". "; /* Add a period after the counter value */
   font-weight: bold;
   margin-right: 8px;
   counter-increment: talk-counter -1; /* Decrement the counter after each item */
