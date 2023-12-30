@@ -54,13 +54,15 @@
     .research-figure img {
       border-radius: 0; /* Set border-radius to 0 or remove it to prevent circular appearance */
     }
-    .talk-list {
+ .talk-list {
   list-style: none;
   padding: 0;
+  counter-reset: talk-counter;
 }
 
 .talk-list li {
   margin-bottom: 20px; /* Adjust as needed for spacing between talks */
+  counter-increment: talk-counter;
 }
 
 .talk-list li::before {
