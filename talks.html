@@ -57,6 +57,7 @@
 .talk-list {
   list-style: none;
   padding: 0;
+  counter-reset: talk-counter;
 }
 
 .talk-list li {
@@ -68,7 +69,9 @@
   content: counter(talk-counter)". "; /* Add a period after the counter value */
   font-weight: bold;
   margin-right: 8px;
+  counter-increment: talk-counter; /* Increment the counter after each item */
 }
+
   </style>
 </head>
 <body>
