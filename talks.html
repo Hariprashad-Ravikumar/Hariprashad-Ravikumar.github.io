@@ -57,7 +57,7 @@
 .talk-list {
   list-style: none;
   padding: 0;
-  counter-reset: talk-counter; /* Reset the counter for each list */
+  counter-reset: talk-counter 21; /* Reset the counter for each list and set it to the total number of talks */
 }
 
 .talk-list li {
@@ -69,8 +69,9 @@
   content: counter(talk-counter)". "; /* Add a period after the counter value */
   font-weight: bold;
   margin-right: 8px;
-  counter-increment: talk-counter; /* Increment the counter after each item */
+  counter-increment: talk-counter -1; /* Decrement the counter after each item */
 }
+
 
   </style>
 </head>
