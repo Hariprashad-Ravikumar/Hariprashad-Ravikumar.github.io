@@ -87,6 +87,15 @@
     p.a {
       text-align: justify;
     }
+      /* center the badge */
+  .badge-wrapper {
+    text-align: center;
+    margin: 2rem 0; /* optional vertical spacing */
+  }
+  /* make the badge itself inline-block so it’s centered by text-align */
+  .badge-wrapper .badge-base {
+    display: inline-block;
+  }
   </style>
 </head>
 <body>
@@ -124,7 +133,8 @@
 
     <p class = "a"> As a driven and enthusiastic physicist, I am fully dedicated and committed to making significant contributions to scientific research and pushing the boundaries of our understanding of particle physics. </p>
 
-  <div
+  <div class="badge-wrapper">
+    <div
       class="badge-base LI-profile-badge"
       data-locale="en_US"
       data-size="large"
