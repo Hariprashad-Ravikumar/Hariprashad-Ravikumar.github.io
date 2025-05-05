@@ -126,10 +126,10 @@
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Hariprashad-Ravikumar&layout=compact&hide=cmake,makefile&theme=default" alt="Top Languages" style="max-width: 100%; height: auto;" />
 </div>
 
-   <h3>GitHub Contribution Trophies</h3>
-<div style="text-align: center; margin-bottom: 2rem;">
-  <img src="https://github-profile-trophy.vercel.app/?username=Hariprashad-Ravikumar&theme=flat&no-frame=true&column=4" alt="GitHub Trophies" style="max-width: 100%; height: auto;">
-</div>
+ <link
+  rel="stylesheet"
+  href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
+/>
 
 
     <h2>Projects</h2>
@@ -159,5 +159,16 @@
   }
 </style>
   <script src="script.js" defer></script>
+  <!-- GitHub Calendar Container -->
+<div class="calendar" style="margin-top: 2rem;">
+  Loading the data just for you.
+</div>
+
+<!-- GitHub Calendar Script -->
+<script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+<script>
+  GitHubCalendar(".calendar", "Hariprashad-Ravikumar", { responsive: true });
+</script>
+
 </body>
 </html>
