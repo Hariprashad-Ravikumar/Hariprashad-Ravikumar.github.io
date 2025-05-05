@@ -203,44 +203,48 @@
       </table>
     </section>
 
- <section>
-  <h2>Technical Skills</h2>
-  <div style="display: flex;">
-    <!-- Left side: Technical Skills Table -->
-    <div style="flex: 1;">
-      <table style="width: 100%; border-collapse: collapse;">
+<section style="margin-top: 2rem;">
+  <h2 style="margin-bottom: 0.5rem; font-size: 1.5rem; font-weight: 600;">Technical Skills</h2>
+  
+  <!--
+    The container uses flex‑box so that on wide screens the skills table
+    and the GitHub card sit side‑by‑side, while on small screens they
+    stack vertically.  Feel free to move these styles to your site‑wide
+    stylesheet if preferred.
+  -->
+  <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start;">
+    <!-- Skills table -->
+    <div style="flex: 1 1 320px; min-width: 260px;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; line-height: 1.4;">
         <tr>
-          <td style="vertical-align: top; font-weight: bold;">Programming Languages:</td>
-          <td>Python, C++, Lua, HTML, <span class="math">\( \LaTeX \)</span></td>
+          <td style="font-weight: bold; white-space: nowrap; padding: 4px 8px; vertical-align: top;">Programming&nbsp;Languages:</td>
+          <td style="padding: 4px 8px;">Python, C++, Lua, HTML, LaTeX</td>
         </tr>
         <tr>
-          <td style="vertical-align: top; font-weight: bold;">Libraries &amp; Frameworks:</td>
-          <td>NumPy, pandas, Matplotlib, PySR, Qiskit</td>
+          <td style="font-weight: bold; white-space: nowrap; padding: 4px 8px; vertical-align: top;">Libraries&nbsp;&amp;&nbsp;Frameworks:</td>
+          <td style="padding: 4px 8px;">NumPy, pandas, Matplotlib, Scikit‑Learn, PySR, Qiskit</td>
         </tr>
         <tr>
-          <td style="vertical-align: top; font-weight: bold;">Scientific Tools:</td>
-          <td>CHROMA, MATLAB, Mathematica</td>
+          <td style="font-weight: bold; white-space: nowrap; padding: 4px 8px; vertical-align: top;">Scientific&nbsp;Tools:</td>
+          <td style="padding: 4px 8px;">CHROMA, MATLAB, Mathematica</td>
         </tr>
         <tr>
-          <td style="vertical-align: top; font-weight: bold;">Modeling &amp; Methods:</td>
-          <td>Monte Carlo Simulation, Symbolic Regression, Statistical Modeling</td>
+          <td style="font-weight: bold; white-space: nowrap; padding: 4px 8px; vertical-align: top;">Modeling&nbsp;&amp;&nbsp;Methods:</td>
+          <td style="padding: 4px 8px;">Monte Carlo Simulation, Symbolic Regression, Statistical Modeling</td>
         </tr>
         <tr>
-          <td style="vertical-align: top; font-weight: bold;">Tools &amp; Platforms:</td>
-          <td>Git, GitHub, Docker, JupyterLab, Visual Studio, HPC environments, Linux/Unix Shell (Bash)</td>
+          <td style="font-weight: bold; white-space: nowrap; padding: 4px 8px; vertical-align: top;">Tools&nbsp;&amp;&nbsp;Platforms:</td>
+          <td style="padding: 4px 8px;">Git, GitHub, Docker, JupyterLab, Visual Studio, HPC environments, Linux/Unix Shell (Bash)</td>
         </tr>
       </table>
     </div>
 
-    <div style="flex: 1; text-align: center;">
-  <figure style="margin: 0;">
-    <img
-      src="https://github-readme-stats.vercel.app/api/top-langs/?username=Hariprashad-Ravikumar&layout=compact&langs_count=10&hide=cmake,makefile&theme=github_light"/>
-    <figcaption style="font-size: 0.9em; margin-top: 4px;">
-      GitHub&nbsp;Stats
-    </figcaption>
-  </figure>
-</div>
+    <!-- GitHub stats card -->
+    <figure style="flex: 0 1 300px; margin: 0; text-align: center;">
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Hariprashad-Ravikumar&layout=compact&langs_count=10&hide=cmake,makefile&theme=github_light" alt="GitHub top languages card" style="width: 100%; max-width: 300px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.15);" />
+      <figcaption style="margin-top: 6px; font-size: 0.9rem; color: #555;">GitHub&nbsp;Stats</figcaption>
+    </figure>
+  </div>
 </section>
 
 
