@@ -206,35 +206,34 @@
 <section style="margin-top: 2rem;">
   <h2 style="margin-bottom: 0.5rem; font-size: 1.5rem; font-weight: 600;">Technical Skills</h2>
   
-  <!--
-    The container uses flex‑box so that on wide screens the skills table
-    and the GitHub card sit side‑by‑side, while on small screens they
-    stack vertically.  Feel free to move these styles to your site‑wide
-    stylesheet if preferred.
-  -->
+  <!-- Container uses flex-box; stacks vertically on small screens -->
   <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start;">
     <!-- Skills table -->
     <div style="flex: 1 1 320px; min-width: 260px;">
-      <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; line-height: 1.4;">
+      <table style="width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 0.95rem; line-height: 1.4;">
+        <colgroup>
+          <col style="width: 38%;" />
+          <col style="width: 62%;" />
+        </colgroup>
         <tr>
-          <td style="font-weight: bold; white-space: nowrap; padding: 4px 8px; vertical-align: top;">Programming&nbsp;Languages:</td>
-          <td style="padding: 4px 8px;">Python, C++, Lua, HTML, LaTeX</td>
+          <td style="font-weight: bold; padding: 4px 8px; vertical-align: top;">Programming&nbsp;Languages:</td>
+          <td style="padding: 4px 8px; white-space: normal; word-break: break-word;">Python, C++, Lua, HTML, LaTeX</td>
         </tr>
         <tr>
-          <td style="font-weight: bold; white-space: nowrap; padding: 4px 8px; vertical-align: top;">Libraries&nbsp;&amp;&nbsp;Frameworks:</td>
-          <td style="padding: 4px 8px;">NumPy, pandas, Matplotlib, Scikit‑Learn, PySR, Qiskit</td>
+          <td style="font-weight: bold; padding: 4px 8px; vertical-align: top;">Libraries&nbsp;&amp;&nbsp;Frameworks:</td>
+          <td style="padding: 4px 8px; white-space: normal; word-break: break-word;">NumPy, pandas, Matplotlib, Scikit‑Learn, PySR, Qiskit</td>
         </tr>
         <tr>
-          <td style="font-weight: bold; white-space: nowrap; padding: 4px 8px; vertical-align: top;">Scientific&nbsp;Tools:</td>
-          <td style="padding: 4px 8px;">CHROMA, MATLAB, Mathematica</td>
+          <td style="font-weight: bold; padding: 4px 8px; vertical-align: top;">Scientific&nbsp;Tools:</td>
+          <td style="padding: 4px 8px; white-space: normal; word-break: break-word;">CHROMA, MATLAB, Mathematica</td>
         </tr>
         <tr>
-          <td style="font-weight: bold; white-space: nowrap; padding: 4px 8px; vertical-align: top;">Modeling&nbsp;&amp;&nbsp;Methods:</td>
-          <td style="padding: 4px 8px;">Monte Carlo Simulation, Symbolic Regression, Statistical Modeling</td>
+          <td style="font-weight: bold; padding: 4px 8px; vertical-align: top;">Modeling&nbsp;&amp;&nbsp;Methods:</td>
+          <td style="padding: 4px 8px; white-space: normal; word-break: break-word;">Monte Carlo Simulation, Symbolic Regression, Statistical Modeling</td>
         </tr>
         <tr>
-          <td style="font-weight: bold; white-space: nowrap; padding: 4px 8px; vertical-align: top;">Tools&nbsp;&amp;&nbsp;Platforms:</td>
-          <td style="padding: 4px 8px;">Git, GitHub, Docker, JupyterLab, Visual Studio, HPC environments, Linux/Unix Shell (Bash)</td>
+          <td style="font-weight: bold; padding: 4px 8px; vertical-align: top;">Tools&nbsp;&amp;&nbsp;Platforms:</td>
+          <td style="padding: 4px 8px; white-space: normal; word-break: break-word;">Git, GitHub, Docker, JupyterLab, Visual Studio, HPC environments, Linux/Unix Shell (Bash)</td>
         </tr>
       </table>
     </div>
@@ -246,7 +245,6 @@
     </figure>
   </div>
 </section>
-
 
     <section>
   <h2>Certifications</h2>
