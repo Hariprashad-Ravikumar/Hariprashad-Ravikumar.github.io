@@ -42,19 +42,11 @@
     });
   </script>
   <script>
-  window.addEventListener("message", (event) => {
-    if (event.data.type === "resize" && event.data.height) {
-      const iframe = document.getElementById("chat-iframe");
-      iframe.style.height = event.data.height + "px";
+    function toggleChatbox() {
+      const box = document.getElementById("chatbox");
+      box.style.display = box.style.display === "none" ? "flex" : "none";
     }
-  });
-</script>
-  <script>
-  function toggleChatbox() {
-    const box = document.getElementById("chatbox");
-    box.style.display = box.style.display === "none" ? "flex" : "none";
-  }
-</script>
+  </script>
 
   <style>
     link[rel="icon"] {
@@ -112,61 +104,51 @@
     display: inline-block;
   }
   #chat-launcher {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #001f3f; /* dark navy */
-  color: white;
-  padding: 12px 16px;
-  border-radius: 30px;
-  cursor: pointer;
-  z-index: 1000;
-  font-family: sans-serif;
-  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.4); /* soft blue glow */
-  transition: background 0.3s;
-}
-
-#chat-launcher:hover {
-  background: #003366;
-}
-
-#chatbox {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 360px;
-  height: 500px;
-  border: none;
-  background: white;
-  display: none;
-  flex-direction: column;
-  z-index: 1001;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-#chatbox-header {
-  background: #001f3f;
-  color: white;
-  padding: 10px 15px;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: sans-serif;
-}
-#chat-launcher:hover {
-  background: #003366;
-  box-shadow: 0 0 12px rgba(0, 102, 255, 0.6);
-}
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #001f3f;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      z-index: 1000;
+      font-family: sans-serif;
+      box-shadow: 0 4px 12px rgba(0, 102, 255, 0.4);
+      transition: background 0.3s;
+    }
+    #chat-launcher:hover {
+      background: #003366;
+    }
     #chatbox {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-#chatbox iframe {
-  height: calc(100% - 48px);
-}
-
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 360px;
+      height: 500px;
+      display: none;
+      flex-direction: column;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      overflow: hidden;
+      z-index: 1001;
+    }
+    #chatbox-header {
+      background: #001f3f;
+      color: white;
+      padding: 10px 15px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: sans-serif;
+    }
+    #chatbox iframe {
+      height: calc(100% - 48px);
+      width: 100%;
+      border: none;
+    }
 
   </style>
 </head>
@@ -229,22 +211,14 @@ As a driven and enthusiastic physicist with expertise in C++, Python, high-perfo
               
   </main>
      
-<!-- Floating Chat Button -->
 <div id="chat-launcher" onclick="toggleChatbox()">Chat with my AI HariBot</div>
-
-<!-- Chat iframe box (hidden by default) -->
-<div id="chatbox">
-  <div id="chatbox-header">
-    <span>HariBot AI 🤖</span>
-    <button onclick="toggleChatbox()">✕</button>
+  <div id="chatbox">
+    <div id="chatbox-header">
+      <span>HariBot AI 🤖</span>
+      <button onclick="toggleChatbox()">&times;</button>
+    </div>
+    <iframe id="chat-iframe" src="https://hari-chatbot.onrender.com" title="HariBot Assistant"></iframe>
   </div>
-  <iframe id="chat-iframe"
-        src="https://hari-chatbot.onrender.com"
-        frameborder="0"
-        title="HariBot Assistant"
-        style="width: 100%; border: none;"></iframe>
-
-</div>
 
   <footer>
     <p>&copy; 2025 Hariprashad Ravikumar. All rights reserved.</p>
