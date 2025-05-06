@@ -42,6 +42,14 @@
     });
   </script>
   <script>
+  window.addEventListener("message", (event) => {
+    if (event.data.type === "resize" && event.data.height) {
+      const iframe = document.getElementById("chat-iframe");
+      iframe.style.height = event.data.height + "px";
+    }
+  });
+</script>
+  <script>
   function toggleChatbox() {
     const box = document.getElementById("chatbox");
     box.style.display = box.style.display === "none" ? "flex" : "none";
@@ -230,9 +238,12 @@ As a driven and enthusiastic physicist with expertise in C++, Python, high-perfo
     <span>HariBot AI 🤖</span>
     <button onclick="toggleChatbox()">✕</button>
   </div>
-  <iframe src="https://hari-chatbot.onrender.com"
-          width="100%" height="100%" frameborder="0"
-          title="HariBot Assistant"></iframe>
+  <iframe id="chat-iframe"
+        src="https://hari-chatbot.onrender.com"
+        frameborder="0"
+        title="HariBot Assistant"
+        style="width: 100%; border: none;"></iframe>
+
 </div>
 
   <footer>
