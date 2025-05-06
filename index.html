@@ -125,7 +125,8 @@
       bottom: 80px;
       right: 20px;
       width: 360px;
-      height: 500px;
+      height: auto;
+      min-height: 500px;
       display: none;
       flex-direction: column;
       background: white;
@@ -145,11 +146,10 @@
       font-family: sans-serif;
     }
     #chatbox iframe {
-      height: calc(100% - 48px);
+      min-height: 500px;
       width: 100%;
       border: none;
     }
-
   </style>
 </head>
 <body>
