@@ -295,7 +295,7 @@ window.onload = function() {
     position: absolute;
     top: 40px; /* Positioned directly below the "i" icon */
     left: 50%;
-    transform: translateX(-50%) translateY(10px);
+    transform: translateX(-50%);
     background-color: #fff;
     border: 1px solid #ccc;
     padding: 10px;
@@ -350,7 +350,8 @@ window.onload = function() {
 
 <div id="info-box" class="info-box">
     <p><strong>Automated LaTeX CV Build & Deployment</strong></p>
-    <p>This CV is automatically built and deployed using a GitHub Actions workflow, pulling LaTeX files from Overleaf and compiling them into a PDF with every commit. Find more details about the workflow on my  
+    <p>This CV is generated via a CI/CD pipeline using GitHub Actions and Bash: it auto‑pulls LaTeX source from Overleaf, compiles with <code>latexmk</code> on every commit, and deploys the updated PDF to this page.  
+  For the full workflow, see my 
         <a href="https://github.com/Hariprashad-Ravikumar/CV-GitHub-Actions-LaTeX-ci-cd" target="_blank">GitHub Repository</a>.
     </p>
     <button id="close-info" class="close-info">Close</button>
