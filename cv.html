@@ -258,6 +258,22 @@ window.onload = function() {
     font-weight: bold;
     color: #0073e6;
     margin-left: 5px;
+    padding: 5px;
+    border-radius: 50%; /* Makes the icon circular */
+    background-color: #f1f1f1; /* Light gray background for contrast */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 18px; /* Ensures the text is centered inside the circle */
+    transition: background-color 0.3s ease;
+}
+
+.info-icon:hover {
+    background-color: #0073e6;
+    color: white;
 }
 
 .info-box {
@@ -309,7 +325,7 @@ window.onload = function() {
     </ul>
   </nav>
 
- <main>
+<main>
     <div class="download-container">
         <p id="cv-date">(Current as of <span id="cv-date-text"></span>) <span id="info-icon" class="info-icon">i</span></p>
         <a href="cv/CV_HARI.pdf" class="download-button" target="_blank">Download Full CV</a>
