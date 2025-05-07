@@ -30,6 +30,40 @@
   "url": "https://hariprashad-ravikumar.github.io"
 }
 </script>
+  <script>
+// Function to update the date based on the last modified date of the PDF file
+window.onload = function() {
+    const pdfFilePath = 'cv/CV_HARI.pdf';
+    const dateText = document.getElementById('cv-date-text');
+    
+    fetch(pdfFilePath, { method: 'HEAD' })
+        .then(response => {
+            const lastModified = response.headers.get('last-modified');
+            if (lastModified) {
+                const date = new Date(lastModified);
+                const options = { year: 'numeric', month: 'long' };
+                const formattedDate = date.toLocaleDateString('en-US', options);
+                dateText.textContent = formattedDate;
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching PDF file:", error);
+        });
+    
+    // Toggle info box visibility
+    const infoIcon = document.getElementById('info-icon');
+    const infoBox = document.getElementById('info-box');
+    const closeInfoBtn = document.getElementById('close-info');
+    
+    infoIcon.onclick = function() {
+        infoBox.style.display = infoBox.style.display === 'block' ? 'none' : 'block';
+    };
+
+    closeInfoBtn.onclick = function() {
+        infoBox.style.display = 'none';
+    };
+};
+</script>
 
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
