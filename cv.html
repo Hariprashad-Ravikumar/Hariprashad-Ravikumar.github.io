@@ -262,20 +262,8 @@ window.onload = function() {
       width: 100%;
       border: none;
     }
-   .info-box {
-    display: none; /* Hidden by default */
-    position: absolute;
-    top: 100%; /* Positioned directly below the "i" icon */
-    left: 50%;
-    transform: translateX(-50%); /* Centers the box relative to the "i" icon */
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    max-width: 300px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    white-space: normal;
-    border-radius: 8px; /* Smooth rounded corners */
+  .download-container {
+    position: relative; /* Ensures positioning context for the info box */
 }
 
 .info-icon {
@@ -285,7 +273,7 @@ window.onload = function() {
     color: #0073e6;
     margin-left: 5px;
     padding: 5px;
-    border-radius: 50%; /* Circular icon */
+    border-radius: 50%; /* Makes the icon circular */
     background-color: #f1f1f1; /* Light gray background for contrast */
     display: inline-flex;
     justify-content: center;
@@ -301,6 +289,37 @@ window.onload = function() {
     background-color: #0073e6;
     color: white;
 }
+
+.info-box {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Positioned directly below the "i" icon */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the box relative to the "i" icon */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-width: 300px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    white-space: normal;
+    border-radius: 8px; /* Smooth rounded corners */
+}
+
+.close-info {
+    background-color: #0073e6;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.close-info:hover {
+    background-color: #005bb5;
+}
+
   </style>
 </head>
 <body>
