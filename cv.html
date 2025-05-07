@@ -279,15 +279,17 @@ window.onload = function() {
 .info-box {
     display: none;
     position: absolute;
-    bottom: 40px;
-    right: 50%;
-    transform: translateX(-50%);
+    top: 100%; /* Positioned directly below the "i" icon */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the box relative to the "i" icon */
     background-color: #fff;
     border: 1px solid #ccc;
     padding: 10px;
     max-width: 300px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    white-space: normal;
+    border-radius: 8px; /* Smooth rounded corners */
 }
 
 .close-info {
@@ -297,6 +299,7 @@ window.onload = function() {
     border: none;
     cursor: pointer;
     margin-top: 10px;
+   font-family: 'Times New Roman', Times, serif;
 }
 
 .close-info:hover {
