@@ -31,7 +31,6 @@
 }
 </script>
   <script>
-// Function to update the date based on the last modified date of the PDF file
 window.onload = function() {
     const pdfFilePath = 'cv/CV_HARI.pdf';
     const dateText = document.getElementById('cv-date-text');
@@ -55,8 +54,16 @@ window.onload = function() {
     const infoBox = document.getElementById('info-box');
     const closeInfoBtn = document.getElementById('close-info');
     
+    // Ensure info box is hidden initially
+    infoBox.style.display = 'none'; 
+
     infoIcon.onclick = function() {
-        infoBox.style.display = infoBox.style.display === 'block' ? 'none' : 'block';
+        // Toggle display between 'none' and 'block'
+        if (infoBox.style.display === 'none' || infoBox.style.display === '') {
+            infoBox.style.display = 'block'; 
+        } else {
+            infoBox.style.display = 'none';
+        }
     };
 
     closeInfoBtn.onclick = function() {
@@ -330,17 +337,17 @@ window.onload = function() {
 
 <main>
     <div class="download-container">
-        <p id="cv-date">(Current as of <span id="cv-date-text"></span>) <span id="info-icon" class="info-icon">i</span></p>
-        <a href="cv/CV_HARI.pdf" class="download-button" target="_blank">Download Full CV</a>
-    </div>
+    <p id="cv-date">(Current as of <span id="cv-date-text"></span>) <span id="info-icon" class="info-icon">i</span></p>
+    <a href="cv/CV_HARI.pdf" class="download-button" target="_blank">Download Full CV</a>
+</div>
 
-    <div id="info-box" class="info-box">
-        <p><strong>Automated LaTeX CV Build & Deployment</strong></p>
-        <p>This CV is automatically built and deployed using a GitHub Actions workflow, pulling LaTeX files from Overleaf and compiling them into a PDF with every commit. Find more details about the workflow on my  
-            <a href="https://github.com/Hariprashad-Ravikumar/CV-GitHub-Actions-LaTeX-ci-cd" target="_blank">GitHub Repository</a>.
-        </p>
-        <button id="close-info" class="close-info">Close</button>
-    </div>
+<div id="info-box" class="info-box">
+    <p><strong>Automated LaTeX CV Build & Deployment</strong></p>
+    <p>This CV is automatically built and deployed using a GitHub Actions workflow, pulling LaTeX files from Overleaf and compiling them into a PDF with every commit. Find more details about the workflow on my  
+        <a href="https://github.com/Hariprashad-Ravikumar/CV-GitHub-Actions-LaTeX-ci-cd" target="_blank">GitHub Repository</a>.
+    </p>
+    <button id="close-info" class="close-info">Close</button>
+</div>
 </main>
 
 
