@@ -49,27 +49,30 @@ window.onload = function() {
             console.error("Error fetching PDF file:", error);
         });
     
-    // Toggle info box visibility
+    // Get elements
     const infoIcon = document.getElementById('info-icon');
     const infoBox = document.getElementById('info-box');
     const closeInfoBtn = document.getElementById('close-info');
     
-    // Ensure info box is hidden initially
-    infoBox.style.display = 'none'; 
+    // Initially hide the info-box
+    infoBox.style.display = 'none';
 
+    // Info icon click event
     infoIcon.onclick = function() {
-        // Toggle display between 'none' and 'block'
+        console.log('Info icon clicked');  // Debugging line
         if (infoBox.style.display === 'none' || infoBox.style.display === '') {
-            infoBox.style.display = 'block'; 
+            infoBox.style.display = 'block';
         } else {
             infoBox.style.display = 'none';
         }
     };
 
+    // Close info box
     closeInfoBtn.onclick = function() {
         infoBox.style.display = 'none';
     };
 };
+
 </script>
 
   <script type="text/x-mathjax-config">
@@ -336,7 +339,7 @@ window.onload = function() {
   </nav>
 
 <main>
-    <div class="download-container">
+<div class="download-container">
     <p id="cv-date">(Current as of <span id="cv-date-text"></span>) <span id="info-icon" class="info-icon">i</span></p>
     <a href="cv/CV_HARI.pdf" class="download-button" target="_blank">Download Full CV</a>
 </div>
