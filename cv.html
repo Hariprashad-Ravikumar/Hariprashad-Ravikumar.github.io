@@ -218,6 +218,41 @@
       width: 100%;
       border: none;
     }
+    .info-icon {
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: bold;
+    color: #0073e6;
+    margin-left: 5px;
+}
+
+.info-box {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-width: 300px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.close-info {
+    background-color: #0073e6;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.close-info:hover {
+    background-color: #005bb5;
+}
+
   </style>
 </head>
 <body>
@@ -240,11 +275,21 @@
     </ul>
   </nav>
 
-  <main>
-     <div class="download-container">
-      <p>(Current as of January, 2025)</p>
-      <a href="cv/CV_HARI.pdf" class="download-button" target="_blank">Download Full CV</a>
+ <main>
+    <div class="download-container">
+        <p id="cv-date">(Current as of <span id="cv-date-text"></span>) <span id="info-icon" class="info-icon">i</span></p>
+        <a href="cv/CV_HARI.pdf" class="download-button" target="_blank">Download Full CV</a>
     </div>
+
+    <div id="info-box" class="info-box">
+        <p><strong>Automated LaTeX CV Build & Deployment</strong></p>
+        <p>This CV is automatically built and deployed using a GitHub Actions workflow, pulling LaTeX files from Overleaf and compiling them into a PDF with every commit. Find more details about the workflow on my GitHub: 
+            <a href="https://github.com/Hariprashad-Ravikumar/CV-GitHub-Actions-LaTeX-ci-cd" target="_blank">GitHub Repository</a>.
+        </p>
+        <button id="close-info" class="close-info">Close</button>
+    </div>
+</main>
+
 
     <section id="contact">
       <h2>Contact</h2>
