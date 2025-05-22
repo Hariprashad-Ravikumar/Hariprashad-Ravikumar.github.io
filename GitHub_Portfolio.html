@@ -93,7 +93,20 @@
       background-color: #fff;
       max-width: 100%;
       margin: 0 auto;
+      opacity: 0;
+  animation: fadeInMain 1.5s ease-in-out forwards;
     }
+
+@keyframes fadeInMain {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
     .research-figure img {
       border-radius: 0; /* Set border-radius to 0 or remove it to prevent circular appearance */
     }
