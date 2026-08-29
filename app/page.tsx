@@ -1,16 +1,24 @@
 import Container from "@/components/layout/Container";
+import Hero from "@/components/home/Hero";
+import MetricStrip from "@/components/home/MetricStrip";
+import WDSpotlight from "@/components/home/WDSpotlight";
+import FeaturedProjects from "@/components/home/FeaturedProjects";
+import Timeline from "@/components/home/Timeline";
+import TechStack from "@/components/home/TechStack";
+import PublicationHighlight from "@/components/home/PublicationHighlight";
+import ContactBand from "@/components/home/ContactBand";
 
 export default function Home() {
   return (
     <Container>
-      <div className="py-24">
-        <h1 className="text-display text-[var(--ink-900)]">
-          Hariprashad Ravikumar
-        </h1>
-        <p className="text-body prose-measure mt-4 text-[var(--ink-500)]">
-          Home page content lands in Phase 4 (§10.2).
-        </p>
-      </div>
+      <Hero />
+      <MetricStrip />
+      <WDSpotlight />
+      <FeaturedProjects />
+      <Timeline />
+      <TechStack />
+      <PublicationHighlight />
+      <ContactBand />
     </Container>
   );
 }

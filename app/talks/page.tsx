@@ -1,13 +1,14 @@
 import Container from "@/components/layout/Container";
+import TalkList from "@/components/content/TalkList";
 
 export default function TalksPage() {
   return (
     <Container>
-      <div className="py-24">
+      <div className="py-16">
         <h1 className="text-h1 text-[var(--ink-900)]">Talks</h1>
-        <p className="text-body prose-measure mt-4 text-[var(--ink-500)]">
-          Talks list lands in Phase 4 (§10.7).
-        </p>
+        <div className="mt-8">
+          <TalkList />
+        </div>
       </div>
     </Container>
   );
