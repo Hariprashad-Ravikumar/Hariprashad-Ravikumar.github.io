@@ -22,8 +22,38 @@ export type Talk = {
 export const TALKS: Talk[] = [
   {
     date: "Aug 2026",
-    title: "HAMR THMap Modeling & Simulation: The NIMBLE DCSNR Simulator",
-    venue: "PhD Expo 2026, Western Digital, San Jose, CA, USA",
+    title: "DC-SNR (DC Signal-to-Noise Ratio) Physics Simulator App NIMBLE and Multiple-Write HAMR (Heat-Assisted Magnetic Recording) Temperature and Field Map (THMap)",
+    venue: "[Presented to 40+ sputtering engineers, seasoned material scientists, test engineers, subject matter experts, R&D engineers, and technologists] (WD Confidential), Interlock for Media Characterization Meeting, Western Digital, San Jose, CA, USA",
+    topics: ["HAMR / Industry"],
+  },
+  {
+    date: "Aug 2026",
+    title: "Multiple-Write HAMR (Heat-Assisted Magnetic Recording) Temperature and Field Map (THMap) and Thermally Activated Switching Processes",
+    venue: "[Presented to 30+ R&D engineers and technologists] (WD Confidential), Interlock for Media Characterization Meeting, Western Digital, San Jose, CA, USA",
+    topics: ["HAMR / Industry"],
+  },
+  {
+    date: "Aug 2026",
+    title: "HAMR (Heat-Assisted Magnetic Recording) THMap Modeling & Simulation: The NIMBLE DCSNR Simulator App",
+    venue: "[Presented to 40+ senior technologists, subject matter experts, and PhD interns] (WD Confidential), PhD Expo 2026, Western Digital, San Jose, CA, USA",
+    topics: ["HAMR / Industry"],
+  },
+  {
+    date: "July 2026",
+    title: "HAMR (Heat-Assisted Magnetic Recording) THMaps and Analytical Model for Log-Linearity of Write Temperature \\(T_w\\) with Number of Writes",
+    venue: "[Presented to 30+ R&D engineers and technologists] (WD Confidential), Interlock for Media Characterization Meeting, Western Digital, San Jose, CA, USA",
+    topics: ["HAMR / Industry"],
+  },
+  {
+    date: "July 2026",
+    title: "HAMR (Heat-Assisted Magnetic Recording) DC-SNR (DC Signal-to-Noise Ratio) Physics Simulator App NIMBLE",
+    venue: "[Presented to 30+ seasoned material scientists, test engineers, and subject matter experts] (WD Confidential), Interlock for Media Characterization Meeting, Western Digital, San Jose, CA, USA",
+    topics: ["HAMR / Industry"],
+  },
+  {
+    date: "July 2026",
+    title: "HAMR (Heat-Assisted Magnetic Recording) Analytical Model for Log-Linearity of Write Temperature \\(T_w\\) with Number of Writes",
+    venue: "[Presented to 30+ R&D engineers and technologists] (WD Confidential), Interlock for Media Properties Meeting with WD Japan, Western Digital, San Jose, CA, USA",
     topics: ["HAMR / Industry"],
   },
   {
