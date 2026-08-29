@@ -36,10 +36,16 @@ const SOURCE_ROOTS = [
 // exact bucket (hero/photo/figure) depends on where the file is used.
 const SIZE_WARN_BYTES = 250 * 1024;
 
+// assets/raw/video/ needs hand-picked trim windows and poster frames (screen
+// recordings, not raw photos) rather than this script's resize pipeline —
+// those are produced manually per §5.1 and copied straight into public/video/.
+const SKIP_DIR_NAMES = new Set(["video"]);
+
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   const files = [];
   for (const entry of entries) {
+    if (entry.isDirectory() && SKIP_DIR_NAMES.has(entry.name)) continue;
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       files.push(...(await walk(full)));

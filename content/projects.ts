@@ -63,12 +63,12 @@ export const PROJECTS: Project[] = [
       { label: "Live demo", href: "https://hariprashad-ravikumar.github.io/AI-DataScience-Lab/" },
       { label: "Code", href: "https://github.com/Hariprashad-Ravikumar/AI-DataScience-Lab" },
     ],
-    // TODO(hari): video assets not supplied yet — using generated cover as a placeholder mode until
-    // assets/raw/video/ai-datascience-lab.{mp4,webm}+poster arrive (§5), per your call to hold off Phase 9 video wiring.
     cover: {
-      mode: "generated",
-      src: "/images/bundle/projects/ai-datascience-lab-cover",
-      alt: "AI-DataScience-Lab forecasting app cover graphic",
+      mode: "video",
+      mp4: "/video/ai-datascience-lab.mp4",
+      webm: "/video/ai-datascience-lab.webm",
+      poster: "/video/ai-datascience-lab-poster.jpg",
+      alt: "Screen recording of the AI-DataScience-Lab forecasting app: CSV upload, regression model selection, and results",
     },
     hasCaseStudy: true,
   },
@@ -82,11 +82,12 @@ export const PROJECTS: Project[] = [
       { label: "Code", href: "https://github.com/Hariprashad-Ravikumar/Hari-ChatBot" },
       { label: "Try it", href: "https://hari-chatbot.onrender.com" },
     ],
-    // TODO(hari): video asset not supplied yet — same placeholder note as above.
     cover: {
-      mode: "generated",
-      src: "/images/bundle/projects/haribot-cover",
-      alt: "HariBot AI chatbot cover graphic",
+      mode: "video",
+      mp4: "/video/haribot.mp4",
+      webm: "/video/haribot.webm",
+      poster: "/video/haribot-poster.jpg",
+      alt: "Screen recording of the HariBot chat widget answering a question about Hariprashad Ravikumar",
     },
     hasCaseStudy: false,
   },
