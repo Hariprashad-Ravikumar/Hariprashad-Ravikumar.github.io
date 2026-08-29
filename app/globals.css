@@ -117,6 +117,29 @@ p {
   text-align: left;
 }
 
+/* Spotlight hover glow (§7) */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  background: radial-gradient(
+    320px circle at var(--mx) var(--my),
+    color-mix(in srgb, var(--accent-500) 12%, transparent),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
