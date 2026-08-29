@@ -1,12 +1,17 @@
 import { notFound } from "next/navigation";
 import Container from "@/components/layout/Container";
+import { PROJECTS } from "@/content/projects";
 
-// Full case-study content (§10.5) and MDX loading land in Phase 3/4.
-// Only NIMBLE, TMD Pipeline, and AI-DataScience-Lab get case-study pages (§1, §10.4).
-const CASE_STUDY_SLUGS = ["nimble", "tmd-pipeline", "ai-datascience-lab"] as const;
+const CASE_STUDIES = {
+  nimble: () => import("@/content/projects/nimble.mdx"),
+  "tmd-pipeline": () => import("@/content/projects/tmd-pipeline.mdx"),
+  "ai-datascience-lab": () => import("@/content/projects/ai-datascience-lab.mdx"),
+} as const;
+
+type CaseStudySlug = keyof typeof CASE_STUDIES;
 
 export function generateStaticParams() {
-  return CASE_STUDY_SLUGS.map((slug) => ({ slug }));
+  return Object.keys(CASE_STUDIES).map((slug) => ({ slug }));
 }
 
 export default async function ProjectCaseStudyPage({
@@ -16,18 +21,21 @@ export default async function ProjectCaseStudyPage({
 }) {
   const { slug } = await params;
 
-  if (!CASE_STUDY_SLUGS.includes(slug as (typeof CASE_STUDY_SLUGS)[number])) {
+  if (!(slug in CASE_STUDIES)) {
     notFound();
   }
 
+  const project = PROJECTS.find((p) => p.slug === slug);
+  const { default: CaseStudy } = await CASE_STUDIES[slug as CaseStudySlug]();
+
   return (
     <Container>
-      <div className="py-24">
-        <h1 className="text-h1 text-[var(--ink-900)]">{slug}</h1>
-        <p className="text-body prose-measure mt-4 text-[var(--ink-500)]">
-          Case study content lands in Phase 4 (§10.5).
-        </p>
-      </div>
+      <article className="py-24">
+        <h1 className="text-h1 text-[var(--ink-900)]">{project?.title ?? slug}</h1>
+        <div className="mt-8">
+          <CaseStudy />
+        </div>
+      </article>
     </Container>
   );
 }

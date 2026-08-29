@@ -1,0 +1,29 @@
+import NimbleArchitectureDiagram from "@/components/content/NimbleArchitectureDiagram";
+
+## Context
+
+Modeling & Simulation Intern, Western Digital, San Jose — May–August 2026. Heat-Assisted Magnetic Recording is how the next generation of hard drives reaches higher areal density. Writing one track can partially erase its neighbours — adjacent track interference (ATI and cross-track interference, xTI) — and characterising it normally means slow, expensive spin-stand experiments.
+
+## Problem
+
+Engineers needed to predict recording performance directly from media material parameters, before committing to hardware tests.
+
+## Approach
+
+I derived a closed-form analytical model of grain magnetization dynamics from first principles, building on Néel–Arrhenius thermal switching and the Stoner–Wohlfarth model to obtain expressions for switching time, noise power, and probability of switching across multiple write cycles. I validated the model against Monte Carlo stochastic simulation and experimental spin-stand data on realistic L1₀ FePt grain ensembles.
+
+## Architecture
+
+NIMBLE is a Dash application backed by a modular Python physics library.
+
+<NimbleArchitectureDiagram />
+
+## Results
+
+Adopted by sputtering engineers and the media team, in use across Western Digital sites in the United States and Japan — over 30 engineers. Removes a hardware-experiment step from the development loop and lets teams evaluate recording performance directly from material parameters. A peer-reviewed publication on the analytical model is in preparation.
+
+## Stack
+
+Python · Dash · Plotly · IndexedDB · Kubernetes · Jenkins · NumPy/SciPy · Monte Carlo validation
+
+> ⚠️ **Confidentiality gate.** Before this page goes live, confirm with the Western Digital manager what may be published. Describe the report-export *capability*, never show real data. Check the two presenting photos for legible slide content (DCSNR values, media parameters, HAMR curves) and crop if anything is readable.

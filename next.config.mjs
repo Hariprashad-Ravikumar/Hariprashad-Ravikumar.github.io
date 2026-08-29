@@ -1,8 +1,13 @@
+import createMDX from "@next/mdx";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: "export",
   images: { unoptimized: true }, // the next/image optimizer needs a server
-  trailingSlash: true,           // /projects/ -> /projects/index.html
+  trailingSlash: true, // /projects/ -> /projects/index.html
+  pageExtensions: ["ts", "tsx", "mdx"],
 };
 
-export default nextConfig;
+const withMDX = createMDX({});
+
+export default withMDX(nextConfig);

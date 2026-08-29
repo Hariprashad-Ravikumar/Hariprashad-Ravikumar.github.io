@@ -1,0 +1,23 @@
+## Context
+
+PhD research under Dr. Michael Engelhardt, New Mexico State University. Lattice QCD calculations of Transverse Momentum Dependent parton distributions (TMDs) — how quarks and gluons move inside the proton — produce terabytes of noisy Monte Carlo data that has to be turned into physics.
+
+## Problem
+
+Extracting a trustworthy analytical form from 30,000+ noisy lattice observables, at a processing cost that made iteration slow.
+
+## Approach
+
+An end-to-end ML pipeline: Monte Carlo lattice data → GPU-accelerated CUDA C++ preprocessing → symbolic regression (PySR) to recover a closed-form analytical expression, with jackknife/bootstrap resampling for uncertainty quantification at every stage.
+
+## Architecture
+
+Monte Carlo simulation → CUDA C++ preprocessing (10× faster than the CPU pipeline it replaced) → PySR symbolic regression → discovered analytical form, cross-checked against jackknife/bootstrap error bands.
+
+## Results
+
+93%+ accuracy recovering the analytical structure across 30,000+ observables, with GPU-accelerated CUDA C++ cutting processing time 10× and 75,000+ CPU/GPU hours run on NERSC Perlmutter.
+
+## Stack
+
+CUDA C++ · PySR · SLURM · Python · NERSC Perlmutter · Jackknife/bootstrap uncertainty quantification

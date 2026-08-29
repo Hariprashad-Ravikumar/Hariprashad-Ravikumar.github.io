@@ -1,0 +1,321 @@
+{
+  "/images/hero/headshot": {
+    "source": "assets/raw/hero/headshot.jpg",
+    "originalWidth": 1538,
+    "originalHeight": 1924,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/hero/headshot-640.webp",
+        "bytes": 32368
+      },
+      {
+        "width": 960,
+        "path": "/images/hero/headshot-960.webp",
+        "bytes": 93178
+      },
+      {
+        "width": 1440,
+        "path": "/images/hero/headshot-1440.webp",
+        "bytes": 196156
+      },
+      {
+        "width": 1920,
+        "path": "/images/hero/headshot-1920.webp",
+        "bytes": 273406
+      }
+    ]
+  },
+  "/images/wd/hackathon-award": {
+    "source": "assets/raw/wd/hackathon-award.jpg",
+    "originalWidth": 4080,
+    "originalHeight": 3060,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/wd/hackathon-award-640.webp",
+        "bytes": 39748
+      },
+      {
+        "width": 960,
+        "path": "/images/wd/hackathon-award-960.webp",
+        "bytes": 70152
+      },
+      {
+        "width": 1440,
+        "path": "/images/wd/hackathon-award-1440.webp",
+        "bytes": 120260
+      },
+      {
+        "width": 1920,
+        "path": "/images/wd/hackathon-award-1920.webp",
+        "bytes": 178268
+      }
+    ]
+  },
+  "/images/wd/phd-expo": {
+    "source": "assets/raw/wd/phd-expo.jpg",
+    "originalWidth": 4000,
+    "originalHeight": 1868,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/wd/phd-expo-640.webp",
+        "bytes": 12626
+      },
+      {
+        "width": 960,
+        "path": "/images/wd/phd-expo-960.webp",
+        "bytes": 22308
+      },
+      {
+        "width": 1440,
+        "path": "/images/wd/phd-expo-1440.webp",
+        "bytes": 39254
+      },
+      {
+        "width": 1920,
+        "path": "/images/wd/phd-expo-1920.webp",
+        "bytes": 55876
+      }
+    ]
+  },
+  "/images/wd/san-jose-campus": {
+    "source": "assets/raw/wd/san-jose-campus.jpg",
+    "originalWidth": 4080,
+    "originalHeight": 3060,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/wd/san-jose-campus-640.webp",
+        "bytes": 63358
+      },
+      {
+        "width": 960,
+        "path": "/images/wd/san-jose-campus-960.webp",
+        "bytes": 138464
+      },
+      {
+        "width": 1440,
+        "path": "/images/wd/san-jose-campus-1440.webp",
+        "bytes": 309266
+      },
+      {
+        "width": 1920,
+        "path": "/images/wd/san-jose-campus-1920.webp",
+        "bytes": 531102
+      }
+    ]
+  },
+  "/images/wd/simulator-demo": {
+    "source": "assets/raw/wd/simulator-demo.jpg",
+    "originalWidth": 3060,
+    "originalHeight": 4080,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/wd/simulator-demo-640.webp",
+        "bytes": 40920
+      },
+      {
+        "width": 960,
+        "path": "/images/wd/simulator-demo-960.webp",
+        "bytes": 88926
+      },
+      {
+        "width": 1440,
+        "path": "/images/wd/simulator-demo-1440.webp",
+        "bytes": 182056
+      },
+      {
+        "width": 1920,
+        "path": "/images/wd/simulator-demo-1920.webp",
+        "bytes": 309134
+      }
+    ]
+  },
+  "/images/bundle/projects/ai-datascience-lab-cover": {
+    "source": "assets/bundle/projects/ai-datascience-lab-cover.png",
+    "originalWidth": 1920,
+    "originalHeight": 1080,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/bundle/projects/ai-datascience-lab-cover-640.webp",
+        "bytes": 9536
+      },
+      {
+        "width": 960,
+        "path": "/images/bundle/projects/ai-datascience-lab-cover-960.webp",
+        "bytes": 15352
+      },
+      {
+        "width": 1440,
+        "path": "/images/bundle/projects/ai-datascience-lab-cover-1440.webp",
+        "bytes": 25806
+      },
+      {
+        "width": 1920,
+        "path": "/images/bundle/projects/ai-datascience-lab-cover-1920.webp",
+        "bytes": 37988
+      }
+    ]
+  },
+  "/images/bundle/projects/haribot-cover": {
+    "source": "assets/bundle/projects/haribot-cover.png",
+    "originalWidth": 1920,
+    "originalHeight": 1080,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/bundle/projects/haribot-cover-640.webp",
+        "bytes": 8082
+      },
+      {
+        "width": 960,
+        "path": "/images/bundle/projects/haribot-cover-960.webp",
+        "bytes": 13368
+      },
+      {
+        "width": 1440,
+        "path": "/images/bundle/projects/haribot-cover-1440.webp",
+        "bytes": 22812
+      },
+      {
+        "width": 1920,
+        "path": "/images/bundle/projects/haribot-cover-1920.webp",
+        "bytes": 35132
+      }
+    ]
+  },
+  "/images/bundle/projects/latex-cv-cicd-cover": {
+    "source": "assets/bundle/projects/latex-cv-cicd-cover.png",
+    "originalWidth": 1920,
+    "originalHeight": 1080,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/bundle/projects/latex-cv-cicd-cover-640.webp",
+        "bytes": 9068
+      },
+      {
+        "width": 960,
+        "path": "/images/bundle/projects/latex-cv-cicd-cover-960.webp",
+        "bytes": 15176
+      },
+      {
+        "width": 1440,
+        "path": "/images/bundle/projects/latex-cv-cicd-cover-1440.webp",
+        "bytes": 25296
+      },
+      {
+        "width": 1920,
+        "path": "/images/bundle/projects/latex-cv-cicd-cover-1920.webp",
+        "bytes": 37720
+      }
+    ]
+  },
+  "/images/bundle/projects/neural-network-cover": {
+    "source": "assets/bundle/projects/neural-network-cover.png",
+    "originalWidth": 1920,
+    "originalHeight": 1080,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/bundle/projects/neural-network-cover-640.webp",
+        "bytes": 9408
+      },
+      {
+        "width": 960,
+        "path": "/images/bundle/projects/neural-network-cover-960.webp",
+        "bytes": 15746
+      },
+      {
+        "width": 1440,
+        "path": "/images/bundle/projects/neural-network-cover-1440.webp",
+        "bytes": 25930
+      },
+      {
+        "width": 1920,
+        "path": "/images/bundle/projects/neural-network-cover-1920.webp",
+        "bytes": 38084
+      }
+    ]
+  },
+  "/images/bundle/projects/tmd-pipeline-cover": {
+    "source": "assets/bundle/projects/tmd-pipeline-cover.png",
+    "originalWidth": 1920,
+    "originalHeight": 1080,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/bundle/projects/tmd-pipeline-cover-640.webp",
+        "bytes": 9192
+      },
+      {
+        "width": 960,
+        "path": "/images/bundle/projects/tmd-pipeline-cover-960.webp",
+        "bytes": 15686
+      },
+      {
+        "width": 1440,
+        "path": "/images/bundle/projects/tmd-pipeline-cover-1440.webp",
+        "bytes": 26680
+      },
+      {
+        "width": 1920,
+        "path": "/images/bundle/projects/tmd-pipeline-cover-1920.webp",
+        "bytes": 38476
+      }
+    ]
+  },
+  "/images/bundle/projects/z2-lattice-cover": {
+    "source": "assets/bundle/projects/z2-lattice-cover.png",
+    "originalWidth": 1920,
+    "originalHeight": 1080,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/bundle/projects/z2-lattice-cover-640.webp",
+        "bytes": 9886
+      },
+      {
+        "width": 960,
+        "path": "/images/bundle/projects/z2-lattice-cover-960.webp",
+        "bytes": 16952
+      },
+      {
+        "width": 1440,
+        "path": "/images/bundle/projects/z2-lattice-cover-1440.webp",
+        "bytes": 27248
+      },
+      {
+        "width": 1920,
+        "path": "/images/bundle/projects/z2-lattice-cover-1920.webp",
+        "bytes": 40502
+      }
+    ]
+  },
+  "/images/bundle/og/card": {
+    "source": "assets/bundle/og/card.png",
+    "originalWidth": 1200,
+    "originalHeight": 630,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/bundle/og/card-640.webp",
+        "bytes": 13550
+      },
+      {
+        "width": 960,
+        "path": "/images/bundle/og/card-960.webp",
+        "bytes": 22072
+      },
+      {
+        "width": 1440,
+        "path": "/images/bundle/og/card-1440.webp",
+        "bytes": 34726
+      }
+    ]
+  }
+}
