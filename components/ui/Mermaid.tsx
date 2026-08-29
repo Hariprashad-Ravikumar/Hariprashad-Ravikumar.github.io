@@ -19,7 +19,7 @@ export default function Mermaid({ children }: { children: string }) {
   }, [children]);
 
   return (
-    <div className="flex justify-center my-10 overflow-x-auto w-full max-w-full" ref={ref}>
+    <div className="flex justify-center overflow-x-auto w-full max-w-full" ref={ref}>
       {children}
     </div>
   );

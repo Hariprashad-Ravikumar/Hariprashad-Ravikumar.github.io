@@ -1,0 +1,203 @@
+import Picture from "@/components/ui/Picture";
+import Mermaid from "@/components/ui/Mermaid";
+import ProjectsBalance from "@/components/content/ProjectsBalance";
+
+<div className="float-none sm:float-right ml-6 mb-4 mt-2 sm:max-w-[200px]">
+  <Picture
+    src="/images/wd/WD-IDCard"
+    alt="Western Digital ID Card"
+    width={1920}
+    height={1440}
+    className="rounded-xl shadow-sm border border-[var(--line)]"
+  />
+</div>
+
+As a Heat-Assisted Magnetic Recording (HAMR) modeling intern:
+
+* I delivered two high-impact projects: physics and statistical models for thermally activated HAMR, and contributed to R&D.
+* I helped the team understand, design, and fabricate the next generation of magnetic recording media, working alongside material scientists and test engineers.
+* I built recording models and thermal simulations to extract insights from experiments.
+* I also developed statistical models to uncover causal relationships in storage media performance.
+* I shipped the physics as NIMBLE, a production Dash/Plotly simulation platform packaged as a modular Python library, deployed on Kubernetes with Jenkins CI/CD and adopted by sputtering and media engineering teams, with 40+ active users across WD USA and Japan.
+
+This role sat at the intersection of data engineering, materials science, and physics.
+
+<div className="clear-both"></div>
+
+<div className="max-w-md mx-auto my-6">
+  <Picture
+    src="/images/wd/san-jose-campus"
+    alt="Hariprashad Ravikumar under the Western Digital Intern Summit welcome arch on the San Jose campus"
+    width={4080}
+    height={3060}
+    className="rounded-xl shadow-sm border border-[var(--line)] object-contain w-full h-auto"
+  />
+</div>
+
+## Projects
+
+During my internship at Western Digital, I delivered two high-impact HAMR projects: an analytical physics model for multi-write erasure, and NIMBLE, the simulation app built on top of it. Both carried equal weight in scope and impact.
+
+<div className="clear-both"></div>
+
+<ProjectsBalance />
+
+## 1. Physics Modeling
+
+The team needed to understand write behavior across multiple write cycles to reduce adjacent track erasure (ATI and xTI) in high-density storage, without relying solely on slow and expensive hardware experiments.
+
+I derived a closed-form analytical model of grain magnetization dynamics from first principles, connecting recording media properties to write behavior. Building on Néel–Arrhenius thermal switching and the Stoner–Wohlfarth model, this yielded expressions for switching time, noise power, and the probability of switching across multiple write cycles. I validated the model against Monte Carlo stochastic simulation and experimental spin-stand data on realistic L1₀ FePt grain ensembles.
+
+**Result:**
+* Engineers can now predict and reduce erasure computationally.
+* A peer-reviewed publication based on this work is currently in progress: "Ravikumar, H. et al. Analytical modeling of grain magnetization dynamics in Heat-Assisted Magnetic Recording. Manuscript in preparation for IEEE Transactions on Magnetics."
+
+## 2. NIMBLE Simulation App
+
+<div className="float-none sm:float-right ml-6 mb-4 mt-2 sm:max-w-[220px]">
+  <Picture
+    src="/images/wd/simulator-demo"
+    alt="NIMBLE Simulator interface running at Western Digital, blurred for confidentiality"
+    width={1440}
+    height={1920}
+    className="rounded-xl shadow-sm border border-[var(--line)] object-contain w-full h-auto"
+  />
+</div>
+
+The theoretical model needed to be accessible to the broader engineering team so they could evaluate recording performance directly from material parameters.
+
+I built and deployed an interactive physics simulator. The NIMBLE app is a Dash application backed by a modular Python physics library that calculates signal-to-noise ratios and other metrics in parallel.
+
+The application accelerates development cycles and removes a hardware-experiment step from the loop, significantly reducing testing costs.
+
+<div className="clear-both"></div>
+
+<div className="rounded-xl border border-[var(--line)] bg-[var(--surface-0)] p-4 shadow-sm my-6 w-full">
+  <Mermaid>
+  {`graph TD
+      %% Styling
+      classDef frontend fill:#eef2ff,stroke:#6366f1,stroke-width:2px;
+      classDef backend fill:#f0fdf4,stroke:#22c55e,stroke-width:2px;
+      classDef storage fill:#fffbeb,stroke:#f59e0b,stroke-width:2px;
+      classDef external fill:#f8fafc,stroke:#94a3b8,stroke-width:2px,stroke-dasharray: 5 5;
+      classDef devops fill:#fef2f2,stroke:#ef4444,stroke-width:2px;
+  
+      subgraph Inputs ["Input Layer (HAMR Media Properties)"]
+          M[Manual Input<br/>Engineers & Scientists]:::external
+          U[File Upload]:::external
+          A[Upstream WD NIMBLE App]:::external
+      end
+  
+      subgraph ClientSide ["Client-Side (Browser)"]
+          IDB[(IndexedDB<br/>Client-Side Storage)]:::storage
+          Dash[Dash Frontend]:::frontend
+          Fit[Statistical & Physics<br/>Data Fitting Engine]:::frontend
+          UI[Auto-populated<br/>Parameter UI]:::frontend
+          Plotly[Plotly Interactive<br/>Results View]:::frontend
+      end
+  
+      subgraph Backend ["Python Physics Backend"]
+          Engine[Analytical HAMR<br/>Switching Model]:::backend
+          Parallel[Parallel Computation<br/>Worker Pool]:::backend
+      end
+  
+      subgraph Output ["Outputs & Reporting"]
+          Export[Multi-format Reports<br/>Test Experiment Planning]:::external
+      end
+      
+      subgraph DevOps ["Infrastructure & Deployment"]
+          K8s[Kubernetes Cluster]:::devops
+          Jenkins[Jenkins CI/CD]:::devops
+      end
+  
+      %% Flow logic
+      A -- JSON Payload --> IDB
+      IDB -- Triggers New Tab --> Dash
+      Dash -- Reads Payload --> Fit
+      U --> Fit
+      Fit -- Auto-populates --> UI
+      M --> UI
+      
+      UI -- Simulation Request --> Engine
+      Engine --> Parallel
+      Parallel -- Calculates DCSNR & Metrics --> Plotly
+      
+      Plotly --> Export
+      
+      %% Infrastructure bindings
+      Jenkins -. Auto-Deploys .-> K8s
+      K8s -. Hosts .-> Backend
+      K8s -. Serves .-> ClientSide`}
+  </Mermaid>
+  <p className="mt-1 text-center text-xs text-[var(--ink-500)]">System architecture, input to output</p>
+</div>
+
+## Talks & Presentations
+
+<div className="float-none sm:float-right ml-6 mb-4 sm:max-w-sm flex flex-col gap-4">
+  <Picture
+    src="/images/wd/phd-expo"
+    alt="Presenting HAMR simulation research at the Western Digital PhD Expo"
+    width={1920}
+    height={897}
+    className="rounded-xl shadow-sm border border-[var(--line)] object-contain w-full h-auto"
+  />
+  <Picture
+    src="/images/wd/phd-expo2"
+    alt="Answering questions at the Western Digital PhD Expo"
+    width={1920}
+    height={1440}
+    className="rounded-xl shadow-sm border border-[var(--line)] object-contain w-full h-auto"
+  />
+</div>
+
+I shared key results with the broader team and presented my simulation research at the Western Digital PhD Expo. All talks below are WD Confidential and were held at Western Digital, San Jose, CA, USA, unless noted otherwise.
+
+* **PhD Expo 2026** (Aug 2026) — "HAMR THMap Modeling & Simulation: The NIMBLE DCSNR Simulator App," to 40+ senior technologists, subject matter experts, and PhD interns
+* **Interlock for Media Characterization Meeting** (Aug 2026) — "DC-SNR Physics Simulator App NIMBLE and Multiple-Write HAMR Temperature and Field Map (THMap)," to 40+ sputtering engineers, material scientists, test engineers, and R&D engineers
+* **Interlock for Media Characterization Meeting** (Aug 2026) — "Multiple-Write HAMR THMap and Thermally Activated Switching Processes," to 30+ R&D engineers and technologists
+* **Interlock for Media Characterization Meeting** (July 2026) — "HAMR THMaps and Analytical Model for Log-Linearity of Write Temperature T_w with Number of Writes," to 30+ R&D engineers and technologists
+* **Interlock for Media Characterization Meeting** (July 2026) — "HAMR DC-SNR Physics Simulator App NIMBLE," to 30+ material scientists, test engineers, and subject matter experts
+* **Interlock for Media Properties Meeting with WD Japan** (July 2026) — "HAMR Analytical Model for Log-Linearity of Write Temperature T_w with Number of Writes," to 30+ R&D engineers and technologists
+
+<div className="clear-both"></div>
+
+## Impact
+
+The NIMBLE Simulation App is now actively used by over 40 engineers from the sputtering team, the media team, and R&D technologists across Western Digital sites in the United States and Japan.
+
+## Hackathon
+
+At the WD Intern Summit 2026 Hackathon in San Jose, our team won the "Wildest Idea" award. We built a fully working, scalable 3D browser-based game from scratch in just a few hours.
+
+<div className="float-none sm:float-right ml-6 mb-4 mt-2 sm:max-w-[256px]">
+  <Picture
+    src="/images/wd/hackathon-award"
+    alt="Hackathon team winning the Wildest Idea award"
+    width={1920}
+    height={1440}
+    className="rounded-xl shadow-sm border border-[var(--line)] object-contain w-full h-auto"
+  />
+</div>
+
+**WD Aquarius** is a first-person robotic shark exploration game that runs entirely in the browser. We built it using:
+- **Three.js / WebGL** for real-time 3D rendering
+- **Simplex Noise** for procedural terrain and ocean generation
+- **Pointer Lock API** for physics-based first-person swim controls with velocity and drag simulation
+- **Web Audio API** for an immersive underwater soundscape
+- **HTML / CSS / JavaScript / TypeScript** for a custom sci-fi HUD featuring live telemetry, sonar, and depth tracking
+- **Vite** for bundling and the local development server
+
+We chose not to use engines like Unity or Unreal, proving that the ambitious scope was possible with native web technologies.
+
+<div className="clear-both"></div>
+
+## Acknowledgements
+
+The internship exceeded my expectations. I left having built tools actively used by the team, contributed to R&D, and prepared a publication. 
+
+I am grateful to my managers and mentors, Richard Brockie and Pierre-Olivier Jubert. They scoped my project clearly from day one, provided the resources I needed, and included me in staff meetings and weekly HAMR physics team discussions. They supported and challenged me, making me feel like a full-time engineer. Thank you both.
+
+## Stack
+
+Python · Dash · Plotly · IndexedDB · Kubernetes · Jenkins · NumPy/SciPy · Monte Carlo validation · Three.js (Hackathon)

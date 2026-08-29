@@ -26,6 +26,60 @@
       }
     ]
   },
+  "/images/wd/WD-IDCard": {
+    "source": "assets/raw/wd/WD-IDCard.jpg",
+    "originalWidth": 2448,
+    "originalHeight": 3784,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/wd/WD-IDCard-640.webp",
+        "bytes": 31704
+      },
+      {
+        "width": 960,
+        "path": "/images/wd/WD-IDCard-960.webp",
+        "bytes": 54048
+      },
+      {
+        "width": 1440,
+        "path": "/images/wd/WD-IDCard-1440.webp",
+        "bytes": 101588
+      },
+      {
+        "width": 1920,
+        "path": "/images/wd/WD-IDCard-1920.webp",
+        "bytes": 184514
+      }
+    ]
+  },
+  "/images/wd/WD_Logo": {
+    "source": "assets/raw/wd/WD_Logo.jpg",
+    "originalWidth": 2722,
+    "originalHeight": 857,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/wd/WD_Logo-640.webp",
+        "bytes": 5396
+      },
+      {
+        "width": 960,
+        "path": "/images/wd/WD_Logo-960.webp",
+        "bytes": 7642
+      },
+      {
+        "width": 1440,
+        "path": "/images/wd/WD_Logo-1440.webp",
+        "bytes": 12230
+      },
+      {
+        "width": 1920,
+        "path": "/images/wd/WD_Logo-1920.webp",
+        "bytes": 15978
+      }
+    ]
+  },
   "/images/wd/hackathon-award": {
     "source": "assets/raw/wd/hackathon-award.jpg",
     "originalWidth": 4080,
@@ -80,6 +134,33 @@
       }
     ]
   },
+  "/images/wd/phd-expo2": {
+    "source": "assets/raw/wd/phd-expo2.jpg",
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/wd/phd-expo2-640.webp",
+        "bytes": 25768
+      },
+      {
+        "width": 960,
+        "path": "/images/wd/phd-expo2-960.webp",
+        "bytes": 48296
+      },
+      {
+        "width": 1440,
+        "path": "/images/wd/phd-expo2-1440.webp",
+        "bytes": 91884
+      },
+      {
+        "width": 1920,
+        "path": "/images/wd/phd-expo2-1920.webp",
+        "bytes": 141444
+      }
+    ]
+  },
   "/images/wd/san-jose-campus": {
     "source": "assets/raw/wd/san-jose-campus.jpg",
     "originalWidth": 4080,
@@ -131,60 +212,6 @@
         "width": 1920,
         "path": "/images/wd/simulator-demo-1920.webp",
         "bytes": 309134
-      }
-    ]
-  },
-  "/images/bundle/projects/ai-datascience-lab-cover": {
-    "source": "assets/bundle/projects/ai-datascience-lab-cover.png",
-    "originalWidth": 1920,
-    "originalHeight": 1080,
-    "variants": [
-      {
-        "width": 640,
-        "path": "/images/bundle/projects/ai-datascience-lab-cover-640.webp",
-        "bytes": 9536
-      },
-      {
-        "width": 960,
-        "path": "/images/bundle/projects/ai-datascience-lab-cover-960.webp",
-        "bytes": 15352
-      },
-      {
-        "width": 1440,
-        "path": "/images/bundle/projects/ai-datascience-lab-cover-1440.webp",
-        "bytes": 25806
-      },
-      {
-        "width": 1920,
-        "path": "/images/bundle/projects/ai-datascience-lab-cover-1920.webp",
-        "bytes": 37988
-      }
-    ]
-  },
-  "/images/bundle/projects/haribot-cover": {
-    "source": "assets/bundle/projects/haribot-cover.png",
-    "originalWidth": 1920,
-    "originalHeight": 1080,
-    "variants": [
-      {
-        "width": 640,
-        "path": "/images/bundle/projects/haribot-cover-640.webp",
-        "bytes": 8082
-      },
-      {
-        "width": 960,
-        "path": "/images/bundle/projects/haribot-cover-960.webp",
-        "bytes": 13368
-      },
-      {
-        "width": 1440,
-        "path": "/images/bundle/projects/haribot-cover-1440.webp",
-        "bytes": 22812
-      },
-      {
-        "width": 1920,
-        "path": "/images/bundle/projects/haribot-cover-1920.webp",
-        "bytes": 35132
       }
     ]
   },
