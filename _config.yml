@@ -2,3 +2,27 @@ title: Hariprashad Ravikumar
 url: "https://hariprashad-ravikumar.github.io"
 plugins:
   - jekyll-sitemap
+
+# Next.js rebuild in progress (see PLAN.md). Jekyll must ignore all of it
+# until Phase 6 cutover, when GitHub Pages switches to the Actions build.
+exclude:
+  - app
+  - components
+  - content
+  - lib
+  - scripts
+  - public
+  - node_modules
+  - assets/raw
+  - PLAN.md
+  - package.json
+  - package-lock.json
+  - next.config.mjs
+  - next.config.ts
+  - next-env.d.ts
+  - tsconfig.json
+  - postcss.config.mjs
+  - eslint.config.mjs
+  - AGENTS.md
+  - CLAUDE.md
+  - README-next.md

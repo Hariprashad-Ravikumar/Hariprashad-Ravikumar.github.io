@@ -1,0 +1,53 @@
+import Container from "./Container";
+
+const LINKS = [
+  { label: "Email", href: "mailto:hari1729@nmsu.edu" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/hariprashad-ravikumar/" },
+  { label: "GitHub", href: "https://github.com/Hariprashad-Ravikumar" },
+  { label: "Google Scholar", href: null }, // TODO(hari): profile not yet created
+  { label: "ORCID", href: "https://orcid.org/0000-0002-3276-852X" },
+  { label: "arXiv", href: "https://arxiv.org/abs/2601.19251" },
+  { label: "Handshake", href: "https://app.joinhandshake.com/profiles/hariprashad-ravikumar" },
+];
+
+export default function Footer() {
+  return (
+    <footer className="border-t border-[var(--line)] py-10">
+      <Container>
+        <div className="flex flex-col gap-4 text-sm text-[var(--ink-500)]">
+          <p>© 2026 Hariprashad Ravikumar</p>
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-4 gap-y-2">
+            {LINKS.map((link) =>
+              link.href ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="hover:text-[var(--brand-900)] hover:underline"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <span key={link.label} className="opacity-50">
+                  {link.label}
+                </span>
+              ),
+            )}
+          </nav>
+          <p>
+            Built with Next.js.{" "}
+            <a
+              href="https://github.com/Hariprashad-Ravikumar/Hariprashad-Ravikumar.github.io"
+              className="hover:text-[var(--brand-900)] hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source on GitHub.
+            </a>
+          </p>
+        </div>
+      </Container>
+    </footer>
+  );
+}

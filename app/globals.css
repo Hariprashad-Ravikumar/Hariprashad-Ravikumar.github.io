@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+:root {
+  --ink-900: #0a0e27;
+  --ink-700: #1e2547;
+  --ink-500: #4a5578;
+  --ink-400: #6b7396;
+
+  --brand-900: #00004c;
+  --brand-700: #111a6b;
+  --brand-500: #2e4fd6;
+  --brand-300: #8fa4ff;
+
+  --accent-500: #00c2b2;
+  --accent-400: #2de0cf;
+
+  --aurora-1: #7dd3d8;
+  --aurora-2: #a5b4fc;
+  --aurora-3: #c4b5fd;
+
+  --surface-50: #fbfcfe;
+  --surface-0: #ffffff;
+  --line: #e3e7f2;
+
+  --shadow-sm: 0 1px 2px rgba(10, 14, 39, 0.06), 0 2px 8px rgba(10, 14, 39, 0.04);
+  --shadow-md: 0 4px 12px rgba(10, 14, 39, 0.08), 0 12px 32px rgba(10, 14, 39, 0.06);
+  --shadow-lg: 0 12px 24px rgba(10, 14, 39, 0.12), 0 24px 64px rgba(10, 14, 39, 0.1);
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+@theme inline {
+  --color-ink-900: var(--ink-900);
+  --color-ink-700: var(--ink-700);
+  --color-ink-500: var(--ink-500);
+  --color-ink-400: var(--ink-400);
+  --color-brand-900: var(--brand-900);
+  --color-brand-700: var(--brand-700);
+  --color-brand-500: var(--brand-500);
+  --color-brand-300: var(--brand-300);
+  --color-accent-500: var(--accent-500);
+  --color-accent-400: var(--accent-400);
+  --color-surface-50: var(--surface-50);
+  --color-surface-0: var(--surface-0);
+  --color-line: var(--line);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--surface-50);
+  color: var(--ink-900);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Type scale (§4) */
+.text-display {
+  font-size: clamp(40px, 6vw, 68px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.text-h1 {
+  font-size: clamp(32px, 4.2vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.text-h2 {
+  font-size: clamp(24px, 3.2vw, 34px);
+  font-weight: 700;
+  line-height: 1.15;
+}
+.text-h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.text-body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+.text-small {
+  font-size: 13.5px;
+  font-weight: 400;
+}
+.text-mono-metric {
+  font-family: var(--font-mono), monospace;
+  font-size: clamp(28px, 3.6vw, 40px);
+  font-weight: 700;
+}
+.text-eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.prose-measure {
+  max-width: 68ch;
+}
+
+/* Body text is always left-aligned, never justified. */
+p {
+  text-align: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
