@@ -14,6 +14,11 @@
 
   --accent-500: #00c2b2;
   --accent-400: #2de0cf;
+  /* Text-safe variant of accent-500 — 2.19:1 against --surface-50 fails WCAG
+     AA (needs 4.5:1 for small text); this hits 5.1:1. Use for any accent
+     text on a light background (eyebrows, links); keep accent-500 for
+     decorative/UI use (node dots, spotlight glow, dark-background text). */
+  --accent-700: #007a6e;
 
   --aurora-1: #7dd3d8;
   --aurora-2: #a5b4fc;

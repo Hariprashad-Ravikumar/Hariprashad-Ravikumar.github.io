@@ -29,7 +29,9 @@ export default function Footer() {
                   {link.label}
                 </a>
               ) : (
-                <span key={link.label} className="opacity-50">
+                // Not opacity-reduced — that drops contrast below WCAG AA.
+                // Italic conveys "unavailable" without losing legibility.
+                <span key={link.label} aria-disabled="true" className="italic">
                   {link.label}
                 </span>
               ),

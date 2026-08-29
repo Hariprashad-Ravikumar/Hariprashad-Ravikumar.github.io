@@ -1,6 +1,14 @@
 import Container from "@/components/layout/Container";
 import PubEntry from "@/components/content/PubEntry";
 import { CONFERENCE, IN_PREPARATION, PEER_REVIEWED, THESES } from "@/content/publications";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Publications — Hariprashad Ravikumar",
+  description:
+    "Peer-reviewed work including Physical Review D 113, 096018 (2026), plus manuscripts in preparation and conference proceedings.",
+  path: "/publications/",
+});
 
 export default function PublicationsPage() {
   return (

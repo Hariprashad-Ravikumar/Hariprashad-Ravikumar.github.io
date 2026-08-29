@@ -14,7 +14,7 @@ export default function StyleguidePage() {
     <Container>
       <div className="flex flex-col gap-16 py-16">
         <section>
-          <p className="text-eyebrow text-[var(--accent-500)]">Styleguide</p>
+          <p className="text-eyebrow text-[var(--accent-700)]">Styleguide</p>
           <h1 className="text-display mt-2">Component review</h1>
         </section>
 

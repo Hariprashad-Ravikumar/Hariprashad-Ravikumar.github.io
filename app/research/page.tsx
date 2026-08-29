@@ -4,6 +4,14 @@ import Card from "@/components/ui/Card";
 import Tag from "@/components/ui/Tag";
 import FigureCluster from "@/components/media/FigureCluster";
 import { METRICS } from "@/content/metrics";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Research — Lattice QCD, HPC & Physics-Informed ML",
+  description:
+    "Lattice QCD calculations of TMDs, nucleon EDMs with Los Alamos, and conformal algebra — GPU-accelerated HPC and symbolic regression.",
+  path: "/research/",
+});
 
 const THRUSTS = [
   {

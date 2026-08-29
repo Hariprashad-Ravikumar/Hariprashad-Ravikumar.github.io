@@ -67,6 +67,7 @@ export default function Hero() {
             width={640}
             height={800}
             priority
+            sizes="(min-width: 768px) 384px, 90vw"
             className="aspect-[4/5] w-full object-cover"
           />
         </div>

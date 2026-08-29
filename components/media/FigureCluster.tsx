@@ -38,10 +38,11 @@ export default function FigureCluster({ figures }: { figures: Figure[] }) {
                 alt={fig.alt}
                 width={1600}
                 height={1000}
+                sizes="(min-width: 640px) 50vw, 100vw"
                 className="w-full transition-transform duration-200 group-hover:scale-[1.02]"
               />
             </div>
-            <p className="text-eyebrow mt-2 text-[var(--accent-500)]">{fig.step}</p>
+            <p className="text-eyebrow mt-2 text-[var(--accent-700)]">{fig.step}</p>
             <p className="text-h3 mt-0.5 text-[var(--ink-900)]">{fig.title}</p>
             <p className="text-small mt-1 text-[var(--ink-500)]">{fig.desc}</p>
           </button>

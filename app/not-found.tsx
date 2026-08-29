@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <Container>
       <div className="py-24 text-center">
-        <p className="text-eyebrow text-[var(--accent-500)]">404</p>
+        <p className="text-eyebrow text-[var(--accent-700)]">404</p>
         <h1 className="text-h1 mt-2 text-[var(--ink-900)]">
           This page drifted off the lattice.
         </h1>

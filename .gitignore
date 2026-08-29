@@ -4,6 +4,10 @@
 /out/
 next-env.d.ts
 
+# Copied into place by `npm run build` from the canonical cv/CV_HARI.pdf
+# (owned by the separate LaTeX CI/CD repo) — never commit the copy.
+/public/cv/
+
 # misc
 .DS_Store
 *.pem

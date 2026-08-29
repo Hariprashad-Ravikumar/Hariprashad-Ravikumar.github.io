@@ -7,7 +7,7 @@ export default function PublicationHighlight() {
 
   return (
     <section className="py-16">
-      <p className="text-eyebrow text-[var(--accent-500)]">Peer-reviewed · Physical Review D</p>
+      <p className="text-eyebrow text-[var(--accent-700)]">Peer-reviewed · Physical Review D</p>
       <h2 className="text-h2 prose-measure mt-2 text-[var(--ink-900)]">{pub.title}</h2>
       <p className="text-body prose-measure mt-3 text-[var(--ink-500)]">
         {pub.authors} — {pub.venue}

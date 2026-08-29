@@ -1,6 +1,14 @@
 import Container from "@/components/layout/Container";
 import ProjectCard from "@/components/content/ProjectCard";
 import { PROJECTS } from "@/content/projects";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Projects — Simulation, ML & Scientific Software",
+  description:
+    "NIMBLE HAMR simulator, GPU-accelerated lattice QCD ML pipeline, full-stack forecasting apps, and more.",
+  path: "/projects/",
+});
 
 export default function ProjectsPage() {
   return (

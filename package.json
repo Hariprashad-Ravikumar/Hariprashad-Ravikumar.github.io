@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && touch out/.nojekyll",
+    "build": "mkdir -p public/cv && cp cv/CV_HARI.pdf public/cv/CV_HARI.pdf && next build && touch out/.nojekyll",
     "start": "next start",
     "lint": "eslint",
     "optimize:images": "node scripts/optimize-images.mjs"

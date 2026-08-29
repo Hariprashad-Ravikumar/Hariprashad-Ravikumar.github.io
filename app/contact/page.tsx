@@ -2,6 +2,14 @@ import Container from "@/components/layout/Container";
 import { LinkButton } from "@/components/ui/Button";
 import { CONTACT } from "@/content/cv";
 import { METRICS } from "@/content/metrics";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Contact — Hariprashad Ravikumar",
+  description:
+    "Graduating December 2026 and interviewing for Research Scientist and ML Engineer roles in the SF Bay Area.",
+  path: "/contact/",
+});
 
 const LINKS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/hariprashad-ravikumar/" },

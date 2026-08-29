@@ -47,7 +47,7 @@ export default function WDSpotlight() {
 
   return (
     <section className="py-16">
-      <p className="text-eyebrow text-[var(--accent-500)]">
+      <p className="text-eyebrow text-[var(--accent-700)]">
         Western Digital · San Jose, CA · Summer 2026
       </p>
       <div className="mt-2">
@@ -115,6 +115,7 @@ export default function WDSpotlight() {
               alt={item.alt}
               width={800}
               height={800}
+              sizes="(min-width: 640px) 33vw, 50vw"
               className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
             />
             <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/0 to-black/0 p-3 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
