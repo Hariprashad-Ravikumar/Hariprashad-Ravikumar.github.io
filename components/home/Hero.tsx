@@ -34,7 +34,7 @@ export default function Hero() {
         <p className="text-body prose-measure mt-6 text-[var(--ink-700)]">
           I turn large-scale physics simulations into software that engineers actually use. At Western
           Digital I derived closed-form models for heat-assisted magnetic recording from first
-          principles and shipped NIMBLE, the simulator that team now runs across sites in the US and
+          principles and shipped NIMBLE, the simulator that the team now runs across sites in the US and
           Japan.
         </p>
         <p className="text-body prose-measure mt-4 text-[var(--ink-700)]">
