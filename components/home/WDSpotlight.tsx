@@ -6,6 +6,7 @@ import Tag from "@/components/ui/Tag";
 import { LinkButton } from "@/components/ui/Button";
 import Picture from "@/components/ui/Picture";
 import Lightbox from "@/components/ui/Lightbox";
+import Section from "@/components/layout/Section";
 
 const MOSAIC = [
   {
@@ -46,7 +47,7 @@ export default function WDSpotlight() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-16">
+    <Section>
       <p className="text-eyebrow text-[var(--accent-700)]">
         Western Digital · San Jose, CA · Summer 2026
       </p>
@@ -94,7 +95,7 @@ export default function WDSpotlight() {
       </div>
 
       <div className="mt-6 flex flex-wrap gap-3">
-        <LinkButton href="/projects/nimble/" variant="primary">
+        <LinkButton href="/projects/wd-internship-2026/" variant="primary">
           Read the case study →
         </LinkButton>
         <LinkButton href="/cv/" variant="secondary">
@@ -108,7 +109,7 @@ export default function WDSpotlight() {
             key={item.src}
             type="button"
             onClick={() => setOpenIndex(i)}
-            className={`group relative overflow-hidden rounded-[var(--r-sm)] border border-[var(--line)] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-500)] ${item.aspect} ${item.span}`}
+            className={`group relative overflow-hidden rounded-[var(--r-sm)] border border-[var(--glass-border)] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-500)] ${item.aspect} ${item.span}`}
           >
             <Picture
               src={item.src}
@@ -141,6 +142,6 @@ export default function WDSpotlight() {
           />
         )}
       </Lightbox>
-    </section>
+    </Section>
   );
 }

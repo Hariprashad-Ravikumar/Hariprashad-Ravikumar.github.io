@@ -1,9 +1,10 @@
 import Tag from "@/components/ui/Tag";
 import { TECHNICAL_SKILLS } from "@/content/cv";
+import Section from "@/components/layout/Section";
 
 export default function TechStack() {
   return (
-    <section className="py-16">
+    <Section>
       <h2 className="text-h2 text-[var(--ink-900)]">Tech stack</h2>
       <div className="mt-6 flex flex-col gap-4">
         {TECHNICAL_SKILLS.map((group) => (
@@ -17,6 +18,6 @@ export default function TechStack() {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

@@ -22,18 +22,18 @@ const LINKS = [
 export default function ContactPage() {
   return (
     <Container>
-      <div className="py-24">
+      <div className="py-14 md:py-20">
         <h1 className="text-h1 text-[var(--ink-900)]">Get in touch</h1>
-        <p className="text-h3 prose-measure mt-3 font-normal text-[var(--ink-500)]">
+        <p className="text-h3 prose-measure mt-2 font-normal text-[var(--ink-500)]">
           I&apos;m graduating in {METRICS.graduation} and interviewing now.
         </p>
-        <p className="text-body prose-measure mt-4 text-[var(--ink-700)]">
+        <p className="text-body prose-measure mt-3 text-[var(--ink-700)]">
           I&apos;m looking for Research Scientist, Applied/ML Scientist, HPC & Scientific Computing
           Engineer, or Software Engineer roles in the SF Bay Area. Authorized to work in the U.S.
           under STEM OPT; open to H-1B sponsorship.
         </p>
 
-        <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium">
+        <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium">
           <a href={`mailto:${CONTACT.email}`} className="text-[var(--brand-500)] hover:underline">
             {CONTACT.email}
           </a>
@@ -50,13 +50,13 @@ export default function ContactPage() {
           ))}
         </div>
 
-        <div className="mt-8">
+        <div className="mt-6">
           <LinkButton href={`mailto:${CONTACT.email}`} variant="primary">
             Email me
           </LinkButton>
         </div>
 
-        <div className="text-small mt-12 text-[var(--ink-500)]">
+        <div className="text-small mt-8 text-[var(--ink-500)]">
           {CONTACT.lines.map((line) => (
             <p key={line}>{line}</p>
           ))}

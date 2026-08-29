@@ -14,9 +14,9 @@ export const metadata = buildMetadata({
 export default function TalksPage() {
   return (
     <Container>
-      <div className="py-16">
+      <div className="py-10 md:py-14">
         <h1 className="text-h1 text-[var(--ink-900)]">Talks</h1>
-        <div className="mt-8">
+        <div className="mt-6">
           <TalkList />
         </div>
       </div>

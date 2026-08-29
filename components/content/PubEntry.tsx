@@ -2,7 +2,7 @@ import type { Publication } from "@/content/publications";
 
 export default function PubEntry({ pub }: { pub: Publication }) {
   return (
-    <li className="border-t border-[var(--line)] py-5">
+    <li className="border-t border-[var(--glass-border)] py-4">
       <p className="text-body text-[var(--ink-900)]">
         {pub.authors} <span className="font-semibold">{pub.title}</span> {pub.venue}
       </p>

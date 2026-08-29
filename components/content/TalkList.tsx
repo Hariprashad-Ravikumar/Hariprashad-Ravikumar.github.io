@@ -38,7 +38,7 @@ export default function TalkList() {
           className={`rounded-full border px-3 py-1.5 text-sm font-medium transition-colors ${
             active === null
               ? "border-[var(--brand-900)] bg-[var(--brand-900)] text-white"
-              : "border-[var(--line)] text-[var(--ink-700)] hover:bg-[var(--surface-50)]"
+              : "border-[var(--glass-border)] text-[var(--ink-700)] hover:bg-[var(--surface-50)]"
           }`}
         >
           All
@@ -51,7 +51,7 @@ export default function TalkList() {
             className={`rounded-full border px-3 py-1.5 text-sm font-medium transition-colors ${
               active === topic
                 ? "border-[var(--brand-900)] bg-[var(--brand-900)] text-white"
-                : "border-[var(--line)] text-[var(--ink-700)] hover:bg-[var(--surface-50)]"
+                : "border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--ink-700)] backdrop-blur-[var(--glass-blur-sm)] hover:bg-[var(--glass-bg-heavy)]"
             }`}
           >
             {topic}
@@ -59,13 +59,13 @@ export default function TalkList() {
         ))}
       </div>
 
-      <div className="mt-8 flex flex-col gap-10">
+      <div className="mt-6 flex flex-col gap-8">
         {Array.from(byYear.entries()).map(([year, talks]) => (
           <div key={year}>
             <h2 className="text-h3 text-[var(--ink-500)]">{year}</h2>
-            <ul className="mt-3 flex flex-col gap-4">
+            <ul className="mt-3 flex flex-col gap-2">
               {talks.map((talk) => (
-                <li key={`${talk.date}-${talk.title}`} className="border-t border-[var(--line)] pt-4">
+                <li key={`${talk.date}-${talk.title}`} className="border-t border-[var(--glass-border)] pt-3">
                   <p className="text-body text-[var(--ink-900)]">
                     <strong>({talk.date})</strong>{" "}
                     {talk.href ? (

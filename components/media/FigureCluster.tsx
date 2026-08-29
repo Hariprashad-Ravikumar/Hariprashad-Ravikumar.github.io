@@ -32,7 +32,7 @@ export default function FigureCluster({ figures }: { figures: Figure[] }) {
             onClick={() => setOpenIndex(i)}
             className="group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-500)]"
           >
-            <div className="overflow-hidden rounded-[var(--r-sm)] border border-[var(--line)]">
+            <div className="overflow-hidden rounded-[var(--r-sm)] border border-[var(--glass-border)]">
               <Picture
                 src={fig.src}
                 alt={fig.alt}

@@ -29,7 +29,7 @@ export const metadata = buildMetadata({
 export default function CVPage() {
   return (
     <Container>
-      <div className="flex flex-col gap-8 py-16 lg:flex-row lg:gap-12">
+      <div className="flex flex-col gap-8 py-10 md:py-14 lg:flex-row lg:gap-12">
         <CVSideNav />
 
         <div className="min-w-0 flex-1">
@@ -73,7 +73,7 @@ export default function CVPage() {
             <table className="w-full text-left">
               <tbody>
                 {EDUCATION.map((row) => (
-                  <tr key={row.degree} className="border-t border-[var(--line)] first:border-t-0">
+                  <tr key={row.degree} className="border-t border-[var(--glass-border)] first:border-t-0">
                     <td className="py-2 pr-4 text-sm text-[var(--ink-500)]">{row.dates}</td>
                     <td className="py-2 pr-4 text-sm font-semibold text-[var(--ink-900)]">{row.degree}</td>
                     <td className="py-2 text-sm text-[var(--ink-700)]">{row.org}</td>
@@ -82,12 +82,12 @@ export default function CVPage() {
               </tbody>
             </table>
 
-            <div className="mt-4">
+            <div className="mt-3">
               <p className="text-h3 text-[var(--ink-900)]">Graduate-Level Coursework</p>
               <table className="mt-2 w-full text-left">
                 <tbody>
                   {COURSEWORK.map((row) => (
-                    <tr key={row.area} className="border-t border-[var(--line)] first:border-t-0">
+                    <tr key={row.area} className="border-t border-[var(--glass-border)] first:border-t-0">
                       <td className="py-2 pr-4 align-top text-sm font-semibold text-[var(--ink-900)]">
                         {row.area}
                       </td>
@@ -180,7 +180,7 @@ export default function CVPage() {
                 ))}
               </ul>
             </div>
-            <div className="mt-4">
+            <div className="mt-3">
               <p className="text-h3 text-[var(--ink-900)]">Workshops & Courses Attended</p>
               <ul className="mt-2 flex flex-col gap-3">
                 {WORKSHOPS.map((workshop) => (

@@ -12,7 +12,7 @@ const LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--line)] py-10">
+    <footer className="border-t border-[var(--glass-border)] py-8">
       <Container>
         <div className="flex flex-col gap-4 text-sm text-[var(--ink-500)]">
           <p>© 2026 Hariprashad Ravikumar</p>

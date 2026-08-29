@@ -47,9 +47,9 @@ const RESEARCH_FIGURES: Record<string, []> = {
 export default function ResearchPage() {
   return (
     <Container>
-      <div className="py-16">
+      <div className="py-10 md:py-14">
         <h1 className="text-h1 text-[var(--ink-900)]">Research</h1>
-        <p className="text-body prose-measure mt-4 text-[var(--ink-700)]">
+        <p className="text-body prose-measure mt-3 text-[var(--ink-700)]">
           I work at the intersection of quantum field theory and large-scale computation, using
           GPU-accelerated HPC and machine learning to extract physics from simulations that produce
           terabytes of noisy data.
@@ -57,7 +57,7 @@ export default function ResearchPage() {
 
         {/* §10.3: the full five-paragraph narrative from the live homepage, moved here verbatim,
             with one correction — "over 98% predictive accuracy" → METRICS.accuracy.value (93%+). */}
-        <div className="prose-measure mt-8 flex flex-col gap-4">
+        <div className="prose-measure mt-6 flex flex-col gap-4">
           <p className="text-body text-[var(--ink-700)]">
             I&apos;m a theoretical particle physics PhD candidate at New Mexico State University, USA,
             specializing in the application of GPU-accelerated high-performance computing (HPC) and
@@ -113,7 +113,7 @@ export default function ResearchPage() {
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="mt-7 grid grid-cols-1 gap-6 lg:grid-cols-3">
           {THRUSTS.map((thrust) => (
             <Card key={thrust.title} className="flex flex-col gap-3">
               <h2 className="text-h3 text-[var(--ink-900)]">{thrust.title}</h2>
@@ -129,7 +129,7 @@ export default function ResearchPage() {
           ))}
         </div>
 
-        <p className="mt-10">
+        <p className="mt-7">
           <Link href="/talks/" className="text-sm font-medium text-[var(--brand-500)] hover:underline">
             See all talks →
           </Link>

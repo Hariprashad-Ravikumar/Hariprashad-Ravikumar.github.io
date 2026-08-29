@@ -6,7 +6,7 @@ const BASE =
 const VARIANTS = {
   primary: "bg-[var(--brand-900)] text-white hover:opacity-90",
   secondary:
-    "border border-[var(--line)] bg-[var(--surface-0)] text-[var(--ink-900)] hover:bg-[var(--surface-50)]",
+    "border border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--ink-900)] backdrop-blur-[var(--glass-blur-sm)] hover:bg-[var(--glass-bg-heavy)]",
   ghost: "text-[var(--brand-500)] hover:underline",
 };
 

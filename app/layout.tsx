@@ -1,6 +1,6 @@
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import LatticeBackground from "@/components/bg/LatticeBackground";
+import FluidMeshBackground from "@/components/bg/FluidMeshBackground";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import PageTransition from "@/components/layout/PageTransition";
@@ -68,13 +68,13 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full`}
     >
-      <body className="flex min-h-full flex-col antialiased">
+      <body className="flex min-h-full flex-col antialiased" suppressHydrationWarning>
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_JSON_LD) }}
         />
-        <LatticeBackground />
+        <FluidMeshBackground />
         <Nav />
         <PageTransition>
           <main className="flex-1">{children}</main>

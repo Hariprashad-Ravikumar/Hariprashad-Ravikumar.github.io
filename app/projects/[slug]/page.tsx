@@ -1,24 +1,36 @@
 import { notFound } from "next/navigation";
 import Container from "@/components/layout/Container";
+import Picture from "@/components/ui/Picture";
 import { PROJECTS } from "@/content/projects";
 import { buildMetadata } from "@/lib/seo";
 
 const CASE_STUDIES = {
-  nimble: () => import("@/content/projects/nimble.mdx"),
+  "wd-internship-2026": () => import("@/content/projects/wd-internship-2026.mdx"),
   "tmd-pipeline": () => import("@/content/projects/tmd-pipeline.mdx"),
   "ai-datascience-lab": () => import("@/content/projects/ai-datascience-lab.mdx"),
 } as const;
 
 type CaseStudySlug = keyof typeof CASE_STUDIES;
 
-// §11 gives exact copy only for /projects/nimble; the other two case studies
-// compose title/description from their already-approved projects.ts entry
-// rather than invent new copy.
+// §11 gives exact copy only for /projects/wd-internship-2026; the other two
+// case studies compose title/description from their already-approved
+// projects.ts entry rather than invent new copy.
 const SEO_OVERRIDES: Partial<Record<CaseStudySlug, { title: string; description: string }>> = {
-  nimble: {
+  "wd-internship-2026": {
     title: "NIMBLE: HAMR DCSNR Simulator (Western Digital)",
     description:
       "Production Dash/Plotly simulation platform for heat-assisted magnetic recording, used by 30+ engineers across WD US and Japan sites.",
+  },
+};
+
+// §11: wd-internship-2026's h1 is a three-line title (two bold role lines, a
+// smaller plain-weight org line with an inline WD logo) rather than the
+// single-line title used by every other case study.
+const H1_OVERRIDES: Partial<Record<CaseStudySlug, { line1: string; line2: string; org: string }>> = {
+  "wd-internship-2026": {
+    line1: "Intern – Media Test Engineering",
+    line2: "(HAMR Modeling & Simulation)",
+    org: "Western Digital, San Jose, CA, USA",
   },
 };
 
@@ -51,11 +63,31 @@ export default async function ProjectCaseStudyPage({
 
   const project = PROJECTS.find((p) => p.slug === slug);
   const { default: CaseStudy } = await CASE_STUDIES[slug as CaseStudySlug]();
+  const h1Override = H1_OVERRIDES[slug as CaseStudySlug];
 
   return (
     <Container>
-      <article className="py-24">
-        <h1 className="text-h1 text-[var(--ink-900)]">{project?.title ?? slug}</h1>
+      <article className="py-14 md:py-20">
+        {h1Override ? (
+          <h1 className="text-h1 text-[var(--ink-900)]">
+            <span className="block font-bold">{h1Override.line1}</span>
+            <span className="block font-bold">{h1Override.line2}</span>
+            <span className="mt-2 flex items-center gap-2 text-lg font-normal text-[var(--ink-500)] sm:text-xl">
+              @
+              <Picture
+                src="/images/wd/WD_Logo"
+                alt="Western Digital logo"
+                width={2722}
+                height={857}
+                sizes="80px"
+                className="h-5 w-auto rounded sm:h-6"
+              />
+              {h1Override.org}
+            </span>
+          </h1>
+        ) : (
+          <h1 className="text-h1 text-[var(--ink-900)]">{project?.title ?? slug}</h1>
+        )}
         <div className="mt-8">
           <CaseStudy />
         </div>

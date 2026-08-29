@@ -6,6 +6,7 @@ import Picture from "@/components/ui/Picture";
 import Chip from "@/components/ui/Chip";
 import { LinkButton } from "@/components/ui/Button";
 import { METRICS } from "@/content/metrics";
+import Section from "@/components/layout/Section";
 
 export default function Hero() {
   const [parallax, setParallax] = useState(0);
@@ -17,9 +18,19 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="grid grid-cols-1 items-center gap-10 py-16 md:grid-cols-2 md:py-24">
+    <Section className="grid grid-cols-1 items-center gap-10 md:grid-cols-[3fr_2fr]">
       <div>
-        <h1 className="text-display text-[var(--ink-900)]">Hariprashad Ravikumar</h1>
+        <h1
+          className="whitespace-nowrap text-[var(--ink-900)]"
+          style={{
+            fontSize: "clamp(22px, 6.4vw, 64px)",
+            fontWeight: 700,
+            letterSpacing: "0.01em",
+            lineHeight: 1.05,
+          }}
+        >
+          Hariprashad Ravikumar
+        </h1>
         <p className="text-h3 mt-3 font-normal text-[var(--ink-500)]">
           Computational physicist building GPU-accelerated ML and simulation tools.
         </p>
@@ -58,7 +69,7 @@ export default function Hero() {
 
       <div className="flex justify-center md:justify-end">
         <div
-          className="w-full max-w-sm overflow-hidden rounded-[var(--r-lg)] border border-[var(--line)]"
+          className="w-full max-w-[260px] overflow-hidden rounded-[var(--r-lg)] border border-[var(--glass-border)]"
           style={{ transform: `translateY(${parallax}px)` }}
         >
           <Picture
@@ -67,11 +78,11 @@ export default function Hero() {
             width={640}
             height={800}
             priority
-            sizes="(min-width: 768px) 384px, 90vw"
+            sizes="(min-width: 768px) 260px, 60vw"
             className="aspect-[4/5] w-full object-cover"
           />
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

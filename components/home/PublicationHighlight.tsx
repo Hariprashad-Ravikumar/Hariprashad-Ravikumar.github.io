@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { LinkButton } from "@/components/ui/Button";
 import { PEER_REVIEWED } from "@/content/publications";
+import Section from "@/components/layout/Section";
 
 export default function PublicationHighlight() {
   const pub = PEER_REVIEWED[0];
 
   return (
-    <section className="py-16">
+    <Section>
       <p className="text-eyebrow text-[var(--accent-700)]">Peer-reviewed · Physical Review D</p>
       <h2 className="text-h2 prose-measure mt-2 text-[var(--ink-900)]">{pub.title}</h2>
       <p className="text-body prose-measure mt-3 text-[var(--ink-500)]">
@@ -28,6 +29,6 @@ export default function PublicationHighlight() {
           All publications →
         </Link>
       </div>
-    </section>
+    </Section>
   );
 }

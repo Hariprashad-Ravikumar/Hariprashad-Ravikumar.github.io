@@ -75,7 +75,9 @@ export default function Lightbox({
         >
           Close ✕
         </button>
-        {children}
+        <div className="rounded-[var(--r-lg)] border border-white/15 bg-white/5 p-2 backdrop-blur-[var(--glass-blur-md)]">
+          {children}
+        </div>
         {caption && <div className="mt-3 text-sm text-white/90">{caption}</div>}
       </div>
     </div>

@@ -33,7 +33,7 @@ export default function Nav() {
     <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${
         scrolled
-          ? "bg-[var(--surface-0)]/85 backdrop-blur-md border-b border-[var(--line)]"
+          ? "bg-[var(--glass-bg-heavy)] backdrop-blur-[var(--glass-blur-md)] border-b border-[var(--glass-border)]"
           : "bg-transparent"
       }`}
     >
@@ -95,9 +95,9 @@ export default function Nav() {
       </Container>
 
       {open && (
-        <div className="fixed inset-0 top-16 z-40 bg-[var(--surface-0)] md:hidden">
+        <div className="fixed inset-0 top-16 z-40 bg-[var(--glass-bg-heavy)] backdrop-blur-[var(--glass-blur-lg)] md:hidden">
           <Container>
-            <ul className="flex flex-col gap-2 py-8">
+            <ul className="flex flex-col gap-2 py-6">
               {LINKS.map((link) => (
                 <li key={link.href}>
                   <Link

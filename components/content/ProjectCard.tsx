@@ -8,7 +8,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <SpotlightCard className="flex h-full flex-col overflow-hidden">
       <ProjectCover {...project.cover} />
-      <div className="flex flex-1 flex-col gap-3 p-6">
+      <div className="flex flex-1 flex-col gap-2.5 p-5">
         <h3 className="text-h3 text-[var(--ink-900)]">{project.title}</h3>
         <p className="text-body flex-1 text-[var(--ink-500)]">{project.oneLiner}</p>
         <div className="flex flex-wrap gap-1.5">

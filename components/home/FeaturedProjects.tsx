@@ -1,8 +1,9 @@
 import Link from "next/link";
 import ProjectCard from "@/components/content/ProjectCard";
 import { PROJECTS } from "@/content/projects";
+import Section from "@/components/layout/Section";
 
-const FEATURED_SLUGS = ["nimble", "tmd-pipeline", "ai-datascience-lab"];
+const FEATURED_SLUGS = ["wd-internship-2026", "tmd-pipeline", "ai-datascience-lab"];
 
 export default function FeaturedProjects() {
   const featured = FEATURED_SLUGS.map((slug) => PROJECTS.find((p) => p.slug === slug)!).filter(
@@ -10,7 +11,7 @@ export default function FeaturedProjects() {
   );
 
   return (
-    <section className="py-16">
+    <Section>
       <div className="flex items-baseline justify-between">
         <h2 className="text-h2 text-[var(--ink-900)]">Featured projects</h2>
         <Link href="/projects/" className="text-sm font-medium text-[var(--brand-500)] hover:underline">
@@ -22,6 +23,6 @@ export default function FeaturedProjects() {
           <ProjectCard key={project.slug} project={project} />
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

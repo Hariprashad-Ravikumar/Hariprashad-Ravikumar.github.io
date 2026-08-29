@@ -13,10 +13,10 @@ export const metadata = buildMetadata({
 export default function PublicationsPage() {
   return (
     <Container>
-      <div className="py-16">
+      <div className="py-10 md:py-14">
         <h1 className="text-h1 text-[var(--ink-900)]">Publications</h1>
 
-        <section className="mt-10">
+        <section className="mt-7">
           <h2 className="text-h2 text-[var(--ink-900)]">Peer-Reviewed Publications</h2>
           <ul>
             {PEER_REVIEWED.map((pub) => (
@@ -25,33 +25,33 @@ export default function PublicationsPage() {
           </ul>
         </section>
 
-        <section className="mt-10">
+        <section className="mt-7">
           <h2 className="text-h2 text-[var(--ink-900)]">In Preparation</h2>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-2">
             {IN_PREPARATION.map((citation) => (
-              <li key={citation} className="text-body prose-measure border-t border-[var(--line)] pt-3 text-[var(--ink-700)]">
+              <li key={citation} className="text-body prose-measure border-t border-[var(--glass-border)] pt-2 text-[var(--ink-700)]">
                 {citation}
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="mt-10">
+        <section className="mt-7">
           <h2 className="text-h2 text-[var(--ink-900)]">Conference</h2>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-2">
             {CONFERENCE.map((entry) => (
-              <li key={entry.citation} className="text-body prose-measure border-t border-[var(--line)] pt-3 text-[var(--ink-700)]">
+              <li key={entry.citation} className="text-body prose-measure border-t border-[var(--glass-border)] pt-2 text-[var(--ink-700)]">
                 {entry.citation}
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="mt-10">
+        <section className="mt-7">
           <h2 className="text-h2 text-[var(--ink-900)]">Theses</h2>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-2">
             {THESES.map((entry) => (
-              <li key={entry.citation} className="text-body prose-measure border-t border-[var(--line)] pt-3 text-[var(--ink-700)]">
+              <li key={entry.citation} className="text-body prose-measure border-t border-[var(--glass-border)] pt-2 text-[var(--ink-700)]">
                 {entry.citation}
               </li>
             ))}

@@ -3,14 +3,14 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
-const LatticeCanvas = dynamic(() => import("./LatticeCanvas"), { ssr: false });
+const FluidMesh = dynamic(() => import("./FluidMesh"), { ssr: false });
 
 /**
- * Mounts the canvas lattice only after first paint (guardrail 2, §6) —
+ * Mounts the fluid-mesh canvas only after first paint (guardrail 2, §6) —
  * scheduled via requestIdleCallback so it never competes with initial
  * content render or LCP.
  */
-export default function LatticeBackground() {
+export default function FluidMeshBackground() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -34,5 +34,5 @@ export default function LatticeBackground() {
     );
   }
 
-  return <LatticeCanvas />;
+  return <FluidMesh />;
 }
