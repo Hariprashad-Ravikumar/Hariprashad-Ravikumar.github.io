@@ -1,19 +1,19 @@
 const ENTRIES = [
   {
     dates: "2026",
-    items: ["Western Digital — Modeling & Simulation Intern, San Jose CA"],
+    items: ["Western Digital: Modeling & Simulation Intern, San Jose CA"],
   },
   {
     dates: "2021–",
     items: [
-      "New Mexico State University — PhD Physics (Dr. Michael Engelhardt)",
-      "Los Alamos National Laboratory — nucleon EDM, CUDA/HPC (collaboration)",
-      "North Carolina State University — conformal algebra (Prof. Chueng-Ryong Ji)",
+      "New Mexico State University: PhD Physics (Dr. Michael Engelhardt)",
+      "Los Alamos National Laboratory: nucleon EDM, CUDA/HPC (collaboration)",
+      "North Carolina State University: conformal algebra (Prof. Chueng-Ryong Ji)",
     ],
   },
   {
     dates: "2019–2021",
-    items: ["NIT Jalandhar — MSc Physics"],
+    items: ["NIT Jalandhar: MSc Physics"],
   },
 ];
 

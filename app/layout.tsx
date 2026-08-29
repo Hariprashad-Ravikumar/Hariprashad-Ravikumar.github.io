@@ -22,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   ...buildMetadata({
-    title: "Hariprashad Ravikumar — Computational Physicist, GPU & ML Engineer",
+    title: "Hariprashad Ravikumar | Computational Physicist, GPU & ML Engineer",
     description:
       "PhD candidate building GPU-accelerated ML and simulation tools. Ex-Western Digital R&D. CUDA, HPC, physics-informed ML. Graduating Dec 2026.",
     path: "/",

@@ -4,20 +4,20 @@ const STAGES = [
     detail: "hands off a JSON payload · opens new tab · IndexedDB API",
   },
   {
-    label: "Frontend — Dash",
+    label: "Frontend: Dash",
     detail:
       "reads payload from IndexedDB · fits physics + statistical functions to the incoming data · auto-populates every input field · user can review / override parameters",
   },
   {
-    label: "Backend — physics engine (Python library)",
+    label: "Backend: physics engine (Python library)",
     detail: "analytical HAMR switching model · all sweeps computed in parallel",
   },
   {
-    label: "Results — interactive Plotly views",
+    label: "Results: interactive Plotly views",
     detail: "DCSNR + key recording metrics",
   },
   {
-    label: "Export — multi-format reports",
+    label: "Export: multi-format reports",
     detail: "shared internally to plan test experiments",
   },
 ];

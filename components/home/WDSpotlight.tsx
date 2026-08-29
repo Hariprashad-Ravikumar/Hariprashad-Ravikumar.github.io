@@ -55,7 +55,7 @@ export default function WDSpotlight() {
       </div>
 
       <h2 className="text-h2 prose-measure mt-4 text-[var(--ink-900)]">
-        I built NIMBLE — a HAMR simulator now used by 30+ engineers across WD&apos;s US and Japan
+        I built NIMBLE, a HAMR simulator now used by 30+ engineers across WD&apos;s US and Japan
         sites.
       </h2>
 
@@ -66,7 +66,7 @@ export default function WDSpotlight() {
       </p>
       <p className="text-body prose-measure mt-4 text-[var(--ink-700)]">
         I shipped the physics as NIMBLE, a production Dash/Plotly simulation platform packaged as a
-        modular Python library — deployed on Kubernetes with Jenkins CI/CD and adopted by sputtering
+        modular Python library, deployed on Kubernetes with Jenkins CI/CD and adopted by sputtering
         and media engineering teams.
       </p>
 
@@ -129,7 +129,7 @@ export default function WDSpotlight() {
       <Lightbox
         open={openIndex !== null}
         onClose={() => setOpenIndex(null)}
-        caption={openIndex !== null ? `${MOSAIC[openIndex].kicker} — ${MOSAIC[openIndex].caption}` : null}
+        caption={openIndex !== null ? `${MOSAIC[openIndex].kicker}: ${MOSAIC[openIndex].caption}` : null}
       >
         {openIndex !== null && (
           <Picture

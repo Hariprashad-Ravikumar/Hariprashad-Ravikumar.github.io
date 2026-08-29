@@ -20,7 +20,7 @@ import {
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "CV — Hariprashad Ravikumar",
+  title: "CV | Hariprashad Ravikumar",
   description:
     "Full curriculum vitae: Western Digital R&D, PhD in Physics at NMSU, publications, awards, and technical skills.",
   path: "/cv/",

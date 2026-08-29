@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 // §11 estimated 22; content/talks.ts documents why the real count is
 // TALKS.length (the live site's two talk sections don't overlap).
 export const metadata = buildMetadata({
-  title: "Talks — Hariprashad Ravikumar",
+  title: "Talks | Hariprashad Ravikumar",
   description: `${TALKS.length} research talks on conformal algebra, lattice QCD, quantum computing, and HAMR modeling.`,
   path: "/talks/",
 });

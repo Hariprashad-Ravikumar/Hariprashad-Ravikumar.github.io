@@ -16,7 +16,7 @@ type CaseStudySlug = keyof typeof CASE_STUDIES;
 // rather than invent new copy.
 const SEO_OVERRIDES: Partial<Record<CaseStudySlug, { title: string; description: string }>> = {
   nimble: {
-    title: "NIMBLE — HAMR DCSNR Simulator (Western Digital)",
+    title: "NIMBLE: HAMR DCSNR Simulator (Western Digital)",
     description:
       "Production Dash/Plotly simulation platform for heat-assisted magnetic recording, used by 30+ engineers across WD US and Japan sites.",
   },
@@ -31,7 +31,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
     const project = PROJECTS.find((p) => p.slug === slug);
     const override = SEO_OVERRIDES[slug as CaseStudySlug];
     return buildMetadata({
-      title: override?.title ?? `${project?.title ?? slug} — Case Study`,
+      title: override?.title ?? `${project?.title ?? slug} | Case Study`,
       description: override?.description ?? project?.oneLiner ?? "",
       path: `/projects/${slug}/`,
     });

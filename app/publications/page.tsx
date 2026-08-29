@@ -4,7 +4,7 @@ import { CONFERENCE, IN_PREPARATION, PEER_REVIEWED, THESES } from "@/content/pub
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Publications — Hariprashad Ravikumar",
+  title: "Publications | Hariprashad Ravikumar",
   description:
     "Peer-reviewed work including Physical Review D 113, 096018 (2026), plus manuscripts in preparation and conference proceedings.",
   path: "/publications/",

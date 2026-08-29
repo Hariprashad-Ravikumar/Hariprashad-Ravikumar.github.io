@@ -7,9 +7,9 @@ import { METRICS } from "@/content/metrics";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Research — Lattice QCD, HPC & Physics-Informed ML",
+  title: "Research | Lattice QCD, HPC & Physics-Informed ML",
   description:
-    "Lattice QCD calculations of TMDs, nucleon EDMs with Los Alamos, and conformal algebra — GPU-accelerated HPC and symbolic regression.",
+    "Lattice QCD calculations of TMDs, nucleon EDMs with Los Alamos, and conformal algebra using GPU-accelerated HPC and symbolic regression.",
   path: "/research/",
 });
 
@@ -50,7 +50,7 @@ export default function ResearchPage() {
       <div className="py-16">
         <h1 className="text-h1 text-[var(--ink-900)]">Research</h1>
         <p className="text-body prose-measure mt-4 text-[var(--ink-700)]">
-          I work at the intersection of quantum field theory and large-scale computation — using
+          I work at the intersection of quantum field theory and large-scale computation, using
           GPU-accelerated HPC and machine learning to extract physics from simulations that produce
           terabytes of noisy data.
         </p>
@@ -90,7 +90,7 @@ export default function ResearchPage() {
             Heat-Assisted Magnetic Recording (HAMR) technology. I developed a closed-form analytical
             model from first principles to evaluate write behavior and predict adjacent track erasure
             (ATI & xTI), with a peer-reviewed publication currently in progress. Simultaneously, I
-            built and deployed &ldquo;NIMBLE&rdquo;—a full-stack interactive simulation web
+            built and deployed &ldquo;NIMBLE&rdquo;, a full-stack interactive simulation web
             application using Python, Dash, and Kubernetes. Packaged as a modular Python library, this
             simulator is now actively used by cross-functional engineering teams to evaluate recording
             performance and accelerate hardware development cycles.

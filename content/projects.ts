@@ -22,7 +22,7 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     slug: "nimble",
-    title: "NIMBLE — HAMR DCSNR Simulator",
+    title: "NIMBLE: HAMR DCSNR Simulator",
     oneLiner:
       "Production simulation platform for heat-assisted magnetic recording, used by 30+ engineers across WD's US and Japan sites.",
     tags: ["Python", "Dash", "Plotly", "Kubernetes", "Jenkins"],
@@ -76,7 +76,7 @@ export const PROJECTS: Project[] = [
     slug: "haribot",
     title: "HariBot",
     oneLiner:
-      "Custom AI chatbot answering questions about my research and background — running on this site.",
+      "Custom AI chatbot answering questions about my research and background, running on this site.",
     tags: ["OpenAI API", "Flask", "Render"],
     links: [
       { label: "Code", href: "https://github.com/Hariprashad-Ravikumar/Hari-ChatBot" },
@@ -95,7 +95,7 @@ export const PROJECTS: Project[] = [
     slug: "wd-aquarius",
     title: "WD Aquarius",
     oneLiner:
-      '"Wildest Idea" award, WD Intern Summit 2026 Hackathon — a browser-based 3D exploration game built with no game engine.',
+      '"Wildest Idea" award, WD Intern Summit 2026 Hackathon: a browser-based 3D exploration game built with no game engine.',
     tags: ["Three.js", "WebGL", "TypeScript", "Vite"],
     links: [],
     cover: {
@@ -104,7 +104,7 @@ export const PROJECTS: Project[] = [
       photoAlt: '"Wildest Idea" award received at the Western Digital Intern Summit 2026 Hackathon',
       n: "05 / PROJECT",
       title: "WD Aquarius",
-      sub: '"Wildest Idea" — Intern Summit 2026',
+      sub: '"Wildest Idea" (Intern Summit 2026)',
       tags: ["Three.js", "WebGL", "TypeScript"],
     },
     hasCaseStudy: false,

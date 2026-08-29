@@ -39,7 +39,7 @@ export default function Hero() {
         </p>
         <p className="text-body prose-measure mt-4 text-[var(--ink-700)]">
           My PhD at New Mexico State University applies GPU-accelerated HPC and machine learning to
-          lattice QCD — {METRICS.observables.value} observables, CUDA C++ pipelines, and symbolic
+          lattice QCD with {METRICS.observables.value} observables, CUDA C++ pipelines, and symbolic
           regression that recovers analytical structure from noisy Monte Carlo data.
         </p>
 

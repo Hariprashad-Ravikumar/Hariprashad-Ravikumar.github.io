@@ -30,7 +30,7 @@ export const IN_PREPARATION: string[] = [
 export const CONFERENCE: { citation: string; href?: string }[] = [
   {
     citation:
-      "Ji, C.-R., Dahiya, H., & Ravikumar, H. (2021). Interpolating conformal algebra between the instant form and the front form of relativistic dynamics. Light Cone 2021 — Physics of Hadrons on the Light Front, Jeju Island, South Korea.",
+      "Ji, C.-R., Dahiya, H., & Ravikumar, H. (2021). Interpolating conformal algebra between the instant form and the front form of relativistic dynamics. Light Cone 2021: Physics of Hadrons on the Light Front, Jeju Island, South Korea.",
   },
 ];
 
