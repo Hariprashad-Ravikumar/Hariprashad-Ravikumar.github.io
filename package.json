@@ -16,6 +16,7 @@
     "@types/mdx": "^2.0.14",
     "framer-motion": "^13.1.1",
     "katex": "^0.18.4",
+    "mermaid": "^11.17.2",
     "next": "16.3.3",
     "react": "19.2.8",
     "react-dom": "19.2.8"
