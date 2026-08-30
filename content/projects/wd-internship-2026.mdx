@@ -35,11 +35,11 @@ import ProjectsBalance from "@/components/content/ProjectsBalance";
 
 As part of this PhD internship in Heat-Assisted Magnetic Recording (HAMR) modeling:
 
-* I delivered two high-impact projects: physics and statistical models for thermally activated HAMR, and contributed to R&D.
-* I helped the team understand, design, and fabricate the next generation of magnetic recording media, working alongside material scientists and test engineers.
-* I built recording models and thermal simulations to extract insights from experiments.
-* I also developed statistical models to uncover causal relationships in storage media performance.
-* I shipped the physics engine as a production Dash/Plotly simulation app. We packaged it as a modular Python library and deployed it on Kubernetes with Jenkins CI/CD. Over 40 engineers across the US and Japan use it today.
+* I developed analytical physics and statistical models to analyze thermally activated HAMR processes, directly supporting the R&D team.
+* I collaborated with material scientists and test engineers to optimize the design and fabrication of next-generation magnetic recording media.
+* I built thermal simulations and recording models to extract performance insights from spin-stand experiments.
+* I designed statistical models to identify causal relationships in storage media performance metrics.
+* I shipped a full-stack enterprise physics engine using Dash and Plotly. We packaged it as a modular Python library and deployed it on Kubernetes via Jenkins CI/CD. Over 40 engineers across the US and Japan use it today.
 
 This role sat at the intersection of data engineering, materials science, and physics.
 
@@ -47,7 +47,7 @@ This role sat at the intersection of data engineering, materials science, and ph
 
 ## Projects
 
-During my internship at Western Digital, I delivered two HAMR projects of equal scope: an analytical physics model for multi-write erasure, and an enterprise simulation app that lets engineers check the signal-to-noise ratio of recording media using physics and statistical models.
+During my internship at Western Digital, I delivered two HAMR projects of equal scope: an analytical physics model for multi-write erasure, and a full-stack enterprise simulation app that lets engineers calculate the signal-to-noise ratio of recording media using physics and statistical models.
 
 <div className="clear-both"></div>
 
@@ -55,9 +55,9 @@ During my internship at Western Digital, I delivered two HAMR projects of equal 
 
 ## 1. Physics Modeling
 
-The team needed to understand write behavior across multiple write cycles to reduce adjacent track erasure (ATI and xTI) in high-density storage, without relying solely on slow and expensive hardware experiments.
+The team needed to understand write behavior across multiple write cycles to reduce adjacent track erasure (ATI and xTI) in high-density storage, avoiding the cost and latency of purely hardware-based experiments.
 
-I derived a closed-form analytical model of grain magnetization dynamics from first principles to connect recording media properties to write behavior. I built on Néel-Arrhenius thermal switching and the Stoner-Wohlfarth model to find expressions for switching time, noise power, and the probability of switching across multiple write cycles. I then validated the model against Monte Carlo stochastic simulation and experimental spin-stand data on highly complex magnetic grain ensembles.
+I derived a closed-form analytical model of grain magnetization dynamics from first principles to connect recording media properties to write behavior. Building on Néel-Arrhenius thermal switching and the Stoner-Wohlfarth model, I formulated expressions for switching time, noise power, and the probability of switching across multiple write cycles. I validated the model against Monte Carlo stochastic simulations and experimental spin-stand data on highly complex magnetic grain ensembles.
 
 **Result:**
 * Engineers can now predict and reduce erasure computationally.
@@ -67,11 +67,11 @@ I derived a closed-form analytical model of grain magnetization dynamics from fi
 
 The engineering team needed a way to evaluate recording performance and signal-to-noise ratios directly from material parameters.
 
-I built and deployed an enterprise physics simulator using Dash. A modular Python physics and statistical library backs the app to calculate these metrics in parallel.
+I built and deployed a full-stack enterprise physics simulator using Dash. A modular Python physics and statistical library backs the frontend, calculating these metrics in parallel.
 
-Engineers can run real-time parameter sweeps, compare multiple simulation runs side by side, and export results automatically as PowerPoint or Excel reports. The app is packaged as a PyPI-installable Python library with a clean API, integrated into a broader internal platform alongside other Dash and Plotly engineering tools.
+Engineers use the tool to run real-time parameter sweeps, compare simulation runs side by side, and export results automatically as PowerPoint or Excel reports. We packaged the app as a PyPI-installable Python library with a clean API, integrating it into a broader internal platform alongside other Dash and Plotly tools.
 
-The application accelerates development cycles and removes a hardware-experiment step from the loop, significantly reducing testing costs.
+The application accelerates development cycles by removing a hardware-experiment step from the loop, reducing overall testing costs.
 
 <div className="my-6 flex flex-col gap-6 lg:flex-row lg:items-start">
 <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-0)] p-4 shadow-sm lg:w-[58%]">
