@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Picture from "@/components/ui/Picture";
 import Section from "@/components/layout/Section";
+import SpotlightCard from "@/components/ui/SpotlightCard";
 
 const ENTRIES = [
   {
@@ -40,12 +43,13 @@ export default function Timeline() {
       <h2 className="text-h2 text-[var(--ink-900)]">Experience timeline</h2>
       <div className="mt-6 flex flex-col gap-4">
         {ENTRIES.map((entry) => (
-          <Link
+          <SpotlightCard
             key={entry.title}
+            as={Link}
             href={entry.href}
-            className="spotlight group flex items-center gap-4 rounded-[var(--r-md)] border border-[var(--glass-border)] bg-[var(--glass-bg)] p-4 backdrop-blur-[var(--glass-blur-sm)] transition-[transform,box-shadow] duration-200 hover:-translate-y-[2px] hover:shadow-[var(--shadow-md)]"
+            className="group flex items-center gap-4 p-4"
           >
-            <span className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-[var(--r-sm)] border border-[var(--glass-border)] bg-[var(--surface-0)] p-2.5">
+            <span className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-[var(--r-sm)] border border-[var(--glass-surface-border)] bg-[var(--surface-0)] p-2.5">
               {entry.logo}
             </span>
             <span className="flex flex-1 flex-col">
@@ -55,7 +59,7 @@ export default function Timeline() {
               <span className="text-small text-[var(--ink-500)]">{entry.org}</span>
             </span>
             <span className="text-small shrink-0 text-[var(--ink-500)]">{entry.dates}</span>
-          </Link>
+          </SpotlightCard>
         ))}
       </div>
     </Section>

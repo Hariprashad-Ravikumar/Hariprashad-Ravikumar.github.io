@@ -12,12 +12,12 @@ export default function Home() {
   return (
     <Container>
       <Hero />
+      <Timeline />
       <MetricStrip />
       <WDSpotlight />
       <FeaturedProjects />
-      <Timeline />
-      <TechStack />
       <PublicationHighlight />
+      <TechStack />
       <ContactBand />
     </Container>
   );

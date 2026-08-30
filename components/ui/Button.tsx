@@ -1,30 +1,50 @@
+"use client";
+
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
+import { motion } from "framer-motion";
+import { springPress } from "@/lib/springs";
 
 const BASE =
   "inline-flex items-center justify-center gap-2 rounded-[var(--r-sm)] px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-500)] focus-visible:ring-offset-2";
 
 const VARIANTS = {
   primary: "bg-[var(--brand-900)] text-white hover:opacity-90",
-  secondary:
-    "border border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--ink-900)] backdrop-blur-[var(--glass-blur-sm)] hover:bg-[var(--glass-bg-heavy)]",
+  secondary: "material-trim text-[var(--ink-900)] hover:brightness-110",
   ghost: "text-[var(--brand-500)] hover:underline",
 };
 
 type Variant = keyof typeof VARIANTS;
+
+// Framer Motion's event handler types (onAnimationStart, onDrag, etc.)
+// conflict with the plain DOM HTML attribute types of the same name —
+// drop them from the base props since we never use them here.
+type MotionSafeButtonProps = Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "onAnimationStart" | "onAnimationEnd" | "onDrag" | "onDragStart" | "onDragEnd"
+>;
+type MotionSafeAnchorProps = Omit<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  "onAnimationStart" | "onAnimationEnd" | "onDrag" | "onDragStart" | "onDragEnd"
+>;
 
 export function Button({
   variant = "primary",
   className = "",
   children,
   ...props
-}: ButtonHTMLAttributes<HTMLButtonElement> & {
+}: MotionSafeButtonProps & {
   variant?: Variant;
   children: ReactNode;
 }) {
   return (
-    <button className={`${BASE} ${VARIANTS[variant]} ${className}`} {...props}>
+    <motion.button
+      whileTap={{ scale: 0.97 }}
+      transition={springPress}
+      className={`${BASE} ${VARIANTS[variant]} ${className}`}
+      {...props}
+    >
       {children}
-    </button>
+    </motion.button>
   );
 }
 
@@ -33,13 +53,18 @@ export function LinkButton({
   className = "",
   children,
   ...props
-}: AnchorHTMLAttributes<HTMLAnchorElement> & {
+}: MotionSafeAnchorProps & {
   variant?: Variant;
   children: ReactNode;
 }) {
   return (
-    <a className={`${BASE} ${VARIANTS[variant]} ${className}`} {...props}>
+    <motion.a
+      whileTap={{ scale: 0.97 }}
+      transition={springPress}
+      className={`${BASE} ${VARIANTS[variant]} ${className}`}
+      {...props}
+    >
       {children}
-    </a>
+    </motion.a>
   );
 }

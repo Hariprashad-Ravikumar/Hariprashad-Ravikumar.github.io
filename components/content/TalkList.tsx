@@ -48,10 +48,10 @@ export default function TalkList() {
             key={topic}
             type="button"
             onClick={() => setActive(topic)}
-            className={`rounded-full border px-3 py-1.5 text-sm font-medium transition-colors ${
+            className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
               active === topic
-                ? "border-[var(--brand-900)] bg-[var(--brand-900)] text-white"
-                : "border-[var(--glass-border)] bg-[var(--glass-bg)] text-[var(--ink-700)] backdrop-blur-[var(--glass-blur-sm)] hover:bg-[var(--glass-bg-heavy)]"
+                ? "border border-[var(--brand-900)] bg-[var(--brand-900)] text-white"
+                : "material-trim text-[var(--ink-700)] hover:brightness-110"
             }`}
           >
             {topic}

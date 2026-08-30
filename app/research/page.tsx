@@ -4,6 +4,7 @@ import Card from "@/components/ui/Card";
 import Tag from "@/components/ui/Tag";
 import JournalCredibility from "@/components/ui/JournalCredibility";
 import FigureCluster from "@/components/media/FigureCluster";
+import Reveal from "@/components/ui/Reveal";
 import { METRICS } from "@/content/metrics";
 import { buildMetadata } from "@/lib/seo";
 
@@ -57,7 +58,7 @@ export default function ResearchPage() {
           terabytes of noisy data.
         </p>
 
-        <div className="prose-measure mt-6 flex flex-col gap-4">
+        <Reveal as="div" className="prose-measure mt-6 flex flex-col gap-4">
           <p className="text-body text-[var(--ink-700)]">
             I&apos;m a theoretical particle physics PhD candidate at New Mexico State University, USA,
             specializing in the application of GPU-accelerated high-performance computing (HPC) and
@@ -111,22 +112,24 @@ export default function ResearchPage() {
             data-intensive challenges and contribute to cutting-edge scientific and technical
             advancements in the industry.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-7 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {THRUSTS.map((thrust) => (
-            <Card key={thrust.title} className="flex flex-col gap-3">
-              <h2 className="text-h3 text-[var(--ink-900)]">{thrust.title}</h2>
-              <p className="text-small text-[var(--ink-500)]">{thrust.meta}</p>
-              <p className="text-body text-[var(--ink-700)]">{thrust.body}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {thrust.tags.map((tag) => (
-                  <Tag key={tag}>{tag}</Tag>
-                ))}
-              </div>
-              {thrust.credibility && <JournalCredibility />}
-              <FigureCluster figures={RESEARCH_FIGURES[thrust.figuresKey]} />
-            </Card>
+          {THRUSTS.map((thrust, i) => (
+            <Reveal key={thrust.title} delay={i * 0.06}>
+              <Card className="flex h-full flex-col gap-3">
+                <h2 className="text-h3 text-[var(--ink-900)]">{thrust.title}</h2>
+                <p className="text-small text-[var(--ink-500)]">{thrust.meta}</p>
+                <p className="text-body text-[var(--ink-700)]">{thrust.body}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {thrust.tags.map((tag) => (
+                    <Tag key={tag}>{tag}</Tag>
+                  ))}
+                </div>
+                {thrust.credibility && <JournalCredibility />}
+                <FigureCluster figures={RESEARCH_FIGURES[thrust.figuresKey]} />
+              </Card>
+            </Reveal>
           ))}
         </div>
 

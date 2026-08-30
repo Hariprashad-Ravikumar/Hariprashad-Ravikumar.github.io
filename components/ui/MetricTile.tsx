@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { prefersReducedMotion } from "@/lib/motion";
+import { motion } from "framer-motion";
+import {
+  prefersReducedMotion,
+  sectionRevealTransition,
+  sectionRevealVariants,
+  sectionRevealViewport,
+} from "@/lib/motion";
 
 /**
  * Animates only the leading numeric portion of a metric string on mount,
@@ -48,9 +54,16 @@ export default function MetricTile({
   const display = useCountUp(value);
 
   return (
-    <div className="flex flex-col gap-1">
+    <motion.div
+      className="flex flex-col gap-1"
+      initial="hidden"
+      whileInView="visible"
+      viewport={sectionRevealViewport}
+      variants={sectionRevealVariants}
+      transition={sectionRevealTransition}
+    >
       <span className="text-mono-metric text-[var(--brand-900)]">{display}</span>
       <span className="text-small text-[var(--ink-500)]">{label}</span>
-    </div>
+    </motion.div>
   );
 }

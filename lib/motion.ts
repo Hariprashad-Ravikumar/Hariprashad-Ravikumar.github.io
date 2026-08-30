@@ -7,14 +7,17 @@ export function prefersReducedMotion(): boolean {
 
 const easeOut: Transition["ease"] = [0.2, 0.7, 0.3, 1];
 
-/** Page transition: fade + 8px rise, 260ms. No-op under reduced motion. */
+/** Page transition: a glass panel materializing — fade + slight scale +
+ * blur settle, matching the Lightbox/Nav-mobile-menu materialize language.
+ * Exit is a shallower mirror of entry (spatial consistency). No-op under
+ * reduced motion. */
 export const pageTransitionVariants: Variants = {
-  initial: { opacity: 0, y: 8 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -8 },
+  initial: { opacity: 0, scale: 0.985, filter: "blur(6px)" },
+  animate: { opacity: 1, scale: 1, filter: "blur(0px)" },
+  exit: { opacity: 0, scale: 0.99, filter: "blur(4px)" },
 };
 export const pageTransitionTransition: Transition = {
-  duration: 0.26,
+  duration: 0.32,
   ease: easeOut,
 };
 

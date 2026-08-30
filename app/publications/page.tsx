@@ -1,5 +1,6 @@
 import Container from "@/components/layout/Container";
 import PubEntry from "@/components/content/PubEntry";
+import Reveal from "@/components/ui/Reveal";
 import { CONFERENCE, IN_PREPARATION, PEER_REVIEWED, THESES } from "@/content/publications";
 import { buildMetadata } from "@/lib/seo";
 
@@ -16,16 +17,16 @@ export default function PublicationsPage() {
       <div className="py-10 md:py-14">
         <h1 className="text-h1 text-[var(--ink-900)]">Publications</h1>
 
-        <section className="mt-7">
+        <Reveal as="section" className="mt-7">
           <h2 className="text-h2 text-[var(--ink-900)]">Peer-Reviewed Publications</h2>
           <ul>
             {PEER_REVIEWED.map((pub) => (
               <PubEntry key={pub.title} pub={pub} showCredibility />
             ))}
           </ul>
-        </section>
+        </Reveal>
 
-        <section className="mt-7">
+        <Reveal as="section" className="mt-7" delay={0.05}>
           <h2 className="text-h2 text-[var(--ink-900)]">In Preparation</h2>
           <ul className="flex flex-col gap-2">
             {IN_PREPARATION.map((citation) => (
@@ -34,9 +35,9 @@ export default function PublicationsPage() {
               </li>
             ))}
           </ul>
-        </section>
+        </Reveal>
 
-        <section className="mt-7">
+        <Reveal as="section" className="mt-7" delay={0.05}>
           <h2 className="text-h2 text-[var(--ink-900)]">Conference</h2>
           <ul className="flex flex-col gap-2">
             {CONFERENCE.map((entry) => (
@@ -45,9 +46,9 @@ export default function PublicationsPage() {
               </li>
             ))}
           </ul>
-        </section>
+        </Reveal>
 
-        <section className="mt-7">
+        <Reveal as="section" className="mt-7" delay={0.05}>
           <h2 className="text-h2 text-[var(--ink-900)]">Theses</h2>
           <ul className="flex flex-col gap-2">
             {THESES.map((entry) => (
@@ -56,7 +57,7 @@ export default function PublicationsPage() {
               </li>
             ))}
           </ul>
-        </section>
+        </Reveal>
       </div>
     </Container>
   );

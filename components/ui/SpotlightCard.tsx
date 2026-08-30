@@ -1,25 +1,35 @@
 "use client";
 
-import type { ElementType, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
+import { motion } from "framer-motion";
 import { useSpotlight } from "@/lib/useSpotlight";
+import { springDefault } from "@/lib/springs";
 
-export default function SpotlightCard({
-  children,
-  as: Tag = "div",
-  className = "",
-}: {
+type SpotlightCardProps<T extends ElementType> = {
   children: ReactNode;
-  as?: ElementType;
+  as?: T;
   className?: string;
-}) {
+} & Omit<ComponentPropsWithoutRef<T>, "children" | "as" | "className">;
+
+export default function SpotlightCard<T extends ElementType = "div">({
+  children,
+  as,
+  className = "",
+  ...rest
+}: SpotlightCardProps<T>) {
   const ref = useSpotlight<HTMLElement>();
+  const MotionTag = motion.create((as ?? "div") as ElementType);
 
   return (
-    <Tag
+    <MotionTag
       ref={ref}
-      className={`spotlight rounded-[var(--r-md)] border border-[var(--glass-border)] bg-[var(--glass-bg)] shadow-[var(--shadow-sm)] backdrop-blur-[var(--glass-blur-sm)] transition-[transform,box-shadow] duration-200 hover:-translate-y-[3px] hover:shadow-[var(--shadow-lg)] focus-within:ring-2 focus-within:ring-[var(--brand-500)] ${className}`}
+      whileHover={{ y: -3 }}
+      whileTap={{ scale: 0.99 }}
+      transition={springDefault}
+      className={`material-surface spotlight rounded-[var(--r-md)] shadow-[var(--glass-surface-shadow)] hover:shadow-[var(--shadow-lg)] focus-within:ring-2 focus-within:ring-[var(--brand-500)] ${className}`}
+      {...rest}
     >
       {children}
-    </Tag>
+    </MotionTag>
   );
 }

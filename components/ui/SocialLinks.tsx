@@ -28,7 +28,7 @@ export default function SocialLinks() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${label} (opens in a new tab)`}
-          className="inline-flex items-center gap-1.5 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] px-3 py-1.5 text-sm font-medium text-[var(--ink-700)] backdrop-blur-[var(--glass-blur-sm)] transition-colors hover:bg-[var(--glass-bg-heavy)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-500)] focus-visible:ring-offset-2"
+          className="material-trim inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium text-[var(--ink-700)] transition-[filter] hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-500)] focus-visible:ring-offset-2"
         >
           <Icon className="h-4 w-auto" />
           {label}

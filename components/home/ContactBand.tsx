@@ -1,10 +1,14 @@
 import { LinkButton } from "@/components/ui/Button";
 import { METRICS } from "@/content/metrics";
 import { LinkedInIcon, MailIcon } from "@/components/ui/brand-icons";
+import Reveal from "@/components/ui/Reveal";
 
 export default function ContactBand() {
   return (
-    <section className="rounded-[var(--r-lg)] border border-[var(--glass-border)] bg-[var(--glass-bg)] p-6 py-10 text-center shadow-[var(--glass-shadow)] backdrop-blur-[var(--glass-blur-md)] sm:p-10">
+    <Reveal
+      as="section"
+      className="material-surface rounded-[var(--r-lg)] p-6 py-10 text-center shadow-[var(--glass-surface-shadow)] sm:p-10"
+    >
       <h2 className="text-h2 text-[var(--ink-900)]">Currently interviewing for full-time roles.</h2>
       <p className="text-body prose-measure mx-auto mt-4 text-[var(--ink-500)]">
         Graduating {METRICS.graduation}. Looking for Research Scientist, Applied/ML Scientist, HPC &
@@ -29,6 +33,6 @@ export default function ContactBand() {
           Download CV
         </LinkButton>
       </div>
-    </section>
+    </Reveal>
   );
 }

@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import type { ReactNode } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { springDefault } from "@/lib/springs";
 
 export default function Lightbox({
   open,
@@ -16,6 +18,7 @@ export default function Lightbox({
 }) {
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const closeRef = useRef<HTMLButtonElement | null>(null);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (!open) return;
@@ -53,33 +56,53 @@ export default function Lightbox({
     };
   }, [open, onClose]);
 
-  if (!open) return null;
+  const panelInitial = reducedMotion
+    ? { opacity: 0 }
+    : { opacity: 0, scale: 0.92, filter: "blur(6px)" };
+  const panelAnimate = reducedMotion
+    ? { opacity: 1 }
+    : { opacity: 1, scale: 1, filter: "blur(0px)" };
+  const panelTransition = reducedMotion ? { duration: 0.15 } : springDefault;
 
   return (
-    <div
-      ref={dialogRef}
-      role="dialog"
-      aria-modal="true"
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[var(--ink-900)]/80 p-4"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
-      }}
-    >
-      <div className="relative max-h-full max-w-4xl">
-        <button
-          ref={closeRef}
-          type="button"
-          onClick={onClose}
-          aria-label="Close"
-          className="absolute -top-10 right-0 rounded-[var(--r-sm)] px-3 py-1.5 text-sm font-medium text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: reducedMotion ? 0.001 : 0.2 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[var(--ink-900)]/80 p-4"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) onClose();
+          }}
         >
-          Close ✕
-        </button>
-        <div className="rounded-[var(--r-lg)] border border-white/15 bg-white/5 p-2 backdrop-blur-[var(--glass-blur-md)]">
-          {children}
-        </div>
-        {caption && <div className="mt-3 text-sm text-white/90">{caption}</div>}
-      </div>
-    </div>
+          <motion.div
+            initial={panelInitial}
+            animate={panelAnimate}
+            exit={panelInitial}
+            transition={panelTransition}
+            className="relative max-h-full max-w-4xl"
+          >
+            <button
+              ref={closeRef}
+              type="button"
+              onClick={onClose}
+              aria-label="Close"
+              className="absolute -top-10 right-0 rounded-[var(--r-sm)] px-3 py-1.5 text-sm font-medium text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              Close ✕
+            </button>
+            <div className="rounded-[var(--r-lg)] border border-white/15 bg-white/5 p-2 backdrop-blur-[var(--glass-chrome-blur)] backdrop-saturate-150">
+              {children}
+            </div>
+            {caption && <div className="mt-3 text-sm text-white/90">{caption}</div>}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

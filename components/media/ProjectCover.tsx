@@ -1,8 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import Picture from "@/components/ui/Picture";
-import { prefersReducedMotion } from "@/lib/motion";
+import {
+  prefersReducedMotion,
+  sectionRevealTransition,
+  sectionRevealViewport,
+} from "@/lib/motion";
 
 export type CoverMode =
   | { mode: "generated"; src: string; alt: string }
@@ -16,10 +21,25 @@ export type CoverMode =
     }
   | { mode: "video"; mp4: string; webm: string; poster: string; alt: string };
 
+// Materialize-in: scale + fade together, once, as the cover enters view.
+// Consistent across all three cover modes so a mixed grid doesn't pop in
+// unevenly between image/split/video covers.
+const coverRevealVariants = {
+  hidden: { opacity: 0, scale: 0.97 },
+  visible: { opacity: 1, scale: 1 },
+};
+
 export default function ProjectCover(props: CoverMode) {
   if (props.mode === "generated") {
     return (
-      <div className="aspect-video w-full overflow-hidden rounded-t-[var(--r-md)]">
+      <motion.div
+        className="aspect-video w-full overflow-hidden rounded-t-[var(--r-md)]"
+        initial="hidden"
+        whileInView="visible"
+        viewport={sectionRevealViewport}
+        variants={coverRevealVariants}
+        transition={sectionRevealTransition}
+      >
         <Picture
           src={props.src}
           alt={props.alt}
@@ -28,15 +48,20 @@ export default function ProjectCover(props: CoverMode) {
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="h-full w-full object-cover"
         />
-      </div>
+      </motion.div>
     );
   }
 
   if (props.mode === "split") {
     return (
-      <div
+      <motion.div
         className="grid aspect-video w-full overflow-hidden rounded-t-[var(--r-md)] bg-[var(--brand-900)]"
         style={{ gridTemplateColumns: "1fr 1.15fr" }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={sectionRevealViewport}
+        variants={coverRevealVariants}
+        transition={sectionRevealTransition}
       >
         <div className="overflow-hidden">
           <Picture
@@ -57,7 +82,7 @@ export default function ProjectCover(props: CoverMode) {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
@@ -97,7 +122,14 @@ function VideoCover({
   }, []);
 
   return (
-    <div className="aspect-video w-full overflow-hidden rounded-t-[var(--r-md)] bg-[var(--ink-900)]">
+    <motion.div
+      className="aspect-video w-full overflow-hidden rounded-t-[var(--r-md)] bg-[var(--ink-900)]"
+      initial="hidden"
+      whileInView="visible"
+      viewport={sectionRevealViewport}
+      variants={coverRevealVariants}
+      transition={sectionRevealTransition}
+    >
       <video
         ref={videoRef}
         muted
@@ -111,6 +143,6 @@ function VideoCover({
         <source src={webm} type="video/webm" />
         <source src={mp4} type="video/mp4" />
       </video>
-    </div>
+    </motion.div>
   );
 }

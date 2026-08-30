@@ -1,4 +1,5 @@
 import Container from "@/components/layout/Container";
+import Reveal from "@/components/ui/Reveal";
 import { LinkButton } from "@/components/ui/Button";
 import { CONTACT } from "@/content/cv";
 import { METRICS } from "@/content/metrics";
@@ -20,7 +21,7 @@ const LINKS = [
 export default function ContactPage() {
   return (
     <Container>
-      <div className="py-14 md:py-20">
+      <Reveal as="div" className="py-14 md:py-20">
         <h1 className="text-h1 text-[var(--ink-900)]">Get in touch</h1>
         <p className="text-h3 prose-measure mt-2 font-normal text-[var(--ink-500)]">
           I&apos;m graduating in {METRICS.graduation} and interviewing now.
@@ -61,7 +62,7 @@ export default function ContactPage() {
             <p key={line}>{line}</p>
           ))}
         </div>
-      </div>
+      </Reveal>
     </Container>
   );
 }

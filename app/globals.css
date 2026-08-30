@@ -39,14 +39,35 @@
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 
-  /* Glass material system (§Phase 1) */
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-bg-heavy: rgba(255, 255, 255, 0.72);
-  --glass-border: rgba(255, 255, 255, 0.6);
-  --glass-blur-sm: 10px;
-  --glass-blur-md: 18px;
-  --glass-blur-lg: 28px;
-  --glass-shadow: var(--shadow-md);
+  /* Glass material system — three tiers by surface weight (§Phase 8).
+     Chrome = thickest (Nav, mobile menu, sticky sub-nav).
+     Surface = medium (Card, SpotlightCard, Lightbox panel).
+     Trim = thinnest (Chip, Tag, Button secondary). */
+  --glass-chrome-bg: rgba(255, 255, 255, 0.05);
+  --glass-chrome-border: rgba(255, 255, 255, 0.55);
+  --glass-chrome-blur: 40px;
+  --glass-chrome-shadow: var(--shadow-lg);
+
+  --glass-surface-bg: rgba(255, 255, 255, 0.05);
+  --glass-surface-border: rgba(255, 255, 255, 0.5);
+  --glass-surface-blur: 26px;
+  --glass-surface-shadow: var(--shadow-md);
+
+  --glass-trim-bg: rgba(255, 255, 255, 0.06);
+  --glass-trim-border: rgba(255, 255, 255, 0.45);
+  --glass-trim-blur: 16px;
+  --glass-trim-shadow: var(--shadow-sm);
+
+  /* Deprecated aliases — kept equal to a tier so existing arbitrary-value
+     classes (bg-[var(--glass-bg)]) keep working during incremental
+     migration. Remove once every component references a tier var directly. */
+  --glass-bg: var(--glass-surface-bg);
+  --glass-bg-heavy: var(--glass-chrome-bg);
+  --glass-border: var(--glass-surface-border);
+  --glass-blur-sm: var(--glass-trim-blur);
+  --glass-blur-md: var(--glass-surface-blur);
+  --glass-blur-lg: var(--glass-chrome-blur);
+  --glass-shadow: var(--glass-surface-shadow);
 }
 
 @theme inline {
@@ -100,26 +121,33 @@ body {
   font-size: 20px;
   font-weight: 600;
   line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 .text-body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.65;
+  letter-spacing: 0;
 }
 .text-small {
   font-size: 13.5px;
   font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.005em;
 }
 .text-mono-metric {
   font-family: var(--font-mono), monospace;
   font-size: clamp(28px, 3.6vw, 40px);
   font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 .text-eyebrow {
   font-family: var(--font-mono), monospace;
   font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.14em;
+  line-height: 1.4;
   text-transform: uppercase;
 }
 
@@ -156,6 +184,49 @@ p {
 }
 .spotlight:hover::before {
   opacity: 1;
+}
+
+/* Fluid-mesh canvas cross-fade-in, replacing an abrupt placeholder swap. */
+@keyframes fluid-mesh-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Composite material classes — background + backdrop-filter (blur + a
+   saturate boost for vibrancy, since Tailwind's backdrop-blur-[...] utility
+   can only ever emit blur() alone) + border color, bundled per tier so a
+   near-invisible fill still reads as glass rather than a plain outline.
+   Chrome also gets a bright top edge — light catching the surface. */
+.material-chrome {
+  background: var(--glass-chrome-bg);
+  border: 1px solid var(--glass-chrome-border);
+  border-top: 1px solid rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(var(--glass-chrome-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-chrome-blur)) saturate(180%);
+}
+.material-surface {
+  background: var(--glass-surface-bg);
+  border: 1px solid var(--glass-surface-border);
+  backdrop-filter: blur(var(--glass-surface-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-surface-blur)) saturate(180%);
+}
+.material-trim {
+  background: var(--glass-trim-bg);
+  border: 1px solid var(--glass-trim-border);
+  backdrop-filter: blur(var(--glass-trim-blur)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--glass-trim-blur)) saturate(160%);
+}
+
+/* Scroll-edge effect: content fades softly into the floating chrome above it
+   (a 20px soft edge at the very top of the element), instead of a hard 1px
+   divider under the nav. */
+.scroll-edge-mask {
+  mask-image: linear-gradient(to bottom, transparent, black 20px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20px);
 }
 
 /* Terminal-style status line (Hero) */
@@ -204,11 +275,35 @@ p {
 /* Frost -> near-solid fallback when the OS asks for less transparency (§12) */
 @media (prefers-reduced-transparency: reduce) {
   :root {
+    --glass-chrome-bg: var(--surface-0);
+    --glass-surface-bg: var(--surface-0);
+    --glass-trim-bg: var(--surface-0);
+    --glass-chrome-border: var(--line);
+    --glass-surface-border: var(--line);
+    --glass-trim-border: var(--line);
+    --glass-chrome-blur: 0px;
+    --glass-surface-blur: 0px;
+    --glass-trim-blur: 0px;
+
     --glass-bg: var(--surface-0);
     --glass-bg-heavy: var(--surface-0);
     --glass-border: var(--line);
     --glass-blur-sm: 0px;
     --glass-blur-md: 0px;
     --glass-blur-lg: 0px;
+  }
+}
+
+/* Defined, contrasting borders when the OS asks for more contrast. */
+@media (prefers-contrast: more) {
+  :root {
+    --glass-chrome-border: var(--ink-700);
+    --glass-surface-border: var(--ink-700);
+    --glass-trim-border: var(--ink-500);
+  }
+  .material-chrome,
+  .material-surface,
+  .material-trim {
+    border-width: 1.5px;
   }
 }

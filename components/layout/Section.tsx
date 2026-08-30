@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Reveal from "@/components/ui/Reveal";
 
 /**
  * Shared vertical rhythm for plain content sections. Self-styled sections
@@ -13,5 +14,9 @@ export default function Section({
   children: ReactNode;
   className?: string;
 }) {
-  return <section className={`py-10 md:py-14 ${className}`.trim()}>{children}</section>;
+  return (
+    <Reveal as="section" className={`py-10 md:py-14 ${className}`.trim()}>
+      {children}
+    </Reveal>
+  );
 }

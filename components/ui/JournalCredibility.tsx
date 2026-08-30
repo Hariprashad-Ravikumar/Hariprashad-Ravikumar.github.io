@@ -8,7 +8,7 @@ export default function JournalCredibility({ className = "" }: { className?: str
       target="_blank"
       rel="noopener noreferrer"
       aria-label="View this paper on Physical Review D (opens in a new tab)"
-      className={`group inline-flex max-w-full items-center gap-3 overflow-hidden rounded-[var(--r-md)] border border-[var(--glass-border)] bg-[var(--glass-bg)] p-1.5 backdrop-blur-[var(--glass-blur-sm)] transition-colors hover:bg-[var(--glass-bg-heavy)] ${className}`}
+      className={`material-trim group inline-flex max-w-full items-center gap-3 overflow-hidden rounded-[var(--r-md)] p-1.5 transition-[filter] hover:brightness-110 ${className}`}
     >
       <span className="h-9 w-[168px] shrink-0 overflow-hidden rounded-[calc(var(--r-md)-6px)]">
         <Picture

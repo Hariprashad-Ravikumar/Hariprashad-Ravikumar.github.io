@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Picture from "@/components/ui/Picture";
 import Lightbox from "@/components/ui/Lightbox";
+import Reveal from "@/components/ui/Reveal";
 
 export type Figure = {
   src: string;
@@ -26,26 +27,27 @@ export default function FigureCluster({ figures }: { figures: Figure[] }) {
     <div className="mt-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {figures.map((fig, i) => (
-          <button
-            key={fig.src}
-            type="button"
-            onClick={() => setOpenIndex(i)}
-            className="group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-500)]"
-          >
-            <div className="overflow-hidden rounded-[var(--r-sm)] border border-[var(--glass-border)]">
-              <Picture
-                src={fig.src}
-                alt={fig.alt}
-                width={1600}
-                height={1000}
-                sizes="(min-width: 640px) 50vw, 100vw"
-                className="w-full transition-transform duration-200 group-hover:scale-[1.02]"
-              />
-            </div>
-            <p className="text-eyebrow mt-2 text-[var(--accent-700)]">{fig.step}</p>
-            <p className="text-h3 mt-0.5 text-[var(--ink-900)]">{fig.title}</p>
-            <p className="text-small mt-1 text-[var(--ink-500)]">{fig.desc}</p>
-          </button>
+          <Reveal key={fig.src} delay={(i % 2) * 0.08}>
+            <button
+              type="button"
+              onClick={() => setOpenIndex(i)}
+              className="group w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-500)]"
+            >
+              <div className="overflow-hidden rounded-[var(--r-sm)] border border-[var(--glass-border)]">
+                <Picture
+                  src={fig.src}
+                  alt={fig.alt}
+                  width={1600}
+                  height={1000}
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                  className="w-full transition-transform duration-200 group-hover:scale-[1.02]"
+                />
+              </div>
+              <p className="text-eyebrow mt-2 text-[var(--accent-700)]">{fig.step}</p>
+              <p className="text-h3 mt-0.5 text-[var(--ink-900)]">{fig.title}</p>
+              <p className="text-small mt-1 text-[var(--ink-500)]">{fig.desc}</p>
+            </button>
+          </Reveal>
         ))}
       </div>
 
