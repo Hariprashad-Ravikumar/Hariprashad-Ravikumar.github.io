@@ -76,7 +76,7 @@ const OG = SHELL(1200, 630, `
     Computational physicist building GPU&#8209;accelerated<br>ML and simulation tools.
   </p>
   <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
-    ${[['30+', 'engineers'], ['10×', 'speedup'], ['75,000+', 'GPU hrs'], ['30,000+', 'observables']]
+    ${[['40+', 'engineers'], ['98%', 'accuracy'], ['75,000+', 'GPU hrs'], ['30,000+', 'observables']]
     .map(([v, l]) => `<div style="display:flex;align-items:baseline;gap:8px;padding:11px 18px;border:1px solid #ffffff26;border-radius:11px;background:#ffffff0A">
         <span class="mono" style="font-size:25px;font-weight:700;color:#fff">${v}</span>
         <span style="font-size:15px;color:#98A5CC">${l}</span></div>`).join('')}

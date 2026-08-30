@@ -1,4 +1,31 @@
 {
+  "/images/Screenshot 2026-08-30 at 1.21.00 AM": {
+    "source": "assets/raw/Screenshot 2026-08-30 at 1.21.00 AM.png",
+    "originalWidth": 2874,
+    "originalHeight": 1564,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/Screenshot 2026-08-30 at 1.21.00 AM-640.webp",
+        "bytes": 24552
+      },
+      {
+        "width": 960,
+        "path": "/images/Screenshot 2026-08-30 at 1.21.00 AM-960.webp",
+        "bytes": 45636
+      },
+      {
+        "width": 1440,
+        "path": "/images/Screenshot 2026-08-30 at 1.21.00 AM-1440.webp",
+        "bytes": 81542
+      },
+      {
+        "width": 1920,
+        "path": "/images/Screenshot 2026-08-30 at 1.21.00 AM-1920.webp",
+        "bytes": 119018
+      }
+    ]
+  },
   "/images/hero/headshot": {
     "source": "assets/raw/hero/headshot.jpg",
     "originalWidth": 1538,
@@ -387,17 +414,17 @@
       {
         "width": 640,
         "path": "/images/bundle/og/card-640.webp",
-        "bytes": 13550
+        "bytes": 12866
       },
       {
         "width": 960,
         "path": "/images/bundle/og/card-960.webp",
-        "bytes": 22072
+        "bytes": 20870
       },
       {
         "width": 1440,
         "path": "/images/bundle/og/card-1440.webp",
-        "bytes": 34726
+        "bytes": 32772
       }
     ]
   }
