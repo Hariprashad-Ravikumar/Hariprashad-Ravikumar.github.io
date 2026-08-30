@@ -305,6 +305,18 @@ p {
   animation: terminal-cursor-blink 1s steps(1, end) infinite;
 }
 
+@media (max-width: 640px) {
+  .terminal-status__text {
+    width: auto !important;
+    overflow: visible;
+    white-space: normal;
+    animation: none;
+  }
+  .terminal-status__cursor {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
