@@ -30,7 +30,7 @@ export default function ContactBand() {
           LinkedIn
         </LinkButton>
         <LinkButton href="/cv/CV_HARI.pdf" variant="secondary" target="_blank" rel="noopener noreferrer">
-          Download CV
+          Download Résumé
         </LinkButton>
       </div>
     </Reveal>

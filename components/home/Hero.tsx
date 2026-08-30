@@ -87,7 +87,7 @@ export default function Hero() {
 
       <div ref={heroRef} className="flex justify-center md:justify-end">
         <motion.div
-          className="w-full max-w-[260px] overflow-hidden rounded-[var(--r-lg)] border border-[var(--glass-surface-border)]"
+          className="w-full max-w-[340px] overflow-hidden rounded-full border border-[var(--glass-surface-border)]"
           style={{ y: parallax }}
           initial="hidden"
           animate="visible"
@@ -98,10 +98,10 @@ export default function Hero() {
             src="/images/hero/headshot"
             alt="Portrait of Hariprashad Ravikumar"
             width={640}
-            height={800}
+            height={640}
             priority
-            sizes="(min-width: 768px) 260px, 60vw"
-            className="aspect-[4/5] w-full object-cover"
+            sizes="(min-width: 768px) 340px, 70vw"
+            className="aspect-square w-full object-cover"
           />
         </motion.div>
       </div>
@@ -117,7 +117,7 @@ export default function Hero() {
           View Projects
         </LinkButton>
         <LinkButton href="/cv/CV_HARI.pdf" variant="secondary" target="_blank" rel="noopener noreferrer">
-          Download CV
+          Download Résumé
         </LinkButton>
         <LinkButton href="mailto:hari1729@nmsu.edu" variant="ghost">
           <MailIcon className="h-4 w-auto" />

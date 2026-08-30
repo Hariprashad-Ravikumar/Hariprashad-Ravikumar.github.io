@@ -14,7 +14,7 @@ const SECTIONS = [
   { id: "teaching", label: "Teaching" },
 ];
 
-export default function CVSideNav() {
+export default function ResumeSideNav() {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function CVSideNav() {
   }, []);
 
   return (
-    <nav aria-label="CV sections" className="sticky top-24 hidden w-52 shrink-0 flex-col gap-1 lg:flex">
+    <nav aria-label="Résumé sections" className="sticky top-24 hidden w-52 shrink-0 flex-col gap-1 lg:flex">
       {SECTIONS.map((section) => {
         const active = section.id === activeId;
         return (

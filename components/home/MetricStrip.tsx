@@ -3,7 +3,7 @@ import { METRICS } from "@/content/metrics";
 
 export default function MetricStrip() {
   return (
-    <section className="grid grid-cols-2 gap-8 border-y border-[var(--glass-border)] py-6 sm:grid-cols-4">
+    <section className="grid grid-cols-2 gap-8 border-b border-[var(--glass-border)] py-4 sm:grid-cols-4">
       <MetricTile value={METRICS.engineers.value} label={METRICS.engineers.label} />
       <MetricTile
         value={METRICS.accuracy.value}

@@ -1,5 +1,5 @@
 import Tag from "@/components/ui/Tag";
-import { TECHNICAL_SKILLS } from "@/content/cv";
+import { TECHNICAL_SKILLS } from "@/content/resume";
 import Section from "@/components/layout/Section";
 
 export default function TechStack() {

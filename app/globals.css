@@ -12,17 +12,17 @@
   --brand-500: #2e4fd6;
   --brand-300: #8fa4ff;
 
-  --accent-500: #00c2b2;
-  --accent-400: #2de0cf;
+  --accent-500: #1eb3a5;
+  --accent-400: #4dd1c4;
   /* Text-safe variant of accent-500 — 2.19:1 against --surface-50 fails WCAG
      AA (needs 4.5:1 for small text); this hits 5.1:1. Use for any accent
      text on a light background (eyebrows, links); keep accent-500 for
      decorative/UI use (node dots, spotlight glow, dark-background text). */
   --accent-700: #007a6e;
 
-  --aurora-1: #7dd3d8;
-  --aurora-2: #a5b4fc;
-  --aurora-3: #c4b5fd;
+  --aurora-1: #a8e6e2;
+  --aurora-2: #7dd3c9;
+  --aurora-3: #5cb8ae;
 
   --surface-50: #fbfcfe;
   --surface-0: #ffffff;
@@ -54,6 +54,7 @@
   --glass-surface-shadow: var(--shadow-md);
 
   --glass-trim-bg: rgba(255, 255, 255, 0.06);
+  --glass-trim-bg-hover: rgba(255, 255, 255, 0.14);
   --glass-trim-border: rgba(255, 255, 255, 0.45);
   --glass-trim-blur: 16px;
   --glass-trim-shadow: var(--shadow-sm);
@@ -186,6 +187,29 @@ p {
   opacity: 1;
 }
 
+/* Avatar ring — a slowly rotating conic gradient behind the Nav avatar,
+   in the spirit of Apple Intelligence's ambient glow border, tuned to this
+   site's own palette (periwinkle brand -> teal accent -> mid-teal aurora)
+   instead of a generic rainbow so it reads as identity, not decoration.
+   Very slow (10s/rotation) — ambient, not attention-grabbing; the global
+   prefers-reduced-motion rule already zeroes its animation-duration. */
+.avatar-ring {
+  background: conic-gradient(
+    from 0deg,
+    var(--brand-500),
+    var(--accent-500),
+    var(--aurora-2),
+    var(--brand-300),
+    var(--brand-500)
+  );
+  animation: avatar-ring-spin 10s linear infinite;
+}
+@keyframes avatar-ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Fluid-mesh canvas cross-fade-in, replacing an abrupt placeholder swap. */
 @keyframes fluid-mesh-fade-in {
   from {
@@ -194,6 +218,14 @@ p {
   to {
     opacity: 1;
   }
+}
+
+/* Vibrancy for text sitting directly on the most transparent (chrome-tier)
+   material — a touch heavier + slightly tracked, per §12: flat gray text
+   over translucent surfaces loses legibility as fill drops toward zero. */
+.text-vibrant {
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 /* Composite material classes — background + backdrop-filter (blur + a
@@ -219,6 +251,18 @@ p {
   border: 1px solid var(--glass-trim-border);
   backdrop-filter: blur(var(--glass-trim-blur)) saturate(160%);
   -webkit-backdrop-filter: blur(var(--glass-trim-blur)) saturate(160%);
+}
+
+/* Nav pills: hover deepens the tint + shifts the border to the accent hue
+   (the pointer-driven "color flow" — paired with .spotlight's cursor glow);
+   the active page gets a brand-tinted border instead (wayfinding). */
+.nav-pill:hover,
+.nav-pill:focus-visible {
+  border-color: var(--accent-500);
+  background: var(--glass-trim-bg-hover);
+}
+.nav-pill[aria-current="page"] {
+  border-color: var(--brand-500);
 }
 
 /* Scroll-edge effect: content fades softly into the floating chrome above it
@@ -278,6 +322,7 @@ p {
     --glass-chrome-bg: var(--surface-0);
     --glass-surface-bg: var(--surface-0);
     --glass-trim-bg: var(--surface-0);
+    --glass-trim-bg-hover: var(--surface-0);
     --glass-chrome-border: var(--line);
     --glass-surface-border: var(--line);
     --glass-trim-border: var(--line);

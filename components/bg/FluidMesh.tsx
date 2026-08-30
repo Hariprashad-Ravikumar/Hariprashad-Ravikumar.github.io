@@ -18,7 +18,7 @@ type Blob = {
 const BLOBS: Array<Omit<Blob, "color"> & { colorVar: string }> = [
   { baseX: 0.18, baseY: 0.22, radius: 0.42, colorVar: "--aurora-1", alpha: 0.16, driftAmp: 70, driftFreq: (2 * Math.PI) / 26, phase: 0, pull: 0.05 },
   { baseX: 0.82, baseY: 0.18, radius: 0.38, colorVar: "--aurora-2", alpha: 0.15, driftAmp: 90, driftFreq: (2 * Math.PI) / 32, phase: 2.1, pull: 0.08 },
-  { baseX: 0.28, baseY: 0.82, radius: 0.4, colorVar: "--brand-300", alpha: 0.12, driftAmp: 80, driftFreq: (2 * Math.PI) / 24, phase: 4.2, pull: 0.06 },
+  { baseX: 0.28, baseY: 0.82, radius: 0.4, colorVar: "--aurora-2", alpha: 0.12, driftAmp: 80, driftFreq: (2 * Math.PI) / 24, phase: 4.2, pull: 0.06 },
   { baseX: 0.78, baseY: 0.78, radius: 0.36, colorVar: "--aurora-3", alpha: 0.15, driftAmp: 60, driftFreq: (2 * Math.PI) / 30, phase: 1.3, pull: 0.09 },
 ];
 

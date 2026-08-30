@@ -5,7 +5,7 @@ import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import PageTransition from "@/components/layout/PageTransition";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
-import { EDUCATION } from "@/content/cv";
+import { EDUCATION } from "@/content/resume";
 import { GOOGLE_SCHOLAR_URL } from "@/content/publications";
 
 const inter = Inter({

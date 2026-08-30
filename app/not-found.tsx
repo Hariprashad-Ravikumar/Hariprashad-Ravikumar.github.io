@@ -19,8 +19,8 @@ export default function NotFound() {
           <Link href="/publications" className="hover:underline">
             Publications
           </Link>
-          <Link href="/cv" className="hover:underline">
-            CV
+          <Link href="/resume" className="hover:underline">
+            Résumé
           </Link>
         </nav>
       </div>

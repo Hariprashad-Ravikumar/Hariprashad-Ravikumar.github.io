@@ -1,7 +1,7 @@
 import Container from "@/components/layout/Container";
 import Reveal from "@/components/ui/Reveal";
 import { LinkButton } from "@/components/ui/Button";
-import { CONTACT } from "@/content/cv";
+import { CONTACT } from "@/content/resume";
 import { METRICS } from "@/content/metrics";
 import { buildMetadata } from "@/lib/seo";
 import { ArxivIcon, GitHubIcon, HandshakeIcon, LinkedInIcon, MailIcon, OrcidIcon } from "@/components/ui/brand-icons";

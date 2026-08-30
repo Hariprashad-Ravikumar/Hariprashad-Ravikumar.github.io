@@ -12,8 +12,8 @@ export default function Home() {
   return (
     <Container>
       <Hero />
-      <Timeline />
       <MetricStrip />
+      <Timeline />
       <WDSpotlight />
       <FeaturedProjects />
       <PublicationHighlight />

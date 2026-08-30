@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import Reveal from "@/components/ui/Reveal";
 
-export default function CVSection({
+export default function ResumeSection({
   id,
   title,
   children,

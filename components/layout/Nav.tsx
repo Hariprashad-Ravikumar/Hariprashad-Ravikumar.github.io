@@ -5,7 +5,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Container from "./Container";
-import { springDefault } from "@/lib/springs";
+import Picture from "@/components/ui/Picture";
+import { springDefault, springPress } from "@/lib/springs";
+import { useSpotlight } from "@/lib/useSpotlight";
 
 const LINKS = [
   { href: "/projects/wd-internship-2026", label: "Work Experience" },
@@ -13,12 +15,38 @@ const LINKS = [
   { href: "/projects", label: "Projects" },
   { href: "/publications", label: "Publications" },
   { href: "/talks", label: "Talks" },
-  { href: "/cv", label: "CV" },
+  { href: "/resume", label: "Résumé" },
+  { href: "/contact", label: "Contact" },
 ];
 
 // Scroll distance (px) over which the nav ramps from transparent to full
 // chrome material — a continuous interpolation, not a hard step.
 const SCROLL_RAMP = 80;
+
+const MotionLink = motion.create(Link);
+
+/** A glass-tinted nav link — always has its own tint+border so it stays
+ * legible regardless of what's behind Nav's own (near-transparent) chrome.
+ * Hover deepens the tint and shifts the border to the accent hue, with the
+ * existing pointer-driven spotlight glow layered on top; the active page
+ * gets a brand-tinted border instead. */
+function NavPill({ href, label, active }: { href: string; label: string; active: boolean }) {
+  const ref = useSpotlight<HTMLAnchorElement>();
+  return (
+    <MotionLink
+      ref={ref}
+      href={href}
+      aria-current={active ? "page" : undefined}
+      whileTap={{ scale: 0.96 }}
+      transition={springPress}
+      className={`nav-pill material-trim spotlight text-vibrant inline-block rounded-[var(--r-sm)] px-3 py-2 text-sm transition-colors ${
+        active ? "text-[var(--brand-900)]" : "text-[var(--ink-500)]"
+      }`}
+    >
+      {label}
+    </MotionLink>
+  );
+}
 
 export default function Nav() {
   const pathname = usePathname();
@@ -51,36 +79,33 @@ export default function Nav() {
     >
       <Container>
         <nav className="flex h-16 items-center justify-between">
-          <Link
-            href="/"
-            className="font-mono text-sm font-bold tracking-tight text-[var(--brand-900)]"
-          >
-            Home
-          </Link>
+          <div className="relative h-14 w-14 shrink-0">
+            <span className="avatar-ring absolute inset-0 rounded-full" aria-hidden="true" />
+            <MotionLink
+              href="/"
+              aria-label="Home"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.92 }}
+              transition={springPress}
+              className="material-trim absolute inset-[3px] block overflow-hidden rounded-full shadow-[var(--shadow-sm)]"
+            >
+              <Picture
+                src="/images/hero/headshot"
+                alt="Hariprashad Ravikumar — Home"
+                width={96}
+                height={96}
+                sizes="56px"
+                className="h-full w-full object-cover"
+              />
+            </MotionLink>
+          </div>
 
-          <ul className="hidden items-center gap-1 md:flex">
+          <ul className="hidden items-center gap-1.5 md:flex">
             {LINKS.map((link) => (
               <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`rounded-[var(--r-sm)] px-3 py-2 text-sm font-medium transition-colors hover:bg-[var(--surface-50)] ${
-                    pathname === link.href
-                      ? "text-[var(--brand-900)]"
-                      : "text-[var(--ink-500)]"
-                  }`}
-                >
-                  {link.label}
-                </Link>
+                <NavPill href={link.href} label={link.label} active={pathname === link.href} />
               </li>
             ))}
-            <li>
-              <Link
-                href="/contact"
-                className="ml-2 rounded-[var(--r-sm)] bg-[var(--brand-900)] px-4 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-              >
-                Contact
-              </Link>
-            </li>
           </ul>
 
           <button
@@ -129,14 +154,6 @@ export default function Nav() {
                     </Link>
                   </li>
                 ))}
-                <li>
-                  <Link
-                    href="/contact"
-                    className="mt-2 block rounded-[var(--r-sm)] bg-[var(--brand-900)] px-3 py-3 text-center text-lg font-semibold text-white"
-                  >
-                    Contact
-                  </Link>
-                </li>
               </ul>
             </Container>
           </motion.div>

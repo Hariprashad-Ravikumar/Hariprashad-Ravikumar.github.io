@@ -56,8 +56,8 @@ export default function WDSpotlight() {
         <LinkButton href="/projects/wd-internship-2026/" variant="primary">
           Read the case study →
         </LinkButton>
-        <LinkButton href="/cv/" variant="secondary">
-          Full CV
+        <LinkButton href="/resume/" variant="secondary">
+          Full Résumé
         </LinkButton>
       </div>
     </Section>
