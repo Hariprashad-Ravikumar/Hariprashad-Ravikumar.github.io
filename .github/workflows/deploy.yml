@@ -21,3 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/deploy-pages@v4
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: node scripts/submit-indexnow.mjs
