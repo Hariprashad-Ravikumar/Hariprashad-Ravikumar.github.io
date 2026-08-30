@@ -76,6 +76,7 @@ async function main() {
       const page = await browser.newPage({
         viewport: { width: 1200, height: 900 },
         deviceScaleFactor: 2,
+        reducedMotion: "reduce",
       });
 
       for (const route of ROUTES) {
@@ -100,8 +101,11 @@ async function main() {
           clip: { x: 0, y: 0, width: 1200, height: 630 },
         });
 
+        // No `quality` option here: for PNG, sharp's `quality` implies
+        // palette quantization to 256 colours, which visibly bands/blurs
+        // the gradients and photos in these screenshots. Keep it lossless.
         const outPath = path.join(OUT_DIR, route.out);
-        await sharp(buffer).resize(1200, 630).png({ quality: 90 }).toFile(outPath);
+        await sharp(buffer).resize(1200, 630).png({ compressionLevel: 9 }).toFile(outPath);
         console.log(`Wrote ${path.relative(REPO_ROOT, outPath)}`);
       }
     } finally {

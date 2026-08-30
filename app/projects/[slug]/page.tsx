@@ -121,7 +121,7 @@ export default async function ProjectCaseStudyPage({
         ) : (
           <h1 className="text-h1 text-[var(--ink-900)]">{project?.title ?? slug}</h1>
         )}
-        <div className="mt-8" data-og-anchor>
+        <div className="mt-8">
           <CaseStudy />
         </div>
       </article>
