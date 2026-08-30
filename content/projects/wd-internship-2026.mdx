@@ -47,7 +47,7 @@ This role sat at the intersection of data engineering, materials science, and ph
 
 ## Projects
 
-During my internship at Western Digital, I delivered two HAMR projects of equal scope: an analytical physics model for multi-write erasure, and an interactive simulation app built on top of it.
+During my internship at Western Digital, I delivered two HAMR projects of equal scope: an analytical physics model for multi-write erasure, and an enterprise simulation app that lets engineers check the signal-to-noise ratio of recording media using physics and statistical models.
 
 <div className="clear-both"></div>
 
@@ -65,9 +65,9 @@ I derived a closed-form analytical model of grain magnetization dynamics from fi
 
 ## 2. Physics Simulation App
 
-The theoretical model needed to be accessible to the broader engineering team so they could evaluate recording performance directly from material parameters.
+The engineering team needed a way to evaluate recording performance and signal-to-noise ratios directly from material parameters.
 
-I built and deployed an interactive physics simulator using Dash. A modular Python physics library backs the app and calculates signal-to-noise ratios and other metrics in parallel.
+I built and deployed an enterprise physics simulator using Dash. A modular Python physics and statistical library backs the app to calculate these metrics in parallel.
 
 Engineers can run real-time parameter sweeps, compare multiple simulation runs side by side, and export results automatically as PowerPoint or Excel reports. The app is packaged as a PyPI-installable Python library with a clean API, integrated into a broader internal platform alongside other Dash and Plotly engineering tools.
 
