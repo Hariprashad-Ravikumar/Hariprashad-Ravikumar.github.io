@@ -85,51 +85,51 @@ The application accelerates development cycles by removing a hardware-experiment
       classDef devops fill:#fef2f2,stroke:#ef4444,stroke-width:3px;
   
       subgraph Inputs ["Input Layer (HAMR Media Properties)"]
-          M[Manual Input<br/>Engineers & Scientists]:::external
-          U[File Upload]:::external
-          A[Internal Enterprise Platform]:::external
+          M["Manual Input<br/>Engineers & Scientists"]:::external
+          U["File Upload"]:::external
+          A["Internal Enterprise Platform"]:::external
       end
   
       subgraph ClientSide ["Client-Side (Browser)"]
-          IDB[(IndexedDB<br/>Client-Side Storage)]:::storage
-          Dash[Dash Frontend]:::frontend
-          Fit[Statistical & Physics<br/>Data Fitting Engine]:::frontend
-          UI[Auto-populated<br/>Parameter UI]:::frontend
-          Plotly[Plotly Interactive<br/>Results View]:::frontend
+          IDB[("IndexedDB<br/>Client-Side Storage")]:::storage
+          Dash["Dash Frontend"]:::frontend
+          Fit["Statistical & Physics<br/>Data Fitting Engine"]:::frontend
+          UI["Auto-populated<br/>Parameter UI"]:::frontend
+          Plotly["Plotly Interactive<br/>Results View"]:::frontend
       end
   
       subgraph Backend ["Python Physics Backend"]
-          Engine[Analytical HAMR<br/>Switching Model]:::backend
-          Parallel[Parallel Computation<br/>Worker Pool]:::backend
+          Engine["Analytical HAMR<br/>Switching Model"]:::backend
+          Parallel["Parallel Computation<br/>Worker Pool"]:::backend
       end
   
       subgraph Output ["Outputs & Reporting"]
-          Export[Multi-format Reports<br/>Test Experiment Planning]:::external
+          Export["Multi-format Reports<br/>Test Experiment Planning"]:::external
       end
       
       subgraph DevOps ["Infrastructure & Deployment"]
-          K8s[Kubernetes Cluster]:::devops
-          Jenkins[Jenkins CI/CD]:::devops
+          K8s["Kubernetes Cluster"]:::devops
+          Jenkins["Jenkins CI/CD"]:::devops
       end
   
       %% Flow logic
-      A -- JSON payload handoff --> IDB
-      IDB -- Triggers New Tab --> Dash
-      Dash -- Reads Payload --> Fit
+      A -- "JSON payload handoff" --> IDB
+      IDB -- "Triggers New Tab" --> Dash
+      Dash -- "Reads Payload" --> Fit
       U --> Fit
-      Fit -- Auto-populates --> UI
+      Fit -- "Auto-populates" --> UI
       M --> UI
       
-      UI -- Simulation Request --> Engine
+      UI -- "Simulation Request" --> Engine
       Engine --> Parallel
-      Parallel -- Calculates DCSNR & Metrics --> Plotly
+      Parallel -- "Calculates DCSNR & Metrics" --> Plotly
       
       Plotly --> Export
       
       %% Infrastructure bindings
-      Jenkins -. Auto-Deploys .-> K8s
-      K8s -. Hosts .-> Backend
-      K8s -. Serves .-> ClientSide`}
+      Jenkins -. "Auto-Deploys" .-> K8s
+      K8s -. "Hosts" .-> Backend
+      K8s -. "Serves" .-> ClientSide`}
   </Mermaid>
   <p className="mt-1 text-center text-xs text-[var(--ink-500)]">System architecture, input to output</p>
 </div>
