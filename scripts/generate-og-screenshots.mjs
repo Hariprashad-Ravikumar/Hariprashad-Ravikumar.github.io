@@ -4,6 +4,11 @@
  * og:image PNGs, so link previews show each page's actual desktop content
  * instead of one shared hand-built card. Run before `next build` — see
  * package.json's "build" script.
+ *
+ * The static pages and the wd-internship-2026 case study now use manually
+ * captured screenshots instead (see scripts/crop-og-screenshot.mjs and
+ * assets/raw/og/) — MANUAL_SLUGS/ROUTES below excludes them so this script
+ * never regenerates over and silently discards that manual work.
  */
 import { spawn } from "node:child_process";
 import { mkdir, readdir } from "node:fs/promises";
@@ -26,19 +31,11 @@ const caseStudySlugs = (await readdir(path.join(REPO_ROOT, "content", "projects"
   .filter((f) => f.endsWith(".mdx"))
   .map((f) => f.replace(/\.mdx$/, ""));
 
-const ROUTES = [
-  { path: "/", out: "home.png" },
-  { path: "/projects/", out: "projects.png" },
-  { path: "/talks/", out: "talks.png" },
-  { path: "/publications/", out: "publications.png" },
-  { path: "/research/", out: "research.png" },
-  { path: "/contact/", out: "contact.png" },
-  { path: "/resume/", out: "resume.png" },
-  ...caseStudySlugs.map((slug) => ({
-    path: `/projects/${slug}/`,
-    out: `projects/${slug}.png`,
-  })),
-];
+const MANUAL_SLUGS = new Set(["wd-internship-2026"]);
+
+const ROUTES = caseStudySlugs
+  .filter((slug) => !MANUAL_SLUGS.has(slug))
+  .map((slug) => ({ path: `/projects/${slug}/`, out: `projects/${slug}.png` }));
 
 function waitForServer(url, timeoutMs = 60_000) {
   const start = Date.now();
