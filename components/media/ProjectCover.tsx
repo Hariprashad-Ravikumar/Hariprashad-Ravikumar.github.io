@@ -55,7 +55,7 @@ export default function ProjectCover(props: CoverMode) {
   if (props.mode === "split") {
     return (
       <motion.div
-        className="grid aspect-video w-full overflow-hidden rounded-t-[var(--r-md)] bg-[var(--brand-900)]"
+        className="grid aspect-[4/5] w-full overflow-hidden rounded-t-[var(--r-md)] bg-[var(--brand-900)] sm:aspect-video"
         style={{ gridTemplateColumns: "1fr 1.15fr" }}
         initial="hidden"
         whileInView="visible"

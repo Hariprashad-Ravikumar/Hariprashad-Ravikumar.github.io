@@ -47,12 +47,12 @@ export default function Timeline() {
             key={entry.title}
             as={Link}
             href={entry.href}
-            className="group flex items-center gap-4 p-4"
+            className="group flex flex-col items-start gap-3 p-4 sm:flex-row sm:items-center sm:gap-4"
           >
             <span className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-[var(--r-sm)] border border-[var(--glass-surface-border)] bg-[var(--surface-0)] p-2.5">
               {entry.logo}
             </span>
-            <span className="flex flex-1 flex-col">
+            <span className="flex min-w-0 flex-1 flex-col">
               <span className="text-body font-semibold text-[var(--ink-900)] group-hover:underline">
                 {entry.title}
               </span>

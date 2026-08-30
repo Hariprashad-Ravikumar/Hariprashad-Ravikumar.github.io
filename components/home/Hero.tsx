@@ -40,7 +40,7 @@ export default function Hero() {
         <motion.h1
           variants={sectionRevealVariants}
           transition={sectionRevealTransition}
-          className="whitespace-nowrap text-[var(--ink-900)]"
+          className="text-[var(--ink-900)]"
           style={{
             fontSize: "clamp(22px, 6.4vw, 64px)",
             fontWeight: 700,

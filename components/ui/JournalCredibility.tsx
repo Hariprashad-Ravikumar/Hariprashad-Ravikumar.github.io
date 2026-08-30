@@ -10,7 +10,7 @@ export default function JournalCredibility({ className = "" }: { className?: str
       aria-label="View this paper on Physical Review D (opens in a new tab)"
       className={`material-trim group inline-flex max-w-full items-center gap-3 overflow-hidden rounded-[var(--r-md)] p-1.5 transition-[filter] hover:brightness-110 ${className}`}
     >
-      <span className="h-9 w-[168px] shrink-0 overflow-hidden rounded-[calc(var(--r-md)-6px)]">
+      <span className="h-9 w-[132px] shrink-0 overflow-hidden rounded-[calc(var(--r-md)-6px)] sm:w-[168px]">
         <Picture
           src="/images/publications/prd-journal-banner"
           alt="Physical Review D, American Physical Society"

@@ -71,32 +71,36 @@ export default function ResumePage() {
           </ResumeSection>
 
           <ResumeSection id="education" title="Education">
-            <table className="w-full text-left">
-              <tbody>
-                {EDUCATION.map((row) => (
-                  <tr key={row.degree} className="border-t border-[var(--glass-border)] first:border-t-0">
-                    <td className="py-2 pr-4 text-sm text-[var(--ink-500)]">{row.dates}</td>
-                    <td className="py-2 pr-4 text-sm font-semibold text-[var(--ink-900)]">{row.degree}</td>
-                    <td className="py-2 text-sm text-[var(--ink-700)]">{row.org}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-            <div className="mt-3">
-              <p className="text-h3 text-[var(--ink-900)]">Graduate-Level Coursework</p>
-              <table className="mt-2 w-full text-left">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left">
                 <tbody>
-                  {COURSEWORK.map((row) => (
-                    <tr key={row.area} className="border-t border-[var(--glass-border)] first:border-t-0">
-                      <td className="py-2 pr-4 align-top text-sm font-semibold text-[var(--ink-900)]">
-                        {row.area}
-                      </td>
-                      <td className="py-2 text-sm text-[var(--ink-700)]">{row.items}</td>
+                  {EDUCATION.map((row) => (
+                    <tr key={row.degree} className="border-t border-[var(--glass-border)] first:border-t-0">
+                      <td className="py-2 pr-4 text-sm text-[var(--ink-500)]">{row.dates}</td>
+                      <td className="py-2 pr-4 text-sm font-semibold text-[var(--ink-900)]">{row.degree}</td>
+                      <td className="py-2 text-sm text-[var(--ink-700)]">{row.org}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+            </div>
+
+            <div className="mt-3">
+              <p className="text-h3 text-[var(--ink-900)]">Graduate-Level Coursework</p>
+              <div className="overflow-x-auto">
+                <table className="mt-2 w-full text-left">
+                  <tbody>
+                    {COURSEWORK.map((row) => (
+                      <tr key={row.area} className="border-t border-[var(--glass-border)] first:border-t-0">
+                        <td className="py-2 pr-4 align-top text-sm font-semibold text-[var(--ink-900)]">
+                          {row.area}
+                        </td>
+                        <td className="py-2 text-sm text-[var(--ink-700)]">{row.items}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </ResumeSection>
 
