@@ -3,19 +3,37 @@ import Reveal from "@/components/ui/Reveal";
 import { LinkButton } from "@/components/ui/Button";
 import { CONTACT } from "@/content/resume";
 import { METRICS } from "@/content/metrics";
+import { GOOGLE_SCHOLAR_URL } from "@/content/publications";
 import { buildMetadata } from "@/lib/seo";
-import { ArxivIcon, GitHubIcon, HandshakeIcon, LinkedInIcon, MailIcon, OrcidIcon } from "@/components/ui/brand-icons";
+import {
+  ArxivIcon,
+  GitHubIcon,
+  GoogleScholarIcon,
+  HandshakeIcon,
+  InspireHEPIcon,
+  LinkedInIcon,
+  MailIcon,
+  OrcidIcon,
+  ResearchGateIcon,
+} from "@/components/ui/brand-icons";
 
 const LINKS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/hariprashad-ravikumar/", Icon: LinkedInIcon },
   { label: "GitHub", href: "https://github.com/Hariprashad-Ravikumar", Icon: GitHubIcon },
-  { label: "ORCID", href: "https://orcid.org/0000-0002-3276-852X", Icon: OrcidIcon },
-  { label: "arXiv", href: "https://arxiv.org/abs/2601.19251", Icon: ArxivIcon },
   {
     label: "Handshake",
     href: "https://app.joinhandshake.com/profiles/hariprashad-ravikumar",
     Icon: HandshakeIcon,
   },
+  { label: "Google Scholar", href: GOOGLE_SCHOLAR_URL!, Icon: GoogleScholarIcon },
+  { label: "InspireHEP", href: "https://inspirehep.net/authors/2905335", Icon: InspireHEPIcon },
+  {
+    label: "ResearchGate",
+    href: "https://www.researchgate.net/profile/Hariprashad-Ravikumar",
+    Icon: ResearchGateIcon,
+  },
+  { label: "ORCID", href: "https://orcid.org/0000-0002-3276-852X", Icon: OrcidIcon },
+  { label: "arXiv", href: "https://arxiv.org/abs/2601.19251", Icon: ArxivIcon },
 ];
 
 export default function ContactPage() {

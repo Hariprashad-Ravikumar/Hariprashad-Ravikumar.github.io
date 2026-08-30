@@ -14,13 +14,15 @@
  * "h-4") — width follows via `w-auto` to preserve each icon's aspect ratio.
  */
 
-export type IconPath = { d: string; fillRule?: "evenodd"; clipRule?: "evenodd" };
+export type IconPath = { d: string; fillRule?: "evenodd"; clipRule?: "evenodd"; fill?: string };
 export type IconData = { viewBox: string; color: string; paths: IconPath[] };
 
 export type IconKey =
   | "linkedin"
   | "github"
   | "handshake"
+  | "inspirehep"
+  | "researchgate"
   | "googleScholar"
   | "orcid"
   | "arxiv"
@@ -52,12 +54,45 @@ export const ICONS: Record<IconKey, IconData> = {
       },
     ],
   },
+  // Two-tone app-icon mark (lime square + dark-teal "H" cutout), extracted
+  // from joinhandshake.com's own header/marketing-toolkit SVG — the flat
+  // lime-only "H" outline (simple-icons' version) has poor contrast on a
+  // light background.
   handshake: {
-    viewBox: "0 0 24 24",
+    viewBox: "0 0 40 40",
     color: "#D3FB52",
     paths: [
       {
-        d: "M20.728 0 16.49 24h-4.583l1.87-10.532-4.743 3.893L7.856 24H3.272L7.51 0h4.582L9.806 13.012l4.729-3.862L16.145 0h4.583z",
+        d: "M0 12C0 7.79961 0 5.69941 0.817451 4.09507C1.5365 2.68386 2.68386 1.5365 4.09507 0.817451C5.69941 0 7.79961 0 12 0H28C32.2004 0 34.3006 0 35.9049 0.817451C37.3161 1.5365 38.4635 2.68386 39.1825 4.09507C40 5.69941 40 7.79961 40 12V28C40 32.2004 40 34.3006 39.1825 35.9049C38.4635 37.3161 37.3161 38.4635 35.9049 39.1825C34.3006 40 32.2004 40 28 40H12C7.79961 40 5.69941 40 4.09507 39.1825C2.68386 38.4635 1.5365 37.3161 0.817451 35.9049C0 34.3006 0 32.2004 0 28V12Z",
+        fill: "#D3FB52",
+      },
+      {
+        d: "M24.1422 8L22.5336 17.15L17.8084 21.0122L20.0949 8H15.5145L11.2781 32H15.8584L17.0348 25.3602L21.7772 21.4686L19.9057 32H24.4885L28.7225 8H24.1422Z",
+        fill: "#052326",
+      },
+    ],
+  },
+  // InspireHEP has no standalone icon mark (it's a text wordmark) — this is
+  // a vector recreation of its browser favicon (navy square + white "i"),
+  // not a traced official asset, since none exists.
+  inspirehep: {
+    viewBox: "0 0 40 40",
+    color: "#001529",
+    paths: [
+      {
+        d: "M0 12C0 7.79961 0 5.69941 0.817451 4.09507C1.5365 2.68386 2.68386 1.5365 4.09507 0.817451C5.69941 0 7.79961 0 12 0H28C32.2004 0 34.3006 0 35.9049 0.817451C37.3161 1.5365 38.4635 2.68386 39.1825 4.09507C40 5.69941 40 7.79961 40 12V28C40 32.2004 40 34.3006 39.1825 35.9049C38.4635 37.3161 37.3161 38.4635 35.9049 39.1825C34.3006 40 32.2004 40 28 40H12C7.79961 40 5.69941 40 4.09507 39.1825C2.68386 38.4635 1.5365 37.3161 0.817451 35.9049C0 34.3006 0 32.2004 0 28V12Z",
+        fill: "#001529",
+      },
+      { d: "M22.3 11a2.3 2.3 0 1 1-4.6 0 2.3 2.3 0 0 1 4.6 0Z", fill: "#fff" },
+      { d: "M17.5 19a2.5 2.5 0 0 1 5 0v10a2.5 2.5 0 0 1-5 0z", fill: "#fff" },
+    ],
+  },
+  researchgate: {
+    viewBox: "0 0 24 24",
+    color: "#00CCBB",
+    paths: [
+      {
+        d: "M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.123 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .077.53h-.005a3.334 3.334 0 0 0 .113.438c.245.743.65 1.303 1.214 1.68.565.376 1.256.564 2.075.564.8 0 1.536-.213 2.105-.603.57-.39.94-.916 1.175-1.65.076-.235.135-.558.177-.93a10.9 10.9 0 0 0 .043-1.207v-.82c0-.095-.047-.142-.14-.142h-3.064c-.094 0-.14.047-.14.141v.956c0 .094.046.14.14.14h1.666c.056 0 .084.03.084.086 0 .36 0 .62-.036.865-.038.244-.1.447-.147.606-.108.385-.348.664-.638.876-.29.212-.738.35-1.227.35-.545 0-.901-.15-1.21-.353-.306-.203-.517-.454-.67-.915a3.136 3.136 0 0 1-.147-.762 17.366 17.367 0 0 1-.034-.656c-.01-.26-.014-.572-.014-.939a26.401 26.403 0 0 1 .014-.938 15.821 15.822 0 0 1 .035-.656 3.19 3.19 0 0 1 .148-.76 1.89 1.89 0 0 1 .742-1.01c.344-.244.593-.352 1.137-.352.508 0 .815.096 1.144.303.33.207.528.492.764.925.047.094.111.118.198.07l1.044-.43c.075-.048.09-.115.042-.199a3.549 3.549 0 0 0-.466-.742 3 3 0 0 0-.679-.607 3.313 3.313 0 0 0-.903-.41A4.068 4.068 0 0 0 19.586 0zM8.217 5.836c-1.69 0-3.036.086-4.297.086-1.146 0-2.291 0-3.007-.029v.831l1.088.2c.744.144 1.174.488 1.174 2.264v11.288c0 1.777-.43 2.12-1.174 2.263l-1.088.2v.832c.773-.029 2.12-.086 3.465-.086 1.29 0 2.951.057 3.667.086v-.831l-1.49-.2c-.773-.115-1.174-.487-1.174-2.264v-4.784c.688.057 1.29.057 2.206.057 1.748 3.123 3.41 5.472 4.355 6.56.86 1.032 2.177 1.691 3.839 1.691.487 0 1.003-.086 1.318-.23v-.744c-1.031 0-2.063-.716-2.808-1.518-1.26-1.376-2.95-3.582-4.355-6.074 2.32-.545 4.04-2.722 4.04-4.9 0-3.208-2.492-4.698-5.758-4.698zm-.515 1.29c2.406 0 3.839 1.26 3.839 3.552 0 2.263-1.547 3.782-4.097 3.782-.974 0-1.404-.03-2.063-.086v-7.19c.66-.059 1.547-.059 2.32-.059z",
       },
     ],
   },
@@ -185,7 +220,7 @@ function makeIcon(data: IconData) {
     return (
       <svg viewBox={data.viewBox} fill={data.color} aria-hidden="true" className={className}>
         {data.paths.map((p, i) => (
-          <path key={i} d={p.d} fillRule={p.fillRule} clipRule={p.clipRule} />
+          <path key={i} d={p.d} fillRule={p.fillRule} clipRule={p.clipRule} fill={p.fill} />
         ))}
       </svg>
     );
@@ -195,6 +230,8 @@ function makeIcon(data: IconData) {
 export const LinkedInIcon = makeIcon(ICONS.linkedin);
 export const GitHubIcon = makeIcon(ICONS.github);
 export const HandshakeIcon = makeIcon(ICONS.handshake);
+export const InspireHEPIcon = makeIcon(ICONS.inspirehep);
+export const ResearchGateIcon = makeIcon(ICONS.researchgate);
 export const GoogleScholarIcon = makeIcon(ICONS.googleScholar);
 export const OrcidIcon = makeIcon(ICONS.orcid);
 export const ArxivIcon = makeIcon(ICONS.arxiv);
