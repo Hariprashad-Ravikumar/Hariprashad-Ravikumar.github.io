@@ -14,6 +14,7 @@ import { spawn } from "node:child_process";
 import { mkdir, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import net from "node:net";
 import { chromium } from "playwright";
 import sharp from "sharp";
 
@@ -38,19 +39,21 @@ const ROUTES = caseStudySlugs
   .map((slug) => ({ path: `/projects/${slug}/`, out: `projects/${slug}.png` }));
 
 function waitForServer(url, timeoutMs = 300_000) {
+  const { hostname, port } = new URL(url);
   const start = Date.now();
   return new Promise((resolve, reject) => {
-    const attempt = async () => {
-      try {
-        const res = await fetch(url);
-        if (res.ok || res.status < 500) return resolve();
-      } catch {
-        // server not up yet
-      }
-      if (Date.now() - start > timeoutMs) {
-        return reject(new Error(`Timed out waiting for ${url}`));
-      }
-      setTimeout(attempt, 500);
+    const attempt = () => {
+      const socket = net.connect({ host: hostname, port: port || 80 }, () => {
+        socket.destroy();
+        resolve();
+      });
+      socket.on('error', () => {
+        if (Date.now() - start > timeoutMs) {
+          reject(new Error(`Timed out waiting for ${url}`));
+        } else {
+          setTimeout(attempt, 500);
+        }
+      });
     };
     attempt();
   });
