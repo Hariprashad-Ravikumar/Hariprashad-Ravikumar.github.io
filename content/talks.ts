@@ -22,7 +22,7 @@ export type Talk = {
 export const TALKS: Talk[] = [
   {
     date: "Aug 2026",
-    title: "HAMR Modeling & Simulation: The NIMBLE DC-SNR Simulator",
+    title: "HAMR Modeling & Simulation: The DC-SNR Simulator",
     venue: "[Presented to 50+ senior technologists, subject matter experts, and PhD interns], PhD Expo 2026",
     topics: ["HAMR / Industry"],
   },

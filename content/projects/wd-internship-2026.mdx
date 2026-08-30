@@ -39,7 +39,7 @@ As part of this PhD internship in Heat-Assisted Magnetic Recording (HAMR) modeli
 * I helped the team understand, design, and fabricate the next generation of magnetic recording media, working alongside material scientists and test engineers.
 * I built recording models and thermal simulations to extract insights from experiments.
 * I also developed statistical models to uncover causal relationships in storage media performance.
-* I shipped the physics as NIMBLE, a production Dash/Plotly simulation platform packaged as a modular Python library, deployed on Kubernetes with Jenkins CI/CD and adopted by sputtering and media engineering teams, with 40+ active users across WD USA and Japan.
+* I shipped the physics engine as a production Dash/Plotly simulation app. We packaged it as a modular Python library and deployed it on Kubernetes with Jenkins CI/CD. Over 40 engineers across the US and Japan use it today.
 
 This role sat at the intersection of data engineering, materials science, and physics.
 
@@ -47,7 +47,7 @@ This role sat at the intersection of data engineering, materials science, and ph
 
 ## Projects
 
-During my internship at Western Digital, I delivered two high-impact HAMR projects: an analytical physics model for multi-write erasure, and NIMBLE, the simulation app built on top of it. Both carried equal weight in scope and impact.
+During my internship at Western Digital, I delivered two HAMR projects of equal scope: an analytical physics model for multi-write erasure, and an interactive simulation app built on top of it.
 
 <div className="clear-both"></div>
 
@@ -57,17 +57,17 @@ During my internship at Western Digital, I delivered two high-impact HAMR projec
 
 The team needed to understand write behavior across multiple write cycles to reduce adjacent track erasure (ATI and xTI) in high-density storage, without relying solely on slow and expensive hardware experiments.
 
-I derived a closed-form analytical model of grain magnetization dynamics from first principles, connecting recording media properties to write behavior. Building on Néel–Arrhenius thermal switching and the Stoner–Wohlfarth model, this yielded expressions for switching time, noise power, and the probability of switching across multiple write cycles. I validated the model against Monte Carlo stochastic simulation and experimental spin-stand data on realistic L1₀ FePt grain ensembles.
+I derived a closed-form analytical model of grain magnetization dynamics from first principles to connect recording media properties to write behavior. I built on Néel-Arrhenius thermal switching and the Stoner-Wohlfarth model to find expressions for switching time, noise power, and the probability of switching across multiple write cycles. I then validated the model against Monte Carlo stochastic simulation and experimental spin-stand data on highly complex magnetic grain ensembles.
 
 **Result:**
 * Engineers can now predict and reduce erasure computationally.
-* A peer-reviewed publication based on this work is currently in progress: "Ravikumar, H. et al. Analytical modeling of grain magnetization dynamics in Heat-Assisted Magnetic Recording. Manuscript in preparation for IEEE Transactions on Magnetics."
+* We are preparing the core models and research findings for a peer-reviewed publication.
 
-## 2. NIMBLE Simulation App
+## 2. Physics Simulation App
 
 The theoretical model needed to be accessible to the broader engineering team so they could evaluate recording performance directly from material parameters.
 
-I built and deployed an interactive physics simulator. The NIMBLE app is a Dash application backed by a modular Python physics library that calculates signal-to-noise ratios and other metrics in parallel.
+I built and deployed an interactive physics simulator using Dash. A modular Python physics library backs the app and calculates signal-to-noise ratios and other metrics in parallel.
 
 Engineers can run real-time parameter sweeps, compare multiple simulation runs side by side, and export results automatically as PowerPoint or Excel reports. The app is packaged as a PyPI-installable Python library with a clean API, integrated into a broader internal platform alongside other Dash and Plotly engineering tools.
 
@@ -87,7 +87,7 @@ The application accelerates development cycles and removes a hardware-experiment
       subgraph Inputs ["Input Layer (HAMR Media Properties)"]
           M[Manual Input<br/>Engineers & Scientists]:::external
           U[File Upload]:::external
-          A[Upstream WD NIMBLE App]:::external
+          A[Internal Enterprise Platform]:::external
       end
   
       subgraph ClientSide ["Client-Side (Browser)"]
@@ -113,7 +113,7 @@ The application accelerates development cycles and removes a hardware-experiment
       end
   
       %% Flow logic
-      A -- JSON Payload --> IDB
+      A -- JSON payload handoff --> IDB
       IDB -- Triggers New Tab --> Dash
       Dash -- Reads Payload --> Fit
       U --> Fit
@@ -136,7 +136,7 @@ The application accelerates development cycles and removes a hardware-experiment
 <div className="lg:w-[40%]">
   <h3 className="text-h3 text-[var(--ink-900)]">How it works</h3>
   <ol className="prose-measure mt-3 flex flex-col gap-3">
-    <li className="text-body text-[var(--ink-700)]"><strong className="text-[var(--ink-900)]">Input.</strong> Engineers enter parameters manually, upload a file, or receive a JSON payload handed off from the upstream WD NIMBLE app.</li>
+    <li className="text-body text-[var(--ink-700)]"><strong className="text-[var(--ink-900)]">Input.</strong> Engineers enter parameters manually, upload a file, or receive a JSON payload handed off from the broader enterprise platform.</li>
     <li className="text-body text-[var(--ink-700)]"><strong className="text-[var(--ink-900)]">Client-side.</strong> The payload lands in IndexedDB; the Dash frontend reads it and a statistical/physics fitting engine auto-populates the parameter UI.</li>
     <li className="text-body text-[var(--ink-700)]"><strong className="text-[var(--ink-900)]">Backend.</strong> The analytical HAMR switching model runs, with a parallel worker pool computing sweeps simultaneously.</li>
     <li className="text-body text-[var(--ink-700)]"><strong className="text-[var(--ink-900)]">Results.</strong> Plotly renders DC-SNR and other recording metrics interactively.</li>
@@ -174,18 +174,18 @@ The application accelerates development cycles and removes a hardware-experiment
 
 I shared key results with the broader team and presented my simulation research at the PhD Expo. 
 
-* **PhD Expo 2026** (Aug 2026) — "HAMR Modeling & Simulation: The NIMBLE DC-SNR Simulator," to 50+ senior technologists, subject matter experts, and PhD interns
-* **Internal Engineering Review** (Aug 2026) — "DC-SNR Physics Simulator App and Multiple-Write HAMR Analysis," to 30+ sputtering engineers, material scientists, test engineers, and R&D engineers
-* **Internal Engineering Review** (Aug 2026) — "Multiple-Write HAMR Analysis and Thermally Activated Switching Processes," to 30+ R&D engineers and technologists
-* **Internal Engineering Review** (July 2026) — "Analytical Model for Log-Linearity of Write Temperature with Number of Writes," to 30+ R&D engineers and technologists
-* **Internal Engineering Review** (July 2026) — "HAMR DC-SNR Physics Simulator App," to 30+ material scientists, test engineers, and subject matter experts
-* **Cross-Site Engineering Review, WD Japan** (July 2026) — "Analytical Model for Log-Linearity of Write Temperature with Number of Writes," to 30+ R&D engineers and technologists
+* **PhD Expo 2026** (Aug 2026): "HAMR Modeling & Simulation: The DC-SNR Simulator," to 50+ senior technologists, subject matter experts, and PhD interns
+* **Internal Engineering Review** (Aug 2026): "DC-SNR Physics Simulator App and Multiple-Write HAMR Analysis," to 30+ sputtering engineers, material scientists, test engineers, and R&D engineers
+* **Internal Engineering Review** (Aug 2026): "Multiple-Write HAMR Analysis and Thermally Activated Switching Processes," to 30+ R&D engineers and technologists
+* **Internal Engineering Review** (July 2026): "Analytical Model for Log-Linearity of Write Temperature with Number of Writes," to 30+ R&D engineers and technologists
+* **Internal Engineering Review** (July 2026): "HAMR DC-SNR Physics Simulator App," to 30+ material scientists, test engineers, and subject matter experts
+* **Cross-Site Engineering Review, WD Japan** (July 2026): "Analytical Model for Log-Linearity of Write Temperature with Number of Writes," to 30+ R&D engineers and technologists
 
 <div className="clear-both"></div>
 
 ## Impact
 
-The NIMBLE Simulation App is now actively used by over 40 engineers from the sputtering team, the media team, and R&D technologists across Western Digital sites in the United States and Japan.
+Over 40 engineers from the sputtering team, the media team, and R&D technologists across Western Digital sites in the United States and Japan use the simulation app actively.
 
 ## Hackathon
 
