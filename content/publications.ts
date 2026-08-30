@@ -14,13 +14,13 @@ export const PEER_REVIEWED: Publication[] = [
       "Interpolating conformal algebra in (1+1) dimensions between the instant form and the light-front form of relativistic dynamics.",
     venue: "Physical Review D 113, 096018. American Physical Society.",
     links: [
-      // TODO(hari): exact DOI URL not given in PLAN.md — confirm against the
-      // published PRD record before wiring this button.
-      { label: "DOI", href: "" },
+      { label: "DOI", href: "https://journals.aps.org/prd/abstract/10.1103/prlq-4j1l" },
       { label: "arXiv", href: "https://arxiv.org/abs/2601.19251" },
     ],
   },
 ];
+
+export const PRD_DOI_URL = "https://journals.aps.org/prd/abstract/10.1103/prlq-4j1l";
 
 export const IN_PREPARATION: string[] = [
   "Ravikumar, H. & Ji, C.-R. Interpolating conformal algebra (3+1) between the instant form and the front form of relativistic dynamics.",
@@ -42,4 +42,5 @@ export const THESES: { citation: string }[] = [
 ];
 
 // TODO(hari): Google Scholar profile not yet created — add link + citation count slot once it exists (§16.2).
-export const GOOGLE_SCHOLAR_URL: string | null = null;
+export const GOOGLE_SCHOLAR_URL: string | null =
+  "https://scholar.google.com/citations?user=o6cDFRwAAAAJ&hl=en";

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Container from "@/components/layout/Container";
 import Picture from "@/components/ui/Picture";
 import { PROJECTS } from "@/content/projects";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, SITE_URL } from "@/lib/seo";
 
 const CASE_STUDIES = {
   "wd-internship-2026": () => import("@/content/projects/wd-internship-2026.mdx"),
@@ -17,9 +17,33 @@ type CaseStudySlug = keyof typeof CASE_STUDIES;
 // projects.ts entry rather than invent new copy.
 const SEO_OVERRIDES: Partial<Record<CaseStudySlug, { title: string; description: string }>> = {
   "wd-internship-2026": {
-    title: "NIMBLE: HAMR DCSNR Simulator (Western Digital)",
+    title: "WD Internship: NIMBLE HAMR Simulator (Western Digital)",
     description:
-      "Production Dash/Plotly simulation platform for heat-assisted magnetic recording, used by 30+ engineers across WD US and Japan sites.",
+      "My Western Digital internship building NIMBLE, a Dash/Plotly HAMR DCSNR simulator adopted by 40+ WD engineers across the US and Japan.",
+  },
+};
+
+// Per-page structured data (site-wide Person schema lives in app/layout.tsx;
+// this is additional, page-specific signal for what THIS page is about —
+// only wired up where it's needed today).
+const ARTICLE_JSON_LD: Partial<Record<CaseStudySlug, Record<string, unknown>>> = {
+  "wd-internship-2026": {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    headline: "WD Internship: NIMBLE HAMR Simulator (Western Digital)",
+    description:
+      "My Western Digital internship building NIMBLE, a Dash/Plotly HAMR DCSNR simulator adopted by 40+ WD engineers across the US and Japan.",
+    about: {
+      "@type": "Organization",
+      name: "Western Digital",
+      alternateName: "WD",
+    },
+    author: {
+      "@type": "Person",
+      name: "Hariprashad Ravikumar",
+      url: SITE_URL,
+    },
+    url: `${SITE_URL}/projects/wd-internship-2026/`,
   },
 };
 
@@ -64,9 +88,17 @@ export default async function ProjectCaseStudyPage({
   const project = PROJECTS.find((p) => p.slug === slug);
   const { default: CaseStudy } = await CASE_STUDIES[slug as CaseStudySlug]();
   const h1Override = H1_OVERRIDES[slug as CaseStudySlug];
+  const articleJsonLd = ARTICLE_JSON_LD[slug as CaseStudySlug];
 
   return (
     <Container>
+      {articleJsonLd && (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        />
+      )}
       <article className="py-14 md:py-20">
         {h1Override ? (
           <h1 className="text-h1 text-[var(--ink-900)]">

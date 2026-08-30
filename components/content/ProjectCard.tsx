@@ -3,6 +3,7 @@ import SpotlightCard from "@/components/ui/SpotlightCard";
 import Tag from "@/components/ui/Tag";
 import ProjectCover from "@/components/media/ProjectCover";
 import type { Project } from "@/content/projects";
+import { GitHubIcon } from "@/components/ui/brand-icons";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
@@ -29,8 +30,9 @@ export default function ProjectCard({ project }: { project: Project }) {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:underline"
+                  className="inline-flex items-center gap-1.5 hover:underline"
                 >
+                  {link.label === "Code" && <GitHubIcon className="h-3.5 w-auto" />}
                   {link.label} ↗
                 </a>
               ),

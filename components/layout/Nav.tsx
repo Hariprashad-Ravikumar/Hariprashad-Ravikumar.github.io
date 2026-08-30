@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Container from "./Container";
 
 const LINKS = [
+  { href: "/projects/wd-internship-2026", label: "Work Experience" },
   { href: "/research", label: "Research" },
   { href: "/projects", label: "Projects" },
   { href: "/publications", label: "Publications" },
@@ -43,7 +44,7 @@ export default function Nav() {
             href="/"
             className="font-mono text-sm font-bold tracking-tight text-[var(--brand-900)]"
           >
-            Hariprashad Ravikumar
+            Home
           </Link>
 
           <ul className="hidden items-center gap-1 md:flex">

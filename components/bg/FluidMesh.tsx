@@ -89,8 +89,13 @@ export default function FluidMesh() {
       window.addEventListener("pointermove", onPointerMove, { passive: true });
     }
 
+    // Baked into the draw call (not a DOM transform) so the canvas element
+    // itself always stays glued to inset:0 — a CSS transform on a
+    // viewport-sized fixed canvas would slide it off-bounds and expose the
+    // flat body background as a visible seam.
+    let scrollY = window.scrollY;
     const onScroll = () => {
-      canvas.style.transform = `translateY(${window.scrollY * 0.06}px)`;
+      scrollY = window.scrollY;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -116,7 +121,7 @@ export default function FluidMesh() {
           const pullX = (pointer.x - baseX) * blob.pull;
           const pullY = (pointer.y - baseY) * blob.pull;
           cx = baseX + driftX + pullX;
-          cy = baseY + driftY + pullY;
+          cy = baseY + driftY + pullY + scrollY * 0.06;
         }
 
         const radius = blob.radius * maxDim;

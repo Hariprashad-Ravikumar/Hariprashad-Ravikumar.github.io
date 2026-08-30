@@ -22,20 +22,20 @@ export type Talk = {
 export const TALKS: Talk[] = [
   {
     date: "Aug 2026",
+    title: "HAMR (Heat-Assisted Magnetic Recording) THMap Modeling & Simulation: The NIMBLE DCSNR Simulator App",
+    venue: "[Presented to 50+ senior technologists, subject matter experts, and PhD interns] (WD Confidential), PhD Expo 2026, Western Digital, San Jose, CA, USA",
+    topics: ["HAMR / Industry"],
+  },
+  {
+    date: "Aug 2026",
     title: "DC-SNR (DC Signal-to-Noise Ratio) Physics Simulator App NIMBLE and Multiple-Write HAMR (Heat-Assisted Magnetic Recording) Temperature and Field Map (THMap)",
-    venue: "[Presented to 40+ sputtering engineers, seasoned material scientists, test engineers, subject matter experts, R&D engineers, and technologists] (WD Confidential), Interlock for Media Characterization Meeting, Western Digital, San Jose, CA, USA",
+    venue: "[Presented to 30+ sputtering engineers, material scientists, test engineers, and R&D engineers] (WD Confidential), Interlock for Media Characterization Meeting, Western Digital, San Jose, CA, USA",
     topics: ["HAMR / Industry"],
   },
   {
     date: "Aug 2026",
     title: "Multiple-Write HAMR (Heat-Assisted Magnetic Recording) Temperature and Field Map (THMap) and Thermally Activated Switching Processes",
     venue: "[Presented to 30+ R&D engineers and technologists] (WD Confidential), Interlock for Media Characterization Meeting, Western Digital, San Jose, CA, USA",
-    topics: ["HAMR / Industry"],
-  },
-  {
-    date: "Aug 2026",
-    title: "HAMR (Heat-Assisted Magnetic Recording) THMap Modeling & Simulation: The NIMBLE DCSNR Simulator App",
-    venue: "[Presented to 40+ senior technologists, subject matter experts, and PhD interns] (WD Confidential), PhD Expo 2026, Western Digital, San Jose, CA, USA",
     topics: ["HAMR / Industry"],
   },
   {
@@ -47,7 +47,7 @@ export const TALKS: Talk[] = [
   {
     date: "July 2026",
     title: "HAMR (Heat-Assisted Magnetic Recording) DC-SNR (DC Signal-to-Noise Ratio) Physics Simulator App NIMBLE",
-    venue: "[Presented to 30+ seasoned material scientists, test engineers, and subject matter experts] (WD Confidential), Interlock for Media Characterization Meeting, Western Digital, San Jose, CA, USA",
+    venue: "[Presented to 30+ material scientists, test engineers, and subject matter experts] (WD Confidential), Interlock for Media Characterization Meeting, Western Digital, San Jose, CA, USA",
     topics: ["HAMR / Industry"],
   },
   {

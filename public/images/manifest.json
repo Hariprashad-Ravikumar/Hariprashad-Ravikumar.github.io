@@ -26,6 +26,50 @@
       }
     ]
   },
+  "/images/publications/aps-logo": {
+    "source": "assets/raw/publications/aps-logo.png",
+    "originalWidth": 798,
+    "originalHeight": 264,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/publications/aps-logo-640.webp",
+        "bytes": 7870
+      },
+      {
+        "width": 960,
+        "path": "/images/publications/aps-logo-960.webp",
+        "bytes": 10948
+      }
+    ]
+  },
+  "/images/publications/prd-journal-banner": {
+    "source": "assets/raw/publications/prd-journal-banner.png",
+    "originalWidth": 1864,
+    "originalHeight": 192,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/publications/prd-journal-banner-640.webp",
+        "bytes": 6792
+      },
+      {
+        "width": 960,
+        "path": "/images/publications/prd-journal-banner-960.webp",
+        "bytes": 11138
+      },
+      {
+        "width": 1440,
+        "path": "/images/publications/prd-journal-banner-1440.webp",
+        "bytes": 18374
+      },
+      {
+        "width": 1920,
+        "path": "/images/publications/prd-journal-banner-1920.webp",
+        "bytes": 25196
+      }
+    ]
+  },
   "/images/wd/WD-IDCard": {
     "source": "assets/raw/wd/WD-IDCard.jpg",
     "originalWidth": 2448,
@@ -107,6 +151,18 @@
       }
     ]
   },
+  "/images/wd/intern-summit-photobooth": {
+    "source": "assets/raw/wd/intern-summit-photobooth.jpg",
+    "originalWidth": 602,
+    "originalHeight": 1800,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/wd/intern-summit-photobooth-640.webp",
+        "bytes": 70346
+      }
+    ]
+  },
   "/images/wd/phd-expo": {
     "source": "assets/raw/wd/phd-expo.jpg",
     "originalWidth": 4000,
@@ -163,28 +219,28 @@
   },
   "/images/wd/san-jose-campus": {
     "source": "assets/raw/wd/san-jose-campus.jpg",
-    "originalWidth": 4080,
-    "originalHeight": 3060,
+    "originalWidth": 3584,
+    "originalHeight": 2502,
     "variants": [
       {
         "width": 640,
         "path": "/images/wd/san-jose-campus-640.webp",
-        "bytes": 63358
+        "bytes": 68872
       },
       {
         "width": 960,
         "path": "/images/wd/san-jose-campus-960.webp",
-        "bytes": 138464
+        "bytes": 151178
       },
       {
         "width": 1440,
         "path": "/images/wd/san-jose-campus-1440.webp",
-        "bytes": 309266
+        "bytes": 328646
       },
       {
         "width": 1920,
         "path": "/images/wd/san-jose-campus-1920.webp",
-        "bytes": 531102
+        "bytes": 558296
       }
     ]
   },

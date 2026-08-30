@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import PageTransition from "@/components/layout/PageTransition";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
 import { EDUCATION } from "@/content/cv";
+import { GOOGLE_SCHOLAR_URL } from "@/content/publications";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,8 +30,7 @@ export const metadata = {
   }),
 };
 
-// §11: JSON-LD Person schema. Google Scholar isn't in sameAs — no profile
-// exists yet (content/publications.ts GOOGLE_SCHOLAR_URL is still null).
+// §11: JSON-LD Person schema.
 const PERSON_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -56,6 +56,7 @@ const PERSON_JSON_LD = {
     "https://github.com/Hariprashad-Ravikumar",
     "https://orcid.org/0000-0002-3276-852X",
     "https://arxiv.org/abs/2601.19251",
+    ...(GOOGLE_SCHOLAR_URL ? [GOOGLE_SCHOLAR_URL] : []),
   ],
   url: SITE_URL,
 };

@@ -3,20 +3,18 @@ import { LinkButton } from "@/components/ui/Button";
 import { CONTACT } from "@/content/cv";
 import { METRICS } from "@/content/metrics";
 import { buildMetadata } from "@/lib/seo";
-
-export const metadata = buildMetadata({
-  title: "Contact | Hariprashad Ravikumar",
-  description:
-    "Graduating December 2026 and interviewing for Research Scientist and ML Engineer roles in the SF Bay Area.",
-  path: "/contact/",
-});
+import { ArxivIcon, GitHubIcon, HandshakeIcon, LinkedInIcon, MailIcon, OrcidIcon } from "@/components/ui/brand-icons";
 
 const LINKS = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/hariprashad-ravikumar/" },
-  { label: "GitHub", href: "https://github.com/Hariprashad-Ravikumar" },
-  { label: "ORCID", href: "https://orcid.org/0000-0002-3276-852X" },
-  { label: "arXiv", href: "https://arxiv.org/abs/2601.19251" },
-  { label: "Handshake", href: "https://app.joinhandshake.com/profiles/hariprashad-ravikumar" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/hariprashad-ravikumar/", Icon: LinkedInIcon },
+  { label: "GitHub", href: "https://github.com/Hariprashad-Ravikumar", Icon: GitHubIcon },
+  { label: "ORCID", href: "https://orcid.org/0000-0002-3276-852X", Icon: OrcidIcon },
+  { label: "arXiv", href: "https://arxiv.org/abs/2601.19251", Icon: ArxivIcon },
+  {
+    label: "Handshake",
+    href: "https://app.joinhandshake.com/profiles/hariprashad-ravikumar",
+    Icon: HandshakeIcon,
+  },
 ];
 
 export default function ContactPage() {
@@ -43,8 +41,9 @@ export default function ContactPage() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--brand-500)] hover:underline"
+              className="inline-flex items-center gap-1.5 text-[var(--brand-500)] hover:underline"
             >
+              <link.Icon className="h-4 w-auto" />
               {link.label}
             </a>
           ))}
@@ -52,6 +51,7 @@ export default function ContactPage() {
 
         <div className="mt-6">
           <LinkButton href={`mailto:${CONTACT.email}`} variant="primary">
+            <MailIcon className="h-4 w-auto" />
             Email me
           </LinkButton>
         </div>

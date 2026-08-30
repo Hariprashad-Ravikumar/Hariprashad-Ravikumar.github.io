@@ -123,8 +123,11 @@ body {
   text-transform: uppercase;
 }
 
+/* No cap: fills its column width. Sections beside a floated figure already
+   wrap narrow via normal CSS float behavior; a fixed ch cap was leaving
+   large unused space in every section without a figure. */
 .prose-measure {
-  max-width: 68ch;
+  max-width: 100%;
 }
 
 /* Body text is always left-aligned, never justified. */
@@ -153,6 +156,38 @@ p {
 }
 .spotlight:hover::before {
   opacity: 1;
+}
+
+/* Terminal-style status line (Hero) */
+@keyframes terminal-type {
+  from {
+    width: 0;
+  }
+}
+.terminal-status__text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  animation-name: terminal-type;
+  animation-duration: 2.2s;
+  animation-fill-mode: both;
+}
+@keyframes terminal-cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.terminal-status__cursor {
+  display: inline-block;
+  width: 0.55ch;
+  height: 1em;
+  background: currentColor;
+  animation: terminal-cursor-blink 1s steps(1, end) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

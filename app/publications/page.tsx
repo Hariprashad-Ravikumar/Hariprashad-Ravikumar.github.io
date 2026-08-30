@@ -20,7 +20,7 @@ export default function PublicationsPage() {
           <h2 className="text-h2 text-[var(--ink-900)]">Peer-Reviewed Publications</h2>
           <ul>
             {PEER_REVIEWED.map((pub) => (
-              <PubEntry key={pub.title} pub={pub} />
+              <PubEntry key={pub.title} pub={pub} showCredibility />
             ))}
           </ul>
         </section>

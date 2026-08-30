@@ -1,5 +1,6 @@
 import { LinkButton } from "@/components/ui/Button";
 import { METRICS } from "@/content/metrics";
+import { LinkedInIcon, MailIcon } from "@/components/ui/brand-icons";
 
 export default function ContactBand() {
   return (
@@ -12,6 +13,7 @@ export default function ContactBand() {
       </p>
       <div className="mt-6 flex flex-wrap justify-center gap-3">
         <LinkButton href="mailto:hari1729@nmsu.edu" variant="primary">
+          <MailIcon className="h-4 w-auto" />
           Email me
         </LinkButton>
         <LinkButton
@@ -20,6 +22,7 @@ export default function ContactBand() {
           target="_blank"
           rel="noopener noreferrer"
         >
+          <LinkedInIcon className="h-4 w-auto" />
           LinkedIn
         </LinkButton>
         <LinkButton href="/cv/CV_HARI.pdf" variant="secondary" target="_blank" rel="noopener noreferrer">

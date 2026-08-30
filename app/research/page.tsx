@@ -2,6 +2,7 @@ import Link from "next/link";
 import Container from "@/components/layout/Container";
 import Card from "@/components/ui/Card";
 import Tag from "@/components/ui/Tag";
+import JournalCredibility from "@/components/ui/JournalCredibility";
 import FigureCluster from "@/components/media/FigureCluster";
 import { METRICS } from "@/content/metrics";
 import { buildMetadata } from "@/lib/seo";
@@ -34,6 +35,7 @@ const THRUSTS = [
     body: "Mathematica symbolic-computation workflows analyzing algebraic structures and relativistic symmetry constraints. Published in Physical Review D 113, 096018 (2026); (3+1)-dimensional extension in preparation.",
     tags: ["Mathematica", "Symbolic Computation"],
     figuresKey: "conformal-algebra",
+    credibility: true,
   },
 ];
 
@@ -55,8 +57,6 @@ export default function ResearchPage() {
           terabytes of noisy data.
         </p>
 
-        {/* §10.3: the full five-paragraph narrative from the live homepage, moved here verbatim,
-            with one correction — "over 98% predictive accuracy" → METRICS.accuracy.value (93%+). */}
         <div className="prose-measure mt-6 flex flex-col gap-4">
           <p className="text-body text-[var(--ink-700)]">
             I&apos;m a theoretical particle physics PhD candidate at New Mexico State University, USA,
@@ -124,6 +124,7 @@ export default function ResearchPage() {
                   <Tag key={tag}>{tag}</Tag>
                 ))}
               </div>
+              {thrust.credibility && <JournalCredibility />}
               <FigureCluster figures={RESEARCH_FIGURES[thrust.figuresKey]} />
             </Card>
           ))}

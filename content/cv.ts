@@ -23,7 +23,7 @@ export const INDUSTRY_EXPERIENCE = [
     bullets: [
       "Derived closed-form analytical models for HAMR grain magnetization dynamics from first principles (Néel–Arrhenius, Stoner–Wohlfarth), obtaining switching time, noise power, and probability-of-switching expressions across multi-write cycles to predict adjacent track erasure (ATI & xTI).",
       "Validated against Monte Carlo stochastic simulation and experimental spin-stand data on realistic L1₀ FePt grain ensembles.",
-      "Built and deployed NIMBLE, a production Dash/Plotly simulation platform packaged as a modular Python library, adopted by sputtering and media engineering teams across WD sites in the US and Japan (30+ engineers).",
+      "Built and deployed NIMBLE, a production Dash/Plotly simulation platform packaged as a modular Python library, adopted by sputtering and media engineering teams across WD sites in the US and Japan (40+ engineers).",
       "Architected CI/CD with Jenkins; deployed on Kubernetes.",
     ],
   },

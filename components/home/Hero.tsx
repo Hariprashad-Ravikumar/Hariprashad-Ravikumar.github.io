@@ -3,10 +3,14 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Picture from "@/components/ui/Picture";
-import Chip from "@/components/ui/Chip";
+import TerminalStatusLine from "@/components/ui/TerminalStatusLine";
+import SocialLinks from "@/components/ui/SocialLinks";
 import { LinkButton } from "@/components/ui/Button";
+import { MailIcon } from "@/components/ui/brand-icons";
 import { METRICS } from "@/content/metrics";
 import Section from "@/components/layout/Section";
+
+const STATUS_TEXT = `Graduating ${METRICS.graduation} · Open to Research Scientist / ML Engineer roles · SF Bay Area`;
 
 export default function Hero() {
   const [parallax, setParallax] = useState(0);
@@ -18,7 +22,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <Section className="grid grid-cols-1 items-center gap-10 md:grid-cols-[3fr_2fr]">
+    <Section className="grid grid-cols-1 items-center gap-10 !pb-6 md:grid-cols-[3fr_2fr] md:!pb-8">
       <div>
         <h1
           className="whitespace-nowrap text-[var(--ink-900)]"
@@ -36,35 +40,23 @@ export default function Hero() {
         </p>
 
         <div className="mt-5">
-          <Chip>
-            ● Graduating {METRICS.graduation} · Open to Research Scientist / ML Engineer roles · SF Bay
-            Area
-          </Chip>
+          <TerminalStatusLine text={STATUS_TEXT} />
         </div>
 
         <p className="text-body prose-measure mt-6 text-[var(--ink-700)]">
-          I turn large-scale physics simulations into software that engineers actually use. At Western
-          Digital I derived closed-form models for heat-assisted magnetic recording from first
-          principles and shipped NIMBLE, the simulator that the team now runs across sites in the US and
+          I turn large-scale physics simulations into software that engineers actually use. At{" "}
+          <strong className="font-semibold text-[var(--ink-900)]">Western Digital</strong> I derived
+          closed-form models for heat-assisted magnetic recording from first
+          principles and shipped HAMR DCSNR NIMBLE app, the simulator that the team now runs across sites in the US and
           Japan.
         </p>
         <p className="text-body prose-measure mt-4 text-[var(--ink-700)]">
           My PhD at New Mexico State University applies GPU-accelerated HPC and machine learning to
           lattice QCD with {METRICS.observables.value} observables, CUDA C++ pipelines, and symbolic
-          regression that recovers analytical structure from noisy Monte Carlo data.
+          regression that recovers analytical structure from noisy Monte Carlo data using HPC (High
+          Performance Computing).
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-3">
-          <LinkButton href="/projects/" variant="primary">
-            View Projects
-          </LinkButton>
-          <LinkButton href="/cv/CV_HARI.pdf" variant="secondary" target="_blank" rel="noopener noreferrer">
-            Download CV
-          </LinkButton>
-          <LinkButton href="mailto:hari1729@nmsu.edu" variant="ghost">
-            Email me
-          </LinkButton>
-        </div>
       </div>
 
       <div className="flex justify-center md:justify-end">
@@ -82,6 +74,20 @@ export default function Hero() {
             className="aspect-[4/5] w-full object-cover"
           />
         </div>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-3 md:col-span-2 md:-mt-6">
+        <LinkButton href="/projects/" variant="primary">
+          View Projects
+        </LinkButton>
+        <LinkButton href="/cv/CV_HARI.pdf" variant="secondary" target="_blank" rel="noopener noreferrer">
+          Download CV
+        </LinkButton>
+        <LinkButton href="mailto:hari1729@nmsu.edu" variant="ghost">
+          <MailIcon className="h-4 w-auto" />
+          Email me
+        </LinkButton>
+        <SocialLinks />
       </div>
     </Section>
   );

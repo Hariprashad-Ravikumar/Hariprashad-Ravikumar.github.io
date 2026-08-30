@@ -24,14 +24,13 @@ export const PROJECTS: Project[] = [
     slug: "wd-internship-2026",
     title: "Intern – Media Test Engineering (HAMR Modeling & Simulation) @ Western Digital, San Jose, CA, USA",
     oneLiner:
-      "Production simulation platform for heat-assisted magnetic recording, used by 30+ engineers across WD's US and Japan sites.",
+      "Production simulation platform for heat-assisted magnetic recording, used by 40+ engineers across WD's US and Japan sites.",
     tags: ["Python", "Dash", "Plotly", "Kubernetes", "Jenkins"],
     links: [{ label: "Case study", href: "/projects/wd-internship-2026/" }],
     cover: {
       mode: "split",
       photo: "/images/wd/simulator-demo",
       photoAlt: "Demonstrating the NIMBLE HAMR DCSNR simulator to engineers",
-      n: "01 / PROJECT",
       title: "NIMBLE",
       sub: "HAMR DCSNR Simulator · Western Digital",
       tags: ["Python", "Dash", "Plotly"],
@@ -102,7 +101,6 @@ export const PROJECTS: Project[] = [
       mode: "split",
       photo: "/images/wd/hackathon-award",
       photoAlt: '"Wildest Idea" award received at the Western Digital Intern Summit 2026 Hackathon',
-      n: "05 / PROJECT",
       title: "WD Aquarius",
       sub: '"Wildest Idea" (Intern Summit 2026)',
       tags: ["Three.js", "WebGL", "TypeScript"],

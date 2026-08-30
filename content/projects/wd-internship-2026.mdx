@@ -2,13 +2,34 @@ import Picture from "@/components/ui/Picture";
 import Mermaid from "@/components/ui/Mermaid";
 import ProjectsBalance from "@/components/content/ProjectsBalance";
 
-<div className="float-none sm:float-right ml-6 mb-4 mt-2 sm:max-w-[200px]">
+<div className="float-none sm:float-right ml-6 mb-4 sm:-mt-[174px] sm:max-w-[330px] flex flex-col gap-2">
+  <div className="flex flex-row gap-2">
+    <div className="w-[65%]">
+      <Picture
+        src="/images/wd/WD-IDCard"
+        alt="Western Digital ID Card"
+        width={2448}
+        height={3784}
+        className="rounded-xl shadow-sm border border-[var(--line)] w-full h-auto"
+      />
+    </div>
+    <div className="w-[33%]">
+      <Picture
+        src="/images/wd/intern-summit-photobooth"
+        alt="Photobooth strip from the Western Digital Intern Summit 2026"
+        width={602}
+        height={1800}
+        widths={[640]}
+        className="rounded-xl shadow-sm border border-[var(--line)] w-full h-auto"
+      />
+    </div>
+  </div>
   <Picture
-    src="/images/wd/WD-IDCard"
-    alt="Western Digital ID Card"
-    width={1920}
-    height={1440}
-    className="rounded-xl shadow-sm border border-[var(--line)]"
+    src="/images/wd/san-jose-campus"
+    alt="Hariprashad Ravikumar under the Western Digital Intern Summit welcome arch on the San Jose campus"
+    width={3584}
+    height={2502}
+    className="rounded-xl shadow-sm border border-[var(--line)] object-contain w-full h-auto"
   />
 </div>
 
@@ -23,16 +44,6 @@ As a Heat-Assisted Magnetic Recording (HAMR) modeling intern:
 This role sat at the intersection of data engineering, materials science, and physics.
 
 <div className="clear-both"></div>
-
-<div className="max-w-md mx-auto my-6">
-  <Picture
-    src="/images/wd/san-jose-campus"
-    alt="Hariprashad Ravikumar under the Western Digital Intern Summit welcome arch on the San Jose campus"
-    width={4080}
-    height={3060}
-    className="rounded-xl shadow-sm border border-[var(--line)] object-contain w-full h-auto"
-  />
-</div>
 
 ## Projects
 
@@ -54,33 +65,24 @@ I derived a closed-form analytical model of grain magnetization dynamics from fi
 
 ## 2. NIMBLE Simulation App
 
-<div className="float-none sm:float-right ml-6 mb-4 mt-2 sm:max-w-[220px]">
-  <Picture
-    src="/images/wd/simulator-demo"
-    alt="NIMBLE Simulator interface running at Western Digital, blurred for confidentiality"
-    width={1440}
-    height={1920}
-    className="rounded-xl shadow-sm border border-[var(--line)] object-contain w-full h-auto"
-  />
-</div>
-
 The theoretical model needed to be accessible to the broader engineering team so they could evaluate recording performance directly from material parameters.
 
 I built and deployed an interactive physics simulator. The NIMBLE app is a Dash application backed by a modular Python physics library that calculates signal-to-noise ratios and other metrics in parallel.
 
+Engineers can run real-time parameter sweeps, compare multiple simulation runs side by side, and export results automatically as PowerPoint or Excel reports. The app is packaged as a PyPI-installable Python library with a clean API, integrated into a broader internal platform alongside other Dash and Plotly engineering tools.
+
 The application accelerates development cycles and removes a hardware-experiment step from the loop, significantly reducing testing costs.
 
-<div className="clear-both"></div>
-
-<div className="rounded-xl border border-[var(--line)] bg-[var(--surface-0)] p-4 shadow-sm my-6 w-full">
+<div className="my-6 flex flex-col gap-6 lg:flex-row lg:items-start">
+<div className="rounded-xl border border-[var(--line)] bg-[var(--surface-0)] p-4 shadow-sm lg:w-[58%]">
   <Mermaid>
   {`graph TD
       %% Styling
-      classDef frontend fill:#eef2ff,stroke:#6366f1,stroke-width:2px;
-      classDef backend fill:#f0fdf4,stroke:#22c55e,stroke-width:2px;
-      classDef storage fill:#fffbeb,stroke:#f59e0b,stroke-width:2px;
-      classDef external fill:#f8fafc,stroke:#94a3b8,stroke-width:2px,stroke-dasharray: 5 5;
-      classDef devops fill:#fef2f2,stroke:#ef4444,stroke-width:2px;
+      classDef frontend fill:#eef2ff,stroke:#6366f1,stroke-width:3px;
+      classDef backend fill:#f0fdf4,stroke:#22c55e,stroke-width:3px;
+      classDef storage fill:#fffbeb,stroke:#f59e0b,stroke-width:3px;
+      classDef external fill:#f8fafc,stroke:#94a3b8,stroke-width:3px,stroke-dasharray: 5 5;
+      classDef devops fill:#fef2f2,stroke:#ef4444,stroke-width:3px;
   
       subgraph Inputs ["Input Layer (HAMR Media Properties)"]
           M[Manual Input<br/>Engineers & Scientists]:::external
@@ -131,6 +133,25 @@ The application accelerates development cycles and removes a hardware-experiment
   </Mermaid>
   <p className="mt-1 text-center text-xs text-[var(--ink-500)]">System architecture, input to output</p>
 </div>
+<div className="lg:w-[40%]">
+  <h3 className="text-h3 text-[var(--ink-900)]">How it works</h3>
+  <ol className="prose-measure mt-3 flex flex-col gap-3">
+    <li className="text-body text-[var(--ink-700)]"><strong className="text-[var(--ink-900)]">Input.</strong> Engineers enter parameters manually, upload a file, or receive a JSON payload handed off from the upstream WD NIMBLE app.</li>
+    <li className="text-body text-[var(--ink-700)]"><strong className="text-[var(--ink-900)]">Client-side.</strong> The payload lands in IndexedDB; the Dash frontend reads it and a statistical/physics fitting engine auto-populates the parameter UI.</li>
+    <li className="text-body text-[var(--ink-700)]"><strong className="text-[var(--ink-900)]">Backend.</strong> The analytical HAMR switching model runs, with a parallel worker pool computing sweeps simultaneously.</li>
+    <li className="text-body text-[var(--ink-700)]"><strong className="text-[var(--ink-900)]">Results.</strong> Plotly renders DC-SNR and other recording metrics interactively.</li>
+    <li className="text-body text-[var(--ink-700)]"><strong className="text-[var(--ink-900)]">Export.</strong> Results package into multi-format reports for planning the next test experiment.</li>
+  </ol>
+  <p className="text-small prose-measure mt-4 text-[var(--ink-500)]">Deployed on Kubernetes with Jenkins CI/CD for reliable, reproducible builds.</p>
+  <Picture
+    src="/images/wd/simulator-demo"
+    alt="NIMBLE Simulator interface running at Western Digital, blurred for confidentiality"
+    width={1440}
+    height={1920}
+    className="mt-4 rounded-xl shadow-sm border border-[var(--line)] object-contain h-[371px] w-auto"
+  />
+</div>
+</div>
 
 ## Talks & Presentations
 
@@ -153,8 +174,8 @@ The application accelerates development cycles and removes a hardware-experiment
 
 I shared key results with the broader team and presented my simulation research at the Western Digital PhD Expo. All talks below are WD Confidential and were held at Western Digital, San Jose, CA, USA, unless noted otherwise.
 
-* **PhD Expo 2026** (Aug 2026) — "HAMR THMap Modeling & Simulation: The NIMBLE DCSNR Simulator App," to 40+ senior technologists, subject matter experts, and PhD interns
-* **Interlock for Media Characterization Meeting** (Aug 2026) — "DC-SNR Physics Simulator App NIMBLE and Multiple-Write HAMR Temperature and Field Map (THMap)," to 40+ sputtering engineers, material scientists, test engineers, and R&D engineers
+* **PhD Expo 2026** (Aug 2026) — "HAMR THMap Modeling & Simulation: The NIMBLE DCSNR Simulator App," to 50+ senior technologists, subject matter experts, and PhD interns
+* **Interlock for Media Characterization Meeting** (Aug 2026) — "DC-SNR Physics Simulator App NIMBLE and Multiple-Write HAMR Temperature and Field Map (THMap)," to 30+ sputtering engineers, material scientists, test engineers, and R&D engineers
 * **Interlock for Media Characterization Meeting** (Aug 2026) — "Multiple-Write HAMR THMap and Thermally Activated Switching Processes," to 30+ R&D engineers and technologists
 * **Interlock for Media Characterization Meeting** (July 2026) — "HAMR THMaps and Analytical Model for Log-Linearity of Write Temperature T_w with Number of Writes," to 30+ R&D engineers and technologists
 * **Interlock for Media Characterization Meeting** (July 2026) — "HAMR DC-SNR Physics Simulator App NIMBLE," to 30+ material scientists, test engineers, and subject matter experts

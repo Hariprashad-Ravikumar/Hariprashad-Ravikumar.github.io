@@ -1,13 +1,27 @@
 import Container from "./Container";
+import { GOOGLE_SCHOLAR_URL } from "@/content/publications";
+import {
+  ArxivIcon,
+  GitHubIcon,
+  GoogleScholarIcon,
+  HandshakeIcon,
+  LinkedInIcon,
+  MailIcon,
+  OrcidIcon,
+} from "@/components/ui/brand-icons";
 
 const LINKS = [
-  { label: "Email", href: "mailto:hari1729@nmsu.edu" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/hariprashad-ravikumar/" },
-  { label: "GitHub", href: "https://github.com/Hariprashad-Ravikumar" },
-  { label: "Google Scholar", href: null }, // TODO(hari): profile not yet created
-  { label: "ORCID", href: "https://orcid.org/0000-0002-3276-852X" },
-  { label: "arXiv", href: "https://arxiv.org/abs/2601.19251" },
-  { label: "Handshake", href: "https://app.joinhandshake.com/profiles/hariprashad-ravikumar" },
+  { label: "Email", href: "mailto:hari1729@nmsu.edu", Icon: MailIcon },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/hariprashad-ravikumar/", Icon: LinkedInIcon },
+  { label: "GitHub", href: "https://github.com/Hariprashad-Ravikumar", Icon: GitHubIcon },
+  { label: "Google Scholar", href: GOOGLE_SCHOLAR_URL, Icon: GoogleScholarIcon },
+  { label: "ORCID", href: "https://orcid.org/0000-0002-3276-852X", Icon: OrcidIcon },
+  { label: "arXiv", href: "https://arxiv.org/abs/2601.19251", Icon: ArxivIcon },
+  {
+    label: "Handshake",
+    href: "https://app.joinhandshake.com/profiles/hariprashad-ravikumar",
+    Icon: HandshakeIcon,
+  },
 ];
 
 export default function Footer() {
@@ -24,8 +38,9 @@ export default function Footer() {
                   href={link.href}
                   target={link.href.startsWith("http") ? "_blank" : undefined}
                   rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="hover:text-[var(--brand-900)] hover:underline"
+                  className="inline-flex items-center gap-1.5 hover:text-[var(--brand-900)] hover:underline"
                 >
+                  {link.Icon && <link.Icon className="h-3.5 w-auto" />}
                   {link.label}
                 </a>
               ) : (

@@ -10,7 +10,6 @@ export type CoverMode =
       mode: "split";
       photo: string;
       photoAlt: string;
-      n: string;
       title: string;
       sub: string;
       tags: string[];
@@ -50,7 +49,6 @@ export default function ProjectCover(props: CoverMode) {
           />
         </div>
         <div className="flex flex-col justify-center gap-1.5 p-6 text-white">
-          <span className="text-eyebrow text-[var(--accent-400)]">{props.n}</span>
           <span className="text-h3">{props.title}</span>
           <span className="text-small text-white/80">{props.sub}</span>
           <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1 font-mono text-xs text-white/70">

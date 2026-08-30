@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LinkButton } from "@/components/ui/Button";
+import JournalCredibility from "@/components/ui/JournalCredibility";
 import { PEER_REVIEWED } from "@/content/publications";
 import Section from "@/components/layout/Section";
 
@@ -13,6 +14,10 @@ export default function PublicationHighlight() {
       <p className="text-body prose-measure mt-3 text-[var(--ink-500)]">
         {pub.authors} | {pub.venue}
       </p>
+
+      <div className="mt-4">
+        <JournalCredibility />
+      </div>
 
       <div className="mt-5 flex flex-wrap gap-3">
         {pub.links.map((link) =>
