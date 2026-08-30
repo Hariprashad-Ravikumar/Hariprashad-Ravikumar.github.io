@@ -13,6 +13,7 @@ export const metadata = buildMetadata({
   description:
     "Lattice QCD calculations of TMDs, nucleon EDMs with Los Alamos, and conformal algebra using GPU-accelerated HPC and symbolic regression.",
   path: "/research/",
+  image: "/og/research.png",
 });
 
 const THRUSTS = [

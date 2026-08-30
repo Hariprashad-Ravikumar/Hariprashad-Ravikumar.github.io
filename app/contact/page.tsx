@@ -17,6 +17,13 @@ import {
   ResearchGateIcon,
 } from "@/components/ui/brand-icons";
 
+export const metadata = buildMetadata({
+  title: "Contact | Hariprashad Ravikumar",
+  description: "Get in touch with Hariprashad Ravikumar — email, LinkedIn, GitHub, Google Scholar, and more.",
+  path: "/contact/",
+  image: "/og/contact.png",
+});
+
 const LINKS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/hariprashad-ravikumar/", Icon: LinkedInIcon },
   { label: "GitHub", href: "https://github.com/Hariprashad-Ravikumar", Icon: GitHubIcon },

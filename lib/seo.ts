@@ -12,12 +12,15 @@ export function buildMetadata({
   title,
   description,
   path,
+  image,
 }: {
   title: string;
   description: string;
   path: string;
+  image?: string;
 }): Metadata {
   const url = `${SITE_URL}${path}`;
+  const ogImage = image ? `${SITE_URL}${image}` : OG_IMAGE;
   return {
     title,
     description,
@@ -27,14 +30,14 @@ export function buildMetadata({
       description,
       url,
       siteName: "Hariprashad Ravikumar",
-      images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
+      images: [{ url: ogImage, width: 1200, height: 630 }],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [OG_IMAGE],
+      images: [ogImage],
     },
   };
 }

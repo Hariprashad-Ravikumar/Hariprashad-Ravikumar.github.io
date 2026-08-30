@@ -9,6 +9,7 @@ export const metadata = buildMetadata({
   description:
     "NIMBLE HAMR simulator, GPU-accelerated lattice QCD ML pipeline, full-stack forecasting apps, and more.",
   path: "/projects/",
+  image: "/og/projects.png",
 });
 
 export default function ProjectsPage() {

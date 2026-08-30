@@ -9,6 +9,7 @@ export const metadata = buildMetadata({
   description:
     "Peer-reviewed work including Physical Review D 113, 096018 (2026), plus manuscripts in preparation and conference proceedings.",
   path: "/publications/",
+  image: "/og/publications.png",
 });
 
 export default function PublicationsPage() {

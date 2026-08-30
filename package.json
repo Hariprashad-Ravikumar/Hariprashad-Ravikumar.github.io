@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "mkdir -p public/cv && cp cv/CV_HARI.pdf public/cv/CV_HARI.pdf && next build && touch out/.nojekyll",
+    "build": "mkdir -p public/cv && cp cv/CV_HARI.pdf public/cv/CV_HARI.pdf && npm run og:screenshots && next build && touch out/.nojekyll",
     "start": "next start",
     "lint": "eslint",
-    "optimize:images": "node scripts/optimize-images.mjs"
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "og:screenshots": "node scripts/generate-og-screenshots.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -29,6 +30,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.3",
+    "playwright": "^1.62.1",
     "sharp": "^0.35.4",
     "tailwindcss": "^4",
     "typescript": "^5"

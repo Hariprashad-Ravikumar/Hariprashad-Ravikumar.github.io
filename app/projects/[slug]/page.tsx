@@ -70,6 +70,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
       title: override?.title ?? `${project?.title ?? slug} | Case Study`,
       description: override?.description ?? project?.oneLiner ?? "",
       path: `/projects/${slug}/`,
+      image: `/og/projects/${slug}.png`,
     });
   });
 }
@@ -120,7 +121,7 @@ export default async function ProjectCaseStudyPage({
         ) : (
           <h1 className="text-h1 text-[var(--ink-900)]">{project?.title ?? slug}</h1>
         )}
-        <div className="mt-8">
+        <div className="mt-8" data-og-anchor>
           <CaseStudy />
         </div>
       </article>

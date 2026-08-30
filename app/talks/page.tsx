@@ -9,6 +9,7 @@ export const metadata = buildMetadata({
   title: "Talks | Hariprashad Ravikumar",
   description: `${TALKS.length} research talks on conformal algebra, lattice QCD, quantum computing, and HAMR modeling.`,
   path: "/talks/",
+  image: "/og/talks.png",
 });
 
 export default function TalksPage() {

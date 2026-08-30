@@ -24,6 +24,7 @@ export const metadata = buildMetadata({
   description:
     "Full curriculum vitae: Western Digital R&D, PhD in Physics at NMSU, publications, awards, and technical skills.",
   path: "/resume/",
+  image: "/og/resume.png",
 });
 
 export default function ResumePage() {
