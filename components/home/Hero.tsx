@@ -46,6 +46,7 @@ export default function Hero() {
             fontWeight: 700,
             letterSpacing: "-0.02em",
             lineHeight: 1.05,
+            whiteSpace: "nowrap",
           }}
         >
           Hariprashad Ravikumar
@@ -70,7 +71,7 @@ export default function Hero() {
           I turn large-scale physics simulations into software that engineers actually use. At{" "}
           <strong className="font-semibold text-[var(--ink-900)]">Western Digital</strong> I derived
           closed-form models for heat-assisted magnetic recording from first
-          principles and shipped HAMR DCSNR NIMBLE app, the simulator that the team now runs across sites in the US and
+          principles and shipped a full-stack enterprise physics simulator that the team now runs across sites in the US and
           Japan.
         </motion.p>
         <motion.p
