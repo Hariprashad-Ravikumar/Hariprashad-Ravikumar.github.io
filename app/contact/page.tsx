@@ -57,29 +57,23 @@ export default function ContactPage() {
           under STEM OPT; open to H-1B sponsorship.
         </p>
 
-        <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium">
-          <a href={`mailto:${CONTACT.email}`} className="text-[var(--brand-500)] hover:underline">
+        <div className="mt-6 flex flex-wrap gap-3">
+          <LinkButton href={`mailto:${CONTACT.email}`} variant="primary">
+            <MailIcon className="h-4 w-auto" />
             {CONTACT.email}
-          </a>
+          </LinkButton>
           {LINKS.map((link) => (
-            <a
+            <LinkButton
               key={link.label}
               href={link.href}
+              variant="secondary"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[var(--brand-500)] hover:underline"
             >
               <link.Icon className="h-4 w-auto" />
               {link.label}
-            </a>
+            </LinkButton>
           ))}
-        </div>
-
-        <div className="mt-6">
-          <LinkButton href={`mailto:${CONTACT.email}`} variant="primary">
-            <MailIcon className="h-4 w-auto" />
-            Email me
-          </LinkButton>
         </div>
 
         <div className="text-small mt-8 text-[var(--ink-500)]">

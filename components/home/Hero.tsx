@@ -125,7 +125,7 @@ export default function Hero() {
         >
           Download Résumé
         </LinkButton>
-        <LinkButton href="mailto:hari1729@nmsu.edu" variant="ghost">
+        <LinkButton href="mailto:hari1729@nmsu.edu" variant="secondary">
           <MailIcon className="h-4 w-auto" />
           Email me
         </LinkButton>

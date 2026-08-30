@@ -63,6 +63,15 @@
   --glass-trim-blur: 16px;
   --glass-trim-shadow: var(--shadow-sm);
 
+  /* Liquid-glass button material — a separate, more reactive tier from
+     --glass-trim-* (also used by .nav-pill) so buttons can deepen their
+     blur/tint on hover without changing the nav. */
+  --glass-btn-bg: rgba(255, 255, 255, 0.14);
+  --glass-btn-bg-hover: rgba(255, 255, 255, 0.32);
+  --glass-btn-border: rgba(255, 255, 255, 0.6);
+  --glass-btn-blur: 18px;
+  --glass-btn-blur-hover: 28px;
+
   /* Deprecated aliases — kept equal to a tier so existing arbitrary-value
      classes (bg-[var(--glass-bg)]) keep working during incremental
      migration. Remove once every component references a tier var directly. */
@@ -305,6 +314,54 @@ p {
   -webkit-backdrop-filter: blur(var(--glass-trim-blur)) saturate(160%);
 }
 
+/* Liquid-glass buttons (Button.tsx's "secondary" variant + the Contact page
+   link pills) — deepens its blur/tint on hover/focus, like a bead of glass
+   reacting to the pointer, instead of .material-trim's static frost. */
+.material-glass {
+  background: var(--glass-btn-bg);
+  border: 1px solid var(--glass-btn-border);
+  border-top: 1px solid rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(var(--glass-btn-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-btn-blur)) saturate(180%);
+  transition:
+    background 250ms ease,
+    backdrop-filter 250ms ease;
+}
+.material-glass:hover,
+.material-glass:focus-visible {
+  background: var(--glass-btn-bg-hover);
+  backdrop-filter: blur(var(--glass-btn-blur-hover)) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--glass-btn-blur-hover)) saturate(200%);
+}
+
+/* Specular sheen shared by every Button/LinkButton variant (§Button.tsx) —
+   a soft diagonal highlight that sweeps across on hover, the same "light
+   catching the material" idea as .material-chrome's bright top edge, but
+   animated. Lives on ::after (not ::before) so it never collides with
+   .gradient-ring-cta's ::before border on the same element. */
+.glass-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.glass-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  transition: transform 500ms ease;
+  pointer-events: none;
+}
+.glass-sheen:hover::after,
+.glass-sheen:focus-visible::after {
+  transform: translateX(120%);
+}
+
 /* Nav pills: hover deepens the tint + shifts the border to the accent hue
    (the pointer-driven "color flow" — paired with .spotlight's cursor glow);
    the active page gets a brand-tinted border instead (wayfinding). */
@@ -374,12 +431,23 @@ p {
     --glass-surface-blur: 0px;
     --glass-trim-blur: 0px;
 
+    --glass-btn-bg: var(--surface-0);
+    --glass-btn-bg-hover: var(--surface-50);
+    --glass-btn-border: var(--line);
+    --glass-btn-blur: 0px;
+    --glass-btn-blur-hover: 0px;
+
     --glass-bg: var(--surface-0);
     --glass-bg-heavy: var(--surface-0);
     --glass-border: var(--line);
     --glass-blur-sm: 0px;
     --glass-blur-md: 0px;
     --glass-blur-lg: 0px;
+  }
+  /* No blur to deepen, and the sheen sweep is a glass-only flourish — skip
+     it so a solid button doesn't get a stray light streak. */
+  .glass-sheen::after {
+    display: none;
   }
 }
 
@@ -389,10 +457,12 @@ p {
     --glass-chrome-border: var(--ink-700);
     --glass-surface-border: var(--ink-700);
     --glass-trim-border: var(--ink-500);
+    --glass-btn-border: var(--ink-500);
   }
   .material-chrome,
   .material-surface,
-  .material-trim {
+  .material-trim,
+  .material-glass {
     border-width: 1.5px;
   }
 }

@@ -2,15 +2,14 @@
 
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import { motion } from "framer-motion";
-import { springPress } from "@/lib/springs";
+import { springDefault, springPress } from "@/lib/springs";
 
 const BASE =
   "inline-flex items-center justify-center gap-2 rounded-[var(--r-sm)] px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-500)] focus-visible:ring-offset-2";
 
 const VARIANTS = {
-  primary: "bg-[var(--brand-900)] text-white hover:opacity-90",
-  secondary: "material-trim text-[var(--ink-900)] hover:brightness-110",
-  ghost: "text-[var(--brand-500)] hover:underline",
+  primary: "glass-sheen bg-[var(--brand-900)] text-white hover:opacity-90",
+  secondary: "material-glass glass-sheen text-[var(--ink-900)]",
 };
 
 type Variant = keyof typeof VARIANTS;
@@ -38,8 +37,8 @@ export function Button({
 }) {
   return (
     <motion.button
-      whileTap={{ scale: 0.97 }}
-      transition={springPress}
+      whileHover={{ scale: 1.03, transition: springDefault }}
+      whileTap={{ scale: 0.97, transition: springPress }}
       className={`${BASE} ${VARIANTS[variant]} ${className}`}
       {...props}
     >
@@ -59,8 +58,8 @@ export function LinkButton({
 }) {
   return (
     <motion.a
-      whileTap={{ scale: 0.97 }}
-      transition={springPress}
+      whileHover={{ scale: 1.03, transition: springDefault }}
+      whileTap={{ scale: 0.97, transition: springPress }}
       className={`${BASE} ${VARIANTS[variant]} ${className}`}
       {...props}
     >
