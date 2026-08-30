@@ -116,7 +116,13 @@ export default function Hero() {
         <LinkButton href="/projects/" variant="primary">
           View Projects
         </LinkButton>
-        <LinkButton href="/cv/CV_HARI.pdf" variant="secondary" target="_blank" rel="noopener noreferrer">
+        <LinkButton
+          href="/cv/CV_HARI.pdf"
+          variant="secondary"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="gradient-ring-cta"
+        >
           Download Résumé
         </LinkButton>
         <LinkButton href="mailto:hari1729@nmsu.edu" variant="ghost">

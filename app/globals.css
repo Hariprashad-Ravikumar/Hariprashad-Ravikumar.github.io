@@ -47,6 +47,10 @@
   --glass-chrome-border: rgba(255, 255, 255, 0.55);
   --glass-chrome-blur: 40px;
   --glass-chrome-shadow: var(--shadow-lg);
+  /* A full-viewport takeover (mobile nav menu) needs to read as a much
+     thicker material than the thin sticky header strip — --glass-chrome-bg
+     is deliberately near-invisible so scrolled content shows through it. */
+  --glass-menu-bg: rgba(255, 255, 255, 0.92);
 
   --glass-surface-bg: rgba(255, 255, 255, 0.05);
   --glass-surface-border: rgba(255, 255, 255, 0.5);
@@ -210,6 +214,48 @@ p {
   }
 }
 
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Flowing gradient border for a CTA — same brand palette as .avatar-ring,
+   but animates the gradient's own angle (not the element's transform) so
+   it plays nicely with the ring's mask-composite cutout below: animating
+   `transform` on an element that also has an active `mask` is a known
+   Chromium paint-corruption case (confirmed while building this — the
+   ring rendered as a broken diagonal streak escaping the button). */
+.gradient-ring-cta {
+  position: relative;
+  isolation: isolate;
+}
+.gradient-ring-cta::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  z-index: -1;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--brand-500),
+    var(--accent-500),
+    var(--aurora-2),
+    var(--brand-300),
+    var(--brand-500)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: gradient-angle-flow 6s linear infinite;
+}
+@keyframes gradient-angle-flow {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
 /* Fluid-mesh canvas cross-fade-in, replacing an abrupt placeholder swap. */
 @keyframes fluid-mesh-fade-in {
   from {
@@ -239,6 +285,12 @@ p {
   border-top: 1px solid rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(var(--glass-chrome-blur)) saturate(180%);
   -webkit-backdrop-filter: blur(var(--glass-chrome-blur)) saturate(180%);
+}
+/* Full-screen mobile nav overlay only — overrides .material-chrome's
+   near-invisible background with a near-opaque one, since a full-viewport
+   panel can't rely on a thin scroll-through tint for legibility. */
+.mobile-nav-panel {
+  background: var(--glass-menu-bg);
 }
 .material-surface {
   background: var(--glass-surface-bg);
@@ -311,6 +363,7 @@ p {
 @media (prefers-reduced-transparency: reduce) {
   :root {
     --glass-chrome-bg: var(--surface-0);
+    --glass-menu-bg: var(--surface-0);
     --glass-surface-bg: var(--surface-0);
     --glass-trim-bg: var(--surface-0);
     --glass-trim-bg-hover: var(--surface-0);

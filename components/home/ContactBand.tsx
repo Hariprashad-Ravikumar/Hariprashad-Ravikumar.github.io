@@ -29,7 +29,13 @@ export default function ContactBand() {
           <LinkedInIcon className="h-4 w-auto" />
           LinkedIn
         </LinkButton>
-        <LinkButton href="/cv/CV_HARI.pdf" variant="secondary" target="_blank" rel="noopener noreferrer">
+        <LinkButton
+          href="/cv/CV_HARI.pdf"
+          variant="secondary"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="gradient-ring-cta"
+        >
           Download Résumé
         </LinkButton>
       </div>
