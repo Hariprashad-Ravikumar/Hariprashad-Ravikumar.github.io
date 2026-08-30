@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "mkdir -p public/cv && cp cv/CV_HARI.pdf public/cv/CV_HARI.pdf && npm run og:screenshots && next build && touch out/.nojekyll",
     "start": "next start",
     "lint": "eslint",

@@ -14,7 +14,7 @@ export default function WDSpotlight() {
       </div>
 
       <h2 className="text-h2 prose-measure mt-4 text-[var(--ink-900)]">
-        I built NIMBLE, a HAMR simulator now used by 40+ engineers across WD&apos;s US and Japan
+        I built a full-stack enterprise HAMR simulator now used by 40+ engineers across WD&apos;s US and Japan
         sites.
       </h2>
 
@@ -24,7 +24,7 @@ export default function WDSpotlight() {
         & xTI) without costly hardware experiments.
       </p>
       <p className="text-body prose-measure mt-4 text-[var(--ink-700)]">
-        I shipped the physics as NIMBLE, a production Dash/Plotly simulation platform packaged as a
+        I shipped a production Dash/Plotly simulation platform packaged as a
         modular Python library, deployed on Kubernetes with Jenkins CI/CD and adopted by sputtering
         and media engineering teams.
       </p>

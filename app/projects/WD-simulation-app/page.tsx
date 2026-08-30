@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}${NEW_PATH}` },
 };
 
-export default function NimbleRedirect() {
+export default function WDSimulationAppRedirect() {
   return (
     <div style={{ padding: "6rem 1.5rem", textAlign: "center" }}>
       <script

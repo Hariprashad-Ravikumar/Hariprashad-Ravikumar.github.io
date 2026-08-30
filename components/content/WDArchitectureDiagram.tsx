@@ -1,6 +1,6 @@
 const STAGES = [
   {
-    label: "Upstream WD NIMBLE app",
+    label: "Internal Enterprise Platform",
     detail: "hands off a JSON payload · opens new tab · IndexedDB API",
   },
   {
@@ -36,7 +36,7 @@ function detailLines(detail: string): string[] {
  * Inline SVG so the diagram stays theme-aware, crisp at any zoom, and
  * screen-reader accessible (§10.5) — nothing to export or regenerate.
  */
-export default function NimbleArchitectureDiagram() {
+export default function WDArchitectureDiagram() {
   const height = STAGES.length * (BOX_HEIGHT + GAP) - GAP + 40;
 
   return (
@@ -44,7 +44,7 @@ export default function NimbleArchitectureDiagram() {
       <svg
         viewBox={`0 0 ${WIDTH} ${height}`}
         role="img"
-        aria-label={`NIMBLE data flow: ${STAGES.map((s) => s.label).join(" → ")}. Deployment on Kubernetes, CI/CD via Jenkins.`}
+        aria-label={`Simulation data flow: ${STAGES.map((s) => s.label).join(" → ")}. Deployment on Kubernetes, CI/CD via Jenkins.`}
         className="w-full max-w-xl"
       >
         <defs>
@@ -102,7 +102,7 @@ export default function NimbleArchitectureDiagram() {
         </text>
       </svg>
       <figcaption className="text-small mt-2 text-[var(--ink-500)]">
-        Data flow from the upstream WD NIMBLE app through the Dash frontend, physics engine backend,
+        Data flow from the internal enterprise platform through the Dash frontend, physics engine backend,
         and results export.
       </figcaption>
     </figure>

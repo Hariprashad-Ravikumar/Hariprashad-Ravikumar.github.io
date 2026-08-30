@@ -17,9 +17,9 @@ type CaseStudySlug = keyof typeof CASE_STUDIES;
 // projects.ts entry rather than invent new copy.
 const SEO_OVERRIDES: Partial<Record<CaseStudySlug, { title: string; description: string }>> = {
   "wd-internship-2026": {
-    title: "WD Internship: NIMBLE HAMR Simulator (Western Digital)",
+    title: "WD Internship: Enterprise HAMR Simulator (Western Digital)",
     description:
-      "My Western Digital internship building NIMBLE, a Dash/Plotly HAMR DCSNR simulator adopted by 40+ WD engineers across the US and Japan.",
+      "My Western Digital internship building a full-stack enterprise Dash/Plotly HAMR DCSNR simulator adopted by 40+ WD engineers across the US and Japan.",
   },
 };
 
@@ -30,9 +30,9 @@ const ARTICLE_JSON_LD: Partial<Record<CaseStudySlug, Record<string, unknown>>> =
   "wd-internship-2026": {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    headline: "WD Internship: NIMBLE HAMR Simulator (Western Digital)",
+    headline: "WD Internship: Enterprise HAMR Simulator (Western Digital)",
     description:
-      "My Western Digital internship building NIMBLE, a Dash/Plotly HAMR DCSNR simulator adopted by 40+ WD engineers across the US and Japan.",
+      "My Western Digital internship building a full-stack enterprise Dash/Plotly HAMR DCSNR simulator adopted by 40+ WD engineers across the US and Japan.",
     about: {
       "@type": "Organization",
       name: "Western Digital",

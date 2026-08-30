@@ -30,8 +30,8 @@ export const PROJECTS: Project[] = [
     cover: {
       mode: "split",
       photo: "/images/wd/simulator-demo",
-      photoAlt: "Demonstrating the NIMBLE HAMR DCSNR simulator to engineers",
-      title: "NIMBLE",
+      photoAlt: "Demonstrating the HAMR DCSNR simulator to engineers",
+      title: "Enterprise Physics Simulator",
       sub: "HAMR DCSNR Simulator · Western Digital",
       tags: ["Python", "Dash", "Plotly"],
     },

@@ -92,7 +92,7 @@ export default function ResearchPage() {
             Heat-Assisted Magnetic Recording (HAMR) technology. I developed a closed-form analytical
             model from first principles to evaluate write behavior and predict adjacent track erasure
             (ATI & xTI), with a peer-reviewed publication currently in progress. Simultaneously, I
-            built and deployed &ldquo;NIMBLE&rdquo;, a full-stack interactive simulation web
+            built and deployed a full-stack enterprise interactive simulation web
             application using Python, Dash, and Kubernetes. Packaged as a modular Python library, this
             simulator is now actively used by cross-functional engineering teams to evaluate recording
             performance and accelerate hardware development cycles.

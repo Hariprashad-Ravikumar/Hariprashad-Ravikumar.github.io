@@ -31,7 +31,7 @@ components/
   home/                   Hero, MetricStrip, WDSpotlight, FeaturedProjects, Timeline,
                           TechStack, PublicationHighlight, ContactBand
   content/                ProjectCard, PubEntry, TalkList, ResumeSection, ResumeSideNav,
-                          NimbleArchitectureDiagram, ProjectsBalance
+                          WDArchitectureDiagram, ProjectsBalance
 
 content/                 typed data + MDX prose — the single source of truth for site copy
   metrics.ts                every stat shown on the site (40+ engineers, 98% accuracy, ...)

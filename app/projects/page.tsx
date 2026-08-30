@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Projects | Simulation, ML & Scientific Software",
   description:
-    "NIMBLE HAMR simulator, GPU-accelerated lattice QCD ML pipeline, full-stack forecasting apps, and more.",
+    "Enterprise HAMR simulator, GPU-accelerated lattice QCD ML pipeline, full-stack forecasting apps, and more.",
   path: "/projects/",
   image: "/og/projects.png",
 });

@@ -1,5 +1,5 @@
 const LEFT = { title: "Physics Modeling", detail: "HAMR grain dynamics" };
-const RIGHT = { title: "NIMBLE Simulator", detail: "Dash physics app" };
+const RIGHT = { title: "Enterprise Physics Simulator", detail: "Dash physics app" };
 
 /**
  * Static balance-scale figure: a perfectly level beam signals the two

@@ -87,7 +87,7 @@ const OG = SHELL(1200, 630, `
 
 /* ─────────────────────────── project covers ─────────────────────────── */
 const PROJECTS = [
-  { slug: 'nimble-cover', n: '01', title: 'NIMBLE', sub: 'HAMR DCSNR Simulator · Western Digital', tags: ['Python', 'Dash', 'Plotly', 'Kubernetes'], hue: T.accent, glyph: 'pipeline' },
+  { slug: 'wd-simulation-cover', n: '01', title: 'Simulation App', sub: 'HAMR DCSNR Simulator · Western Digital', tags: ['Python', 'Dash', 'Plotly', 'Kubernetes'], hue: T.accent, glyph: 'pipeline' },
   { slug: 'tmd-pipeline-cover', n: '02', title: 'Lattice QCD TMD Pipeline', sub: 'GPU-accelerated symbolic regression at scale', tags: ['CUDA C++', 'PySR', 'SLURM'], hue: T.a2, glyph: 'lattice' },
   { slug: 'ai-datascience-lab-cover', n: '03', title: 'AI-DataScience-Lab', sub: 'Full-stack forecasting with GPT-3.5 summaries', tags: ['Flask', 'Azure', 'React'], hue: T.a3, glyph: 'chart' },
   { slug: 'haribot-cover', n: '04', title: 'HariBot', sub: 'AI chatbot answering questions about my research', tags: ['OpenAI API', 'Flask', 'Render'], hue: T.a1, glyph: 'chat' },

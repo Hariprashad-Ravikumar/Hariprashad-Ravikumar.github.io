@@ -29,7 +29,7 @@
 | Perf budget | Lighthouse 90+ mobile; GPU-composited properties only |
 | Theme | Light mode only for v1 (tokens structured so dark can be added later) |
 | Bio | 2 condensed paragraphs on Home; full narrative on Research |
-| Projects | Cards for all 8; full case studies for NIMBLE, TMD Pipeline, AI-DataScience-Lab |
+| Projects | Cards for all 8; full case studies for Simulation App, TMD Pipeline, AI-DataScience-Lab |
 | CV | Structured HTML + sticky sub-nav + PDF download |
 | Git | Rebuild directly on `main` (guardrails in §2.1) |
 
@@ -174,7 +174,7 @@ assets/raw/           source media, not deployed
 
 ```ts
 export const METRICS = {
-  engineers:    { value: '30+',     label: 'engineers using NIMBLE' },
+  engineers:    { value: '30+',     label: 'engineers using Simulation App' },
   speedup:      { value: '10×',     label: 'faster simulation sweeps' },
   computeHours: { value: '75,000+', label: 'CPU/GPU hours on NERSC Perlmutter' },
   observables:  { value: '30,000+', label: 'observables processed' },
@@ -236,7 +236,7 @@ export const METRICS = {
 | `assets/raw/projects/latex-cv-cicd-cover.png` | ✅ generated |
 | `assets/raw/video/ai-datascience-lab.{mp4,webm}` + poster | 🎬 Hari supplies |
 | `assets/raw/video/haribot.{mp4,webm}` + poster | 🎬 Hari supplies |
-| NIMBLE cover | 🖼 **split** — `wd/simulator-demo.jpg` + label panel |
+| Simulation App cover | 🖼 **split** — `wd/simulator-demo.jpg` + label panel |
 | WD Aquarius cover | 🖼 **split** — `wd/hackathon-award.jpg` + label panel |
 | Research figures | ⏳ **deferred to Phase 7** (§16) |
 
@@ -336,7 +336,7 @@ type CoverMode =
 
 | Project | Photo | Panel |
 |---|---|---|
-| NIMBLE | `wd/simulator-demo.jpg` | `01 / PROJECT` · **NIMBLE** · HAMR DCSNR Simulator · Western Digital · Python / Dash / Plotly |
+| Simulation App | `wd/simulator-demo.jpg` | `01 / PROJECT` · **Simulation App** · HAMR DCSNR Simulator · Western Digital · Python / Dash / Plotly |
 | WD Aquarius | `wd/hackathon-award.jpg` | `05 / PROJECT` · **WD Aquarius** · "Wildest Idea" — Intern Summit 2026 · Three.js / WebGL / TypeScript |
 
 > Both photos also appear in the WD spotlight mosaic. Use a **tighter crop** on the cards than in the mosaic so they don't read as duplicates.
@@ -395,7 +395,7 @@ Order: Hero → Metric strip → WD Spotlight → Featured Projects → Timeline
 >
 > **Chip:** ● Graduating December 2026 · Open to Research Scientist / ML Engineer roles · SF Bay Area
 >
-> I turn large-scale physics simulations into software that engineers actually use. At Western Digital I derived closed-form models for heat-assisted magnetic recording from first principles and shipped NIMBLE, the simulator that team now runs across sites in the US and Japan.
+> I turn large-scale physics simulations into software that engineers actually use. At Western Digital I derived closed-form models for heat-assisted magnetic recording from first principles and shipped Simulation App, the simulator that team now runs across sites in the US and Japan.
 >
 > My PhD at New Mexico State University applies GPU-accelerated HPC and machine learning to lattice QCD — 30,000+ observables, CUDA C++ pipelines, and symbolic regression that recovers analytical structure from noisy Monte Carlo data.
 >
@@ -406,7 +406,7 @@ Order: Hero → Metric strip → WD Spotlight → Featured Projects → Timeline
 
 | Value | Label |
 |---|---|
-| `30+` | engineers using NIMBLE |
+| `30+` | engineers using Simulation App |
 | `10×` | faster simulation sweeps |
 | `75,000+` | CPU/GPU hours on NERSC Perlmutter |
 | `30,000+` | observables at 93%+ accuracy |
@@ -415,11 +415,11 @@ Order: Hero → Metric strip → WD Spotlight → Featured Projects → Timeline
 
 > **Eyebrow:** WESTERN DIGITAL · SAN JOSE, CA · SUMMER 2026 — chip `Modeling & Simulation Intern`
 >
-> **H2:** I built NIMBLE — a HAMR simulator now used by 30+ engineers across WD's US and Japan sites.
+> **H2:** I built Simulation App — a HAMR simulator now used by 30+ engineers across WD's US and Japan sites.
 >
 > Over summer 2026 I derived closed-form analytical models for grain magnetization dynamics in Heat-Assisted Magnetic Recording from first principles, predicting adjacent-track erasure (ATI & xTI) without costly hardware experiments.
 >
-> I shipped the physics as NIMBLE, a production Dash/Plotly simulation platform packaged as a modular Python library — deployed on Kubernetes with Jenkins CI/CD and adopted by sputtering and media engineering teams.
+> I shipped the physics as Simulation App, a production Dash/Plotly simulation platform packaged as a modular Python library — deployed on Kubernetes with Jenkins CI/CD and adopted by sputtering and media engineering teams.
 >
 > **Tiles:** `30+` engineers · `2` R&D projects shipped · `1` hackathon award
 > **Tags:** Python · Dash · Plotly · Kubernetes · Jenkins · Monte Carlo · HAMR Physics
@@ -429,13 +429,13 @@ Order: Hero → Metric strip → WD Spotlight → Featured Projects → Timeline
 
 | Slot | File | Kicker | Caption | Alt |
 |---|---|---|---|---|
-| Feature 4:5 | `wd/phd-expo.jpg` | WD PhD Expo 2026 | Presenting the NIMBLE HAMR DCSNR Simulator | Hariprashad Ravikumar presenting the NIMBLE HAMR DCSNR Simulator at the Western Digital PhD Expo 2026 |
-| Square | `wd/simulator-demo.jpg` | NIMBLE Simulator | Demoing DCSNR prediction from material parameters | Demonstrating the NIMBLE HAMR DCSNR simulator to engineers |
+| Feature 4:5 | `wd/phd-expo.jpg` | WD PhD Expo 2026 | Presenting the Simulation App HAMR DCSNR Simulator | Hariprashad Ravikumar presenting the Simulation App HAMR DCSNR Simulator at the Western Digital PhD Expo 2026 |
+| Square | `wd/simulator-demo.jpg` | Simulation App Simulator | Demoing DCSNR prediction from material parameters | Demonstrating the Simulation App HAMR DCSNR simulator to engineers |
 | Square | `wd/hackathon-award.jpg` | Wildest Idea Award | WD Intern Summit 2026 Hackathon | Wildest Idea award received at the Western Digital Intern Summit 2026 Hackathon |
 | Wide 21:8 | `wd/san-jose-campus.jpg` | San Jose Campus | Western Digital, summer 2026 | Western Digital San Jose campus during the summer 2026 internship |
 
 #### Featured Projects
-Three cards: NIMBLE (split) · Lattice QCD TMD Pipeline (generated) · AI-DataScience-Lab (video).
+Three cards: Simulation App (split) · Lattice QCD TMD Pipeline (generated) · AI-DataScience-Lab (video).
 
 #### Experience Timeline
 ```
@@ -491,7 +491,7 @@ Grid of 8 `SpotlightCard`s. **Delete "More projects coming soon — stay tuned!"
 
 | # | Project | Cover | One-liner | Tags | Links |
 |---|---|---|---|---|---|
-| 1 | **NIMBLE — HAMR DCSNR Simulator** | split | Production simulation platform for heat-assisted magnetic recording, used by 30+ engineers across WD's US and Japan sites. | Python, Dash, Plotly, Kubernetes, Jenkins | Case study |
+| 1 | **Simulation App — HAMR DCSNR Simulator** | split | Production simulation platform for heat-assisted magnetic recording, used by 30+ engineers across WD's US and Japan sites. | Python, Dash, Plotly, Kubernetes, Jenkins | Case study |
 | 2 | **Lattice QCD TMD Pipeline** | generated | GPU-accelerated ML pipeline extracting analytical structure from 30,000+ lattice QCD observables. | CUDA C++, PySR, SLURM, Python | Case study |
 | 3 | **AI-DataScience-Lab** | video | Full-stack forecasting app: CSV upload, pandas cleaning, scikit-learn regression, GPT-3.5 summaries. | Flask, Azure, React, scikit-learn | Case study · Live demo · Code |
 | 4 | **HariBot** | video | Custom AI chatbot answering questions about my research and background — running on this site. | OpenAI API, Flask, Render | Code · Try it |
@@ -514,11 +514,11 @@ Template for all three: **Context → Problem → Approach → Architecture → 
 >
 > **Approach.** I derived a closed-form analytical model of grain magnetization dynamics from first principles, building on Néel–Arrhenius thermal switching and the Stoner–Wohlfarth model to obtain expressions for switching time, noise power, and probability of switching across multiple write cycles. I validated the model against Monte Carlo stochastic simulation and experimental spin-stand data on realistic L1₀ FePt grain ensembles.
 >
-> **Architecture.** NIMBLE is a Dash application backed by a modular Python physics library.
+> **Architecture.** Simulation App is a Dash application backed by a modular Python physics library.
 
 ```
 ┌───────────────────────────────┐
-│  Upstream WD NIMBLE app       │
+│  Upstream WD Simulation App app       │
 │  hands off a JSON payload     │
 └──────────────┬────────────────┘
                │  opens new tab · IndexedDB API
@@ -591,7 +591,7 @@ Journal badge on the PRD entry; leave a slot for a Google Scholar citation count
 
 All 21 existing entries preserved verbatim, grouped by year, with a topic filter (Conformal Algebra · Lattice QCD · Quantum Computing · Seminars). **Add the missing 2026 entry at the top:**
 
-> **(Aug 2026)** "HAMR THMap Modeling & Simulation — the NIMBLE DCSNR Simulator," PhD Expo 2026, Western Digital, San Jose, CA, USA
+> **(Aug 2026)** "HAMR THMap Modeling & Simulation — the Simulation App DCSNR Simulator," PhD Expo 2026, Western Digital, San Jose, CA, USA
 
 Use **KaTeX** for math in titles (`\(d=1+1\)`, `\((\phi^4)_{1+1}\)`).
 
@@ -605,7 +605,7 @@ Sticky left sub-nav with jump links; sticky `Download PDF` → `/cv/CV_HARI.pdf`
    > **Modeling & Simulation Intern** — Western Digital, San Jose, CA · May–August 2026
    > - Derived closed-form analytical models for HAMR grain magnetization dynamics from first principles (Néel–Arrhenius, Stoner–Wohlfarth), obtaining switching time, noise power, and probability-of-switching expressions across multi-write cycles to predict adjacent track erasure (ATI & xTI).
    > - Validated against Monte Carlo stochastic simulation and experimental spin-stand data on realistic L1₀ FePt grain ensembles.
-   > - Built and deployed **NIMBLE**, a production Dash/Plotly simulation platform packaged as a modular Python library — adopted by sputtering and media engineering teams across WD sites in the US and Japan (30+ engineers).
+   > - Built and deployed **Simulation App**, a production Dash/Plotly simulation platform packaged as a modular Python library — adopted by sputtering and media engineering teams across WD sites in the US and Japan (30+ engineers).
    > - Architected CI/CD with Jenkins; deployed on Kubernetes.
 2. **Education** — PhD 2021–Present · MS 2021–2024 · MSc 2019–2021 · BSc 2015–2018
 3. **Technical Skills** — the §10.2 Tech Stack groupings. **CUDA is currently missing and must be included.**
@@ -645,8 +645,8 @@ All five current pages share one title and one description. Every page needs its
 |---|---|---|
 | `/` | Hariprashad Ravikumar — Computational Physicist, GPU & ML Engineer | PhD candidate building GPU-accelerated ML and simulation tools. Ex-Western Digital R&D. CUDA, HPC, physics-informed ML. Graduating Dec 2026. |
 | `/research` | Research — Lattice QCD, HPC & Physics-Informed ML | Lattice QCD calculations of TMDs, nucleon EDMs with Los Alamos, and conformal algebra — GPU-accelerated HPC and symbolic regression. |
-| `/projects` | Projects — Simulation, ML & Scientific Software | NIMBLE HAMR simulator, GPU-accelerated lattice QCD ML pipeline, full-stack forecasting apps, and more. |
-| `/projects/nimble` | NIMBLE — HAMR DCSNR Simulator (Western Digital) | Production Dash/Plotly simulation platform for heat-assisted magnetic recording, used by 30+ engineers across WD US and Japan sites. |
+| `/projects` | Projects — Simulation, ML & Scientific Software | Simulation App HAMR simulator, GPU-accelerated lattice QCD ML pipeline, full-stack forecasting apps, and more. |
+| `/projects/nimble` | Simulation App — HAMR DCSNR Simulator (Western Digital) | Production Dash/Plotly simulation platform for heat-assisted magnetic recording, used by 30+ engineers across WD US and Japan sites. |
 | `/publications` | Publications — Hariprashad Ravikumar | Peer-reviewed work including Physical Review D 113, 096018 (2026), plus manuscripts in preparation and conference proceedings. |
 | `/talks` | Talks — Hariprashad Ravikumar | 22 research talks on conformal algebra, lattice QCD, quantum computing, and HAMR modeling. |
 | `/cv` | CV — Hariprashad Ravikumar | Full curriculum vitae: Western Digital R&D, PhD in Physics at NMSU, publications, awards, and technical skills. |
@@ -672,7 +672,7 @@ Every item is a verified error or inconsistency on the live site.
 - [ ] Footer → **© 2026**, not 2025
 - [ ] Add **Industry Experience / Western Digital** to CV *(absent today)*
 - [ ] Add **CUDA** + full skills taxonomy to CV
-- [ ] Add **NIMBLE, TMD Pipeline, WD Aquarius** to Projects
+- [ ] Add **Simulation App, TMD Pipeline, WD Aquarius** to Projects
 - [ ] Add **Wildest Idea award** to CV Awards
 - [ ] Add **PhD Expo 2026** talk
 - [ ] Delete **"More projects coming soon — stay tuned!"**
@@ -797,7 +797,7 @@ plt.rcParams.update({'font.size': 13, 'axes.labelsize': 14,
 
 ### 16.2 Other deferred items
 - **Google Scholar** profile → footer, Publications citation count
-- **NIMBLE screenshots** if WD clearance comes through → replaces the split cover
+- **Simulation App screenshots** if WD clearance comes through → replaces the split cover
 - Real screenshots for AI-DataScience-Lab / HariBot if the videos underperform
 - **Dark mode** (tokens are already structured for it)
 - **Interactive symbolic-regression demo** — the highest-differentiation idea from the original audit
