@@ -21,7 +21,7 @@ const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(ROOT, "..");
 const OUT_DIR = path.join(REPO_ROOT, "public", "og");
 const PORT = 4173;
-const BASE_URL = `http://localhost:${PORT}`;
+const BASE_URL = `http://127.0.0.1:${PORT}`;
 
 // content/projects.ts is TypeScript, so it can't be imported directly by this
 // plain Node script — the case-study slugs are read straight from the
@@ -37,7 +37,7 @@ const ROUTES = caseStudySlugs
   .filter((slug) => !MANUAL_SLUGS.has(slug))
   .map((slug) => ({ path: `/projects/${slug}/`, out: `projects/${slug}.png` }));
 
-function waitForServer(url, timeoutMs = 60_000) {
+function waitForServer(url, timeoutMs = 300_000) {
   const start = Date.now();
   return new Promise((resolve, reject) => {
     const attempt = async () => {
