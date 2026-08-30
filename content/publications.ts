@@ -41,6 +41,5 @@ export const THESES: { citation: string }[] = [
   },
 ];
 
-// TODO(hari): Google Scholar profile not yet created — add link + citation count slot once it exists (§16.2).
 export const GOOGLE_SCHOLAR_URL: string | null =
   "https://scholar.google.com/citations?user=o6cDFRwAAAAJ&hl=en";
