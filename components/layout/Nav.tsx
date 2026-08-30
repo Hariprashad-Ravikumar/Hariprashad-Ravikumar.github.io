@@ -65,72 +65,80 @@ export default function Nav() {
   }, [pathname]);
 
   return (
-    <motion.header
-      className="material-chrome sticky top-0 z-50 border-t-0"
-      style={{
-        backdropFilter: backdropBlur,
-        WebkitBackdropFilter: backdropBlur,
-        backgroundColor: useTransform(backgroundOpacity, (o) => `rgba(255,255,255,${o})`),
-        borderBottom: useTransform(borderOpacity, (o) => `1px solid rgba(255,255,255,${o})`),
-        boxShadow: useTransform(shadowOpacity, (o) =>
-          o > 0.05 ? "var(--glass-chrome-shadow)" : "none",
-        ),
-      }}
-    >
-      <Container>
-        <nav className="flex h-16 items-center justify-between">
-          <div className="relative h-14 w-14 shrink-0">
-            <span className="avatar-ring absolute inset-0 rounded-full" aria-hidden="true" />
-            <MotionLink
-              href="/"
-              aria-label="Home"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.92 }}
-              transition={springPress}
-              className="material-trim absolute inset-[3px] block overflow-hidden rounded-full shadow-[var(--shadow-sm)]"
-            >
-              <Picture
-                src="/images/hero/headshot"
-                alt="Hariprashad Ravikumar — Home"
-                width={96}
-                height={96}
-                sizes="56px"
-                className="h-full w-full object-cover"
-              />
-            </MotionLink>
-          </div>
-
-          <ul className="hidden items-center gap-1.5 md:flex">
-            {LINKS.map((link) => (
-              <li key={link.href}>
-                <NavPill href={link.href} label={link.label} active={pathname === link.href} />
-              </li>
-            ))}
-          </ul>
-
-          <button
-            type="button"
-            aria-label="Toggle menu"
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-[var(--r-sm)] md:hidden"
-          >
-            <span className="sr-only">Menu</span>
-            <div className="flex flex-col gap-1.5">
-              <span
-                className={`h-0.5 w-6 bg-[var(--ink-900)] transition-transform duration-200 ${open ? "translate-y-2 rotate-45" : ""}`}
-              />
-              <span
-                className={`h-0.5 w-6 bg-[var(--ink-900)] transition-opacity duration-200 ${open ? "opacity-0" : ""}`}
-              />
-              <span
-                className={`h-0.5 w-6 bg-[var(--ink-900)] transition-transform duration-200 ${open ? "-translate-y-2 -rotate-45" : ""}`}
-              />
+    <>
+      <motion.header
+        className="material-chrome sticky top-0 z-50 border-t-0"
+        style={{
+          backdropFilter: backdropBlur,
+          WebkitBackdropFilter: backdropBlur,
+          backgroundColor: useTransform(backgroundOpacity, (o) => `rgba(255,255,255,${o})`),
+          borderBottom: useTransform(borderOpacity, (o) => `1px solid rgba(255,255,255,${o})`),
+          boxShadow: useTransform(shadowOpacity, (o) =>
+            o > 0.05 ? "var(--glass-chrome-shadow)" : "none",
+          ),
+        }}
+      >
+        <Container>
+          <nav className="flex h-16 items-center justify-between">
+            <div className="relative h-14 w-14 shrink-0">
+              <span className="avatar-ring absolute inset-0 rounded-full" aria-hidden="true" />
+              <MotionLink
+                href="/"
+                aria-label="Home"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.92 }}
+                transition={springPress}
+                className="material-trim absolute inset-[3px] block overflow-hidden rounded-full shadow-[var(--shadow-sm)]"
+              >
+                <Picture
+                  src="/images/hero/headshot"
+                  alt="Hariprashad Ravikumar — Home"
+                  width={96}
+                  height={96}
+                  sizes="56px"
+                  className="h-full w-full object-cover"
+                />
+              </MotionLink>
             </div>
-          </button>
-        </nav>
-      </Container>
 
+            <ul className="hidden items-center gap-1.5 md:flex">
+              {LINKS.map((link) => (
+                <li key={link.href}>
+                  <NavPill href={link.href} label={link.label} active={pathname === link.href} />
+                </li>
+              ))}
+            </ul>
+
+            <button
+              type="button"
+              aria-label="Toggle menu"
+              aria-expanded={open}
+              onClick={() => setOpen((v) => !v)}
+              className="flex h-10 w-10 items-center justify-center rounded-[var(--r-sm)] md:hidden"
+            >
+              <span className="sr-only">Menu</span>
+              <div className="flex flex-col gap-1.5">
+                <span
+                  className={`h-0.5 w-6 bg-[var(--ink-900)] transition-transform duration-200 ${open ? "translate-y-2 rotate-45" : ""}`}
+                />
+                <span
+                  className={`h-0.5 w-6 bg-[var(--ink-900)] transition-opacity duration-200 ${open ? "opacity-0" : ""}`}
+                />
+                <span
+                  className={`h-0.5 w-6 bg-[var(--ink-900)] transition-transform duration-200 ${open ? "-translate-y-2 -rotate-45" : ""}`}
+                />
+              </div>
+            </button>
+          </nav>
+        </Container>
+      </motion.header>
+
+      {/* Rendered as a sibling of motion.header, not a descendant — that
+          header carries an inline `backdrop-filter`, which (like `transform`)
+          establishes a new containing block for `position: fixed`
+          descendants. Nested here, this panel's fixed positioning would
+          resolve against the ~64px-tall header instead of the viewport,
+          collapsing it to a sliver. */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -140,7 +148,7 @@ export default function Nav() {
             exit={{ opacity: 0, scale: 0.98, backdropFilter: "blur(0px) saturate(100%)" }}
             transition={springDefault}
             style={{ transformOrigin: "top", WebkitBackdropFilter: "blur(40px) saturate(180%)" }}
-            className="material-chrome fixed inset-0 top-16 z-40 bg-[var(--glass-chrome-bg)] md:hidden"
+            className="material-chrome mobile-nav-panel fixed inset-0 top-16 z-40 md:hidden"
           >
             <Container>
               <ul className="flex flex-col gap-2 py-6">
@@ -159,6 +167,6 @@ export default function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </>
   );
 }
