@@ -21,8 +21,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     (p) => `/projects/${p.slug}/`,
   );
 
+  const images: Record<string, string[]> = {
+    "/": [`${SITE_URL}/images/hero/headshot-1920.webp`, `${SITE_URL}/og/card.png`],
+    "/projects/wd-internship-2026/": [
+      `${SITE_URL}/images/wd/WD-IDCard-1920.webp`,
+      `${SITE_URL}/images/wd/san-jose-campus-1920.webp`,
+      `${SITE_URL}/images/wd/intern-summit-photobooth-640.webp`,
+    ],
+  };
+
   return [...staticRoutes, ...caseStudyRoutes].map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified,
+    ...(images[path] ? { images: images[path] } : {}),
   }));
 }

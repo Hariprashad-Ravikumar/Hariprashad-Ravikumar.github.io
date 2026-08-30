@@ -35,6 +35,7 @@ const PERSON_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Hariprashad Ravikumar",
+  alternateName: ["Hari", "Hari Ravikumar", "Hariprashad R.", "Ravikumar"],
   jobTitle: "PhD Candidate in Computational Physics",
   affiliation: {
     "@type": "CollegeOrUniversity",
@@ -46,10 +47,12 @@ const PERSON_JSON_LD = {
   })),
   knowsAbout: [
     "Lattice QCD",
+    "Transverse Momentum Dependent Distributions (TMD)",
     "GPU-accelerated HPC",
     "Machine Learning",
     "Symbolic Regression",
     "Heat-Assisted Magnetic Recording",
+    "Western Digital Internship",
   ],
   sameAs: [
     "https://www.linkedin.com/in/hariprashad-ravikumar/",
@@ -81,13 +84,18 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
         </PageTransition>
         <Footer />
-        {/*
-          TODO(hari): §11 calls for Plausible or GoatCounter analytics
-          (deferred script, no cookie banner needed). Neither a domain/site-id
-          nor an account is in PLAN.md, so nothing is wired here rather than
-          guessing one. Once you have an account, add e.g.:
-          <script defer data-domain="hariprashad-ravikumar.github.io" src="https://plausible.io/js/script.js" />
-        */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNHPM3N7SY" />
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-NNHPM3N7SY');
+            `,
+          }}
+        />
       </body>
     </html>
   );
