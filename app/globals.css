@@ -274,19 +274,9 @@ p {
 }
 
 /* Terminal-style status line (Hero) */
-@keyframes terminal-type {
-  from {
-    width: 0;
-  }
-}
 .terminal-status__text {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
+  display: inline;
   vertical-align: bottom;
-  animation-name: terminal-type;
-  animation-duration: 2.2s;
-  animation-fill-mode: both;
 }
 @keyframes terminal-cursor-blink {
   0%,
@@ -301,20 +291,9 @@ p {
   display: inline-block;
   width: 0.55ch;
   height: 1em;
+  vertical-align: text-bottom;
   background: currentColor;
   animation: terminal-cursor-blink 1s steps(1, end) infinite;
-}
-
-@media (max-width: 640px) {
-  .terminal-status__text {
-    width: auto !important;
-    overflow: visible;
-    white-space: normal;
-    animation: none;
-  }
-  .terminal-status__cursor {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
