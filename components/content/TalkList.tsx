@@ -65,7 +65,7 @@ export default function TalkList() {
             <h2 className="text-h3 text-[var(--ink-500)]">{year}</h2>
             <ul className="mt-3 flex flex-col gap-2">
               {talks.map((talk) => (
-                <li key={`${talk.date}-${talk.title}`} className="border-t border-[var(--glass-border)] pt-3">
+                <li key={`${talk.date}-${talk.title}-${talk.venue}`} className="border-t border-[var(--glass-border)] pt-3">
                   <p className="text-body text-[var(--ink-900)]">
                     <strong>({talk.date})</strong>{" "}
                     {talk.href ? (
