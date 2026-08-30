@@ -85,7 +85,7 @@ The application accelerates development cycles by removing a hardware-experiment
       classDef devops fill:#fef2f2,stroke:#ef4444,stroke-width:3px;
   
       subgraph Inputs ["Input Layer (HAMR Media Properties)"]
-          M["Manual Input<br/>Engineers & Scientists"]:::external
+          M["Manual Input<br/>Engineers and Scientists"]:::external
           U["File Upload"]:::external
           A["Internal Enterprise Platform"]:::external
       end
@@ -93,7 +93,7 @@ The application accelerates development cycles by removing a hardware-experiment
       subgraph ClientSide ["Client-Side (Browser)"]
           IDB[("IndexedDB<br/>Client-Side Storage")]:::storage
           Dash["Dash Frontend"]:::frontend
-          Fit["Statistical & Physics<br/>Data Fitting Engine"]:::frontend
+          Fit["Statistical and Physics<br/>Data Fitting Engine"]:::frontend
           UI["Auto-populated<br/>Parameter UI"]:::frontend
           Plotly["Plotly Interactive<br/>Results View"]:::frontend
       end
@@ -122,14 +122,14 @@ The application accelerates development cycles by removing a hardware-experiment
       
       UI -- "Simulation Request" --> Engine
       Engine --> Parallel
-      Parallel -- "Calculates DCSNR & Metrics" --> Plotly
+      Parallel -- "Calculates DCSNR and Metrics" --> Plotly
       
       Plotly --> Export
       
       %% Infrastructure bindings
       Jenkins -. "Auto-Deploys" .-> K8s
-      K8s -. "Hosts" .-> Backend
-      K8s -. "Serves" .-> ClientSide`}
+      K8s -. "Hosts" .-> Engine
+      K8s -. "Serves" .-> Dash`}
   </Mermaid>
   <p className="mt-1 text-center text-xs text-[var(--ink-500)]">System architecture, input to output</p>
 </div>

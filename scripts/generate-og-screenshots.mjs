@@ -60,9 +60,9 @@ async function main() {
   await mkdir(OUT_DIR, { recursive: true });
   await mkdir(path.join(OUT_DIR, "projects"), { recursive: true });
 
-  const server = spawn("npx", ["next", "dev", "-p", String(PORT)], {
+  const server = spawn("npx", ["next", "dev", "--webpack", "-p", String(PORT)], {
     cwd: REPO_ROOT,
-    stdio: "ignore",
+    stdio: "inherit",
   });
 
   try {
