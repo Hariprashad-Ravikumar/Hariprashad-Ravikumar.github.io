@@ -238,6 +238,8 @@ p {
 .gradient-ring-cta {
   position: relative;
   isolation: isolate;
+  display: inline-flex;
+  border-radius: var(--r-sm);
 }
 .gradient-ring-cta::before {
   content: "";
@@ -337,8 +339,9 @@ p {
 /* Specular sheen shared by every Button/LinkButton variant (§Button.tsx) —
    a soft diagonal highlight that sweeps across on hover, the same "light
    catching the material" idea as .material-chrome's bright top edge, but
-   animated. Lives on ::after (not ::before) so it never collides with
-   .gradient-ring-cta's ::before border on the same element. */
+   animated. .gradient-ring-cta (Download Résumé) now wraps the button from
+   the *outside* instead of living on the same element, specifically so its
+   ::before ring (at `inset: -2px`) never gets clipped by this overflow. */
 .glass-sheen {
   position: relative;
   overflow: hidden;
@@ -347,6 +350,7 @@ p {
   content: "";
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   background: linear-gradient(
     115deg,
     transparent 40%,
