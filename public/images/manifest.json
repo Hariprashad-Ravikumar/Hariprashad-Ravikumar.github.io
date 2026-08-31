@@ -1,31 +1,4 @@
 {
-  "/images/Screenshot 2026-08-30 at 1.21.00 AM": {
-    "source": "assets/raw/Screenshot 2026-08-30 at 1.21.00 AM.png",
-    "originalWidth": 2874,
-    "originalHeight": 1564,
-    "variants": [
-      {
-        "width": 640,
-        "path": "/images/Screenshot 2026-08-30 at 1.21.00 AM-640.webp",
-        "bytes": 24552
-      },
-      {
-        "width": 960,
-        "path": "/images/Screenshot 2026-08-30 at 1.21.00 AM-960.webp",
-        "bytes": 45636
-      },
-      {
-        "width": 1440,
-        "path": "/images/Screenshot 2026-08-30 at 1.21.00 AM-1440.webp",
-        "bytes": 81542
-      },
-      {
-        "width": 1920,
-        "path": "/images/Screenshot 2026-08-30 at 1.21.00 AM-1920.webp",
-        "bytes": 119018
-      }
-    ]
-  },
   "/images/hero/headshot": {
     "source": "assets/raw/hero/headshot.jpg",
     "originalWidth": 1538,
@@ -94,6 +67,18 @@
         "width": 1920,
         "path": "/images/publications/prd-journal-banner-1920.webp",
         "bytes": 25196
+      }
+    ]
+  },
+  "/images/wd/20260728_121346_485": {
+    "source": "assets/raw/wd/20260728_121346_485.jpg",
+    "originalWidth": 596,
+    "originalHeight": 704,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/wd/20260728_121346_485-640.webp",
+        "bytes": 26508
       }
     ]
   },
@@ -175,18 +160,6 @@
         "width": 1920,
         "path": "/images/wd/hackathon-award-1920.webp",
         "bytes": 178268
-      }
-    ]
-  },
-  "/images/wd/intern-summit-photobooth": {
-    "source": "assets/raw/wd/intern-summit-photobooth.jpg",
-    "originalWidth": 602,
-    "originalHeight": 1800,
-    "variants": [
-      {
-        "width": 640,
-        "path": "/images/wd/intern-summit-photobooth-640.webp",
-        "bytes": 70346
       }
     ]
   },

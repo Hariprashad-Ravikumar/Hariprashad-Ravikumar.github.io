@@ -31,23 +31,33 @@ export default function ProjectsBalance() {
         <line x1={80} y1={96} x2={40} y2={170} stroke="var(--ink-400)" strokeWidth={2} />
         <line x1={80} y1={96} x2={120} y2={170} stroke="var(--ink-400)" strokeWidth={2} />
         <rect x={5} y={170} width={150} height={64} rx={14} fill="var(--surface-0)" stroke="var(--line)" strokeWidth={1.5} />
-        <text x={80} y={197} textAnchor="middle" style={{ font: "600 15px var(--font-sans, sans-serif)" }} className="fill-[var(--ink-900)]">
-          {LEFT.title}
-        </text>
-        <text x={80} y={216} textAnchor="middle" style={{ font: "400 11px var(--font-sans, sans-serif)" }} className="fill-[var(--ink-500)]">
-          {LEFT.detail}
-        </text>
+        <foreignObject x={9} y={172} width={142} height={60}>
+          <div
+            style={{ font: "600 13px var(--font-sans, sans-serif)" }}
+            className="flex h-full flex-col items-center justify-center gap-1 text-center leading-tight text-[var(--ink-900)]"
+          >
+            <span>{LEFT.title}</span>
+            <span style={{ font: "400 11px var(--font-sans, sans-serif)" }} className="text-[var(--ink-500)]">
+              {LEFT.detail}
+            </span>
+          </div>
+        </foreignObject>
 
         {/* right pan */}
         <line x1={560} y1={96} x2={600} y2={170} stroke="var(--ink-400)" strokeWidth={2} />
         <line x1={560} y1={96} x2={520} y2={170} stroke="var(--ink-400)" strokeWidth={2} />
         <rect x={485} y={170} width={150} height={64} rx={14} fill="var(--surface-0)" stroke="var(--line)" strokeWidth={1.5} />
-        <text x={560} y={197} textAnchor="middle" style={{ font: "600 15px var(--font-sans, sans-serif)" }} className="fill-[var(--ink-900)]">
-          {RIGHT.title}
-        </text>
-        <text x={560} y={216} textAnchor="middle" style={{ font: "400 11px var(--font-sans, sans-serif)" }} className="fill-[var(--ink-500)]">
-          {RIGHT.detail}
-        </text>
+        <foreignObject x={489} y={172} width={142} height={60}>
+          <div
+            style={{ font: "600 13px var(--font-sans, sans-serif)" }}
+            className="flex h-full flex-col items-center justify-center gap-1 text-center leading-tight text-[var(--ink-900)]"
+          >
+            <span>{RIGHT.title}</span>
+            <span style={{ font: "400 11px var(--font-sans, sans-serif)" }} className="text-[var(--ink-500)]">
+              {RIGHT.detail}
+            </span>
+          </div>
+        </foreignObject>
       </svg>
       <figcaption className="mt-3 text-center text-sm text-[var(--ink-500)]">
         Two HAMR projects.

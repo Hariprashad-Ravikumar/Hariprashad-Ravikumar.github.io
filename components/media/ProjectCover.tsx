@@ -73,10 +73,10 @@ export default function ProjectCover(props: CoverMode) {
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="flex flex-col justify-center gap-1.5 p-6 text-white">
-          <span className="text-h3">{props.title}</span>
-          <span className="text-small text-white/80">{props.sub}</span>
-          <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1 font-mono text-xs text-white/70">
+        <div className="flex min-h-0 flex-col justify-center gap-1.5 overflow-hidden p-6 text-white">
+          <span className="text-h3 line-clamp-2">{props.title}</span>
+          <span className="text-small line-clamp-1 text-white/80">{props.sub}</span>
+          <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1 overflow-hidden font-mono text-xs text-white/70">
             {props.tags.map((tag) => (
               <span key={tag}>{tag}</span>
             ))}

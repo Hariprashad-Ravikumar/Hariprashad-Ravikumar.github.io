@@ -114,7 +114,7 @@ export default function Nav() {
               aria-label="Toggle menu"
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="flex h-10 w-10 items-center justify-center rounded-[var(--r-sm)] md:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-[var(--r-sm)] md:hidden"
             >
               <span className="sr-only">Menu</span>
               <div className="flex flex-col gap-1.5">

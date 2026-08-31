@@ -104,7 +104,9 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  /* clip (not hidden) avoids the overflow-x/overflow-y pairing rule that
+     forces overflow-y to auto, which would break position:sticky descendants. */
+  overflow-x: clip;
 }
 
 body {
@@ -112,7 +114,7 @@ body {
   color: var(--ink-900);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Type scale (§4) */

@@ -1,9 +1,15 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 import SpotlightCard from "@/components/ui/SpotlightCard";
 import Tag from "@/components/ui/Tag";
 import ProjectCover from "@/components/media/ProjectCover";
 import type { Project } from "@/content/projects";
 import { GitHubIcon } from "@/components/ui/brand-icons";
+import { springPress } from "@/lib/springs";
+
+const MotionLink = motion.create(Link);
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
@@ -21,20 +27,28 @@ export default function ProjectCard({ project }: { project: Project }) {
           <div className="flex flex-wrap gap-x-4 gap-y-1 pt-1 text-sm font-medium text-[var(--brand-500)]">
             {project.links.map((link) =>
               link.href.startsWith("/") ? (
-                <Link key={link.label} href={link.href} className="hover:underline">
+                <MotionLink
+                  key={link.label}
+                  href={link.href}
+                  className="hover:underline"
+                  whileTap={{ scale: 0.96 }}
+                  transition={springPress}
+                >
                   {link.label} →
-                </Link>
+                </MotionLink>
               ) : (
-                <a
+                <motion.a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 hover:underline"
+                  whileTap={{ scale: 0.96 }}
+                  transition={springPress}
                 >
                   {link.label === "Code" && <GitHubIcon className="h-3.5 w-auto" />}
                   {link.label} ↗
-                </a>
+                </motion.a>
               ),
             )}
           </div>

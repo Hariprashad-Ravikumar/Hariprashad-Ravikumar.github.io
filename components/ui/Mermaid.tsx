@@ -148,17 +148,46 @@ export default function Mermaid({ children }: { children: string }) {
       themeCSS: ".nodeLabel, .edgeLabel, .cluster-label { font-weight: 700; }",
     });
 
-    if (ref.current) {
-      const container = ref.current;
-      mermaid
-        .run({ nodes: [container] })
-        .then(() => enhanceDiagram(container))
-        .catch((e) => console.error(e));
-    }
+    if (!ref.current) return;
+    const container = ref.current;
+    // Reset to the raw diagram source before each run: if this effect
+    // fires more than once for the same container (React Strict Mode's
+    // dev-only double-invoke, or Fast Refresh), the container already
+    // holds the previous run's rendered SVG rather than mermaid syntax,
+    // and re-parsing that throws a bare (message-less) object.
+    // mermaid.run() also stamps data-processed="true" on the container
+    // itself once it starts, and silently skips any container that
+    // already carries it — textContent alone doesn't clear that
+    // attribute, so without removing it a second effect invocation
+    // no-ops forever, leaving the raw source text visible with no error.
+    container.removeAttribute("data-processed");
+    container.textContent = children;
+
+    // Strict Mode's double-invoke fires two overlapping mermaid.run() calls
+    // on the same container; the run whose effect gets cleaned up first
+    // must not touch the DOM once its promise resolves, or it races the
+    // second (live) run and throws (e.g. "Cannot read properties of null
+    // (reading 'firstChild')").
+    let cancelled = false;
+    mermaid
+      .run({ nodes: [container] })
+      .then(() => {
+        if (!cancelled) enhanceDiagram(container);
+      })
+      .catch((e) => {
+        if (!cancelled) console.error(e);
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, [children]);
 
   return (
-    <div className="flex justify-center overflow-x-auto w-full max-w-full" ref={ref}>
+    <div
+      className="flex justify-center overflow-x-auto w-full max-w-full [&>svg]:min-w-[480px] sm:[&>svg]:min-w-0"
+      ref={ref}
+    >
       {children}
     </div>
   );

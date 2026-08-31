@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/projects/wd-internship-2026/": [
       `${SITE_URL}/images/wd/WD-IDCard-1920.webp`,
       `${SITE_URL}/images/wd/san-jose-campus-1920.webp`,
-      `${SITE_URL}/images/wd/intern-summit-photobooth-640.webp`,
+      `${SITE_URL}/images/wd/20260728_121346_485-640.webp`,
     ],
   };
 
