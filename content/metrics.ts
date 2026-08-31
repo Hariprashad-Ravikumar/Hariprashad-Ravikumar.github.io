@@ -6,7 +6,7 @@
 export const METRICS = {
   engineers: {
     value: "40+",
-    label: "active users across WD USA and Japan; adopted by sputtering and media engineering teams",
+    label: "senior R&D engineers and subject-matter experts in daily production use across WD's US and Japan sputtering/media teams",
   },
   speedup: { value: "10×", label: "faster simulation sweeps" },
   computeHours: { value: "75,000+", label: "CPU/GPU hours on NERSC Perlmutter" },

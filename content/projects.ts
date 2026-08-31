@@ -24,7 +24,7 @@ export const PROJECTS: Project[] = [
     slug: "wd-internship-2026",
     title: "Intern – Media Test Engineering (HAMR Modeling & Simulation) @ Western Digital, San Jose, CA, USA",
     oneLiner:
-      "Production simulation platform for heat-assisted magnetic recording, used by 40+ engineers across WD's US and Japan sites.",
+      "Production simulation platform for heat-assisted magnetic recording, used daily by 40+ senior R&D engineers and subject-matter experts across WD's US and Japan sites.",
     tags: ["Python", "Dash", "Plotly", "Kubernetes", "Jenkins"],
     links: [{ label: "Case study", href: "/projects/wd-internship-2026/" }],
     cover: {

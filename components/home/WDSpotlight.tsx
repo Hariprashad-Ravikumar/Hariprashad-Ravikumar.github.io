@@ -14,8 +14,8 @@ export default function WDSpotlight() {
       </div>
 
       <h2 className="text-h2 prose-measure mt-4 text-[var(--ink-900)]">
-        I built a full-stack enterprise HAMR simulator now used by 40+ engineers across WD&apos;s US and Japan
-        sites.
+        I built a full-stack enterprise HAMR simulator now used daily by 40+ senior R&amp;D engineers and
+        subject-matter experts across WD&apos;s US and Japan sites.
       </h2>
 
       <p className="text-body prose-measure mt-4 text-[var(--ink-700)]">
@@ -32,7 +32,7 @@ export default function WDSpotlight() {
       <div className="mt-6 flex flex-wrap gap-8">
         <div>
           <p className="text-mono-metric text-[var(--brand-900)]">40+</p>
-          <p className="text-small text-[var(--ink-500)]">engineers</p>
+          <p className="text-small text-[var(--ink-500)]">R&amp;D experts</p>
         </div>
         <div>
           <p className="text-mono-metric text-[var(--brand-900)]">2</p>

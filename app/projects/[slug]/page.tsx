@@ -19,7 +19,7 @@ const SEO_OVERRIDES: Partial<Record<CaseStudySlug, { title: string; description:
   "wd-internship-2026": {
     title: "WD Internship: Enterprise HAMR Simulator (Western Digital)",
     description:
-      "My Western Digital internship building a full-stack enterprise Dash/Plotly HAMR DCSNR simulator adopted by 40+ WD engineers across the US and Japan.",
+      "My Western Digital internship building a full-stack enterprise Dash/Plotly HAMR DCSNR simulator adopted by 40+ senior WD R&D engineers and experts across the US and Japan.",
   },
 };
 
@@ -32,7 +32,7 @@ const ARTICLE_JSON_LD: Partial<Record<CaseStudySlug, Record<string, unknown>>> =
     "@type": "CreativeWork",
     headline: "WD Internship: Enterprise HAMR Simulator (Western Digital)",
     description:
-      "My Western Digital internship building a full-stack enterprise Dash/Plotly HAMR DCSNR simulator adopted by 40+ WD engineers across the US and Japan.",
+      "My Western Digital internship building a full-stack enterprise Dash/Plotly HAMR DCSNR simulator adopted by 40+ senior WD R&D engineers and experts across the US and Japan.",
     about: {
       "@type": "Organization",
       name: "Western Digital",
