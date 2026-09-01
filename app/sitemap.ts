@@ -28,6 +28,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       `${SITE_URL}/images/wd/san-jose-campus-1920.webp`,
       `${SITE_URL}/images/wd/20260728_121346_485-640.webp`,
     ],
+    "/projects/cost-aware-llm-router/": [
+      `${SITE_URL}/video/cost-aware-llm-router-full-demo.gif`,
+      `${SITE_URL}/og/projects/cost-aware-llm-router.png`,
+    ],
   };
 
   return [...staticRoutes, ...caseStudyRoutes].map((path) => ({

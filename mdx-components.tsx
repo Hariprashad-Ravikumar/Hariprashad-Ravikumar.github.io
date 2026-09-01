@@ -16,6 +16,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       />
     ),
     strong: (props) => <strong className="font-semibold text-[var(--ink-900)]" {...props} />,
+    code: (props) => (
+      <code
+        className="rounded bg-[var(--surface-50)] px-1 py-0.5 font-mono text-[0.9em] text-[var(--ink-900)]"
+        {...props}
+      />
+    ),
     ...components,
   };
 }

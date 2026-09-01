@@ -8,6 +8,7 @@ const CASE_STUDIES = {
   "wd-internship-2026": () => import("@/content/projects/wd-internship-2026.mdx"),
   "tmd-pipeline": () => import("@/content/projects/tmd-pipeline.mdx"),
   "ai-datascience-lab": () => import("@/content/projects/ai-datascience-lab.mdx"),
+  "cost-aware-llm-router": () => import("@/content/projects/cost-aware-llm-router.mdx"),
 } as const;
 
 type CaseStudySlug = keyof typeof CASE_STUDIES;
@@ -20,6 +21,11 @@ const SEO_OVERRIDES: Partial<Record<CaseStudySlug, { title: string; description:
     title: "WD Internship: Enterprise HAMR Simulator (Western Digital)",
     description:
       "My Western Digital internship building a full-stack enterprise Dash/Plotly HAMR DCSNR simulator adopted by 40+ senior WD R&D engineers and experts across the US and Japan.",
+  },
+  "cost-aware-llm-router": {
+    title: "Cost-Aware Multi-Agent LLM Router",
+    description:
+      "A calibrated logistic-regression router that cuts LLM API cost 93.9% at accuracy parity (96.0% vs 92.0%, overlapping CIs) versus always calling the most capable model — plus the v1 attempt that didn't actually save money, and why.",
   },
 };
 
@@ -44,6 +50,19 @@ const ARTICLE_JSON_LD: Partial<Record<CaseStudySlug, Record<string, unknown>>> =
       url: SITE_URL,
     },
     url: `${SITE_URL}/projects/wd-internship-2026/`,
+  },
+  "cost-aware-llm-router": {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    headline: "Cost-Aware Multi-Agent LLM Router",
+    description:
+      "A calibrated logistic-regression router that cuts LLM API cost 93.9% at accuracy parity (96.0% vs 92.0%, overlapping CIs) versus always calling the most capable model.",
+    author: {
+      "@type": "Person",
+      name: "Hariprashad Ravikumar",
+      url: SITE_URL,
+    },
+    url: `${SITE_URL}/projects/cost-aware-llm-router/`,
   },
 };
 

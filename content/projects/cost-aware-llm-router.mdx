@@ -7,7 +7,7 @@ import MetricTile from "@/components/ui/MetricTile";
 import { LinkButton } from "@/components/ui/Button";
 import { GitHubIcon, GoogleCloudIcon } from "@/components/ui/brand-icons";
 
-A router that sits in front of multiple LLMs of different price and quality tiers and decides, per prompt, which tier should answer it. Most traffic goes to a cheap model; only genuinely hard prompts pay for an expensive one. The pattern is well established (LMSYS RouteLLM<a href="#ref-8" className="align-super text-[0.7em] text-[var(--brand-500)]">[8]</a>, RouterBench<a href="#ref-9" className="align-super text-[0.7em] text-[var(--brand-500)]">[9]</a>, cascade-routing approaches like FrugalGPT<a href="#ref-1" className="align-super text-[0.7em] text-[var(--brand-500)]">[1]</a>, and the "adaptive model" approach used in products like Devin and Windsurf). The value here is engineering rigor and honest evaluation of a known pattern, not a new idea, including publishing an earlier version that didn't save money and explaining why.
+A router that sits in front of multiple LLMs of different price and quality tiers and decides, per prompt, which tier should answer it. Most traffic goes to a cheap model; only genuinely hard prompts pay for an expensive one. The pattern is well established (LMSYS RouteLLM<a href="#ref-1" className="align-super text-[0.7em] text-[var(--brand-500)]">[1]</a>, RouterBench<a href="#ref-2" className="align-super text-[0.7em] text-[var(--brand-500)]">[2]</a>, cascade-routing approaches like FrugalGPT<a href="#ref-3" className="align-super text-[0.7em] text-[var(--brand-500)]">[3]</a>, and the "adaptive model" approach used in products like Devin/Windsurf). The value here is engineering rigor and honest evaluation of a known pattern, not a new idea, including publishing an earlier version that didn't save money and explaining why.
 
 <section className="grid grid-cols-2 gap-4 border-b border-[var(--line)] py-4 sm:grid-cols-4 sm:gap-8">
   <MetricTile value="93.9%" label="cheaper than always calling the top-tier model" />
@@ -42,7 +42,7 @@ A router that sits in front of multiple LLMs of different price and quality tier
       backgroundClip: "padding-box, border-box",
     }}
   >
-    <GoogleCloudIcon className="h-6 w-auto" /> Live demo (Google Cloud Run)
+    <span className="inline-flex items-center gap-2"><GoogleCloudIcon className="h-6 w-auto" /> Live demo (Google Cloud Run)</span>
   </LinkButton>
 </div>
 
@@ -58,7 +58,7 @@ A router that sits in front of multiple LLMs of different price and quality tier
 <p className="text-body prose-measure text-[var(--ink-700)]">For every prompt, a single draft call to the cheap tier produces four measurable features:</p>
 <ul className="prose-measure list-disc pl-5">
 <li className="text-body text-[var(--ink-700)]"><strong className="font-semibold text-[var(--ink-900)]">Logprob uncertainty</strong>: A sigmoid on the negative mean token log-probability of the draft answer (neutral 0.5 if the provider doesn't expose logprobs).</li>
-<li className="text-body text-[var(--ink-700)]"><strong className="font-semibold text-[var(--ink-900)]">Self-consistency dispersion</strong>: <code>1 - majority_answer_count / num_samples</code> across repeated higher-temperature samples<a href="#ref-2" className="align-super text-[0.7em] text-[var(--brand-500)]">[2]</a>, comparing <em>extracted final answers</em> (a regex-parsed number or multiple-choice letter), not raw response text. Otherwise, two step-by-step explanations reaching the same number look "inconsistent" purely from wording differences.</li>
+<li className="text-body text-[var(--ink-700)]"><strong className="font-semibold text-[var(--ink-900)]">Self-consistency dispersion</strong>: <code>1 - majority_answer_count / num_samples</code> across repeated higher-temperature samples<a href="#ref-4" className="align-super text-[0.7em] text-[var(--brand-500)]">[4]</a>, comparing <em>extracted final answers</em> (a regex-parsed number or multiple-choice letter), not raw response text. Otherwise, two step-by-step explanations reaching the same number look "inconsistent" purely from wording differences.</li>
 <li className="text-body text-[var(--ink-700)]"><strong className="font-semibold text-[var(--ink-900)]">Hard-cluster distance</strong>: Cosine distance between the prompt's embedding (<code>sentence-transformers/all-MiniLM-L6-v2</code>) and the centroid of a labeled set of known-hard prompts.</li>
 <li className="text-body text-[var(--ink-700)]"><strong className="font-semibold text-[var(--ink-900)]">Response length</strong>: A cheap proxy correlated with question complexity.</li>
 </ul>
@@ -123,7 +123,7 @@ Full 4-policy comparison on the same held-out set:
   ]}
 />
 
-Sweeping the error budget from 0.05 to 0.50 shows accuracy peaking at ε = 0.10-0.20 (96.0%, 50-52% escalation rate) before falling off as the budget loosens past 0.30 (86.0%, 8-10% escalation rate). This was recomputed entirely from logged `(calibrated P(correct), actual outcome)` pairs, with zero additional API calls. The threshold itself is treated as a hyperparameter tuned on held-out data, following the cascade-routing deferral literature<a href="#ref-3" className="align-super text-[0.7em] text-[var(--brand-500)]">[3]</a><a href="#ref-4" className="align-super text-[0.7em] text-[var(--brand-500)]">[4]</a>, rather than hand-picked.
+Sweeping the error budget from 0.05 to 0.50 shows accuracy peaking at ε = 0.10-0.20 (96.0%, 50-52% escalation rate) before falling off as the budget loosens past 0.30 (86.0%, 8-10% escalation rate). This was recomputed entirely from logged `(calibrated P(correct), actual outcome)` pairs, with zero additional API calls. The threshold itself is treated as a hyperparameter tuned on held-out data, following the cascade-routing deferral literature<a href="#ref-8" className="align-super text-[0.7em] text-[var(--brand-500)]">[8]</a><a href="#ref-9" className="align-super text-[0.7em] text-[var(--brand-500)]">[9]</a>, rather than hand-picked.
 
 **Honest caveat**: n = 50, and the confidence intervals are real and non-trivial. This is a genuine, reproducible result, not a fully settled one. A larger held-out set would tighten the claim.
 
@@ -185,7 +185,7 @@ A concurrency test (Locust, 8 concurrent users, 45 seconds, against the live `/r
       backgroundClip: "padding-box, border-box",
     }}
   >
-    <GoogleCloudIcon className="h-6 w-auto" /> Live demo (Google Cloud Run)
+    <span className="inline-flex items-center gap-2"><GoogleCloudIcon className="h-6 w-auto" /> Live demo (Google Cloud Run)</span>
   </LinkButton>
   <LinkButton
     variant="secondary"
@@ -194,7 +194,7 @@ A concurrency test (Locust, 8 concurrent users, 45 seconds, against the live `/r
     rel="noopener noreferrer"
     className="border border-[var(--line)]"
   >
-    <GitHubIcon className="h-6 w-auto" /> View source on GitHub
+    <span className="inline-flex items-center gap-2"><GitHubIcon className="h-6 w-auto" /> View source on GitHub</span>
   </LinkButton>
 </div>
 
@@ -207,13 +207,13 @@ First request after a cold start takes roughly 40 seconds (container start, mode
 ## References
 
 <ol className="prose-measure list-decimal pl-5">
-<li id="ref-1" className="text-body text-[var(--ink-700)]">Chen, L., Zaharia, M., &amp; Zou, J. (2023). FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance. Stanford University. <a href="https://arxiv.org/abs/2305.05176" target="_blank" rel="noopener noreferrer">arXiv:2305.05176</a>.</li>
-<li id="ref-2" className="text-body text-[var(--ink-700)]">Wang, X., et al. (2022). Self-Consistency Improves Chain of Thought Reasoning in Language Models. <a href="https://arxiv.org/abs/2203.11171" target="_blank" rel="noopener noreferrer">arXiv:2203.11171</a>.</li>
-<li id="ref-3" className="text-body text-[var(--ink-700)]">Kang, et al. C3PO-style deferral rules for cascade routing. <a href="https://arxiv.org/html/2604.14251" target="_blank" rel="noopener noreferrer">arXiv:2604.14251</a>.</li>
-<li id="ref-4" className="text-body text-[var(--ink-700)]">Decision-theoretic cascade literature. <a href="https://arxiv.org/html/2605.06350" target="_blank" rel="noopener noreferrer">arXiv:2605.06350</a>.</li>
+<li id="ref-1" className="text-body text-[var(--ink-700)]">LMSYS RouteLLM. <a href="https://github.com/lm-sys/RouteLLM" target="_blank" rel="noopener noreferrer">github.com/lm-sys/RouteLLM</a>.</li>
+<li id="ref-2" className="text-body text-[var(--ink-700)]">RouterBench. <a href="https://arxiv.org/abs/2403.12031" target="_blank" rel="noopener noreferrer">arXiv:2403.12031</a>.</li>
+<li id="ref-3" className="text-body text-[var(--ink-700)]">Chen, L., Zaharia, M., &amp; Zou, J. (2023). FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance. Stanford University. <a href="https://arxiv.org/abs/2305.05176" target="_blank" rel="noopener noreferrer">arXiv:2305.05176</a>.</li>
+<li id="ref-4" className="text-body text-[var(--ink-700)]">Wang, X., et al. (2022). Self-Consistency Improves Chain of Thought Reasoning in Language Models. <a href="https://arxiv.org/abs/2203.11171" target="_blank" rel="noopener noreferrer">arXiv:2203.11171</a>.</li>
 <li id="ref-5" className="text-body text-[var(--ink-700)]">Guo, C., Pleiss, G., Sun, Y., &amp; Weinberger, K. Q. (2017). On Calibration of Modern Neural Networks. <a href="https://arxiv.org/abs/1706.04599" target="_blank" rel="noopener noreferrer">arXiv:1706.04599</a>.</li>
 <li id="ref-6" className="text-body text-[var(--ink-700)]">Cobbe, K., et al. (2021). Training Verifiers to Solve Math Word Problems (GSM8K). <a href="https://arxiv.org/abs/2110.14168" target="_blank" rel="noopener noreferrer">arXiv:2110.14168</a>.</li>
 <li id="ref-7" className="text-body text-[var(--ink-700)]">Hendrycks, D., et al. (2021). Measuring Massive Multitask Language Understanding (MMLU). <a href="https://arxiv.org/abs/2009.03300" target="_blank" rel="noopener noreferrer">arXiv:2009.03300</a>.</li>
-<li id="ref-8" className="text-body text-[var(--ink-700)]">LMSYS RouteLLM. <a href="https://github.com/lm-sys/RouteLLM" target="_blank" rel="noopener noreferrer">github.com/lm-sys/RouteLLM</a>.</li>
-<li id="ref-9" className="text-body text-[var(--ink-700)]">RouterBench. <a href="https://arxiv.org/abs/2403.12031" target="_blank" rel="noopener noreferrer">arXiv:2403.12031</a>.</li>
+<li id="ref-8" className="text-body text-[var(--ink-700)]">Kang, et al. C3PO-style deferral rules for cascade routing. <a href="https://arxiv.org/html/2604.14251" target="_blank" rel="noopener noreferrer">arXiv:2604.14251</a>.</li>
+<li id="ref-9" className="text-body text-[var(--ink-700)]">Decision-theoretic cascade literature. <a href="https://arxiv.org/html/2605.06350" target="_blank" rel="noopener noreferrer">arXiv:2605.06350</a>.</li>
 </ol>

@@ -23,3 +23,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 **/.DS_Store
+assets/raw/video/cost-aware-llm-router-card-raw.gif
+assets/raw/video/cost-aware-llm-router-full-raw.gif

@@ -21,6 +21,32 @@ export type Project = {
  */
 export const PROJECTS: Project[] = [
   {
+    slug: "cost-aware-llm-router",
+    title: "Cost-Aware Multi-Agent LLM Router",
+    oneLiner:
+      "Calibrated router that cuts LLM API cost 93.9% at accuracy parity (96.0% vs 92.0%, overlapping CIs) versus always calling the most capable model.",
+    tags: ["FastAPI", "scikit-learn", "PostgreSQL", "Redis", "Docker"],
+    links: [
+      { label: "Case study", href: "/projects/cost-aware-llm-router/" },
+      {
+        label: "Live demo",
+        href: "https://calibrated-router-768949786238.us-central1.run.app/",
+      },
+      {
+        label: "Code",
+        href: "https://github.com/Hariprashad-Ravikumar/Cost-Aware-Multi-Agent-LLM-Router",
+      },
+    ],
+    cover: {
+      mode: "gif",
+      src: "/video/cost-aware-llm-router.gif",
+      alt: "Screen recording of the Calibrated Cost-Aware LLM Router live demo: a prompt routed to a model tier in real time, with the architecture diagram and cost-savings meter updating live",
+      width: 800,
+      height: 458,
+    },
+    hasCaseStudy: true,
+  },
+  {
     slug: "wd-internship-2026",
     title: "Intern – Media Test Engineering (HAMR Modeling & Simulation) @ Western Digital, San Jose, CA, USA",
     oneLiner:
@@ -34,20 +60,6 @@ export const PROJECTS: Project[] = [
       title: "Enterprise Physics Simulator",
       sub: "HAMR DCSNR Simulator · Western Digital",
       tags: ["Python", "Dash", "Plotly"],
-    },
-    hasCaseStudy: true,
-  },
-  {
-    slug: "tmd-pipeline",
-    title: "Lattice QCD TMD Pipeline",
-    oneLiner:
-      "GPU-accelerated ML pipeline extracting analytical structure from 30,000+ lattice QCD observables.",
-    tags: ["CUDA C++", "PySR", "SLURM", "Python"],
-    links: [{ label: "Case study", href: "/projects/tmd-pipeline/" }],
-    cover: {
-      mode: "generated",
-      src: "/images/bundle/projects/tmd-pipeline-cover",
-      alt: "Lattice QCD TMD pipeline cover graphic",
     },
     hasCaseStudy: true,
   },
@@ -68,6 +80,20 @@ export const PROJECTS: Project[] = [
       webm: "/video/ai-datascience-lab.webm",
       poster: "/video/ai-datascience-lab-poster.jpg",
       alt: "Screen recording of the AI-DataScience-Lab forecasting app: CSV upload, regression model selection, and results",
+    },
+    hasCaseStudy: true,
+  },
+  {
+    slug: "tmd-pipeline",
+    title: "Lattice QCD TMD Pipeline",
+    oneLiner:
+      "GPU-accelerated ML pipeline extracting analytical structure from 30,000+ lattice QCD observables.",
+    tags: ["CUDA C++", "PySR", "SLURM", "Python"],
+    links: [{ label: "Case study", href: "/projects/tmd-pipeline/" }],
+    cover: {
+      mode: "generated",
+      src: "/images/bundle/projects/tmd-pipeline-cover",
+      alt: "Lattice QCD TMD pipeline cover graphic",
     },
     hasCaseStudy: true,
   },

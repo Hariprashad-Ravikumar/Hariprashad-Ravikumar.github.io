@@ -3,7 +3,7 @@ import ProjectCard from "@/components/content/ProjectCard";
 import { PROJECTS } from "@/content/projects";
 import Section from "@/components/layout/Section";
 
-const FEATURED_SLUGS = ["wd-internship-2026", "tmd-pipeline", "ai-datascience-lab"];
+const FEATURED_SLUGS = ["cost-aware-llm-router", "wd-internship-2026", "ai-datascience-lab"];
 
 export default function FeaturedProjects() {
   const featured = FEATURED_SLUGS.map((slug) => PROJECTS.find((p) => p.slug === slug)!).filter(

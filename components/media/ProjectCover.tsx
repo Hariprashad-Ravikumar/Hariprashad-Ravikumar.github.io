@@ -19,7 +19,8 @@ export type CoverMode =
       sub: string;
       tags: string[];
     }
-  | { mode: "video"; mp4: string; webm: string; poster: string; alt: string };
+  | { mode: "video"; mp4: string; webm: string; poster: string; alt: string }
+  | { mode: "gif"; src: string; alt: string; width: number; height: number };
 
 // Materialize-in: scale + fade together, once, as the cover enters view.
 // Consistent across all three cover modes so a mixed grid doesn't pop in
@@ -82,6 +83,32 @@ export default function ProjectCover(props: CoverMode) {
             ))}
           </div>
         </div>
+      </motion.div>
+    );
+  }
+
+  if (props.mode === "gif") {
+    return (
+      <motion.div
+        className="aspect-video w-full overflow-hidden rounded-t-[var(--r-md)] bg-[var(--ink-900)]"
+        initial="hidden"
+        whileInView="visible"
+        viewport={sectionRevealViewport}
+        variants={coverRevealVariants}
+        transition={sectionRevealTransition}
+      >
+        {/* Animated GIFs autoplay natively on every device — no JS play()
+            call needed, avoiding the autoplay-policy edge cases a <video>
+            can hit. */}
+        <img
+          src={props.src}
+          alt={props.alt}
+          width={props.width}
+          height={props.height}
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover"
+        />
       </motion.div>
     );
   }
