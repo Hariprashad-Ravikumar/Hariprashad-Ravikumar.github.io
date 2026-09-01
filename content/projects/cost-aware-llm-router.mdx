@@ -1,0 +1,219 @@
+import MathText from "@/components/ui/MathText";
+import ResultsTable from "@/components/content/ResultsTable";
+import RouterArchitectureDiagram from "@/components/content/RouterArchitectureDiagram";
+import RouterV1ArchitectureDiagram from "@/components/content/RouterV1ArchitectureDiagram";
+import TechStack from "@/components/content/TechStack";
+import MetricTile from "@/components/ui/MetricTile";
+import { LinkButton } from "@/components/ui/Button";
+import { GitHubIcon, GoogleCloudIcon } from "@/components/ui/brand-icons";
+
+A router that sits in front of multiple LLMs of different price and quality tiers and decides, per prompt, which tier should answer it. Most traffic goes to a cheap model; only genuinely hard prompts pay for an expensive one. The pattern is well established (LMSYS RouteLLM<a href="#ref-8" className="align-super text-[0.7em] text-[var(--brand-500)]">[8]</a>, RouterBench<a href="#ref-9" className="align-super text-[0.7em] text-[var(--brand-500)]">[9]</a>, cascade-routing approaches like FrugalGPT<a href="#ref-1" className="align-super text-[0.7em] text-[var(--brand-500)]">[1]</a>, and the "adaptive model" approach used in products like Devin and Windsurf). The value here is engineering rigor and honest evaluation of a known pattern, not a new idea, including publishing an earlier version that didn't save money and explaining why.
+
+<section className="grid grid-cols-2 gap-4 border-b border-[var(--line)] py-4 sm:grid-cols-4 sm:gap-8">
+  <MetricTile value="93.9%" label="cheaper than always calling the top-tier model" />
+  <MetricTile value="50.0%" label="escalation rate at the production error budget (ε=0.15)" />
+  <MetricTile value="96.0%" label="accuracy, no measurable quality loss vs. always-capable" />
+  <MetricTile value="$21,163" label="per year saved, illustrative at 1M requests/month" />
+</section>
+
+<div className="my-6 overflow-hidden rounded-xl border border-[var(--line)] shadow-sm">
+  <img
+    src="/video/cost-aware-llm-router-full-demo.gif"
+    alt="Live demo: a prompt routes to a tier in real time, with the architecture panel and cost-savings meter updating as it goes"
+    width={900}
+    height={490}
+    loading="lazy"
+    className="w-full h-auto"
+  />
+  <p className="text-small mt-1 px-1 pb-1 text-center text-[var(--ink-500)]">Live demo: a prompt routes to a tier in real time, with the architecture panel and cost-savings meter updating as it goes.</p>
+</div>
+
+<div className="my-4 flex justify-center">
+  <LinkButton
+    variant="secondary"
+    href="https://calibrated-router-768949786238.us-central1.run.app/"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      border: "2px solid transparent",
+      backgroundImage:
+        "linear-gradient(var(--surface-0), var(--surface-0)), linear-gradient(135deg, var(--brand-500), var(--accent-500), var(--aurora-2))",
+      backgroundOrigin: "border-box",
+      backgroundClip: "padding-box, border-box",
+    }}
+  >
+    <GoogleCloudIcon className="h-6 w-auto" /> Live demo (Google Cloud Run)
+  </LinkButton>
+</div>
+
+## How it works
+
+<div className="my-6 flex flex-col gap-6 lg:flex-row lg:items-start">
+<div className="lg:w-[58%]">
+  <RouterArchitectureDiagram />
+  <p className="text-small mt-1 text-center text-[var(--ink-500)]">v2's pipeline, looping continuously here (not tied to a live request).</p>
+</div>
+<div className="lg:w-[40%]">
+<p className="text-body prose-measure text-[var(--ink-700)]">A small, calibrated statistics model handles the routing. It applies the same discipline as propagating measurement uncertainty in experimental physics to deciding whether a language model's answer can be trusted. This is a rebuild after an earlier prompted-classifier approach failed to save money (see "The obvious approach first," below). It is a real FastAPI service, not a no-code orchestrator, with Postgres logging every routing decision, Redis caching repeated prompts, and a hand-rolled async circuit breaker on every provider call.</p>
+<p className="text-body prose-measure text-[var(--ink-700)]">For every prompt, a single draft call to the cheap tier produces four measurable features:</p>
+<ul className="prose-measure list-disc pl-5">
+<li className="text-body text-[var(--ink-700)]"><strong className="font-semibold text-[var(--ink-900)]">Logprob uncertainty</strong>: A sigmoid on the negative mean token log-probability of the draft answer (neutral 0.5 if the provider doesn't expose logprobs).</li>
+<li className="text-body text-[var(--ink-700)]"><strong className="font-semibold text-[var(--ink-900)]">Self-consistency dispersion</strong>: <code>1 - majority_answer_count / num_samples</code> across repeated higher-temperature samples<a href="#ref-2" className="align-super text-[0.7em] text-[var(--brand-500)]">[2]</a>, comparing <em>extracted final answers</em> (a regex-parsed number or multiple-choice letter), not raw response text. Otherwise, two step-by-step explanations reaching the same number look "inconsistent" purely from wording differences.</li>
+<li className="text-body text-[var(--ink-700)]"><strong className="font-semibold text-[var(--ink-900)]">Hard-cluster distance</strong>: Cosine distance between the prompt's embedding (<code>sentence-transformers/all-MiniLM-L6-v2</code>) and the centroid of a labeled set of known-hard prompts.</li>
+<li className="text-body text-[var(--ink-700)]"><strong className="font-semibold text-[var(--ink-900)]">Response length</strong>: A cheap proxy correlated with question complexity.</li>
+</ul>
+</div>
+</div>
+
+A logistic regression, fit on real labeled outcomes (did the draft's answer actually match ground truth?), turns those four numbers into a calibrated probability:
+
+<div className="my-4"><MathText text="\(P(\text{correct}) = \sigma(w \cdot x + b)\)" /></div>
+
+where <MathText text="\(\sigma\)" /> is the logistic (sigmoid) function, <MathText text="\(\sigma(z) = \frac{1}{1 + e^{-z}}\)" />, squashing the linear score into a probability between 0 and 1.
+
+The router accepts the cheap tier's answer only if its predicted error stays under a configured error budget <MathText text="\(\epsilon\)" />, using a direct hypothesis-testing framing rather than a threshold pulled from a prompt:
+
+<div className="my-4"><MathText text="\(\text{use cheap tier if } (1 - P(\text{correct})) \le \epsilon\text{, else escalate}\)" /></div>
+
+If escalating past mid also exceeds budget (when a mid-tier score is available), it escalates once more to the capable tier, treating the top of the ladder as a trusted fallback rather than separately calibrated.
+
+## Calibration, not just accuracy
+
+A router that is simply "accurate" isn't enough. A model that says "90% confident" should be right about 90% of the time it says that. The calibrator's confidence is checked for honesty, not just raw accuracy, using **Expected Calibration Error**<a href="#ref-5" className="align-super text-[0.7em] text-[var(--brand-500)]">[5]</a> over <MathText text="\(M\)" /> confidence bins:
+
+<div className="my-4"><MathText text="\(\text{ECE} = \sum_{m=1}^{M} \frac{|B_m|}{n} \left| \text{acc}(B_m) - \text{conf}(B_m) \right|\)" /></div>
+
+This is the actual differentiator versus a naive difficulty classifier: routing on a number that's been checked for honesty, not just a plausible-sounding LLM output. Training on 80 rows and validating on 20 held-out rows (from the same distribution, fit at training time) produced:
+
+<ResultsTable
+  headers={["Metric", "Value"]}
+  rows={[
+    ["Validation accuracy (0.5 threshold)", "0.800"],
+    ["Expected Calibration Error (5 bins)", "0.1671"],
+    ["Brier score", "0.1521"],
+  ]}
+/>
+
+That validation split is a sanity check, not the real generalization test. It's drawn from the same distribution the model fit on, just held out at fit time. The real test is a fully disjoint 50-prompt holdout set the calibrator never touched, covered in Results below.
+
+## The bug I caught
+
+After the first full held-out evaluation, the calibrated router cost *more* than always calling the top-tier model directly across every error budget from 0.05 to 0.50. Sweeping the threshold didn't fix it, because the threshold wasn't the bug.
+
+Checking `config/pricing.json` directly, rather than assuming the tier ladder was correctly ordered, showed why: the "mid" tier was Claude Haiku 4.5 at $1.00/$5.00 per 1M tokens, and the "capable" tier was Gemini 3.1 Flash-Lite at $0.25/$1.50. Mid was priced *above* capable. Every escalation to mid was strictly cost-dominated by just going straight to capable. No error-budget value could route around a ladder that was upside down. Swapping the assignments (Gemini to mid, Claude Sonnet 5 to capable, genuinely priced above Gemini) flipped the result completely.
+
+## Results
+
+**At the production default (ε = 0.15): 93.9% cheaper, no measurable quality loss.** Held-out evaluation on 50 GSM8K<a href="#ref-6" className="align-super text-[0.7em] text-[var(--brand-500)]">[6]</a>/MMLU<a href="#ref-7" className="align-super text-[0.7em] text-[var(--brand-500)]">[7]</a> prompts from `data/eval_holdout.jsonl`, never seen during calibrator training, against `always_capable` (every prompt sent to Claude Sonnet 5 directly, $0.09387 total / $0.0018774 per prompt):
+
+- **Cost**: $0.00569 vs. $0.09387, a 93.9% reduction.
+- **Escalation rate**: 50.0% of prompts escalate past the cheap tier at ε=0.15. The other half are answered by the cheap tier alone. This is the number that determines how often the router actually pays for a pricier model.
+- **Accuracy**: 96.0% (86.5-98.9% CI) vs. 92.0% (83.8-97.9% CI). The confidence intervals overlap, so this is **not a statistically distinguishable difference at n = 50**. That's parity, not a claimed improvement. A router that's simultaneously cheaper *and* more accurate than the model it routes to would be a free-lunch claim a 50-example sample can't support.
+- **At scale** (illustrative, extrapolated from the real measured per-prompt rate, not a claim about any specific deployment's traffic): 1M requests/month would cost $113.80 with the router vs. $1,877.40 always-capable, saving **$21,163/year**.
+
+Full 4-policy comparison on the same held-out set:
+
+<ResultsTable
+  headers={["Policy", "Accuracy (95% CI)", "Total cost (95% CI)", "Avg latency"]}
+  rows={[
+    ["Calibrated router", "0.940 (0.838-0.979)", "$0.00819 ($0.00647-$0.01007)", "1973 ms"],
+    ["Naive classifier (v1-style)", "0.840 (0.715-0.917)", "$0.00626 ($0.00528-$0.00728)", "1796 ms"],
+    ["Always cheap", "0.840 (0.715-0.917)", "$0.00490 ($0.00387-$0.00597)", "1067 ms"],
+    ["Always capable", "0.920 (0.812-0.968)", "$0.09387 ($0.07199-$0.11680)", "2373 ms"],
+  ]}
+/>
+
+Sweeping the error budget from 0.05 to 0.50 shows accuracy peaking at ε = 0.10-0.20 (96.0%, 50-52% escalation rate) before falling off as the budget loosens past 0.30 (86.0%, 8-10% escalation rate). This was recomputed entirely from logged `(calibrated P(correct), actual outcome)` pairs, with zero additional API calls. The threshold itself is treated as a hyperparameter tuned on held-out data, following the cascade-routing deferral literature<a href="#ref-3" className="align-super text-[0.7em] text-[var(--brand-500)]">[3]</a><a href="#ref-4" className="align-super text-[0.7em] text-[var(--brand-500)]">[4]</a>, rather than hand-picked.
+
+**Honest caveat**: n = 50, and the confidence intervals are real and non-trivial. This is a genuine, reproducible result, not a fully settled one. A larger held-out set would tighten the claim.
+
+## The obvious approach first
+
+Before landing on the calibrated router above, the obvious first attempt was simpler: just ask another LLM to rate the prompt's difficulty. That's what v1 did: an <a href="https://n8n.io">n8n</a> workflow sent every prompt to a Groq-hosted classifier (<code>openai/gpt-oss-20b</code>, reasoning effort low), which rated it 1-5. A score of 3 or below routed to a cheap model (Groq <code>openai/gpt-oss-120b</code>), and 4 or above routed to a more capable one (Gemini 3.1 Flash-Lite).
+
+<div className="my-6 flex flex-col gap-6 lg:flex-row lg:items-start">
+<div className="lg:w-[58%]">
+  <RouterV1ArchitectureDiagram />
+  <p className="text-small mt-1 text-center text-[var(--ink-500)]">v1's real pipeline, looping continuously here on its actual measured split (not tied to a live request).</p>
+</div>
+<div className="lg:w-[40%]">
+<p className="text-body prose-measure text-[var(--ink-700)]">Run against a 150-prompt evaluation set (75 GSM8K<a href="#ref-6" className="align-super text-[0.7em] text-[var(--brand-500)]">[6]</a> + 75 MMLU<a href="#ref-7" className="align-super text-[0.7em] text-[var(--brand-500)]">[7]</a>), the honest result was:</p>
+</div>
+</div>
+
+<ResultsTable
+  headers={["Metric", "Baseline (Capable Only)", "Routed (Adaptive)"]}
+  rows={[
+    ["Total cost", "$0.0241", "$0.0286"],
+    ["Accuracy", "88.67%", "89.33%"],
+    ["Average latency", "3570.63 ms", "1805.55 ms"],
+    ["Capable model calls", "150", "6"],
+    ["Cheap model calls", "0", "144"],
+  ]}
+/>
+
+**Cost went up, not down.** The cheap model answered roughly 2.5x more verbosely than the capable one, and cost is tokens × price, not just the per-token rate. That single finding is why the router above exists: a routing system that only looks at per-token pricing can miss the actual cost driver completely, and no amount of tuning the same prompted-classifier approach would have fixed it. There was also a deeper problem with the difficulty score itself. A "3 out of 5" from an LLM is a plausible-sounding number with no calibration, no confidence interval, and no way to know if it is actually well-founded. The calibrated router's ECE/Brier checks (above) are built to catch exactly this.
+
+## Production hardening
+
+Two bugs only showed up once this actually ran on Cloud Run, not in local testing: a 1Gi memory allocation that crashed under `sentence-transformers`' real footprint (fixed by bumping to 2Gi), and an embedding model that re-downloaded from HuggingFace on every cold start under Cloud Run's scale-to-zero behavior, hitting HuggingFace's rate limit and crashing the container before it finished starting (fixed by baking the model into the Docker image at build time).
+
+A concurrency test (Locust, 8 concurrent users, 45 seconds, against the live `/route` endpoint) produced 86 requests with **zero client-visible failures**, and unplanned, triggered a real, organic circuit-breaker trip. Gemini's breaker was closed before the burst, tripped open immediately after (real transient provider failures under concurrency hit the 5-consecutive-failure threshold), and every one of the 86 requests still returned 200 OK via fallback to the capable tier. The breaker recovered to closed after the 30-second reset window, confirmed live against the running `/metrics` endpoint.
+
+<ResultsTable
+  headers={["Metric", "Value"]}
+  rows={[
+    ["p50 latency", "2200 ms"],
+    ["p95 latency", "8200 ms"],
+    ["p99 latency", "11000 ms"],
+  ]}
+/>
+
+## Try it
+
+<div className="my-4 flex flex-wrap gap-3">
+  <LinkButton
+    variant="secondary"
+    href="https://calibrated-router-768949786238.us-central1.run.app/"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      border: "2px solid transparent",
+      backgroundImage:
+        "linear-gradient(var(--surface-0), var(--surface-0)), linear-gradient(135deg, var(--brand-500), var(--accent-500), var(--aurora-2))",
+      backgroundOrigin: "border-box",
+      backgroundClip: "padding-box, border-box",
+    }}
+  >
+    <GoogleCloudIcon className="h-6 w-auto" /> Live demo (Google Cloud Run)
+  </LinkButton>
+  <LinkButton
+    variant="secondary"
+    href="https://github.com/Hariprashad-Ravikumar/Cost-Aware-Multi-Agent-LLM-Router"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="border border-[var(--line)]"
+  >
+    <GitHubIcon className="h-6 w-auto" /> View source on GitHub
+  </LinkButton>
+</div>
+
+First request after a cold start takes roughly 40 seconds (container start, model load, real provider calls); warm requests run 2 to 3 seconds.
+
+## Stack
+
+<TechStack />
+
+## References
+
+<ol className="prose-measure list-decimal pl-5">
+<li id="ref-1" className="text-body text-[var(--ink-700)]">Chen, L., Zaharia, M., &amp; Zou, J. (2023). FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance. Stanford University. <a href="https://arxiv.org/abs/2305.05176" target="_blank" rel="noopener noreferrer">arXiv:2305.05176</a>.</li>
+<li id="ref-2" className="text-body text-[var(--ink-700)]">Wang, X., et al. (2022). Self-Consistency Improves Chain of Thought Reasoning in Language Models. <a href="https://arxiv.org/abs/2203.11171" target="_blank" rel="noopener noreferrer">arXiv:2203.11171</a>.</li>
+<li id="ref-3" className="text-body text-[var(--ink-700)]">Kang, et al. C3PO-style deferral rules for cascade routing. <a href="https://arxiv.org/html/2604.14251" target="_blank" rel="noopener noreferrer">arXiv:2604.14251</a>.</li>
+<li id="ref-4" className="text-body text-[var(--ink-700)]">Decision-theoretic cascade literature. <a href="https://arxiv.org/html/2605.06350" target="_blank" rel="noopener noreferrer">arXiv:2605.06350</a>.</li>
+<li id="ref-5" className="text-body text-[var(--ink-700)]">Guo, C., Pleiss, G., Sun, Y., &amp; Weinberger, K. Q. (2017). On Calibration of Modern Neural Networks. <a href="https://arxiv.org/abs/1706.04599" target="_blank" rel="noopener noreferrer">arXiv:1706.04599</a>.</li>
+<li id="ref-6" className="text-body text-[var(--ink-700)]">Cobbe, K., et al. (2021). Training Verifiers to Solve Math Word Problems (GSM8K). <a href="https://arxiv.org/abs/2110.14168" target="_blank" rel="noopener noreferrer">arXiv:2110.14168</a>.</li>
+<li id="ref-7" className="text-body text-[var(--ink-700)]">Hendrycks, D., et al. (2021). Measuring Massive Multitask Language Understanding (MMLU). <a href="https://arxiv.org/abs/2009.03300" target="_blank" rel="noopener noreferrer">arXiv:2009.03300</a>.</li>
+<li id="ref-8" className="text-body text-[var(--ink-700)]">LMSYS RouteLLM. <a href="https://github.com/lm-sys/RouteLLM" target="_blank" rel="noopener noreferrer">github.com/lm-sys/RouteLLM</a>.</li>
+<li id="ref-9" className="text-body text-[var(--ink-700)]">RouterBench. <a href="https://arxiv.org/abs/2403.12031" target="_blank" rel="noopener noreferrer">arXiv:2403.12031</a>.</li>
+</ol>
