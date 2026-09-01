@@ -129,15 +129,14 @@ Sweeping the error budget from 0.05 to 0.50 shows accuracy peaking at ε = 0.10-
 
 ## The obvious approach first
 
-Before landing on the calibrated router above, the obvious first attempt was simpler: just ask another LLM to rate the prompt's difficulty. That's what v1 did: an <a href="https://n8n.io">n8n</a> workflow sent every prompt to a Groq-hosted classifier (<code>openai/gpt-oss-20b</code>, reasoning effort low), which rated it 1-5. A score of 3 or below routed to a cheap model (Groq <code>openai/gpt-oss-120b</code>), and 4 or above routed to a more capable one (Gemini 3.1 Flash-Lite).
-
 <div className="my-6 flex flex-col gap-6 lg:flex-row lg:items-start">
+<div className="lg:w-[42%]">
+<p className="text-body prose-measure text-[var(--ink-700)]">Before landing on the calibrated router above, the obvious first attempt was simpler: just ask another LLM to rate the prompt's difficulty. That's what v1 did: an <a href="https://n8n.io">n8n</a> workflow sent every prompt to a Groq-hosted classifier (<code>openai/gpt-oss-20b</code>, reasoning effort low), which rated it 1-5. A score of 3 or below routed to a cheap model (Groq <code>openai/gpt-oss-120b</code>), and 4 or above routed to a more capable one (Gemini 3.1 Flash-Lite).</p>
+<p className="text-body prose-measure mt-4 text-[var(--ink-700)]">Run against a 150-prompt evaluation set (75 GSM8K<a href="#ref-6" className="align-super text-[0.7em] text-[var(--brand-500)]">[6]</a> + 75 MMLU<a href="#ref-7" className="align-super text-[0.7em] text-[var(--brand-500)]">[7]</a>), the honest result was:</p>
+</div>
 <div className="lg:w-[58%]">
   <RouterV1ArchitectureDiagram />
   <p className="text-small mt-1 text-center text-[var(--ink-500)]">v1's real pipeline, looping continuously here on its actual measured split (not tied to a live request).</p>
-</div>
-<div className="lg:w-[40%]">
-<p className="text-body prose-measure text-[var(--ink-700)]">Run against a 150-prompt evaluation set (75 GSM8K<a href="#ref-6" className="align-super text-[0.7em] text-[var(--brand-500)]">[6]</a> + 75 MMLU<a href="#ref-7" className="align-super text-[0.7em] text-[var(--brand-500)]">[7]</a>), the honest result was:</p>
 </div>
 </div>
 
