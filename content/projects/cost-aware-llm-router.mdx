@@ -5,7 +5,7 @@ import RouterV1ArchitectureDiagram from "@/components/content/RouterV1Architectu
 import TechStack from "@/components/content/TechStack";
 import MetricTile from "@/components/ui/MetricTile";
 import { LinkButton } from "@/components/ui/Button";
-import { GitHubIcon, GoogleCloudIcon } from "@/components/ui/brand-icons";
+import { GitHubIcon, GoogleCloudIcon, LinkedInIcon } from "@/components/ui/brand-icons";
 
 A router that sits in front of multiple LLMs of different price and quality tiers and decides, per prompt, which tier should answer it. Most traffic goes to a cheap model; only genuinely hard prompts pay for an expensive one. The pattern is well established (LMSYS RouteLLM<a href="#ref-1" className="align-super text-[0.7em] text-[var(--brand-500)]">[1]</a>, RouterBench<a href="#ref-2" className="align-super text-[0.7em] text-[var(--brand-500)]">[2]</a>, cascade-routing approaches like FrugalGPT<a href="#ref-3" className="align-super text-[0.7em] text-[var(--brand-500)]">[3]</a>, and the "adaptive model" approach used in products like Devin/Windsurf). The value here is engineering rigor and honest evaluation of a known pattern, not a new idea, including publishing an earlier version that didn't save money and explaining why.
 
@@ -195,6 +195,15 @@ A concurrency test (Locust, 8 concurrent users, 45 seconds, against the live `/r
   >
     <span className="inline-flex items-center gap-2"><GitHubIcon className="h-6 w-auto" /> View source on GitHub</span>
   </LinkButton>
+  <LinkButton
+    variant="secondary"
+    href="https://www.linkedin.com/pulse/cost-aware-multi-agent-llm-router-hariprashad-ravikumar-wpklc"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="border border-[var(--line)]"
+  >
+    <span className="inline-flex items-center gap-2"><LinkedInIcon className="h-6 w-auto" /> LinkedIn Article</span>
+  </LinkButton>
 </div>
 
 First request after a cold start takes roughly 40 seconds (container start, model load, real provider calls); warm requests run 2 to 3 seconds.
@@ -213,6 +222,6 @@ First request after a cold start takes roughly 40 seconds (container start, mode
 <li id="ref-5" className="text-body text-[var(--ink-700)]">Guo, C., Pleiss, G., Sun, Y., &amp; Weinberger, K. Q. (2017). On Calibration of Modern Neural Networks. <a href="https://arxiv.org/abs/1706.04599" target="_blank" rel="noopener noreferrer">arXiv:1706.04599</a>.</li>
 <li id="ref-6" className="text-body text-[var(--ink-700)]">Cobbe, K., et al. (2021). Training Verifiers to Solve Math Word Problems (GSM8K). <a href="https://arxiv.org/abs/2110.14168" target="_blank" rel="noopener noreferrer">arXiv:2110.14168</a>.</li>
 <li id="ref-7" className="text-body text-[var(--ink-700)]">Hendrycks, D., et al. (2021). Measuring Massive Multitask Language Understanding (MMLU). <a href="https://arxiv.org/abs/2009.03300" target="_blank" rel="noopener noreferrer">arXiv:2009.03300</a>.</li>
-<li id="ref-8" className="text-body text-[var(--ink-700)]">Kang, et al. C3PO-style deferral rules for cascade routing. <a href="https://arxiv.org/html/2604.14251" target="_blank" rel="noopener noreferrer">arXiv:2604.14251</a>.</li>
+<li id="ref-8" className="text-body text-[var(--ink-700)]">Pona, et al. Calibrate-Then-Delegate: Safety Monitoring with Risk and Budget Guarantees via Model Cascades. <a href="https://arxiv.org/abs/2604.14251" target="_blank" rel="noopener noreferrer">arXiv:2604.14251</a>.</li>
 <li id="ref-9" className="text-body text-[var(--ink-700)]">Decision-theoretic cascade literature. <a href="https://arxiv.org/html/2605.06350" target="_blank" rel="noopener noreferrer">arXiv:2605.06350</a>.</li>
 </ol>
