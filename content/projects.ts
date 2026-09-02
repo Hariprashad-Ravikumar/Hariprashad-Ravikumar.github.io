@@ -1,6 +1,7 @@
 import type { CoverMode } from "@/components/media/ProjectCover";
+import type { IconKey } from "@/components/ui/brand-icons";
 
-export type ProjectLink = { label: string; href: string };
+export type ProjectLink = { label: string; href: string; icon?: IconKey };
 
 export type Project = {
   slug: string;
@@ -29,12 +30,19 @@ export const PROJECTS: Project[] = [
     links: [
       { label: "Case study", href: "/projects/cost-aware-llm-router/" },
       {
-        label: "Live demo",
+        label: "Live demo (Google Cloud Run)",
         href: "https://calibrated-router-768949786238.us-central1.run.app/",
+        icon: "googlecloud",
+      },
+      {
+        label: "LinkedIn Article",
+        href: "https://www.linkedin.com/pulse/cost-aware-multi-agent-llm-router-hariprashad-ravikumar-wpklc",
+        icon: "linkedin",
       },
       {
         label: "Code",
         href: "https://github.com/Hariprashad-Ravikumar/Cost-Aware-Multi-Agent-LLM-Router",
+        icon: "github",
       },
     ],
     cover: {
