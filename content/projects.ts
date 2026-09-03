@@ -55,6 +55,32 @@ export const PROJECTS: Project[] = [
     hasCaseStudy: true,
   },
   {
+    slug: "transformer-pretraining-from-scratch",
+    title: "Transformer Pretrained From Scratch",
+    oneLiner:
+      "A ~57M-parameter decoder-only transformer trained from scratch in PyTorch: 1.057 BPB against Pythia-70M, 0.0071 ECE token-level calibration, causally-verified induction heads.",
+    tags: ["PyTorch", "Triton", "Hugging Face", "ONNX Runtime Web"],
+    links: [
+      { label: "Case study", href: "/projects/transformer-pretraining-from-scratch/" },
+      {
+        label: "Live demo (Hugging Face)",
+        href: "https://huggingface.co/spaces/hari-8/transformer-pretraining-demo",
+        icon: "huggingface",
+      },
+      {
+        label: "Code",
+        href: "https://github.com/Hariprashad-Ravikumar/transformer-pretraining-from-scratch",
+        icon: "github",
+      },
+    ],
+    cover: {
+      mode: "generated",
+      src: "/images/bundle/projects/transformer-pretraining-cover",
+      alt: "Induction-head prefix-matching score heatmap by layer and head",
+    },
+    hasCaseStudy: true,
+  },
+  {
     slug: "wd-internship-2026",
     title: "Intern – Media Test Engineering (HAMR Modeling & Simulation) @ Western Digital, San Jose, CA, USA",
     oneLiner:

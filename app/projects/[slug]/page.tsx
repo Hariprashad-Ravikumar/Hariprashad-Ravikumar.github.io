@@ -9,6 +9,8 @@ const CASE_STUDIES = {
   "tmd-pipeline": () => import("@/content/projects/tmd-pipeline.mdx"),
   "ai-datascience-lab": () => import("@/content/projects/ai-datascience-lab.mdx"),
   "cost-aware-llm-router": () => import("@/content/projects/cost-aware-llm-router.mdx"),
+  "transformer-pretraining-from-scratch": () =>
+    import("@/content/projects/transformer-pretraining-from-scratch.mdx"),
 } as const;
 
 type CaseStudySlug = keyof typeof CASE_STUDIES;

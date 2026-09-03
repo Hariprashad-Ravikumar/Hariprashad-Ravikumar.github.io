@@ -26,6 +26,293 @@
       }
     ]
   },
+  "/images/og/contact": {
+    "source": "assets/raw/og/contact.png",
+    "originalWidth": 2230,
+    "originalHeight": 1564,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/og/contact-640.webp",
+        "bytes": 19358
+      },
+      {
+        "width": 960,
+        "path": "/images/og/contact-960.webp",
+        "bytes": 35596
+      },
+      {
+        "width": 1440,
+        "path": "/images/og/contact-1440.webp",
+        "bytes": 61852
+      },
+      {
+        "width": 1920,
+        "path": "/images/og/contact-1920.webp",
+        "bytes": 86764
+      }
+    ]
+  },
+  "/images/og/home": {
+    "source": "assets/raw/og/home.png",
+    "originalWidth": 2230,
+    "originalHeight": 1564,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/og/home-640.webp",
+        "bytes": 37154
+      },
+      {
+        "width": 960,
+        "path": "/images/og/home-960.webp",
+        "bytes": 66774
+      },
+      {
+        "width": 1440,
+        "path": "/images/og/home-1440.webp",
+        "bytes": 113664
+      },
+      {
+        "width": 1920,
+        "path": "/images/og/home-1920.webp",
+        "bytes": 162796
+      }
+    ]
+  },
+  "/images/og/projects": {
+    "source": "assets/raw/og/projects.png",
+    "originalWidth": 2230,
+    "originalHeight": 1564,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/og/projects-640.webp",
+        "bytes": 27706
+      },
+      {
+        "width": 960,
+        "path": "/images/og/projects-960.webp",
+        "bytes": 50730
+      },
+      {
+        "width": 1440,
+        "path": "/images/og/projects-1440.webp",
+        "bytes": 88824
+      },
+      {
+        "width": 1920,
+        "path": "/images/og/projects-1920.webp",
+        "bytes": 126778
+      }
+    ]
+  },
+  "/images/og/publications": {
+    "source": "assets/raw/og/publications.png",
+    "originalWidth": 2230,
+    "originalHeight": 1564,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/og/publications-640.webp",
+        "bytes": 27324
+      },
+      {
+        "width": 960,
+        "path": "/images/og/publications-960.webp",
+        "bytes": 50010
+      },
+      {
+        "width": 1440,
+        "path": "/images/og/publications-1440.webp",
+        "bytes": 83828
+      },
+      {
+        "width": 1920,
+        "path": "/images/og/publications-1920.webp",
+        "bytes": 115880
+      }
+    ]
+  },
+  "/images/og/research": {
+    "source": "assets/raw/og/research.png",
+    "originalWidth": 2230,
+    "originalHeight": 1564,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/og/research-640.webp",
+        "bytes": 59196
+      },
+      {
+        "width": 960,
+        "path": "/images/og/research-960.webp",
+        "bytes": 111022
+      },
+      {
+        "width": 1440,
+        "path": "/images/og/research-1440.webp",
+        "bytes": 187256
+      },
+      {
+        "width": 1920,
+        "path": "/images/og/research-1920.webp",
+        "bytes": 260270
+      }
+    ]
+  },
+  "/images/og/resume": {
+    "source": "assets/raw/og/resume.png",
+    "originalWidth": 2230,
+    "originalHeight": 1564,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/og/resume-640.webp",
+        "bytes": 30716
+      },
+      {
+        "width": 960,
+        "path": "/images/og/resume-960.webp",
+        "bytes": 56358
+      },
+      {
+        "width": 1440,
+        "path": "/images/og/resume-1440.webp",
+        "bytes": 95026
+      },
+      {
+        "width": 1920,
+        "path": "/images/og/resume-1920.webp",
+        "bytes": 135354
+      }
+    ]
+  },
+  "/images/og/talks": {
+    "source": "assets/raw/og/talks.png",
+    "originalWidth": 2230,
+    "originalHeight": 1564,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/og/talks-640.webp",
+        "bytes": 31058
+      },
+      {
+        "width": 960,
+        "path": "/images/og/talks-960.webp",
+        "bytes": 56216
+      },
+      {
+        "width": 1440,
+        "path": "/images/og/talks-1440.webp",
+        "bytes": 96404
+      },
+      {
+        "width": 1920,
+        "path": "/images/og/talks-1920.webp",
+        "bytes": 136166
+      }
+    ]
+  },
+  "/images/og/wd-internship-2026": {
+    "source": "assets/raw/og/wd-internship-2026.png",
+    "originalWidth": 2230,
+    "originalHeight": 1564,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/og/wd-internship-2026-640.webp",
+        "bytes": 46876
+      },
+      {
+        "width": 960,
+        "path": "/images/og/wd-internship-2026-960.webp",
+        "bytes": 84388
+      },
+      {
+        "width": 1440,
+        "path": "/images/og/wd-internship-2026-1440.webp",
+        "bytes": 146302
+      },
+      {
+        "width": 1920,
+        "path": "/images/og/wd-internship-2026-1920.webp",
+        "bytes": 208820
+      }
+    ]
+  },
+  "/images/projects/transformer-pretraining/ablation-base": {
+    "source": "assets/raw/projects/transformer-pretraining/ablation-base.png",
+    "originalWidth": 2460,
+    "originalHeight": 1590,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/projects/transformer-pretraining/ablation-base-640.webp",
+        "bytes": 6668
+      },
+      {
+        "width": 960,
+        "path": "/images/projects/transformer-pretraining/ablation-base-960.webp",
+        "bytes": 9944
+      },
+      {
+        "width": 1440,
+        "path": "/images/projects/transformer-pretraining/ablation-base-1440.webp",
+        "bytes": 15282
+      },
+      {
+        "width": 1920,
+        "path": "/images/projects/transformer-pretraining/ablation-base-1920.webp",
+        "bytes": 21436
+      }
+    ]
+  },
+  "/images/projects/transformer-pretraining/calibration-curve": {
+    "source": "assets/raw/projects/transformer-pretraining/calibration-curve.png",
+    "originalWidth": 900,
+    "originalHeight": 900,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/projects/transformer-pretraining/calibration-curve-640.webp",
+        "bytes": 17322
+      },
+      {
+        "width": 960,
+        "path": "/images/projects/transformer-pretraining/calibration-curve-960.webp",
+        "bytes": 29682
+      }
+    ]
+  },
+  "/images/projects/transformer-pretraining/induction-heads-base": {
+    "source": "assets/raw/projects/transformer-pretraining/induction-heads-base.png",
+    "originalWidth": 2460,
+    "originalHeight": 1590,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/projects/transformer-pretraining/induction-heads-base-640.webp",
+        "bytes": 4626
+      },
+      {
+        "width": 960,
+        "path": "/images/projects/transformer-pretraining/induction-heads-base-960.webp",
+        "bytes": 7692
+      },
+      {
+        "width": 1440,
+        "path": "/images/projects/transformer-pretraining/induction-heads-base-1440.webp",
+        "bytes": 12054
+      },
+      {
+        "width": 1920,
+        "path": "/images/projects/transformer-pretraining/induction-heads-base-1920.webp",
+        "bytes": 16460
+      }
+    ]
+  },
   "/images/publications/aps-logo": {
     "source": "assets/raw/publications/aps-logo.png",
     "originalWidth": 798,
@@ -349,6 +636,33 @@
         "width": 1920,
         "path": "/images/bundle/projects/tmd-pipeline-cover-1920.webp",
         "bytes": 38476
+      }
+    ]
+  },
+  "/images/bundle/projects/transformer-pretraining-cover": {
+    "source": "assets/bundle/projects/transformer-pretraining-cover.png",
+    "originalWidth": 2460,
+    "originalHeight": 1590,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/bundle/projects/transformer-pretraining-cover-640.webp",
+        "bytes": 4626
+      },
+      {
+        "width": 960,
+        "path": "/images/bundle/projects/transformer-pretraining-cover-960.webp",
+        "bytes": 7692
+      },
+      {
+        "width": 1440,
+        "path": "/images/bundle/projects/transformer-pretraining-cover-1440.webp",
+        "bytes": 12054
+      },
+      {
+        "width": 1920,
+        "path": "/images/bundle/projects/transformer-pretraining-cover-1920.webp",
+        "bytes": 16460
       }
     ]
   },

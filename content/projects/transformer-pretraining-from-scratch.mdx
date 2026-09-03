@@ -1,0 +1,188 @@
+import ResultsTable from "@/components/content/ResultsTable";
+import MetricTile from "@/components/ui/MetricTile";
+import Picture from "@/components/ui/Picture";
+import { LinkButton } from "@/components/ui/Button";
+import { GitHubIcon, HuggingFaceIcon, PythonIcon } from "@/components/ui/brand-icons";
+
+A ~57M-non-embedding-parameter decoder-only transformer, pretrained from scratch in PyTorch: RMSNorm, rotary position embeddings, causal self-attention, SwiGLU MLP, and a weight-tied embedding/output head, all authored as raw `nn.Module`s. No `AutoModel`, no fine-tune of an existing checkpoint. Trained on ~1B tokens of FineWeb-Edu with a custom byte-level BPE tokenizer, also trained from scratch rather than reusing GPT-2's. The value here is depth, not scale: every claim below is measured, and every negative result is reported as one, not hidden.
+
+<section className="grid grid-cols-2 gap-4 border-b border-[var(--line)] py-4 sm:grid-cols-4 sm:gap-8">
+  <MetricTile value="1.057" label="bits-per-byte, held-out (vs. Pythia-70M's 1.135)" />
+  <MetricTile value="0.0071" label="raw token-level calibration ECE, near-perfect" />
+  <MetricTile value="2" label="clear induction heads found, causally verified" />
+  <MetricTile value="57M" label="non-embedding parameters, ~1B training tokens" />
+</section>
+
+<div className="my-4 flex justify-center">
+  <LinkButton
+    variant="secondary"
+    href="https://huggingface.co/spaces/hari-8/transformer-pretraining-demo"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      border: "2px solid transparent",
+      backgroundImage:
+        "linear-gradient(var(--surface-0), var(--surface-0)), linear-gradient(135deg, var(--brand-500), var(--accent-500), var(--aurora-2))",
+      backgroundOrigin: "border-box",
+      backgroundClip: "padding-box, border-box",
+    }}
+  >
+    <span className="inline-flex items-center gap-2"><HuggingFaceIcon className="h-6 w-auto" /> Live demo (runs entirely in your browser)</span>
+  </LinkButton>
+</div>
+
+## Evaluation
+
+Held-out loss, perplexity, and bits-per-byte (BPB), measured on ~497K held-out tokens never seen during training. BPB, not raw perplexity, is the metric that is actually comparable across models with different tokenizers, since it normalizes by the byte length of the original text rather than by token count.
+
+<ResultsTable
+  headers={["Model", "Loss (nats)", "Perplexity", "BPB"]}
+  rows={[
+    ["This model", "3.19", "24.2", "1.057"],
+    ["Pythia-70M (reference)", "3.68", "39.7", "1.135"],
+  ]}
+/>
+
+This model scores lower BPB than Pythia-70M on this held-out set. The likely reason is domain match, not general capability: it was trained exclusively on FineWeb-Edu, a narrower and more predictable distribution than Pythia's Pile-trained generalist scope, and the two models are close in parameter count.
+
+## Calibration, and a genuinely surprising result
+
+<div className="my-6 flex flex-col gap-6 lg:flex-row lg:items-start">
+<div className="lg:w-[42%]">
+<Picture
+  src="/images/projects/transformer-pretraining/calibration-curve"
+  alt="Token-level reliability diagram: raw and temperature-scaled confidence both sit almost exactly on the diagonal at every confidence bin"
+  width={900}
+  height={900}
+  widths={[640, 960]}
+  sizes="(min-width: 1024px) 42vw, 100vw"
+  className="w-full h-auto rounded-lg border border-[var(--line)]"
+/>
+<p className="text-small mt-1 text-center text-[var(--ink-500)]">Token-level reliability diagram, raw vs. temperature-scaled.</p>
+</div>
+<div className="lg:w-[58%]">
+<p className="text-body prose-measure text-[var(--ink-700)]">Token-level calibration, following Guo et al.'s definition: confidence is the model's max softmax probability at each position, the label is whether that top-1 prediction matches the actual next token. A single temperature scalar was fit on one half of a held-out split and measured on the other, disjoint half, a genuine generalization test.</p>
+</div>
+</div>
+
+<ResultsTable
+  headers={["", "ECE (5 bins)", "Brier score"]}
+  rows={[
+    ["Raw (T=1)", "0.0071", "0.157"],
+    ["Temperature-scaled (T=1.014)", "0.0047", "0.157"],
+  ]}
+/>
+
+The raw confidence is already close to perfectly calibrated: the fitted temperature is barely different from 1, and temperature scaling only marginally improves an already-low ECE. That is a real, honest finding, not a failure to find something more dramatic. Models trained end to end with softmax cross-entropy on next-token prediction are documented to calibrate more naturally than classifiers trained on one-hot labels, since the training objective directly targets the true conditional distribution rather than a decision boundary.
+
+This also connects to the [Cost-Aware LLM Router](/projects/cost-aware-llm-router/)'s calibrator, which measured 0.1671 ECE. That is not a fair "worse" comparison: it is a different task entirely, task-level response correctness, judged, via a separately-trained logistic regression on hand-engineered features, included here for reference, not as a competing number. What is comparable is calibration behavior itself: whether raw confidence over- or under-shoots accuracy, and whether a standard post-hoc fix narrows the gap.
+
+## Interpretability: a probe, and the causal test that complicates it
+
+<div className="my-6 flex flex-col gap-6 lg:flex-row lg:items-start">
+<div className="lg:w-[58%]">
+<Picture
+  src="/images/projects/transformer-pretraining/induction-heads-base"
+  alt="Induction-head prefix-matching score heatmap by layer and head: two heads in layer 6 stand out far above every other head"
+  width={2460}
+  height={1590}
+  sizes="(min-width: 1024px) 58vw, 100vw"
+  className="w-full h-auto rounded-lg border border-[var(--line)]"
+/>
+<p className="text-small mt-1 text-center text-[var(--ink-500)]">Induction-head prefix-matching score, by layer and head.</p>
+</div>
+<div className="lg:w-[42%]">
+<p className="text-body prose-measure text-[var(--ink-700)]">Following Olsson et al.'s methodology, sequences of random tokens repeated twice reveal whether a head attends from the second occurrence of a token back to the position that followed its first occurrence, the signature of an induction head. Two heads in layer 6 stand out clearly (prefix-matching scores 0.79 and 0.74), far above every other head in the model.</p>
+</div>
+</div>
+
+<Picture
+  src="/images/projects/transformer-pretraining/ablation-base"
+  alt="Causal ablation heatmap: held-out loss delta when each head is individually zeroed, by layer and head"
+  width={2460}
+  height={1590}
+  className="w-full h-auto rounded-lg border border-[var(--line)] mt-6"
+/>
+<p className="text-small mt-1 text-center text-[var(--ink-500)]">Causal ablation: held-out loss delta when each head is zeroed, full sweep.</p>
+
+A full causal ablation sweep, every head in every layer, zeroed one at a time, measured by the resulting held-out loss increase, is what turns the induction-head numbers into an actual causal claim rather than a picture. The two heads with the highest induction score are not the most important by ablation: they rank only 8th and 11th of 12 heads in their own layer. The heads that matter most causally show no elevated induction score at all. The likely explanation: the synthetic probe targets exact token repeats, a pattern rarely seen verbatim in natural text, so a head specialized for it may matter less for real-text loss than a head doing more general work the probe was never designed to detect. A real limitation of attention-pattern-only probing, reported as a finding rather than smoothed into a cleaner story.
+
+## An honest negative result: the Triton kernel
+
+A hand-written Triton kernel (forward and backward) for RMSNorm, correctness and gradient-verified against the PyTorch reference, then benchmarked against it at real model scale.
+
+<ResultsTable
+  headers={["", "tok/s", "MFU"]}
+  rows={[
+    ["PyTorch RMSNorm (baseline)", "65,484", "22.47%"],
+    ["Triton RMSNorm", "61,172", "21.00%"],
+  ]}
+/>
+
+The Triton kernel measured 6.6% slower, not faster. `torch.compile` already lowers the plain PyTorch RMSNorm into a fused, autotuned Triton kernel automatically as part of compiling the surrounding graph, and wrapping a hand-written kernel in a `torch.autograd.Function` forces a compile graph break around it, adding dispatch overhead the compiler's own fusion does not pay. Not every hand-written kernel beats a modern compiler baseline, and that is a real, useful finding about when custom kernels are and are not worth writing, not a result to hide.
+
+## Try it
+
+<div className="my-4 flex flex-wrap gap-3">
+  <LinkButton
+    variant="secondary"
+    href="https://huggingface.co/spaces/hari-8/transformer-pretraining-demo"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      border: "2px solid transparent",
+      backgroundImage:
+        "linear-gradient(var(--surface-0), var(--surface-0)), linear-gradient(135deg, var(--brand-500), var(--accent-500), var(--aurora-2))",
+      backgroundOrigin: "border-box",
+      backgroundClip: "padding-box, border-box",
+    }}
+  >
+    <span className="inline-flex items-center gap-2"><HuggingFaceIcon className="h-6 w-auto" /> Live demo (Hugging Face Space)</span>
+  </LinkButton>
+  <LinkButton
+    variant="secondary"
+    href="https://huggingface.co/hari-8/transformer-pretraining-from-scratch"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="border border-[var(--line)]"
+  >
+    <span className="inline-flex items-center gap-2"><HuggingFaceIcon className="h-6 w-auto" /> Model card</span>
+  </LinkButton>
+  <LinkButton
+    variant="secondary"
+    href="https://github.com/Hariprashad-Ravikumar/transformer-pretraining-from-scratch"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="border border-[var(--line)]"
+  >
+    <span className="inline-flex items-center gap-2"><GitHubIcon className="h-6 w-auto" /> View source on GitHub</span>
+  </LinkButton>
+</div>
+
+The live demo runs the model entirely client-side via ONNX Runtime Web: no server compute, so it stays free to host as a static page rather than needing a paid always-on backend.
+
+## Stack
+
+<div className="flex flex-wrap gap-2">
+  <span className="material-trim flex items-center gap-1.5 rounded-[var(--r-sm)] px-2.5 py-1.5 font-mono text-xs text-[var(--ink-500)]">
+    <PythonIcon className="h-4 w-auto" /> Python
+  </span>
+  <span className="material-trim flex items-center gap-1.5 rounded-[var(--r-sm)] px-2.5 py-1.5 font-mono text-xs text-[var(--ink-500)]">
+    PyTorch
+  </span>
+  <span className="material-trim flex items-center gap-1.5 rounded-[var(--r-sm)] px-2.5 py-1.5 font-mono text-xs text-[var(--ink-500)]">
+    Triton
+  </span>
+  <span className="material-trim flex items-center gap-1.5 rounded-[var(--r-sm)] px-2.5 py-1.5 font-mono text-xs text-[var(--ink-500)]">
+    ONNX Runtime Web
+  </span>
+  <span className="material-trim flex items-center gap-1.5 rounded-[var(--r-sm)] px-2.5 py-1.5 font-mono text-xs text-[var(--ink-500)]">
+    <HuggingFaceIcon className="h-4 w-auto" /> Hugging Face Transformers
+  </span>
+  <span className="material-trim flex items-center gap-1.5 rounded-[var(--r-sm)] px-2.5 py-1.5 font-mono text-xs text-[var(--ink-500)]">
+    tokenizers (byte-level BPE)
+  </span>
+  <span className="material-trim flex items-center gap-1.5 rounded-[var(--r-sm)] px-2.5 py-1.5 font-mono text-xs text-[var(--ink-500)]">
+    GCP Spot VM (L4 GPU)
+  </span>
+</div>
