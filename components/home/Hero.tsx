@@ -13,7 +13,7 @@ import Section from "@/components/layout/Section";
 import { springDefault } from "@/lib/springs";
 import { sectionRevealTransition, sectionRevealVariants, sectionStaggerContainer } from "@/lib/motion";
 
-const STATUS_TEXT = `Graduating ${METRICS.graduation} · Open to Research Scientist / ML Engineer roles · SF Bay Area`;
+const STATUS_TEXT = "Computational physicist building large scale Machine Learning and simulation tools";
 
 // Fade + scale-in for the portrait — arrives just after the text cascade,
 // hinting the reader's eye from words to photo. Kept separate from
@@ -51,14 +51,6 @@ export default function Hero() {
         >
           Hariprashad Ravikumar
         </motion.h1>
-        <motion.p
-          variants={sectionRevealVariants}
-          transition={sectionRevealTransition}
-          className="text-h3 mt-3 font-normal text-[var(--ink-500)]"
-        >
-          Computational physicist building GPU-accelerated ML and simulation tools.
-        </motion.p>
-
         <motion.div variants={sectionRevealVariants} transition={sectionRevealTransition} className="mt-5">
           <TerminalStatusLine text={STATUS_TEXT} />
         </motion.div>

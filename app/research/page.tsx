@@ -34,7 +34,7 @@ const THRUSTS = [
   {
     title: "Conformal Algebra Interpolation",
     meta: "Collaboration with Prof. Chueng-Ryong Ji, NC State",
-    body: "Mathematica symbolic-computation workflows analyzing algebraic structures and relativistic symmetry constraints. Published in Physical Review D 113, 096018 (2026); (3+1)-dimensional extension in preparation.",
+    body: "Mathematica symbolic-computation workflows analyzing algebraic structures and relativistic symmetry constraints. Published in Physical Review D 113, 096018 (2026); (3+1)-dimensional extension on arXiv (2609.36297).",
     tags: ["Mathematica", "Symbolic Computation"],
     figuresKey: "conformal-algebra",
     credibility: true,
