@@ -1,13 +1,13 @@
 import Container from "@/components/layout/Container";
 import PubEntry from "@/components/content/PubEntry";
 import Reveal from "@/components/ui/Reveal";
-import { CONFERENCE, IN_PREPARATION, PEER_REVIEWED, THESES } from "@/content/publications";
+import { CONFERENCE, IN_PREPARATION, PEER_REVIEWED, PREPRINTS, THESES } from "@/content/publications";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Publications | Hariprashad Ravikumar",
   description:
-    "Peer-reviewed work including Physical Review D 113, 096018 (2026), plus manuscripts in preparation and conference proceedings.",
+    "Peer-reviewed work including Physical Review D 113, 096018 (2026), plus preprints, manuscripts in preparation, and conference proceedings.",
   path: "/publications/",
   image: "/og/publications.png",
 });
@@ -23,6 +23,15 @@ export default function PublicationsPage() {
           <ul>
             {PEER_REVIEWED.map((pub) => (
               <PubEntry key={pub.title} pub={pub} showCredibility />
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal as="section" className="mt-7" delay={0.05}>
+          <h2 className="text-h2 text-[var(--ink-900)]">Preprints</h2>
+          <ul>
+            {PREPRINTS.map((pub) => (
+              <PubEntry key={pub.title} pub={pub} />
             ))}
           </ul>
         </Reveal>

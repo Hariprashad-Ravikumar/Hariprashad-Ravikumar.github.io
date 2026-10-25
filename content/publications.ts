@@ -22,8 +22,17 @@ export const PEER_REVIEWED: Publication[] = [
 
 export const PRD_DOI_URL = "https://journals.aps.org/prd/abstract/10.1103/prlq-4j1l";
 
+export const PREPRINTS: Publication[] = [
+  {
+    authors: "Ravikumar, H. & Ji, C.-R. (2026).",
+    title:
+      "Interpolating conformal algebra in (3+1) dimensions between the instant form and the light-front form of relativistic dynamics.",
+    venue: "arXiv:2609.36297 [hep-th].",
+    links: [{ label: "arXiv", href: "https://arxiv.org/abs/2609.36297" }],
+  },
+];
+
 export const IN_PREPARATION: string[] = [
-  "Ravikumar, H. & Ji, C.-R. Interpolating conformal algebra (3+1) between the instant form and the front form of relativistic dynamics.",
   "Ravikumar, H. et al. Analytical modeling of grain magnetization dynamics in Heat-Assisted Magnetic Recording. Manuscript in preparation for IEEE Transactions on Magnetics.",
 ];
 

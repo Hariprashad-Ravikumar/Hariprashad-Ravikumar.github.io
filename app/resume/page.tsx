@@ -128,7 +128,7 @@ export default function ResumePage() {
 
           <ResumeSection id="publications" title="Publications">
             <p className="text-body prose-measure text-[var(--ink-700)]">
-              See the full list, including peer-reviewed work, manuscripts in preparation, and
+              See the full list, including peer-reviewed work, preprints, manuscripts in preparation, and
               conference proceedings, on the{" "}
               <Link href="/publications/" className="text-[var(--brand-500)] hover:underline">
                 Publications
