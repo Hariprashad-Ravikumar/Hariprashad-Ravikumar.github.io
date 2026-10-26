@@ -125,6 +125,9 @@ export default function Mermaid({ children }: { children: string }) {
       startOnLoad: false,
       theme: "default",
       securityLevel: "loose",
+      // mermaid 12 defaults to the ELK layout; keep dagre so the diagram's
+      // compact layout and curved "basis" edges stay as designed.
+      layout: "dagre",
       // Sized to sit in a narrower column (beside the "How it works" text)
       // rather than the full content width — smaller intrinsic font/spacing
       // so shrinking the column doesn't scale it down further into
