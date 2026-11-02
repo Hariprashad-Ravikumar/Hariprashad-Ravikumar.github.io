@@ -3,6 +3,14 @@ export type Publication = {
   title: string;
   venue: string;
   links: { label: string; href: string }[];
+  bibliographic?: {
+    authorNames: string[];
+    year: string;
+    journal: string;
+    volume: string;
+    articleNumber: string;
+    doi: string;
+  };
 };
 
 /** §10.6. Fixes the biggest content error on the live site: the PRD paper
@@ -13,6 +21,14 @@ export const PEER_REVIEWED: Publication[] = [
     title:
       "Interpolating conformal algebra in (1+1) dimensions between the instant form and the light-front form of relativistic dynamics.",
     venue: "Physical Review D 113, 096018. American Physical Society.",
+    bibliographic: {
+      authorNames: ["Chueng-Ryong Ji", "Hariprashad Ravikumar"],
+      year: "2026",
+      journal: "Physical Review D",
+      volume: "113",
+      articleNumber: "096018",
+      doi: "10.1103/prlq-4j1l",
+    },
     links: [
       { label: "DOI", href: "https://journals.aps.org/prd/abstract/10.1103/prlq-4j1l" },
       { label: "arXiv", href: "https://arxiv.org/abs/2601.19251" },

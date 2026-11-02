@@ -55,6 +55,7 @@ export default function MetricTile({
 
   return (
     <motion.div
+      data-ai-text={`${value} — ${label}`}
       className="flex flex-col gap-1"
       initial="hidden"
       whileInView="visible"

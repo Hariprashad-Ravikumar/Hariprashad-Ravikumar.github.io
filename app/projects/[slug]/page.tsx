@@ -1,3 +1,4 @@
+import AIShare from "@/components/ui/AIShare";
 import { notFound } from "next/navigation";
 import Container from "@/components/layout/Container";
 import Picture from "@/components/ui/Picture";
@@ -28,43 +29,6 @@ const SEO_OVERRIDES: Partial<Record<CaseStudySlug, { title: string; description:
     title: "Cost-Aware Multi-Agent LLM Router",
     description:
       "A calibrated logistic-regression router that cuts LLM API cost 93.9% at accuracy parity (96.0% vs 92.0%, overlapping CIs) versus always calling the most capable model — plus the v1 attempt that didn't actually save money, and why.",
-  },
-};
-
-// Per-page structured data (site-wide Person schema lives in app/layout.tsx;
-// this is additional, page-specific signal for what THIS page is about —
-// only wired up where it's needed today).
-const ARTICLE_JSON_LD: Partial<Record<CaseStudySlug, Record<string, unknown>>> = {
-  "wd-internship-2026": {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    headline: "WD Internship: Enterprise HAMR Simulator (Western Digital)",
-    description:
-      "My Western Digital internship building a full-stack enterprise Dash/Plotly HAMR DCSNR simulator adopted by 40+ senior WD R&D engineers and experts across the US and Japan.",
-    about: {
-      "@type": "Organization",
-      name: "Western Digital",
-      alternateName: "WD",
-    },
-    author: {
-      "@type": "Person",
-      name: "Hariprashad Ravikumar",
-      url: SITE_URL,
-    },
-    url: `${SITE_URL}/projects/wd-internship-2026/`,
-  },
-  "cost-aware-llm-router": {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    headline: "Cost-Aware Multi-Agent LLM Router",
-    description:
-      "A calibrated logistic-regression router that cuts LLM API cost 93.9% at accuracy parity (96.0% vs 92.0%, overlapping CIs) versus always calling the most capable model.",
-    author: {
-      "@type": "Person",
-      name: "Hariprashad Ravikumar",
-      url: SITE_URL,
-    },
-    url: `${SITE_URL}/projects/cost-aware-llm-router/`,
   },
 };
 
@@ -110,7 +74,16 @@ export default async function ProjectCaseStudyPage({
   const project = PROJECTS.find((p) => p.slug === slug);
   const { default: CaseStudy } = await CASE_STUDIES[slug as CaseStudySlug]();
   const h1Override = H1_OVERRIDES[slug as CaseStudySlug];
-  const articleJsonLd = ARTICLE_JSON_LD[slug as CaseStudySlug];
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": `${SITE_URL}/projects/${slug}/#project`,
+    headline: SEO_OVERRIDES[slug as CaseStudySlug]?.title ?? project?.title,
+    description: SEO_OVERRIDES[slug as CaseStudySlug]?.description ?? project?.oneLiner,
+    author: { "@id": `${SITE_URL}/#person` },
+    url: `${SITE_URL}/projects/${slug}/`,
+    ...(slug === "wd-internship-2026" ? { about: { "@type": "Organization", name: "Western Digital", alternateName: "WD" } } : {}),
+  };
 
   return (
     <Container>
@@ -142,6 +115,7 @@ export default async function ProjectCaseStudyPage({
         ) : (
           <h1 className="text-h1 text-[var(--ink-900)]">{project?.title ?? slug}</h1>
         )}
+        <AIShare />
         <div className="mt-8">
           <CaseStudy />
         </div>

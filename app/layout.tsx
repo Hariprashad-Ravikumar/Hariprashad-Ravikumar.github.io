@@ -35,6 +35,7 @@ export const metadata = {
 const PERSON_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": `${SITE_URL}/#person`,
   name: "Hariprashad Ravikumar",
   alternateName: ["Hari", "Hari Ravikumar", "Hariprashad R.", "Ravikumar"],
   jobTitle: "PhD Candidate in Computational Physics",
@@ -59,7 +60,6 @@ const PERSON_JSON_LD = {
     "https://www.linkedin.com/in/hariprashad-ravikumar/",
     "https://github.com/Hariprashad-Ravikumar",
     "https://orcid.org/0000-0002-3276-852X",
-    "https://arxiv.org/abs/2601.19251",
     "https://inspirehep.net/authors/2905335",
     "https://www.researchgate.net/profile/Hariprashad-Ravikumar",
     "https://app.joinhandshake.com/profiles/hariprashad-ravikumar",
@@ -85,7 +85,7 @@ export default function RootLayout({
         <FluidMeshBackground />
         <Nav />
         <PageTransition>
-          <main className="flex-1">{children}</main>
+          <main data-ai-content className="flex-1">{children}</main>
         </PageTransition>
         <Footer />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNHPM3N7SY" />

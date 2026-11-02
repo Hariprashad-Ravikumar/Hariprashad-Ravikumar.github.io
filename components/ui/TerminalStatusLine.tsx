@@ -34,7 +34,7 @@ export default function TerminalStatusLine({ text }: { text: string }) {
       <span aria-hidden="true" className="text-[var(--accent-500)]">
         ●
       </span>
-      <span className="terminal-status__text">
+      <span className="terminal-status__text" data-ai-text={text}>
         {text.slice(0, revealedCount)}
         <span aria-hidden="true" className="terminal-status__cursor" />
       </span>

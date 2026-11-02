@@ -1,3 +1,4 @@
+import AIShare from "@/components/ui/AIShare";
 import Container from "@/components/layout/Container";
 import Reveal from "@/components/ui/Reveal";
 import { LinkButton } from "@/components/ui/Button";
@@ -48,6 +49,7 @@ export default function ContactPage() {
     <Container>
       <Reveal as="div" className="py-14 md:py-20">
         <h1 className="text-h1 text-[var(--ink-900)]">Get in touch</h1>
+        <AIShare />
         <p className="text-h3 prose-measure mt-2 font-normal text-[var(--ink-500)]">
           I&apos;m graduating in {METRICS.graduation} and interviewing now.
         </p>

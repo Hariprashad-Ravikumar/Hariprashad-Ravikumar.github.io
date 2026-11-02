@@ -1,3 +1,4 @@
+import AIShare from "@/components/ui/AIShare";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
 import { LinkButton } from "@/components/ui/Button";
@@ -40,6 +41,8 @@ export default function ResumePage() {
               Download PDF
             </LinkButton>
           </div>
+
+          <AIShare />
 
           <div className="text-small mt-2 text-[var(--ink-500)]">
             <p>

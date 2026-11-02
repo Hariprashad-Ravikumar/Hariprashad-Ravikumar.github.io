@@ -5,8 +5,6 @@ import { PROJECTS } from "@/content/projects";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-
   const staticRoutes = [
     "/",
     "/research/",
@@ -36,7 +34,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...staticRoutes, ...caseStudyRoutes].map((path) => ({
     url: `${SITE_URL}${path}`,
-    lastModified,
     ...(images[path] ? { images: images[path] } : {}),
   }));
 }

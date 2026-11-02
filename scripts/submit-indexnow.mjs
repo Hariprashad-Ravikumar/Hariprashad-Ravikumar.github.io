@@ -21,8 +21,8 @@ async function findKey() {
   return { key, keyLocation: `${SITE_URL}/${keyFile}` };
 }
 
-async function fetchSitemapUrls() {
-  const res = await fetch(`${SITE_URL}/sitemap.xml`);
+async function fetchSitemapUrls(fetchImpl) {
+  const res = await fetchImpl(`${SITE_URL}/sitemap.xml`, { signal: AbortSignal.timeout(30000) });
   if (!res.ok) throw new Error(`Failed to fetch sitemap.xml: ${res.status}`);
   const xml = await res.text();
   const urls = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
@@ -30,24 +30,29 @@ async function fetchSitemapUrls() {
   return urls;
 }
 
-async function main() {
-  const { key, keyLocation } = await findKey();
-  const urlList = await fetchSitemapUrls();
+export async function submitIndexNow({ fetchImpl = fetch, keyProvider = findKey } = {}) {
+  const { key, keyLocation } = await keyProvider();
+  const urlList = await fetchSitemapUrls(fetchImpl);
 
-  const res = await fetch("https://api.indexnow.org/indexnow", {
+  const res = await fetchImpl("https://api.indexnow.org/indexnow", {
     method: "POST",
     headers: { "Content-Type": "application/json; charset=utf-8" },
     body: JSON.stringify({ host: HOST, key, keyLocation, urlList }),
+    signal: AbortSignal.timeout(30000),
   });
 
   if (res.ok) {
-    console.log(`✓ IndexNow: submitted ${urlList.length} URLs (${res.status})`);
+    return { count: urlList.length, status: res.status };
   } else {
-    console.warn(`⚠ IndexNow submission returned ${res.status} — not failing the deploy`);
-    console.warn(await res.text().catch(() => ""));
+    throw new Error(`IndexNow returned HTTP ${res.status}: ${await res.text().catch(() => "")}. Check the public ownership key, sitemap URLs, and API availability before rerunning the indexing job.`);
   }
 }
 
-main().catch((err) => {
-  console.warn("⚠ IndexNow submission skipped:", err.message);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  submitIndexNow().then(({ count, status }) => {
+    console.log(`✓ IndexNow: submitted ${count} URLs (${status})`);
+  }).catch((err) => {
+    console.error(`IndexNow failed: ${err.message}. The site deployment is unaffected. Verify sitemap/key access and rerun the indexing job.`);
+    process.exitCode = 1;
+  });
+}

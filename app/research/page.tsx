@@ -1,3 +1,4 @@
+import AIShare from "@/components/ui/AIShare";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
 import Card from "@/components/ui/Card";
@@ -53,6 +54,7 @@ export default function ResearchPage() {
     <Container>
       <div className="py-10 md:py-14">
         <h1 className="text-h1 text-[var(--ink-900)]">Research</h1>
+        <AIShare />
         <p className="text-body prose-measure mt-3 text-[var(--ink-700)]">
           I work at the intersection of quantum field theory and large-scale computation, using
           GPU-accelerated HPC and machine learning to extract physics from simulations that produce

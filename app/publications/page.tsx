@@ -1,8 +1,9 @@
+import AIShare from "@/components/ui/AIShare";
 import Container from "@/components/layout/Container";
 import PubEntry from "@/components/content/PubEntry";
 import Reveal from "@/components/ui/Reveal";
 import { CONFERENCE, IN_PREPARATION, PEER_REVIEWED, PREPRINTS, THESES } from "@/content/publications";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, SITE_URL } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Publications | Hariprashad Ravikumar",
@@ -13,10 +14,34 @@ export const metadata = buildMetadata({
 });
 
 export default function PublicationsPage() {
+  const articles = PEER_REVIEWED.flatMap((publication) => {
+    const info = publication.bibliographic;
+    if (!info) return [];
+    return [{
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "@id": `https://doi.org/${info.doi}`,
+      url: `https://doi.org/${info.doi}`,
+      headline: publication.title,
+      author: info.authorNames.map(name => name === "Hariprashad Ravikumar"
+        ? { "@type": "Person", "@id": `${SITE_URL}/#person`, name }
+        : { "@type": "Person", name }),
+      datePublished: info.year,
+      identifier: info.doi,
+      pagination: info.articleNumber,
+      isPartOf: {
+        "@type": "PublicationVolume", volumeNumber: info.volume,
+        isPartOf: { "@type": "Periodical", name: info.journal },
+      },
+      sameAs: publication.links.map(link => link.href),
+    }];
+  });
   return (
     <Container>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articles).replace(/</g, "\\u003c") }} />
       <div className="py-10 md:py-14">
         <h1 className="text-h1 text-[var(--ink-900)]">Publications</h1>
+        <AIShare />
 
         <Reveal as="section" className="mt-7">
           <h2 className="text-h2 text-[var(--ink-900)]">Peer-Reviewed Publications</h2>

@@ -1,5 +1,7 @@
 "use client";
 
+import AIShare from "@/components/ui/AIShare";
+
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
@@ -51,6 +53,7 @@ export default function Hero() {
         >
           Hariprashad Ravikumar
         </motion.h1>
+        <AIShare />
         <motion.div variants={sectionRevealVariants} transition={sectionRevealTransition} className="mt-5">
           <TerminalStatusLine text={STATUS_TEXT} />
         </motion.div>

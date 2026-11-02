@@ -1,3 +1,4 @@
+import AIShare from "@/components/ui/AIShare";
 import Container from "@/components/layout/Container";
 import TalkList from "@/components/content/TalkList";
 import { TALKS } from "@/content/talks";
@@ -17,6 +18,7 @@ export default function TalksPage() {
     <Container>
       <div className="py-10 md:py-14">
         <h1 className="text-h1 text-[var(--ink-900)]">Talks</h1>
+        <AIShare />
         <div className="mt-6">
           <TalkList />
         </div>

@@ -190,6 +190,7 @@ export default function Mermaid({ children }: { children: string }) {
     <div
       className="flex justify-center overflow-x-auto w-full max-w-full [&>svg]:min-w-[480px] sm:[&>svg]:min-w-0"
       ref={ref}
+      data-ai-text={`\n\n\`\`\`mermaid\n${children.trim()}\n\`\`\`\n\n`}
     >
       {children}
     </div>
