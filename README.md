@@ -87,7 +87,7 @@ Push to `main` → GitHub Actions (`.github/workflows/deploy.yml`) builds, publi
 
 ## AI sharing and discovery checks
 
-Every content page offers an **Explore my work with** row with official ChatGPT, Claude, and Gemini marks and a **Copy page** action. It follows the homepage action buttons or the page introduction (and remains below the title on pages without an introduction). **How it works** expands brief guidance. Logo sources are recorded in `public/images/brands/README.md`. Copying serializes the rendered `data-ai-content` boundary to Markdown; `data-ai-exclude` removes controls, and `data-ai-text` supplies stable text for animated values and diagrams. Provider links contain only a neutral prompt and the canonical page URL. No API credentials or backend are needed.
+Every content page offers an **Explore my work with** row with official ChatGPT and Claude marks and a **Copy page** action. It follows the homepage action buttons or the page introduction (and remains below the title on pages without an introduction). **How it works** expands brief guidance. Logo sources are recorded in `public/images/brands/README.md`. Copying serializes the rendered `data-ai-content` boundary to Markdown; `data-ai-exclude` removes controls, and `data-ai-text` supplies stable text for animated values and diagrams. Provider links contain only a neutral prompt and the canonical page URL. No API credentials or backend are needed.
 
 After building, serve `out/` locally and run the verification scripts:
 
@@ -104,4 +104,5 @@ Provider URL formats are external behavior, not a versioned API contract. ChatGP
 
 Editorial follow-ups and the initial indexing baseline are in [docs/ai-discovery-editorial-review.md](docs/ai-discovery-editorial-review.md). Repository-wide lint currently reports five pre-existing errors in Nav, MetricTile, Reveal, SpotlightCard, and TerminalStatusLine; these were reproduced against unchanged `main` during this implementation.
 
-Copy for Gemini copies the neutral summary prompt plus rendered page text, then reveals an explicit Open Gemini and paste link to https://gemini.google.com/app. If clipboard access fails, the same text is selectable for manual copying. Gemini prompt prefill is not assumed.
+
+Gemini was excluded after signed-in checks on November 2, 2026: both `/app?q=...` and `/app?prompt=...` left the composer empty. Google documents a Chrome address-bar shortcut (https://support.google.com/gemini/answer/14886647), not a website prompt-link interface. The extension-based workaround (https://github.com/elliot79313/gemini-url-prompt) requires visitor installation, so it is unsuitable for this site.

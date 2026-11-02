@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { aiPrompt, aiProviderUrl, extractAIContext } from "@/lib/ai-context";
+import { aiProviderUrl, extractAIContext } from "@/lib/ai-context";
 import { SITE_URL } from "@/lib/seo";
 
 const actionClass = "material-trim inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-[var(--ink-700)] transition-colors hover:bg-[var(--glass-trim-bg-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--brand-500)] disabled:opacity-60";
@@ -15,32 +15,28 @@ export default function AIShare() {
   const [status, setStatus] = useState("");
   const [fallback, setFallback] = useState("");
   const [copying, setCopying] = useState(false);
-  const [geminiReady, setGeminiReady] = useState(false);
 
-  function track(action: "copy" | "open", provider: "clipboard" | "chatgpt" | "claude" | "gemini") {
+  function track(action: "copy" | "open", provider: "clipboard" | "chatgpt" | "claude") {
     const analytics = window as Window & { gtag?: (command: string, event: string, params: Record<string, string>) => void };
     analytics.gtag?.("event", "ai_share", { action, provider, page_path: path });
   }
 
-  async function copy(provider: "clipboard" | "gemini" = "clipboard") {
+  async function copy() {
     const root = document.querySelector("[data-ai-content]");
     if (!root) return;
     const title = root.querySelector("h1")?.innerText?.replace(/\s+/g, " ").trim() || document.title;
-    const pageText = extractAIContext(root, title, url);
-    const context = provider === "gemini" ? `${aiPrompt(url)}\n\nPage text:\n\n${pageText}` : pageText;
-    setGeminiReady(false);
+    const context = extractAIContext(root, title, url);
     setCopying(true);
     setFallback("");
     try {
       await navigator.clipboard.writeText(context);
-      setStatus(provider === "gemini" ? "Copied the prompt and page text. Open Gemini below, then paste into its message box." : "Copied. Paste into your preferred AI assistant.");
-      track("copy", provider);
+      setStatus("Copied. Paste into your preferred AI assistant.");
+      track("copy", "clipboard");
     } catch {
       setFallback(context);
       setStatus("Clipboard access is unavailable. Select and copy the text below.");
     } finally {
       setCopying(false);
-      setGeminiReady(provider === "gemini");
     }
   }
 
@@ -57,10 +53,6 @@ export default function AIShare() {
             <Image src="/images/brands/claude-spark.svg" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
             Claude
           </a>
-          <button type="button" className={actionClass} disabled={copying} onClick={() => copy("gemini")}>
-            <Image src="/images/brands/gemini-sparkle.svg" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
-            Copy for Gemini
-          </button>
           <button type="button" onClick={() => copy()} disabled={copying} className={actionClass}>
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <rect x="8" y="8" width="12" height="12" rx="2" />
@@ -74,10 +66,9 @@ export default function AIShare() {
         <summary className="flex min-h-11 w-fit cursor-pointer items-center gap-1 rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-500)]">
           How it works <span aria-hidden="true">⌄</span>
         </summary>
-        <p className="pb-2 leading-relaxed">ChatGPT and Claude open in a new tab with this page’s link and a summary prompt. Copy for Gemini copies the summary prompt and full page text, then shows a link to open Gemini. Paste into Gemini’s message box to continue. You can also paste the text if another assistant cannot read the page.</p>
+        <p className="pb-2 leading-relaxed">ChatGPT and Claude open in a new tab with this page’s link and a summary prompt. You can also paste the text if another assistant cannot read the page.</p>
       </details>
       <p role="status" aria-live="polite" className="text-xs empty:hidden">{status}</p>
-      {geminiReady && <a className={`${actionClass} mt-3`} href={aiProviderUrl("gemini", url)} target="_blank" rel="noopener noreferrer" onClick={() => track("open", "gemini")}>Open Gemini and paste<span className="sr-only"> (opens in a new tab)</span></a>}
       {fallback && <label className="mt-3 block max-w-2xl text-sm">Page context
         <textarea readOnly value={fallback} onFocus={event => event.target.select()} rows={10} className="material-trim mt-2 w-full rounded-lg p-3 text-sm text-[var(--ink-900)] focus-visible:outline-2 focus-visible:outline-[var(--brand-500)]" />
       </label>}

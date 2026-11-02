@@ -69,7 +69,7 @@ try {
       assert(url.searchParams.get('q').endsWith('ask me to paste the page text.'));
       assert(url.href.length < 1200);
     }
-    assert(await page.getByRole('button', { name: 'Copy for Gemini', exact: true }).isVisible());
+    assert.equal(await page.locator('[data-ai-share]').getByText(/Gemini/).count(), 0);
     console.log('PASS', path, text.length, 'context characters');
   }
   assert(copied['/projects/cost-aware-llm-router/'].includes('| --- |'));
@@ -120,26 +120,6 @@ try {
   assert.equal(await fallback.count(), 0);
   const event = await page.evaluate(() => window.__events.at(-1));
   assert.deepEqual(event, ['event', 'ai_share', { action: 'copy', provider: 'clipboard', page_path: '/projects/cost-aware-llm-router/' }]);
-  await page.getByRole('button', { name: 'Copy for Gemini', exact: true }).click();
-  await page.getByRole('status').filter({ hasText: 'Copied the prompt and page text.' }).waitFor();
-  const geminiText = await page.evaluate(() => window.__copied);
-  assert(geminiText.startsWith('Read this page by Hariprashad Ravikumar:'));
-  assert(geminiText.includes('93.9%') && geminiText.includes('Page text:'));
-  assert(!geminiText.includes('Copy for Gemini'));
-  assert.deepEqual(await page.evaluate(() => window.__events.at(-1)), ['event', 'ai_share', { action: 'copy', provider: 'gemini', page_path: '/projects/cost-aware-llm-router/' }]);
-  const geminiLink = page.getByRole('link', { name: 'Open Gemini and paste (opens in a new tab)', exact: true });
-  assert.equal(await geminiLink.getAttribute('href'), 'https://gemini.google.com/app');
-  assert.equal(await geminiLink.getAttribute('target'), '_blank');
-  await geminiLink.evaluate(el => el.addEventListener('click', event => event.preventDefault()));
-  await geminiLink.click();
-  assert.deepEqual(await page.evaluate(() => window.__events.at(-1)), ['event', 'ai_share', { action: 'open', provider: 'gemini', page_path: '/projects/cost-aware-llm-router/' }]);
-  await page.evaluate(() => { navigator.clipboard.writeText = async () => { throw new Error('denied'); }; });
-  await page.getByRole('button', { name: 'Copy for Gemini', exact: true }).click();
-  await fallback.waitFor();
-  assert.equal(await fallback.inputValue(), geminiText);
-  await fallback.focus();
-  assert(await fallback.evaluate(el => el.selectionEnd === el.value.length));
-  assert(await geminiLink.isVisible());
   // Prevent navigation while testing the analytics click handler.
   await page.getByRole('link', { name: 'Claude (opens in a new tab)', exact: true }).evaluate(el => el.addEventListener('click', event => event.preventDefault()));
   await page.getByRole('link', { name: 'Claude (opens in a new tab)', exact: true }).click();

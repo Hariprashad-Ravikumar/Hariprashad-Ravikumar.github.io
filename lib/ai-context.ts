@@ -63,9 +63,7 @@ export function aiPrompt(url: string) {
   return `Read this page by Hariprashad Ravikumar: ${url}. Summarize the experience or work it describes, cite the page, and distinguish stated evidence from inference. If you cannot access it, ask me to paste the page text.`;
 }
 
-export function aiProviderUrl(provider: "chatgpt" | "claude" | "gemini", url: string) {
-  // Gemini has no verified prompt-prefill contract; use the copy-page fallback.
-  if (provider === "gemini") return "https://gemini.google.com/app";
+export function aiProviderUrl(provider: "chatgpt" | "claude", url: string) {
   const target = new URL(provider === "chatgpt" ? "https://chatgpt.com/" : "https://claude.ai/new");
   target.searchParams.set("q", aiPrompt(url));
   return target.href;
