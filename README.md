@@ -106,3 +106,9 @@ Editorial follow-ups and the initial indexing baseline are in [docs/ai-discovery
 
 
 Gemini was excluded after signed-in checks on November 2, 2026: both `/app?q=...` and `/app?prompt=...` left the composer empty. Google documents a Chrome address-bar shortcut (https://support.google.com/gemini/answer/14886647), not a website prompt-link interface. The extension-based workaround (https://github.com/elliot79313/gemini-url-prompt) requires visitor installation, so it is unsuitable for this site.
+
+### Ambient background
+
+The background uses dedicated pearl, pale-blue, and soft-teal tokens; foreground and glass colors are unchanged. Three broad elliptical fields drift over 66/78/90 seconds, with no pointer or scroll response. A fixed seeded noise tile reduces gradient contours without animated grain. The canvas is limited to roughly 8.3 million backing pixels and 30 paints/second. Reduced motion freezes the composition; resizing and display-density changes repaint it, and hidden tabs pause elapsed time.
+
+After a production build, serve `out` on port 4173 and run `node scripts/verify-background.mjs`. This checks resize/density transitions, sampled text contrast, reduced-motion changes, hidden-tab resume, and missing-canvas fallback. Screenshots are saved under `/tmp/background-*.png`. Physical-monitor banding still needs visual review before deployment.

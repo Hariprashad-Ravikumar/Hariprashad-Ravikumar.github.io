@@ -2,6 +2,10 @@
 @import "katex/dist/katex.min.css";
 
 :root {
+  --background-pearl: #fbfcfe;
+  --background-blue: #dce8f8;
+  --background-teal: #d9eeea;
+
   --ink-900: #0a0e27;
   --ink-700: #1e2547;
   --ink-500: #4a5578;

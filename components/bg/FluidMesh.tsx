@@ -1,197 +1,151 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { prefersReducedMotion } from "@/lib/motion";
 
-type Blob = {
-  baseX: number; // fraction of viewport width, 0-1
-  baseY: number; // fraction of viewport height, 0-1
-  radius: number; // fraction of viewport max dimension
-  color: string; // CSS var name to resolve, e.g. "--aurora-1"
-  alpha: number;
-  driftAmp: number; // px
-  driftFreq: number; // radians/sec
-  phase: number;
-  pull: number; // 0-1, how strongly it leans toward the pointer
-};
-
-const BLOBS: Array<Omit<Blob, "color"> & { colorVar: string }> = [
-  { baseX: 0.18, baseY: 0.22, radius: 0.42, colorVar: "--aurora-1", alpha: 0.16, driftAmp: 70, driftFreq: (2 * Math.PI) / 26, phase: 0, pull: 0.05 },
-  { baseX: 0.82, baseY: 0.18, radius: 0.38, colorVar: "--aurora-2", alpha: 0.15, driftAmp: 90, driftFreq: (2 * Math.PI) / 32, phase: 2.1, pull: 0.08 },
-  { baseX: 0.28, baseY: 0.82, radius: 0.4, colorVar: "--aurora-2", alpha: 0.12, driftAmp: 80, driftFreq: (2 * Math.PI) / 24, phase: 4.2, pull: 0.06 },
-  { baseX: 0.78, baseY: 0.78, radius: 0.36, colorVar: "--aurora-3", alpha: 0.15, driftAmp: 60, driftFreq: (2 * Math.PI) / 30, phase: 1.3, pull: 0.09 },
+// Background-only colors: foreground and glass-material tokens stay unchanged.
+const FIELDS = [
+  { x: 0.12, y: 0.18, rx: 0.88, ry: 0.78, color: "--background-blue", alpha: 0.32, period: 66, phase: 0 },
+  { x: 0.88, y: 0.48, rx: 0.86, ry: 0.94, color: "--background-teal", alpha: 0.3, period: 78, phase: 2.1 },
+  { x: 0.3, y: 0.96, rx: 0.95, ry: 0.76, color: "--background-blue", alpha: 0.2, period: 90, phase: 4.2 },
 ];
-
-function hexToRgb(hex: string): [number, number, number] {
-  const clean = hex.trim().replace("#", "");
-  const r = parseInt(clean.slice(0, 2), 16);
-  const g = parseInt(clean.slice(2, 4), 16);
-  const b = parseInt(clean.slice(4, 6), 16);
-  return [r, g, b];
-}
 
 export default function FluidMesh() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const ctx = canvas?.getContext("2d", { alpha: false });
+    if (!canvas || !ctx) return;
 
-    const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
-    const reducedMotion = prefersReducedMotion();
-
-    // Canvas gradient stops can't resolve var() — resolve actual hex once.
     const rootStyle = getComputedStyle(document.documentElement);
-    const blobs: Blob[] = BLOBS.map(({ colorVar, ...b }) => {
-      const hex = rootStyle.getPropertyValue(colorVar).trim() || "#a5b4fc";
-      const [r, g, b2] = hexToRgb(hex);
-      return { ...b, color: `${r}, ${g}, ${b2}` };
+    const base = rootStyle.getPropertyValue("--background-pearl").trim() || "#fbfcfe";
+    const fields = FIELDS.map(field => {
+      const hex = rootStyle.getPropertyValue(field.color).trim().slice(1);
+      const rgb = [0, 2, 4].map(offset => parseInt(hex.slice(offset, offset + 2), 16));
+      return { ...field, rgb: rgb.join(",") };
     });
 
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    let dpr = Math.min(2, window.devicePixelRatio || 1);
+    // A fixed, seeded tile breaks up quantization contours without sparkling.
+    // Generate once; no per-pixel work or random changes during animation.
+    const tile = document.createElement("canvas");
+    tile.width = tile.height = 256;
+    const tileCtx = tile.getContext("2d");
+    let noise: CanvasPattern | null = null;
+    if (tileCtx) {
+      const pixels = tileCtx.createImageData(256, 256);
+      let seed = 1729;
+      for (let i = 0; i < pixels.data.length; i += 4) {
+        seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+        const value = seed >>> 24;
+        pixels.data[i] = pixels.data[i + 1] = pixels.data[i + 2] = value;
+        pixels.data[i + 3] = 255;
+      }
+      tileCtx.putImageData(pixels, 0, 0);
+      noise = ctx.createPattern(tile, "repeat");
+    }
 
-    // Smoothed pointer target — lerped toward the raw pointer each frame so
-    // the mesh leans, it doesn't snap (a gentle "nudge," not direct tracking).
-    const pointer = { x: width / 2, y: height / 2 };
-    const pointerTarget = { x: width / 2, y: height / 2 };
-    let rafId = 0;
-    let running = true;
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let densityQuery: MediaQueryList;
+    let width = 0;
+    let height = 0;
+    let scale = 1;
+    let elapsed = 0;
+    let previousTime: number | null = null;
+    let lastPaint = 0;
+    let frame = 0;
+    let disposed = false;
+
+    function draw() {
+      if (!ctx || !canvas) return;
+      ctx.setTransform(scale, 0, 0, scale, 0, 0);
+      ctx.fillStyle = base;
+      ctx.fillRect(0, 0, width, height);
+      for (const field of fields) {
+        const phase = (elapsed / 1000) * (2 * Math.PI / field.period) + field.phase;
+        const x = width * (field.x + Math.sin(phase) * 0.025);
+        const y = height * (field.y + Math.cos(phase) * 0.025);
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(width * field.rx, height * field.ry);
+        const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
+        // Smooth falloff with a gentle center and no abrupt outer boundary.
+        for (const [stop, opacity] of [[0, 1], [0.2, 0.9], [0.45, 0.58], [0.7, 0.23], [0.9, 0.035], [1, 0]]) {
+          gradient.addColorStop(stop, `rgba(${field.rgb},${field.alpha * opacity})`);
+        }
+        ctx.fillStyle = gradient;
+        ctx.fillRect(-1, -1, 2, 2);
+        ctx.restore();
+      }
+      if (noise) {
+        // Paint in backing pixels, never moving/scaling the noise with a field.
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.globalAlpha = 0.012;
+        ctx.fillStyle = noise;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.globalAlpha = 1;
+      }
+    }
 
     function resize() {
+      if (!canvas || disposed) return;
       width = window.innerWidth;
       height = window.innerHeight;
-      dpr = Math.min(2, window.devicePixelRatio || 1);
-      if (!canvas) return;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // Bound the backing store to ~4K pixels, even on Retina ultrawide screens.
+      scale = Math.min(2, window.devicePixelRatio || 1, Math.sqrt(8_294_400 / (width * height)));
+      canvas.width = Math.max(1, Math.round(width * scale));
+      canvas.height = Math.max(1, Math.round(height * scale));
+      // Setting canvas dimensions clears it; repaint synchronously even when paused.
+      draw();
     }
+
+    function tick(now: number) {
+      frame = 0;
+      if (disposed || document.hidden || motionQuery.matches) return;
+      if (previousTime !== null) elapsed += now - previousTime;
+      previousTime = now;
+      // This very slow drift needs only 30 paints/sec, independent of refresh rate.
+      if (now - lastPaint >= 1000 / 30) {
+        draw();
+        lastPaint = now;
+      }
+      frame = requestAnimationFrame(tick);
+    }
+
+    function syncMotion() {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      previousTime = null;
+      // Freeze the current composition rather than jumping to another phase.
+      draw();
+      if (!document.hidden && !motionQuery.matches) frame = requestAnimationFrame(tick);
+    }
+
+    function watchDensity() {
+      densityQuery?.removeEventListener("change", onDensityChange);
+      densityQuery = window.matchMedia(`(resolution: ${window.devicePixelRatio || 1}dppx)`);
+      densityQuery.addEventListener("change", onDensityChange);
+    }
+    function onDensityChange() {
+      resize();
+      watchDensity();
+    }
+
     resize();
-
-    let resizeTimeout: ReturnType<typeof setTimeout>;
-    const onResize = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(resize, 200);
-    };
-    window.addEventListener("resize", onResize);
-
-    const onPointerMove = (e: PointerEvent) => {
-      pointerTarget.x = e.clientX;
-      pointerTarget.y = e.clientY;
-    };
-    if (!coarsePointer) {
-      window.addEventListener("pointermove", onPointerMove, { passive: true });
-    }
-
-    // Baked into the draw call (not a DOM transform) so the canvas element
-    // itself always stays glued to inset:0 — a CSS transform on a
-    // viewport-sized fixed canvas would slide it off-bounds and expose the
-    // flat body background as a visible seam.
-    let scrollY = window.scrollY;
-    const onScroll = () => {
-      scrollY = window.scrollY;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    function drawFrame(t: number) {
-      if (!ctx) return;
-      ctx.clearRect(0, 0, width, height);
-
-      if (!reducedMotion) {
-        pointer.x += (pointerTarget.x - pointer.x) * 0.02;
-        pointer.y += (pointerTarget.y - pointer.y) * 0.02;
-      }
-
-      const maxDim = Math.max(width, height);
-      for (const blob of blobs) {
-        const baseX = blob.baseX * width;
-        const baseY = blob.baseY * height;
-
-        let cx = baseX;
-        let cy = baseY;
-        if (!reducedMotion) {
-          const driftX = Math.sin(t * blob.driftFreq + blob.phase) * blob.driftAmp;
-          const driftY = Math.cos(t * blob.driftFreq * 0.85 + blob.phase) * blob.driftAmp;
-          const pullX = (pointer.x - baseX) * blob.pull;
-          const pullY = (pointer.y - baseY) * blob.pull;
-          cx = baseX + driftX + pullX;
-          cy = baseY + driftY + pullY + scrollY * 0.06;
-        }
-
-        const radius = blob.radius * maxDim;
-        const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
-        gradient.addColorStop(0, `rgba(${blob.color}, ${blob.alpha})`);
-        gradient.addColorStop(1, `rgba(${blob.color}, 0)`);
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, width, height);
-      }
-    }
-
-    // Reduced motion: one static frame, no rAF loop, no pointer response.
-    if (reducedMotion) {
-      drawFrame(0);
-      return () => {
-        window.removeEventListener("resize", onResize);
-        window.removeEventListener("scroll", onScroll);
-        if (!coarsePointer) window.removeEventListener("pointermove", onPointerMove);
-      };
-    }
-
-    const start = performance.now();
-    function loop(now: number) {
-      if (!running) return;
-      drawFrame((now - start) / 1000);
-      rafId = requestAnimationFrame(loop);
-    }
-    rafId = requestAnimationFrame(loop);
-
-    const onVisibility = () => {
-      if (document.hidden) {
-        running = false;
-        cancelAnimationFrame(rafId);
-      } else {
-        running = true;
-        rafId = requestAnimationFrame(loop);
-      }
-    };
-    document.addEventListener("visibilitychange", onVisibility);
-
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        if (!running && !document.hidden) {
-          running = true;
-          rafId = requestAnimationFrame(loop);
-        }
-      } else {
-        running = false;
-        cancelAnimationFrame(rafId);
-      }
-    });
-    io.observe(canvas);
+    watchDensity();
+    syncMotion();
+    window.addEventListener("resize", resize);
+    motionQuery.addEventListener("change", syncMotion);
+    document.addEventListener("visibilitychange", syncMotion);
 
     return () => {
-      running = false;
-      cancelAnimationFrame(rafId);
-      clearTimeout(resizeTimeout);
-      window.removeEventListener("resize", onResize);
-      window.removeEventListener("scroll", onScroll);
-      if (!coarsePointer) window.removeEventListener("pointermove", onPointerMove);
-      document.removeEventListener("visibilitychange", onVisibility);
-      io.disconnect();
+      disposed = true;
+      cancelAnimationFrame(frame);
+      window.removeEventListener("resize", resize);
+      motionQuery.removeEventListener("change", syncMotion);
+      densityQuery.removeEventListener("change", onDensityChange);
+      document.removeEventListener("visibilitychange", syncMotion);
     };
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden
-      className="pointer-events-none fixed inset-0 -z-10"
-    />
-  );
+  return <canvas ref={canvasRef} data-fluid-background aria-hidden data-ai-exclude className="pointer-events-none absolute inset-0 h-full w-full" />;
 }
