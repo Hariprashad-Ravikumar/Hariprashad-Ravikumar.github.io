@@ -1,4 +1,3 @@
-import AIShare from "@/components/ui/AIShare";
 import { notFound } from "next/navigation";
 import Container from "@/components/layout/Container";
 import Picture from "@/components/ui/Picture";
@@ -115,7 +114,6 @@ export default async function ProjectCaseStudyPage({
         ) : (
           <h1 className="text-h1 text-[var(--ink-900)]">{project?.title ?? slug}</h1>
         )}
-        <AIShare />
         <div className="mt-8">
           <CaseStudy />
         </div>

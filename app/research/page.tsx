@@ -54,12 +54,13 @@ export default function ResearchPage() {
     <Container>
       <div className="py-10 md:py-14">
         <h1 className="text-h1 text-[var(--ink-900)]">Research</h1>
-        <AIShare />
         <p className="text-body prose-measure mt-3 text-[var(--ink-700)]">
           I work at the intersection of quantum field theory and large-scale computation, using
           GPU-accelerated HPC and machine learning to extract physics from simulations that produce
           terabytes of noisy data.
         </p>
+
+        <AIShare />
 
         <Reveal as="div" className="prose-measure mt-6 flex flex-col gap-4">
           <p className="text-body text-[var(--ink-700)]">

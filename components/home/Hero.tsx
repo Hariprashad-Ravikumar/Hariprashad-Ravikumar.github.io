@@ -53,7 +53,6 @@ export default function Hero() {
         >
           Hariprashad Ravikumar
         </motion.h1>
-        <AIShare />
         <motion.div variants={sectionRevealVariants} transition={sectionRevealTransition} className="mt-5">
           <TerminalStatusLine text={STATUS_TEXT} />
         </motion.div>
@@ -123,6 +122,9 @@ export default function Hero() {
         </LinkButton>
         <SocialLinks />
       </motion.div>
+      <div className="md:col-span-2 -mt-8 [&>div]:my-0">
+        <AIShare />
+      </div>
     </Section>
   );
 }

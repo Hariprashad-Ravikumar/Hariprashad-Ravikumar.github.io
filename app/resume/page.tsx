@@ -42,8 +42,6 @@ export default function ResumePage() {
             </LinkButton>
           </div>
 
-          <AIShare />
-
           <div className="text-small mt-2 text-[var(--ink-500)]">
             <p>
               <a href={`mailto:${CONTACT.email}`} className="text-[var(--brand-500)] hover:underline">
@@ -54,6 +52,8 @@ export default function ResumePage() {
               <p key={line}>{line}</p>
             ))}
           </div>
+
+          <AIShare />
 
           <ResumeSection id="industry" title="Industry Experience">
             {INDUSTRY_EXPERIENCE.map((role) => (

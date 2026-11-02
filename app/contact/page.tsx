@@ -49,7 +49,6 @@ export default function ContactPage() {
     <Container>
       <Reveal as="div" className="py-14 md:py-20">
         <h1 className="text-h1 text-[var(--ink-900)]">Get in touch</h1>
-        <AIShare />
         <p className="text-h3 prose-measure mt-2 font-normal text-[var(--ink-500)]">
           I&apos;m graduating in {METRICS.graduation} and interviewing now.
         </p>
@@ -58,6 +57,8 @@ export default function ContactPage() {
           Engineer, or Software Engineer roles in the SF Bay Area. Authorized to work in the U.S.
           under STEM OPT; open to H-1B sponsorship.
         </p>
+
+        <AIShare />
 
         <div className="mt-6 flex flex-wrap gap-3">
           <LinkButton href={`mailto:${CONTACT.email}`} variant="primary">

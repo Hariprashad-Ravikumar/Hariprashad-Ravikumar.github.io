@@ -1,3 +1,5 @@
+import AIShare from "@/components/ui/AIShare";
+
 import MathText from "@/components/ui/MathText";
 import ResultsTable from "@/components/content/ResultsTable";
 import RouterArchitectureDiagram from "@/components/content/RouterArchitectureDiagram";
@@ -8,6 +10,8 @@ import { LinkButton } from "@/components/ui/Button";
 import { GitHubIcon, GoogleCloudIcon, LinkedInIcon } from "@/components/ui/brand-icons";
 
 A router that sits in front of multiple LLMs of different price and quality tiers and decides, per prompt, which tier should answer it. Most traffic goes to a cheap model; only genuinely hard prompts pay for an expensive one. The pattern is well established (LMSYS RouteLLM<a href="#ref-1" className="align-super text-[0.7em] text-[var(--brand-500)]">[1]</a>, RouterBench<a href="#ref-2" className="align-super text-[0.7em] text-[var(--brand-500)]">[2]</a>, cascade-routing approaches like FrugalGPT<a href="#ref-3" className="align-super text-[0.7em] text-[var(--brand-500)]">[3]</a>, and the "adaptive model" approach used in products like Devin/Windsurf). The value here is engineering rigor and honest evaluation of a known pattern, not a new idea, including publishing an earlier version that didn't save money and explaining why.
+
+<AIShare />
 
 <section className="grid grid-cols-2 gap-4 border-b border-[var(--line)] py-4 sm:grid-cols-4 sm:gap-8">
   <MetricTile value="93.9%" label="cheaper than always calling the top-tier model" />

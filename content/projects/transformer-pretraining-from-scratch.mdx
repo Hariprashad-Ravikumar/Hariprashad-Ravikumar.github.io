@@ -1,3 +1,5 @@
+import AIShare from "@/components/ui/AIShare";
+
 import ResultsTable from "@/components/content/ResultsTable";
 import MetricTile from "@/components/ui/MetricTile";
 import Picture from "@/components/ui/Picture";
@@ -5,6 +7,8 @@ import { LinkButton } from "@/components/ui/Button";
 import { GitHubIcon, HuggingFaceIcon, PythonIcon } from "@/components/ui/brand-icons";
 
 A ~57M-non-embedding-parameter decoder-only transformer, pretrained from scratch in PyTorch: RMSNorm, rotary position embeddings, causal self-attention, SwiGLU MLP, and a weight-tied embedding/output head, all authored as raw `nn.Module`s. No `AutoModel`, no fine-tune of an existing checkpoint. Trained on ~1B tokens of FineWeb-Edu with a custom byte-level BPE tokenizer, also trained from scratch rather than reusing GPT-2's. The value here is depth, not scale: every claim below is measured, and every negative result is reported as one, not hidden.
+
+<AIShare />
 
 <section className="grid grid-cols-2 gap-4 border-b border-[var(--line)] py-4 sm:grid-cols-4 sm:gap-8">
   <MetricTile value="1.057" label="bits-per-byte, held-out (vs. Pythia-70M's 1.135)" />

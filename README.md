@@ -87,7 +87,7 @@ Push to `main` → GitHub Actions (`.github/workflows/deploy.yml`) builds, publi
 
 ## AI sharing and discovery checks
 
-Every content page offers **Use with AI** below its main heading. Copying serializes the rendered `data-ai-content` boundary to Markdown; `data-ai-exclude` removes controls, and `data-ai-text` supplies stable text for animated values and diagrams. Provider links contain only a neutral prompt and the canonical page URL. No API credentials or backend are needed.
+Every content page offers an **Explore my work with** row with official ChatGPT, Claude, and Gemini marks and a **Copy page** action. It follows the homepage action buttons or the page introduction (and remains below the title on pages without an introduction). **How it works** expands brief guidance. Logo sources are recorded in `public/images/brands/README.md`. Copying serializes the rendered `data-ai-content` boundary to Markdown; `data-ai-exclude` removes controls, and `data-ai-text` supplies stable text for animated values and diagrams. Provider links contain only a neutral prompt and the canonical page URL. No API credentials or backend are needed.
 
 After building, serve `out/` locally and run the verification scripts:
 
@@ -100,6 +100,8 @@ node scripts/verify-ai-sharing.mjs
 
 The browser checks cover all 12 content pages, redirects/404 exclusions, structured data, context extraction, keyboard/mobile behavior, clipboard failures, and analytics. `TEST_ORIGIN` overrides the local server URL. IndexNow failures now fail only the indexing job; the deployed site remains available. Verify the ownership key and sitemap before rerunning that job.
 
-Provider URL formats are external behavior, not a versioned API contract. ChatGPT prompt prefill was verified on November 2, 2026. Claude retained the prompt through its sign-in redirect; authenticated composer behavior still needs a signed-in check. Copy for AI remains available if a provider cannot prefill or retrieve a page.
+Provider URL formats are external behavior, not a versioned API contract. ChatGPT prompt prefill was verified on November 2, 2026. Claude retained the prompt through its sign-in redirect; authenticated composer behavior still needs a signed-in check. Copy page remains available if a provider cannot prefill or retrieve a page.
 
 Editorial follow-ups and the initial indexing baseline are in [docs/ai-discovery-editorial-review.md](docs/ai-discovery-editorial-review.md). Repository-wide lint currently reports five pre-existing errors in Nav, MetricTile, Reveal, SpotlightCard, and TerminalStatusLine; these were reproduced against unchanged `main` during this implementation.
+
+Gemini opens https://gemini.google.com/app with a Copy page / paste workflow; prompt prefill is not assumed. Its link and on-page feedback explain this fallback.
