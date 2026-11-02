@@ -104,4 +104,4 @@ Provider URL formats are external behavior, not a versioned API contract. ChatGP
 
 Editorial follow-ups and the initial indexing baseline are in [docs/ai-discovery-editorial-review.md](docs/ai-discovery-editorial-review.md). Repository-wide lint currently reports five pre-existing errors in Nav, MetricTile, Reveal, SpotlightCard, and TerminalStatusLine; these were reproduced against unchanged `main` during this implementation.
 
-Gemini opens https://gemini.google.com/app with a Copy page / paste workflow; prompt prefill is not assumed. Its link and on-page feedback explain this fallback.
+Copy for Gemini copies the neutral summary prompt plus rendered page text, then reveals an explicit Open Gemini and paste link to https://gemini.google.com/app. If clipboard access fails, the same text is selectable for manual copying. Gemini prompt prefill is not assumed.
