@@ -58,6 +58,7 @@ try {
   assert(copied['/publications/'].includes('https://journals.aps.org/prd/abstract/10.1103/prlq-4j1l'));
   assert(copied['/resume/'].includes('Industry Experience'));
   assert(copied['/'].includes('75,000+'));
+  assert(copied['/projects/'].replace(/\s+/g, ' ').includes('FastAPI scikit-learn PostgreSQL Redis Docker'));
   for (const file of ['out/404.html', 'out/cv/index.html', 'out/projects/WD-simulation-app/index.html']) {
     assert(!(await readFile(file, 'utf8')).includes('Use with AI'), file);
   }

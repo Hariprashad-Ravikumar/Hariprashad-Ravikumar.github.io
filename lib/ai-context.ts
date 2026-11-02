@@ -5,7 +5,8 @@ export function extractAIContext(root: Element, title: string, url: string): str
     if (!(node instanceof Element)) return "";
     if (node.matches('script, style, nav, aside, button, textarea, input, select, h1, [data-ai-exclude], [aria-hidden="true"], [hidden]')) return "";
     const tag = node.tagName.toLowerCase();
-    const content = () => Array.from(node.childNodes).map(text).join("");
+    const display = getComputedStyle(node).display;
+    const content = () => Array.from(node.childNodes).map(text).join(/flex|grid/.test(display) ? " " : "");
     const explicit = node.getAttribute("data-ai-text");
     if (explicit) return `\n\n${explicit}\n\n`;
     if (node.classList.contains("katex")) {
@@ -51,7 +52,7 @@ export function extractAIContext(root: Element, title: string, url: string): str
     if (tag === "strong" || tag === "b") return `**${content()}**`;
     if (tag === "em" || tag === "i") return `*${content()}*`;
     if (tag === "blockquote") return `\n\n> ${content().trim().replace(/\n/g, "\n> ")}\n\n`;
-    if (["p", "div", "section", "article", "figure", "figcaption", "ul", "ol", "dl", "dt", "dd"].includes(tag)) return `\n\n${content().trim()}\n\n`;
+    if (display === "block" || ["p", "div", "section", "article", "figure", "figcaption", "ul", "ol", "dl", "dt", "dd"].includes(tag)) return `\n\n${content().trim()}\n\n`;
     return content();
   };
   const body = text(root).replace(/[ \t]+\n/g, "\n").replace(/\n[ \t]+/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
